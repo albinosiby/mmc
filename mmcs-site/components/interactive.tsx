@@ -52,7 +52,7 @@ const journeyDetails: Record<string, string[]> = {
     'The Society received the NCDC North East Award in 2023.',
   ],
   '2024': [
-    'Megh Farm Processing Hub was established at Khamari and initiated on 10 February 2024.',
+    'MeghFarm Processing Hub was established at Khamari and initiated on 10 February 2024.',
     'The hub was inaugurated by Meghalaya Chief Minister Shri Conrad K. Sangma.',
     'Fruit and vegetable processing, pineapple processing, juice, jam, squash, fruit pulp, packaging and branding progressed.',
     'Nokma brand development accelerated.',
@@ -78,71 +78,99 @@ const journeyImages = [
 
 export function JourneyExplorer() {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const tabs = useRef<(HTMLButtonElement | null)[]>([]);
   const selected = timeline[selectedIndex];
-  const image =
-    selected.image ?? journeyImages[selectedIndex % journeyImages.length];
+  const image = selected.image ?? journeyImages[selectedIndex % journeyImages.length];
+  const chapter = String(selectedIndex + 1).padStart(2, '0');
+
+  function selectChapter(index: number, focus = false) {
+    const next = Math.max(0, Math.min(timeline.length - 1, index));
+    setSelectedIndex(next);
+    const tab = tabs.current[next];
+    if (focus) tab?.focus({ preventScroll: true });
+    tab?.scrollIntoView({
+      behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
+      block: 'nearest',
+      inline: 'nearest',
+    });
+  }
+
   return (
-    <section className="journey-explorer">
+    <section className="journey-explorer" aria-labelledby="journey-explorer-title">
       <div className="wrap">
         <div className="journey-explorer-heading">
           <div>
-            <span className="eyebrow">2015 — 2026</span>
-            <h2>A journey made together.</h2>
+            <span className="eyebrow">OUR STORY, CHAPTER BY CHAPTER</span>
+            <h2 id="journey-explorer-title">A journey made <span>together.</span></h2>
           </div>
-          <p>
-            Swipe through the documented stages, then open a card to explore
-            what was recorded in that period.
-          </p>
+          <div className="journey-explorer-intro">
+            <p>Small beginnings. Shared ambition. Explore the moments that have shaped our cooperative since 2015.</p>
+            <div className="journey-controls">
+              <span>Explore the years <ArrowRight size={16} aria-hidden="true" /></span>
+              <button type="button" aria-label="Previous chapter" disabled={selectedIndex === 0} onClick={() => selectChapter(selectedIndex - 1)}><ArrowLeft size={19} /></button>
+              <button type="button" aria-label="Next chapter" disabled={selectedIndex === timeline.length - 1} onClick={() => selectChapter(selectedIndex + 1)}><ArrowRight size={19} /></button>
+            </div>
+          </div>
         </div>
-        <div
-          className="journey-card-rail"
-          role="tablist"
-          aria-label="MMCS journey years"
-        >
+        <div className="journey-card-rail" role="tablist" aria-label="MMCS journey years">
           {timeline.map((entry, index) => (
             <button
+              type="button"
               key={entry.year}
+              ref={(node) => { tabs.current[index] = node; }}
               id={`year-${entry.year}`}
               role="tab"
               aria-selected={selectedIndex === index}
+              aria-controls={`chapter-panel-${index}`}
+              tabIndex={selectedIndex === index ? 0 : -1}
               className={selectedIndex === index ? 'active' : ''}
-              onClick={() => setSelectedIndex(index)}
+              onClick={() => selectChapter(index)}
+              onKeyDown={(event) => {
+                const next = event.key === 'ArrowRight' ? (index + 1) % timeline.length
+                  : event.key === 'ArrowLeft' ? (index - 1 + timeline.length) % timeline.length
+                  : event.key === 'Home' ? 0 : event.key === 'End' ? timeline.length - 1 : null;
+                if (next !== null) { event.preventDefault(); selectChapter(next, true); }
+              }}
             >
-              <Image
-                src={entry.image ?? journeyImages[index % journeyImages.length]}
-                alt="Illustrative MMCS journey photograph"
-                fill
-                sizes="260px"
-              />
-              <span>{entry.year}</span>
-              <strong>{entry.title}</strong>
+              <div className="journey-card-photo">
+                <Image src={entry.image ?? journeyImages[index % journeyImages.length]} alt="" fill sizes="280px" />
+                <span className="journey-card-number">CHAPTER {String(index + 1).padStart(2, '0')}</span>
+                <span className="journey-card-arrow"><ArrowUpRight size={20} aria-hidden="true" /></span>
+              </div>
+              <div className="journey-card-label">
+                <span className="journey-card-year">{entry.year}</span>
+                <strong>{entry.title}</strong>
+              </div>
             </button>
           ))}
         </div>
-        <article className="journey-detail" aria-live="polite">
-          <div className="journey-detail-image">
-            <Image
-              src={image}
-              alt="MMCS documentation photograph"
-              fill
-              sizes="(max-width: 700px) 100vw, 42vw"
-            />
+        <div className="journey-progress" aria-hidden="true">
+          <span>2015</span>
+          <div><i style={{ width: `${((selectedIndex + 1) / timeline.length) * 100}%` }} /></div>
+          <span>2026</span>
+        </div>
+        {timeline.map((entry, index) => (
+          <div key={entry.year} id={`chapter-panel-${index}`} role="tabpanel" aria-labelledby={`year-${entry.year}`} hidden={selectedIndex !== index} tabIndex={0}>
+            {selectedIndex === index && (
+              <article className="journey-detail">
+                <div className="journey-detail-image">
+                  <Image src={image} alt="Illustrative photograph from MMCS documentation" fill sizes="(max-width: 700px) 100vw, 42vw" />
+                  <div className="journey-image-caption"><span>ROOTED IN COMMUNITY</span><strong>{selected.year}</strong></div>
+                </div>
+                <div className="journey-detail-copy">
+                  <div className="journey-chapter-meta"><span>CHAPTER {chapter}</span><span>{chapter} / {String(timeline.length).padStart(2, '0')}</span></div>
+                  <h3>{selected.title}</h3>
+                  <p>{selected.text}</p>
+                  <ul>{journeyDetails[selected.year].map((detail, detailIndex) => (
+                    <li key={detail} style={{ animationDelay: `${detailIndex * 65 + 120}ms` }}><span aria-hidden="true">{String(detailIndex + 1).padStart(2, '0')}</span>{detail}</li>
+                  ))}</ul>
+                  {selectedIndex < timeline.length - 1 && <button type="button" className="journey-next" onClick={() => selectChapter(selectedIndex + 1)}>Next chapter <span>{timeline[selectedIndex + 1].year} <ArrowRight size={17} /></span></button>}
+                </div>
+              </article>
+            )}
           </div>
-          <div className="journey-detail-copy">
-            <span className="eyebrow">{selected.year}</span>
-            <h3>{selected.title}</h3>
-            <p>{selected.text}</p>
-            <ul>
-              {journeyDetails[selected.year].map((detail) => (
-                <li key={detail}>{detail}</li>
-              ))}
-            </ul>
-          </div>
-        </article>
-        <p className="journey-photo-note">
-          Photographs are from supplied MMCS documentation; they illustrate the
-          journey and are not assigned as records of every period.
-        </p>
+        ))}
+        <p className="journey-photo-note">Photographs from MMCS documentation illustrate our journey; they are not records of every period.</p>
       </div>
     </section>
   );
@@ -282,205 +310,6 @@ export function Gallery({ preview = false }: { preview?: boolean }) {
         </DialogContent>
       </Dialog>
     </>
-  );
-}
-type NokmaProduct = { image: string; name: string };
-type NokmaProductCategory = {
-  title: string;
-  description: string;
-  products: NokmaProduct[];
-};
-const nokmaImage = (path: string) => `/images/nokma-products/${path}`;
-const readableName = (file: string) =>
-  file
-    .replace(/\.(png|webp)$/i, '')
-    .replace(/[_-]/g, ' ')
-    .replace(/\biml\b/gi, 'IML')
-    .replace(/\bml\b/gi, 'ml')
-    .replace(/\b\w/g, (letter) => letter.toUpperCase());
-const productsFrom = (paths: string[]): NokmaProduct[] =>
-  paths.map((path) => ({
-    image: nokmaImage(path),
-    name: `Nokma ${readableName(path.split('/').at(-1) ?? path)}`,
-  }));
-const nokmaProductCategories: NokmaProductCategory[] = [
-  {
-    title: 'Ice Cream Flavours',
-    description: 'A selection of Nokma ice cream flavours.',
-    products: productsFrom([
-      'ice-cream/flavours/flavour-banana.webp',
-      'ice-cream/flavours/flavour-butterscotch.webp',
-      'ice-cream/flavours/flavour-chocolate.webp',
-      'ice-cream/flavours/flavour-ginger.webp',
-      'ice-cream/flavours/flavour-jackfruit.webp',
-      'ice-cream/flavours/flavour-lemon.webp',
-      'ice-cream/flavours/flavour-lychee.webp',
-      'ice-cream/flavours/flavour-orange.webp',
-      'ice-cream/flavours/flavour-pineapple.webp',
-      'ice-cream/flavours/flavour-pistachio.webp',
-      'ice-cream/flavours/flavour-strawberry.webp',
-      'ice-cream/flavours/flavour-vanilla.webp',
-    ]),
-  },
-  {
-    title: 'Ice Cream Cones',
-    description: 'Nokma cone ice creams in a variety of flavours and sizes.',
-    products: productsFrom([
-      'ice-cream/cones/80 ml choco.png',
-      'ice-cream/cones/ButterScotch 110 ml.png',
-      'ice-cream/cones/ButterScotch 80 ml.png',
-      'ice-cream/cones/Jack 110.png',
-      'ice-cream/cones/Royal Jack.png',
-      'ice-cream/cones/Strawberry 2.png',
-      'ice-cream/cones/Strawberry 45.png',
-      'ice-cream/cones/Vanilla 110 ml.png',
-      'ice-cream/cones/Vanilla 80 ml.png',
-      'ice-cream/cones/Vanilla45 ml.png',
-      'ice-cream/cones/cone-berry-giggles.webp',
-      'ice-cream/cones/cone-choco-thunder.webp',
-      'ice-cream/cones/cone-jack-royale.webp',
-      'ice-cream/cones/cone-scotch.webp',
-      'ice-cream/cones/cone-vanilla-wink.webp',
-    ]),
-  },
-  {
-    title: 'Ice Cream Cups',
-    description: 'Single-serve Nokma ice cream cups.',
-    products: productsFrom([
-      'ice-cream/cups/Untitled design (1).png',
-      'ice-cream/cups/Untitled design.png',
-      'ice-cream/cups/cup (1).png',
-      'ice-cream/cups/cup (2).png',
-      'ice-cream/cups/cup (3).png',
-      'ice-cream/cups/cup (4).png',
-      'ice-cream/cups/cup (5).png',
-      'ice-cream/cups/cup (6).png',
-      'ice-cream/cups/cup-strawberry.webp',
-      'ice-cream/cups/cup-vanilla.webp',
-      'ice-cream/cups/cup.png',
-    ]),
-  },
-  {
-    title: 'Ice Cream Tubs & Cartons',
-    description: 'Nokma family tubs, cartons and IML ice cream packs.',
-    products: productsFrom([
-      'ice-cream/tubs/Butterscotch.png',
-      'ice-cream/tubs/Vanilla.png',
-      'ice-cream/tubs/family-tub-jackfruit.webp',
-      'ice-cream/tubs/family-tub.webp',
-      'ice-cream/tubs/jackfruit.png',
-      'ice-cream/tubs/pistachio.png',
-      'ice-cream/cartons/carton-butterscotch.webp',
-      'ice-cream/cartons/carton-jackfruit.webp',
-      'ice-cream/cartons/carton-vanilla.webp',
-      'ice-cream/cartons/iml-oval-pistachio.webp',
-      'ice-cream/cartons/iml-oval.webp',
-      'ice-cream/cartons/iml-round-butterscotch.webp',
-      'ice-cream/cartons/iml-round.webp',
-      'ice-cream/cartons/oval-butterscotch.webp',
-    ]),
-  },
-  {
-    title: 'Beverages',
-    description: 'Fruit drinks and water from the Nokma range.',
-    products: productsFrom([
-      'beverages/drink-lychee.webp',
-      'beverages/drink-passion.webp',
-      'beverages/drink-pineapple.webp',
-      'beverages/water-bottle.webp',
-      'beverages/water-trio.webp',
-    ]),
-  },
-  {
-    title: 'Chips',
-    description: 'Nokma snack chips.',
-    products: productsFrom([
-      'chips/bananas-green.webp',
-      'chips/chips-crispy.webp',
-      'chips/chips-plain.webp',
-    ]),
-  },
-  {
-    title: 'Spices & Flakes',
-    description: 'Nokma spices and naturally inspired flakes.',
-    products: productsFrom([
-      'spices/flakes-ginger.webp',
-      'spices/flakes-turmeric.webp',
-      'spices/spice-ginger.webp',
-      'spices/spice-green-chilli.png',
-      'spices/spice-turmeric.webp',
-    ]),
-  },
-];
-export function ProductCatalogue({ preview = false }: { preview?: boolean }) {
-  const displayedCategories = preview
-    ? [
-        {
-          ...nokmaProductCategories[0],
-          products: nokmaProductCategories[0].products.slice(0, 4),
-        },
-      ]
-    : nokmaProductCategories;
-  return (
-    <div className={`nokma-catalogue ${preview ? 'nokma-catalogue-preview' : ''}`}>
-      {!preview && (
-        <nav className="nokma-category-nav" aria-label="Nokma product categories">
-          {nokmaProductCategories.map((category) => (
-            <a
-              href={`#${category.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
-              key={category.title}
-            >
-              {category.title}
-            </a>
-          ))}
-        </nav>
-      )}
-      {displayedCategories.map((category) => (
-        <section
-          className="nokma-product-category"
-          id={category.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}
-          key={category.title}
-        >
-          {!preview && (
-            <div className="nokma-category-heading">
-              <span className="eyebrow">NOKMA PRODUCTS</span>
-              <div>
-                <h2>{category.title}</h2>
-                <p>{category.description}</p>
-              </div>
-            </div>
-          )}
-          <div className="product-grid">
-            {category.products.map((product) => (
-              <article className="product-card" key={product.image}>
-                <div className="product-art">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    sizes="(max-width: 700px) 50vw, (max-width: 980px) 33vw, 25vw"
-                  />
-                </div>
-                <div className="product-copy">
-                  <span className="eyebrow">{category.title}</span>
-                  <h3>{product.name.replace('Nokma ', '')}</h3>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-      ))}
-      {!preview && (
-        <p className="catalogue-note">
-          Product range and availability can change. For current information,
-          visit{' '}
-          <a href="https://nokma.in/" target="_blank" rel="noopener noreferrer">
-            Nokma’s website <ArrowUpRight size={14} />
-          </a>
-          .
-        </p>
-      )}
-    </div>
   );
 }
 const activityIcons = {

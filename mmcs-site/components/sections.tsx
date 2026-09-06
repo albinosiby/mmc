@@ -69,7 +69,7 @@ export function PageHero({
   breadcrumb: string;
   imageSrc?: string;
   imageAlt?: string;
-  variant?: 'journey' | 'contact' | 'megh-farm';
+  variant?: 'journey' | 'contact' | 'megh-farm' | 'nokma';
 }) {
   return (
     <section
@@ -317,7 +317,7 @@ export function JourneyPreview() {
                   '2017':
                     'Membership reached approximately 550, with new livelihood and training activities.',
                   '2024':
-                    'The Megh Farm Processing Hub opened a new chapter in processing and value addition.',
+                    'The MeghFarm Processing Hub opened a new chapter in processing and value addition.',
                   '2026':
                     'A long-term direction of connected value chains and greater farmer ownership.',
                 }[t.year]
@@ -341,12 +341,25 @@ export function ProjectFeature({
     <article className={`project-feature ${p.theme}`} id={p.id}>
       <div
         className={`project-description ${
-          p.id === 'nokma' ? 'project-description-no-logo' : ''
+          p.id === 'nokma' || p.id === 'megh-farm'
+            ? 'project-description-no-logo'
+            : ''
         }`}
       >
         <div>
           <span className="eyebrow">{p.kicker}</span>
-          <h2>{p.name}</h2>
+          {p.id === 'nokma' || p.id === 'megh-farm' ? (
+            <div className="project-title-logo">
+              <Image
+                src={p.logo}
+                alt={`${p.name} official logo`}
+                width={300}
+                height={130}
+              />
+            </div>
+          ) : (
+            <h2>{p.name}</h2>
+          )}
         </div>
         <div>
           <p className="lead">{p.description}</p>
@@ -372,16 +385,6 @@ export function ProjectFeature({
             )}
           </div>
         </div>
-        {p.id !== 'nokma' && (
-          <div className="project-logo">
-            <Image
-              src={p.logo}
-              alt={`${p.name} official logo`}
-              width={180}
-              height={160}
-            />
-          </div>
-        )}
       </div>
       <div className="project-photos">
         {p.images.map((photo, i) => (
@@ -446,7 +449,7 @@ export function Achievements({ preview = false }: { preview?: boolean }) {
           <span className="award-year">2024</span>
           <div>
             <span className="eyebrow">A DEVELOPMENT MILESTONE</span>
-            <h3>Megh Farm Processing Hub inauguration</h3>
+            <h3>MeghFarm Processing Hub inauguration</h3>
             <p>
               The hub at Khamari marked the expansion of MMCS’s agricultural
               processing and value-addition work.
@@ -524,7 +527,7 @@ export function Footer() {
           <h3>Our projects</h3>
           <Link href="/organisations">Our organisations</Link>
           <Link href="/organisations/nokma">Nokma</Link>
-          <Link href="/organisations/megh-farm">Megh Farm</Link>
+          <Link href="/organisations/megh-farm">MeghFarm</Link>
           <Link href="/projects">Explore projects</Link>
         </div>
         <div>

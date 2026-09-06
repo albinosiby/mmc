@@ -6,9 +6,7 @@ import {
   ProjectFeature,
   FutureInitiatives,
   ConnectBanner,
-  SectionHeading,
 } from '@/components/sections';
-import { ProductCatalogue } from '@/components/interactive';
 export function generateStaticParams() {
   return projects.map((p) => ({ project: p.id }));
 }
@@ -58,24 +56,12 @@ export default async function ProjectPage({
             ? 'Nokma team member presenting jackfruit products'
             : 'Farmer carrying freshly harvested pineapples in Meghalaya'
         }
-        variant={p.id === 'megh-farm' ? 'megh-farm' : undefined}
+        variant={p.id === 'nokma' ? 'nokma' : p.id === 'megh-farm' ? 'megh-farm' : undefined}
       />
       <div className="wrap">
         <ProjectFeature project={p} detail />
       </div>
-      {p.id === 'megh-farm' ? (
-        <FutureInitiatives />
-      ) : (
-        <section className="section soft-section">
-          <div className="wrap">
-            <SectionHeading
-              eyebrow="THE NOKMA PRODUCT FAMILY"
-              title="Everyday moments. Local beginnings."
-            />
-            <ProductCatalogue />
-          </div>
-        </section>
-      )}
+      {p.id === 'megh-farm' && <FutureInitiatives />}
       <ConnectBanner />
     </main>
   );

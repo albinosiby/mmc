@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowUpRight, MapPin, ArrowRight, Send, Sprout } from 'lucide-react';
+import { ArrowUpRight, ArrowRight } from 'lucide-react';
 import { pageInfo, projects, siteUrl } from '@/lib/content';
 import {
   PageHero,
@@ -55,31 +55,27 @@ export default async function Page({
   if (!p) notFound();
   return (
     <main id="main">
-      <PageHero
-        eyebrow={p.eyebrow}
-        title={p.heading}
-        description={p.description}
-        breadcrumb={p.title}
-        imageSrc={
-          slug === 'our-work'
-            ? '/images/hub-event.webp'
-            : slug === 'journey'
-              ? '/images/journey-hero.png'
+      {slug !== 'contact' && (
+        <PageHero
+          eyebrow={p.eyebrow}
+          title={p.heading}
+          description={p.description}
+          breadcrumb={p.title}
+          imageSrc={
+            slug === 'our-work'
+              ? '/images/hub-event.webp'
+              : slug === 'journey'
+                ? '/images/journey-hero.png'
+                : undefined
+          }
+          imageAlt={
+            slug === 'our-work'
+              ? 'Community gathering at the MeghFarm Processing Hub inauguration'
               : undefined
-        }
-        imageAlt={
-          slug === 'our-work'
-            ? 'Community gathering at the Megh Farm Processing Hub inauguration'
-            : undefined
-        }
-        variant={
-          slug === 'journey'
-            ? 'journey'
-            : slug === 'contact'
-              ? 'contact'
-              : undefined
-        }
-      />
+          }
+          variant={slug === 'journey' ? 'journey' : undefined}
+        />
+      )}
       {slug === 'about' ? (
         <>
           <section className="section wrap story-grid about-story">
@@ -203,7 +199,7 @@ export default async function Page({
               </h2>
               <p>
                 MMCS works towards farmer protection, women’s economic
-                participation and sustainable livelihoods. Nokma and Megh Farm
+                participation and sustainable livelihoods. Nokma and MeghFarm
                 give expression to its work in processing, value addition and
                 market access.
               </p>
@@ -247,7 +243,7 @@ export default async function Page({
                   to new possibilities.
                 </h2>
                 <p className="lead">
-                  The establishment of Megh Farm Processing Hub in 2024
+                  The establishment of MeghFarm Processing Hub in 2024
                   connected a cooperative vision with a new platform for value
                   addition.
                 </p>
@@ -258,7 +254,7 @@ export default async function Page({
               <div className="story-photo">
                 <Image
                   src="/images/inauguration.webp"
-                  alt="The Megh Farm inauguration plaque and gathered attendees"
+                  alt="The MeghFarm inauguration plaque and gathered attendees"
                   fill
                   sizes="(max-width:700px) 100vw, 48vw"
                 />
@@ -298,88 +294,17 @@ export default async function Page({
           <Gallery />
         </section>
       ) : slug === 'contact' ? (
-        <>
-          <section className="contact-intro">
-            <div className="wrap">
-              <div className="contact-intro-heading">
-                <span className="eyebrow">WAYS TO CONNECT</span>
-                <h2>
-                  Find the right
-                  <br />
-                  starting point.
-                </h2>
-                <p>
-                  Visit MMCS in the Garo Hills, explore our enterprises, or
-                  prepare an enquiry for the cooperative team.
-                </p>
-              </div>
-              <div className="contact-route-grid">
-                <article className="contact-route contact-route-location">
-                  <span className="contact-route-icon">
-                    <MapPin size={22} />
-                  </span>
-                  <span className="eyebrow">VISIT MMCS</span>
-                  <h3>Khamari Village</h3>
-                  <address>
-                    Tikrikilla Block, West Garo Hills
-                    <br />
-                    Meghalaya, India
-                  </address>
-                  <span className="contact-route-note">
-                    Our cooperative is rooted here.
-                  </span>
-                </article>
-                <a
-                  className="contact-route contact-route-brand"
-                  href="https://nokma.in/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span className="contact-route-icon">
-                    <Sprout size={22} />
-                  </span>
-                  <span className="eyebrow">PRODUCT ENQUIRIES</span>
-                  <h3>Nokma</h3>
-                  <p>Traditional products and community-based enterprise.</p>
-                  <span className="contact-route-link">
-                    Visit nokma.in <ArrowUpRight size={17} />
-                  </span>
-                </a>
-                <a
-                  className="contact-route contact-route-brand"
-                  href="https://themeghfarm.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span className="contact-route-icon">
-                    <Send size={21} />
-                  </span>
-                  <span className="eyebrow">FARM ENQUIRIES</span>
-                  <h3>Megh Farm</h3>
-                  <p>Farming, processing and value-added products.</p>
-                  <span className="contact-route-link">
-                    Visit themeghfarm.com <ArrowUpRight size={17} />
-                  </span>
-                </a>
-              </div>
-            </div>
-          </section>
-          <section className="section wrap contact-conversation">
-            <div className="contact-conversation-copy">
-              <span className="eyebrow">A NOTE TO THE TEAM</span>
-              <h2>Tell us what you would like to explore.</h2>
-              <p>
-                Share the purpose of your enquiry and the team can understand
-                how best to guide the conversation.
-              </p>
-              <div className="contact-conversation-mark">
-                <span>MMCS</span>
-                <p>People · Livelihoods · Stronger Communities</p>
-              </div>
-            </div>
-            <ContactForm />
-          </section>
-        </>
+        <section className="section wrap contact-simple">
+          <div className="contact-simple-copy">
+            <span className="eyebrow">CONTACT MMCS</span>
+            <h1>Let’s start a conversation.</h1>
+            <p>
+              Reach out to learn more about MMCS, our work and the communities
+              we support.
+            </p>
+          </div>
+          <ContactForm />
+        </section>
       ) : null}
       {slug !== 'contact' && <ConnectBanner />}
     </main>

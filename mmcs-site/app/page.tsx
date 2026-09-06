@@ -188,7 +188,7 @@ export default function Home() {
                 <div className="brand-photo-wash" />
                 <div className="reference-logo">
                   <Image
-                    src="/images/nokma.webp"
+                    src="/images/nokma-logo-orange.png"
                     alt="Nokma official logo"
                     width={115}
                     height={45}
@@ -221,16 +221,16 @@ export default function Home() {
                 <div className="reference-logo">
                   <Image
                     src="/images/megh-farm.webp"
-                    alt="Megh Farm official logo"
+                    alt="MeghFarm official logo"
                     width={44}
                     height={46}
                   />
                 </div>
                 <div className="reference-brand-copy">
-                  <h3>Megh Farm</h3>
+                  <h3>MeghFarm</h3>
                   <strong>From Our Land to a Better Tomorrow.</strong>
                   <p>
-                    Megh Farm supports agricultural processing and value
+                    MeghFarm supports agricultural processing and value
                     addition, connecting local harvests with products, packaging
                     and markets.
                   </p>
@@ -238,7 +238,7 @@ export default function Home() {
                     className="button white"
                     href="/organisations/megh-farm"
                   >
-                    Explore Megh Farm <ArrowRight size={15} />
+                    Explore MeghFarm <ArrowRight size={15} />
                   </Link>
                 </div>
               </article>

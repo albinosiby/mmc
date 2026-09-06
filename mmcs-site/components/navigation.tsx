@@ -69,7 +69,7 @@ export function Navigation() {
                   {[
                     ['All projects', '/projects'],
                     ['Nokma', '/organisations/nokma'],
-                    ['Megh Farm', '/organisations/megh-farm'],
+                    ['MeghFarm', '/organisations/megh-farm'],
                     ['Our organisations', '/organisations'],
                   ].map(([text, url]) => (
                     <DropdownMenuItem key={url} render={<Link href={url} />}>
@@ -104,7 +104,7 @@ export function Navigation() {
                 {[
                   ...links,
                   ['Nokma', '/organisations/nokma'],
-                  ['Megh Farm', '/organisations/megh-farm'],
+                  ['MeghFarm', '/organisations/megh-farm'],
                   ['Our journey', '/journey'],
                   ['Achievements', '/achievements'],
                 ].map(([label, href]) => (

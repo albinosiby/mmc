@@ -16,10 +16,10 @@ export const photos = [
   {
     id: 'inauguration',
     src: '/images/inauguration.webp',
-    alt: 'Attendees gathered beside the Megh Farm Processing Hub and Tikrikilla PRIME Hub inauguration plaque',
-    caption: 'A new chapter for Megh Farm',
+    alt: 'Attendees gathered beside the MeghFarm Processing Hub and Tikrikilla PRIME Hub inauguration plaque',
+    caption: 'A new chapter for MeghFarm',
     detail: 'Processing hub inauguration · Khamari · 2024',
-    category: 'Megh Farm',
+    category: 'MeghFarm',
   },
   {
     id: 'community',
@@ -34,8 +34,8 @@ export const photos = [
     src: '/images/hub-event.webp',
     alt: 'Attendees outside the decorated processing hub entrance at the inauguration',
     caption: 'Marking a cooperative milestone',
-    detail: 'Megh Farm Processing Hub · 2024',
-    category: 'Megh Farm',
+    detail: 'MeghFarm Processing Hub · 2024',
+    category: 'MeghFarm',
   },
   {
     id: 'gathering',
@@ -71,7 +71,7 @@ export const projects: Project[] = [
       'Nokma brings locally sourced produce into a growing family of value-added food products, connecting the work of farmers with everyday moments of enjoyment.',
     body: 'A product brand by MeghFarm, Nokma is part of a wider effort to help farmers participate in processing, packaging, branding and markets. The source history describes ice cream, pineapple and passion fruit juice, jam, squash and fruit pulp. The Nokma website also introduces chips and spice powders.',
     website: 'https://nokma.in/',
-    logo: '/images/nokma.webp',
+    logo: '/images/nokma-logo-orange.png',
     theme: 'green',
     categories: ['Ice cream', 'Beverages', 'Jam & squash', 'Fruit pulp'],
     images: [
@@ -95,11 +95,11 @@ export const projects: Project[] = [
   },
   {
     id: 'megh-farm',
-    name: 'Megh Farm',
+    name: 'MeghFarm',
     kicker: 'FRESH FROM MEGHALAYA',
     tagline: 'From the farm.\nFor a better future.',
     description:
-      'At Khamari, Megh Farm Processing Hub brings agricultural processing, value addition and market connections closer to the farming communities of the Garo Hills.',
+      'At Khamari, the MeghFarm Processing Hub brings agricultural processing, value addition and market connections closer to the farming communities of the Garo Hills.',
     body: 'Established in 2024, the hub marks an important chapter in MMCS’s journey. Its documented activities include fruit and vegetable processing, pineapple processing, juice, jam, squash and fruit pulp, alongside packaging, branding and farmer market linkages. Further cold-chain and logistics infrastructure is described as planning and development in the 2025–2026 history.',
     website: 'https://themeghfarm.com/',
     logo: '/images/megh-farm.webp',
@@ -116,8 +116,11 @@ export const projects: Project[] = [
         alt: photos[0].alt,
         label: 'Processing hub inauguration · 2024',
       },
-      { alt: '', label: 'Inside the processing hub' },
-      { alt: '', label: 'From harvest to value addition' },
+      {
+        src: '/images/megh-farm-team.png',
+        alt: 'MeghFarm team gathered in front of the Meghalaya hills',
+        label: 'The people behind a greener tomorrow',
+      },
     ],
     source: 'history:hub',
   },
@@ -155,8 +158,8 @@ export const timeline = [
   },
   {
     year: '2024',
-    title: 'A new chapter at Megh Farm.',
-    text: 'Megh Farm Processing Hub was established at Khamari and inaugurated by Meghalaya Chief Minister Shri Conrad K. Sangma. Processing, packaging and the development of the Nokma brand opened new possibilities.',
+    title: 'A new chapter at MeghFarm.',
+    text: 'MeghFarm Processing Hub was established at Khamari and inaugurated by Meghalaya Chief Minister Shri Conrad K. Sangma. Processing, packaging and the development of the Nokma brand opened new possibilities.',
     image: '/images/inauguration.webp',
     source: 'history:hub',
   },
@@ -278,72 +281,6 @@ export const activityGroups = [
     ],
   },
 ];
-export const products = [
-  {
-    id: 'ice-cream',
-    name: 'Nokma Ice Cream',
-    category: 'Ice cream',
-    description:
-      'Part of the Nokma product family developed alongside the Megh Farm processing initiative.',
-    icon: 'ice',
-  },
-  {
-    id: 'pineapple',
-    name: 'Pineapple Juice',
-    category: 'Beverages',
-    description:
-      'Pineapple processing and juice production are part of the hub’s documented value-addition activities.',
-    icon: 'glass',
-  },
-  {
-    id: 'passion-fruit',
-    name: 'Passion Fruit Juice',
-    category: 'Beverages',
-    description:
-      'A source-described Nokma beverage that brings local fruit into a value-added product.',
-    icon: 'glass',
-  },
-  {
-    id: 'jam',
-    name: 'Nokma Jam',
-    category: 'Preserves',
-    description:
-      'Fruit-based preserves within the cooperative’s growing processing and product range.',
-    icon: 'jar',
-  },
-  {
-    id: 'squash',
-    name: 'Fruit Squash',
-    category: 'Beverages',
-    description:
-      'Fruit squash production forms part of the Society’s food-processing activities.',
-    icon: 'glass',
-  },
-  {
-    id: 'pulp',
-    name: 'Fruit Pulp',
-    category: 'Processed fruit',
-    description:
-      'Fruit pulp and processed fruit products connect agricultural harvests with further uses.',
-    icon: 'leaf',
-  },
-  {
-    id: 'turmeric',
-    name: 'Turmeric Powder',
-    category: 'Community products',
-    description:
-      'Turmeric powder making is listed among the Society’s Ama production activities.',
-    icon: 'leaf',
-  },
-  {
-    id: 'plates',
-    name: 'Areca Leaf Plates',
-    category: 'Community products',
-    description:
-      'The Nokma Plate unit is documented among MMCS’s community production activities.',
-    icon: 'leaf',
-  },
-];
 export const achievements = [
   {
     year: '2023',
@@ -413,7 +350,7 @@ export const pageInfo: Record<
     eyebrow: 'OUR TWO PROJECTS',
     heading: 'Local ideas.\nLasting possibilities.',
     description:
-      'Nokma and Megh Farm connect the efforts of our farmers with processing, products and new opportunities.',
+      'Nokma and MeghFarm connect the efforts of our farmers with processing, products and new opportunities.',
   },
   achievements: {
     title: 'Achievements',
@@ -434,7 +371,7 @@ export const pageInfo: Record<
     eyebrow: 'MOMENTS THAT MATTER',
     heading: 'Our journey,\nin photographs.',
     description:
-      'A glimpse of the Megh Farm Processing Hub inauguration and the people who came together to mark it.',
+      'A glimpse of the MeghFarm Processing Hub inauguration and the people who came together to mark it.',
   },
   contact: {
     title: 'Contact MMCS',
@@ -445,6 +382,5 @@ export const pageInfo: Record<
   },
 };
 export const getProjects = () => projects;
-export const getProducts = () => products;
 export const getActivities = () => activityGroups;
 export const getTimeline = () => timeline;

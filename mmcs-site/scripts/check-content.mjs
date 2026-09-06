@@ -14,7 +14,7 @@ const js = ts.transpileModule(source, {
 const data = await import(
   `data:text/javascript;base64,${Buffer.from(js).toString('base64')}`
 );
-for (const key of ['projects', 'products', 'photos', 'activityGroups']) {
+for (const key of ['projects', 'photos', 'activityGroups']) {
   const ids = data[key].map((x) => x.id);
   assert.equal(new Set(ids).size, ids.length, `Duplicate IDs in ${key}`);
 }

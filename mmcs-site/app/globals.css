@@ -17,7 +17,7 @@
   --color-input: #d9e1da;
   --color-destructive: #a62f29;
   --radius-lg: 1rem;
-  --font-sans: 'Manrope', Arial, sans-serif;
+  --font-sans: 'DM Sans', Arial, sans-serif;
 }
 :root {
   --background: #fff;
@@ -38,7 +38,7 @@ html {
 }
 body {
   margin: 0;
-  font-family: 'Manrope', Arial, sans-serif;
+  font-family: 'DM Sans', Arial, sans-serif;
   color: var(--foreground);
   background: white;
   font-size: 16px;

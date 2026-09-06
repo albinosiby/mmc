@@ -109,7 +109,7 @@ export default function Home() {
           ))}
         </div>
       </section>
-      <section className="wrap reference-about">
+      <section id="about" className="wrap reference-about">
         <ReferencePhoto region="about" className="about-reference-image" />
         <div className="about-reference-copy">
           <span className="eyebrow">ABOUT MMCS</span>
@@ -125,7 +125,7 @@ export default function Home() {
             empowering women, creating livelihood opportunities and building a
             peaceful, self-sufficient and sustainable tribal society.
           </p>
-          <Link className="button" href="/about">
+          <Link className="button" href="/#about">
             Read Our Story <ArrowRight size={16} />
           </Link>
         </div>
@@ -158,7 +158,7 @@ export default function Home() {
                 Empower women, support farmers, develop youth and build stronger
                 communities.
               </p>
-              <Link href="/about" className="rail-link">
+              <Link href="/#about" className="rail-link">
                 Read our full goals <ArrowRight size={12} />
               </Link>
             </div>

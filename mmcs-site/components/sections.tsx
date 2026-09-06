@@ -394,7 +394,7 @@ export function Footer() {
         <div>
           <h3>Explore MMCS</h3>
           {[
-            ['About us', '/about'],
+            ['About us', '/#about'],
             ['Our work', '/our-work'],
             ['Our journey', '/journey'],
             ['Achievements', '/achievements'],

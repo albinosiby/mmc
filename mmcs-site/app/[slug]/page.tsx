@@ -188,7 +188,7 @@ export default async function Page({
                 give expression to its work in processing, value addition and
                 market access.
               </p>
-              <Link href="/about" className="text-link">
+              <Link href="/#about" className="text-link">
                 About MMCS <ArrowUpRight size={18} />
               </Link>
             </div>

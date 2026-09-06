@@ -19,7 +19,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 const links = [
   ['Home', '/'],
-  ['About', '/about'],
+  ['About', '/#about'],
   ['Our Organisations', '/projects'],
   ['Our work', '/our-work'],
   ['Products', '/products'],

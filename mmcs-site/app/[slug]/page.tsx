@@ -11,12 +11,12 @@ import {
   BrandCards,
   ImpactBand,
   ProjectFeature,
+  WorkPage,
   FutureInitiatives,
   Achievements,
   ConnectBanner,
 } from '@/components/sections';
 import {
-  Activities,
   ProductCatalogue,
   Gallery,
   ContactForm,
@@ -204,21 +204,7 @@ export default async function Page({
           </section>
         </>
       ) : slug === 'our-work' ? (
-        <>
-          <section className="wrap work-page-intro">
-            <div>
-              <span className="eyebrow">FROM NEED TO OPPORTUNITY</span>
-              <h2>Work that stays close to community.</h2>
-            </div>
-            <p>
-              MMCS brings practical support together across farming, processing,
-              skills and market access. Explore each area below.
-            </p>
-          </section>
-          <section className="section wrap work-page-catalogue">
-            <Activities />
-          </section>
-        </>
+        <WorkPage />
       ) : slug === 'products' ? (
         <>
           <section className="wrap products-page-intro">

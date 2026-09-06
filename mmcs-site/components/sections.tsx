@@ -5,16 +5,22 @@ import {
   ArrowUpRight,
   ChevronRight,
   Compass,
+  Factory,
   Flag,
+  HandHeart,
   HeartHandshake,
   MapPin,
+  ShoppingBasket,
   Sprout,
+  Sun,
+  Truck,
 } from 'lucide-react';
 import {
   statements,
   projects,
   timeline,
   achievements,
+  activityGroups,
   initiatives,
   type Project,
 } from '@/lib/content';
@@ -80,6 +86,86 @@ export function PageHero({
         </div>
       </div>
     </section>
+  );
+}
+
+const workIcons = {
+  sprout: Sprout,
+  factory: Factory,
+  heart: HandHeart,
+  basket: ShoppingBasket,
+  sun: Sun,
+  truck: Truck,
+};
+
+export function WorkPage() {
+  return (
+    <>
+      <section className="wrap work-manifesto">
+        <span className="work-mark">01—06</span>
+        <div>
+          <span className="eyebrow">SIX CONNECTED AREAS</span>
+          <h2>
+            Practical work.
+            <br />
+            Shared progress.
+          </h2>
+        </div>
+        <p>
+          From the farm and household production to skills, processing and
+          markets, each area is designed to strengthen the next.
+        </p>
+      </section>
+      <section className="wrap work-programme-grid">
+        {activityGroups.map((area, index) => {
+          const Icon = workIcons[area.icon as keyof typeof workIcons];
+          return (
+            <article
+              className={`work-programme-card card-${index + 1}`}
+              id={area.id}
+              key={area.id}
+            >
+              <div className="work-card-top">
+                <span>0{index + 1}</span>
+                <Icon size={30} strokeWidth={1.6} />
+              </div>
+              <div>
+                <span className="eyebrow">{area.short}</span>
+                <h3>{area.name}</h3>
+                <p>{area.description}</p>
+              </div>
+              <ul>
+                {area.items.slice(0, 4).map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+                {area.items.length > 4 && (
+                  <li>+ {area.items.length - 4} more activities</li>
+                )}
+              </ul>
+            </article>
+          );
+        })}
+      </section>
+      <section className="work-closing">
+        <div className="wrap">
+          <span className="eyebrow">ONE CONNECTED JOURNEY</span>
+          <div className="work-closing-grid">
+            <h2>
+              From local effort
+              <br />
+              to lasting possibility.
+            </h2>
+            <p>
+              MMCS brings practical learning, production and market access
+              together so more value can remain with rural communities.
+            </p>
+            <Link href="/organisations" className="button">
+              Meet our organisations <ArrowRight size={17} />
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
 export function Purpose() {

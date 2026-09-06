@@ -1072,6 +1072,200 @@ select:focus-visible {
 .work-page-catalogue .activity-card:nth-child(3n + 2) {
   background: linear-gradient(150deg, #f8f2e9, #fff);
 }
+
+/* Modern work-page programme system. */
+.work-manifesto {
+  display: grid;
+  grid-template-columns: 150px 1.25fr 0.9fr;
+  gap: 38px;
+  padding: 80px 0 54px;
+  align-items: end;
+}
+.work-mark {
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding-bottom: 12px;
+}
+.work-manifesto h2 {
+  margin: 12px 0 0;
+  font-size: clamp(38px, 4vw, 62px);
+  line-height: 1.03;
+  letter-spacing: -0.06em;
+}
+.work-manifesto p {
+  margin: 0 0 4px;
+  font-size: 17px;
+  line-height: 1.7;
+}
+.work-programme-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 18px;
+  padding-bottom: 84px;
+}
+.work-programme-card {
+  grid-column: span 4;
+  min-height: 420px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 18px;
+  background: #f4f7f2;
+  border: 1px solid #e1e9df;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
+  scroll-margin-top: 110px;
+}
+.work-programme-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 42px #15372b18;
+}
+.work-programme-card.card-1 {
+  grid-column: span 7;
+  background: #103b36;
+  color: white;
+}
+.work-programme-card.card-2 {
+  grid-column: span 5;
+  background: #e8f0df;
+}
+.work-programme-card.card-5 {
+  grid-column: span 5;
+  background: #f5eee4;
+}
+.work-programme-card.card-6 {
+  grid-column: span 7;
+  background: #e9eef0;
+}
+.work-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--green);
+}
+.work-programme-card.card-1 .work-card-top {
+  color: #cce3bc;
+}
+.work-card-top > span {
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+}
+.work-programme-card .eyebrow {
+  font-size: 10px;
+  margin-bottom: 11px;
+}
+.work-programme-card.card-1 .eyebrow {
+  color: #cce3bc;
+}
+.work-programme-card h3 {
+  font-size: 28px;
+  letter-spacing: -0.045em;
+  margin: 0;
+}
+.work-programme-card p {
+  font-size: 14px;
+  line-height: 1.65;
+  margin-top: 12px;
+  max-width: 470px;
+}
+.work-programme-card.card-1 p {
+  color: #e2eee7;
+}
+.work-programme-card ul {
+  padding: 16px 0 0;
+  margin: 20px 0 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px 20px;
+  border-top: 1px solid #173a3150;
+}
+.work-programme-card.card-1 ul {
+  border-color: #ffffff36;
+}
+.work-programme-card li {
+  font-size: 12px;
+  line-height: 1.35;
+}
+.work-programme-card li::before {
+  content: '•';
+  color: var(--green);
+  padding-right: 7px;
+}
+.work-programme-card.card-1 li::before {
+  color: #cce3bc;
+}
+.work-closing {
+  background: #102d35;
+  color: white;
+  padding: 68px 0;
+}
+.work-closing .eyebrow {
+  color: #c6dcb9;
+}
+.work-closing-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.9fr auto;
+  gap: 52px;
+  align-items: end;
+  margin-top: 16px;
+}
+.work-closing h2 {
+  font-size: clamp(31px, 3.2vw, 48px);
+  letter-spacing: -0.05em;
+}
+.work-closing p {
+  color: #d5e4dc;
+  font-size: 15px;
+  margin: 0;
+}
+.work-closing .button {
+  white-space: nowrap;
+  background: #d7eac9;
+  color: #12352e;
+  border-color: #d7eac9;
+}
+@media (max-width: 800px) {
+  .work-manifesto {
+    grid-template-columns: 1fr;
+    gap: 17px;
+    padding: 48px 0 35px;
+  }
+  .work-mark {
+    padding: 0;
+  }
+  .work-manifesto p {
+    font-size: 16px;
+  }
+  .work-programme-grid {
+    grid-template-columns: 1fr;
+    padding-bottom: 50px;
+  }
+  .work-programme-card,
+  .work-programme-card.card-1,
+  .work-programme-card.card-2,
+  .work-programme-card.card-5,
+  .work-programme-card.card-6 {
+    grid-column: auto;
+    min-height: 355px;
+    padding: 24px;
+  }
+  .work-programme-card ul {
+    grid-template-columns: 1fr;
+  }
+  .work-closing {
+    padding: 48px 0;
+  }
+  .work-closing-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+}
 .products-page-intro {
   grid-template-columns: 170px 1fr auto;
   align-items: center;

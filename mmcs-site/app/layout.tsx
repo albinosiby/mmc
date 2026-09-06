@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import { Navigation } from '@/components/navigation';
 import { Footer } from '@/components/sections';
-import '@fontsource/plus-jakarta-sans/latin-400.css';
-import '@fontsource/plus-jakarta-sans/latin-500.css';
-import '@fontsource/plus-jakarta-sans/latin-600.css';
-import '@fontsource/plus-jakarta-sans/latin-700.css';
+import '@fontsource/manrope/latin-400.css';
+import '@fontsource/manrope/latin-500.css';
+import '@fontsource/manrope/latin-600.css';
+import '@fontsource/manrope/latin-700.css';
+import '@fontsource/manrope/latin-800.css';
 import './globals.css';
 export const metadata: Metadata = {
   metadataBase: new URL('https://mmcs-community.tatos.chatgpt.site'),

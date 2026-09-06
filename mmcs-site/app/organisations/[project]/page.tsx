@@ -48,12 +48,17 @@ export default async function ProjectPage({
         title={p.tagline}
         description={p.description}
         breadcrumb={p.name}
-        imageSrc={p.id === 'nokma' ? '/images/nokma-product-team.jpg' : undefined}
+        imageSrc={
+          p.id === 'nokma'
+            ? '/images/nokma-product-team.jpg'
+            : '/images/megh-farm-pineapple-harvest.jpg'
+        }
         imageAlt={
           p.id === 'nokma'
             ? 'Nokma team member presenting jackfruit products'
-            : undefined
+            : 'Farmer carrying freshly harvested pineapples in Meghalaya'
         }
+        variant={p.id === 'megh-farm' ? 'megh-farm' : undefined}
       />
       <div className="wrap">
         <ProjectFeature project={p} detail />

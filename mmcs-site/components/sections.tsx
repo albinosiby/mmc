@@ -69,7 +69,7 @@ export function PageHero({
   breadcrumb: string;
   imageSrc?: string;
   imageAlt?: string;
-  variant?: 'journey' | 'contact' | 'products';
+  variant?: 'journey' | 'contact' | 'products' | 'megh-farm';
 }) {
   return (
     <section

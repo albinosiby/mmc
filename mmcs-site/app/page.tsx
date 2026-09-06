@@ -211,8 +211,11 @@ export default function Home() {
             </Reveal>
             <Reveal>
               <article className="reference-brand megh">
-                <ReferencePhoto
-                  region="megh"
+                <Image
+                  src="/images/megh-farm-pineapple-harvest.jpg"
+                  alt="Farmer carrying freshly harvested pineapples in Meghalaya"
+                  fill
+                  sizes="(max-width: 700px) 100vw, 50vw"
                   className="reference-brand-photo"
                 />
                 <div className="brand-photo-wash" />

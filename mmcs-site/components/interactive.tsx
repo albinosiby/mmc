@@ -449,11 +449,11 @@ export function ContactForm() {
         setStatus('Your enquiry is prepared below. It has not been sent.');
       }}
     >
-      <span className="eyebrow">PREPARE YOUR ENQUIRY</span>
-      <h2>Start a conversation.</h2>
+      <span className="eyebrow">PREPARE AN ENQUIRY</span>
+      <h2>Write to MMCS.</h2>
       <p id="form-note">
-        Online message delivery is not connected yet. You can prepare and copy
-        your enquiry here; nothing is sent or stored.
+        Online message delivery is not connected yet. Prepare and copy your
+        enquiry here; nothing is sent or stored.
       </p>
       <div className="form-row">
         <label>

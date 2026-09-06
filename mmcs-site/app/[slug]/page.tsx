@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowUpRight, MapPin, ArrowRight } from 'lucide-react';
+import { ArrowUpRight, MapPin, ArrowRight, Send, Sprout } from 'lucide-react';
 import { pageInfo, projects, siteUrl } from '@/lib/content';
 import {
   PageHero,
@@ -323,50 +323,88 @@ export default async function Page({
           <Gallery />
         </section>
       ) : slug === 'contact' ? (
-        <section className="section wrap contact-layout">
-          <div className="contact-details">
-            <span className="eyebrow">VISIT OUR COMMUNITY</span>
-            <h2>
-              Rooted in
-              <br />
-              the Garo Hills.
-            </h2>
-            <div className="address-card">
-              <MapPin size={25} />
-              <address>
-                Aitibi Village, Tikrikilla Block
-                <br />
-                West Garo Hills
-                <br />
-                Meghalaya, India
-              </address>
+        <>
+          <section className="contact-intro">
+            <div className="wrap">
+              <div className="contact-intro-heading">
+                <span className="eyebrow">WAYS TO CONNECT</span>
+                <h2>
+                  Find the right
+                  <br />
+                  starting point.
+                </h2>
+                <p>
+                  Visit MMCS in the Garo Hills, explore our enterprises, or
+                  prepare an enquiry for the cooperative team.
+                </p>
+              </div>
+              <div className="contact-route-grid">
+                <article className="contact-route contact-route-location">
+                  <span className="contact-route-icon">
+                    <MapPin size={22} />
+                  </span>
+                  <span className="eyebrow">VISIT MMCS</span>
+                  <h3>Aitibi Village</h3>
+                  <address>
+                    Tikrikilla Block, West Garo Hills
+                    <br />
+                    Meghalaya, India
+                  </address>
+                  <span className="contact-route-note">
+                    Our cooperative is rooted here.
+                  </span>
+                </article>
+                <a
+                  className="contact-route contact-route-brand"
+                  href="https://nokma.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="contact-route-icon">
+                    <Sprout size={22} />
+                  </span>
+                  <span className="eyebrow">PRODUCT ENQUIRIES</span>
+                  <h3>Nokma</h3>
+                  <p>Traditional products and community-based enterprise.</p>
+                  <span className="contact-route-link">
+                    Visit nokma.in <ArrowUpRight size={17} />
+                  </span>
+                </a>
+                <a
+                  className="contact-route contact-route-brand"
+                  href="https://themeghfarm.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="contact-route-icon">
+                    <Send size={21} />
+                  </span>
+                  <span className="eyebrow">FARM ENQUIRIES</span>
+                  <h3>Megh Farm</h3>
+                  <p>Farming, processing and value-added products.</p>
+                  <span className="contact-route-link">
+                    Visit themeghfarm.com <ArrowUpRight size={17} />
+                  </span>
+                </a>
+              </div>
             </div>
-            <div className="brand-contact">
-              <h3>For project & product enquiries</h3>
+          </section>
+          <section className="section wrap contact-conversation">
+            <div className="contact-conversation-copy">
+              <span className="eyebrow">A NOTE TO THE TEAM</span>
+              <h2>Tell us what you would like to explore.</h2>
               <p>
-                Visit the dedicated project websites for their contact channels
-                and current information.
+                Share the purpose of your enquiry and the team can understand
+                how best to guide the conversation.
               </p>
-              <a
-                className="text-link"
-                href="https://nokma.in/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Nokma <ArrowUpRight size={17} />
-              </a>
-              <a
-                className="text-link"
-                href="https://themeghfarm.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Megh Farm <ArrowUpRight size={17} />
-              </a>
+              <div className="contact-conversation-mark">
+                <span>MMCS</span>
+                <p>People · Livelihoods · Stronger Communities</p>
+              </div>
             </div>
-          </div>
-          <ContactForm />
-        </section>
+            <ContactForm />
+          </section>
+        </>
       ) : null}
       {slug !== 'contact' && <ConnectBanner />}
     </main>

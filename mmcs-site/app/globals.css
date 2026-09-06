@@ -3970,11 +3970,11 @@ select:focus-visible {
 }
 .site-footer {
   background: #0b2632;
-  padding: 30px 0 18px;
+  padding: 54px 0 28px;
 }
 .footer-grid {
   gap: 45px;
-  padding-bottom: 23px;
+  padding-bottom: 40px;
 }
 .footer-grid h3 {
   font-size: 12px;
@@ -4008,7 +4008,7 @@ select:focus-visible {
   flex-shrink: 0;
 }
 .footer-bottom {
-  padding-top: 14px;
+  padding-top: 22px;
   font-size: 9px;
 }
 @media (hover: hover) {

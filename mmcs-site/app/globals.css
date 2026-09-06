@@ -4112,37 +4112,86 @@ select:focus-visible {
   }
   .landscape-content {
     display: block;
-    padding-top: 250px;
-    padding-bottom: 24px;
+    width: 100%;
+    padding: 258px 0 0;
     min-height: 0;
   }
   .landscape-copy {
     width: 100%;
-    padding: 27px 24px 23px;
-    background: #082722eb;
-    backdrop-filter: blur(3px);
+    padding: 30px 24px 26px;
+    color: var(--navy);
+    background: #f7f9f4;
+    border: 0;
+    border-radius: 22px 22px 0 0;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+  .hero-kicker {
+    color: #54705d;
+    font-size: 8px;
+    letter-spacing: 0.12em;
+  }
+  .hero-kicker > span {
+    background: var(--green);
+    box-shadow: 0 0 0 4px #0b6b3a12;
   }
   .landscape-copy h1 {
-    font-size: clamp(32px, 8.5vw, 43px);
+    color: var(--navy);
+    font-size: clamp(31px, 8.5vw, 39px);
+    line-height: 1.07;
     margin-top: 15px;
   }
+  .landscape-copy h1 em {
+    color: var(--green);
+  }
   .landscape-copy p {
+    color: #596b62;
     font-size: 13px;
+    line-height: 1.65;
+    margin-bottom: 20px;
+  }
+  .landscape-copy .actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+  }
+  .landscape-copy .button {
+    min-height: 44px;
+    padding: 10px 12px;
+    font-size: 11px;
+  }
+  .landscape-copy .outline {
+    color: var(--green);
+    border-color: #9bb39e;
+    background: transparent;
   }
   .landscape-wash {
-    background: linear-gradient(0deg, #061d19bd 0%, #061d194d 48%, transparent 78%);
+    height: 276px;
+    bottom: auto;
+    background: linear-gradient(0deg, #f7f9f4 0%, transparent 22%);
   }
   .landscape-background {
-    object-position: 38% top;
+    height: 276px !important;
+    object-position: 38% 45%;
   }
   .hero-metrics {
-    gap: 13px;
+    gap: 8px;
+    margin-top: 24px;
+    padding: 10px;
+    border: 0;
+    border-radius: 10px;
+    background: #e9f1e5;
   }
   .hero-metrics > div {
     gap: 7px;
+    padding: 3px 5px;
   }
   .hero-metrics strong {
+    color: var(--green);
     font-size: 18px;
+  }
+  .hero-metrics span {
+    color: #5d7164;
   }
   .landscape-stat {
     width: 100%;

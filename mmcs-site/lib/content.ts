@@ -80,8 +80,16 @@ export const projects: Project[] = [
         alt: 'Nokma team member presenting jackfruit products',
         label: 'Nokma products and the team behind them',
       },
-      { alt: '', label: 'A closer look at the products' },
-      { alt: '', label: 'The people behind Nokma' },
+      {
+        src: '/images/nokma-catalogue.jpg',
+        alt: 'Nokma ice cream product range',
+        label: 'The Nokma ice cream collection',
+      },
+      {
+        src: '/images/nokma-ice-cream-lineup.jpg',
+        alt: 'Nokma ice cream cups arranged in a product display',
+        label: 'A closer look at the ice cream range',
+      },
     ],
     source: 'history:nokma; nokma.in:2026-09-05',
   },

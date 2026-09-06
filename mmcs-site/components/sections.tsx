@@ -339,7 +339,11 @@ export function ProjectFeature({
 }) {
   return (
     <article className={`project-feature ${p.theme}`} id={p.id}>
-      <div className="project-description">
+      <div
+        className={`project-description ${
+          p.id === 'nokma' ? 'project-description-no-logo' : ''
+        }`}
+      >
         <div>
           <span className="eyebrow">{p.kicker}</span>
           <h2>{p.name}</h2>
@@ -368,14 +372,16 @@ export function ProjectFeature({
             )}
           </div>
         </div>
-        <div className="project-logo">
-          <Image
-            src={p.logo}
-            alt={`${p.name} official logo`}
-            width={180}
-            height={160}
-          />
-        </div>
+        {p.id !== 'nokma' && (
+          <div className="project-logo">
+            <Image
+              src={p.logo}
+              alt={`${p.name} official logo`}
+              width={180}
+              height={160}
+            />
+          </div>
+        )}
       </div>
       <div className="project-photos">
         {p.images.map((photo, i) => (

@@ -1853,6 +1853,10 @@ select:focus-visible {
   gap: 45px;
   align-items: start;
 }
+.project-description-no-logo {
+  grid-template-columns: 0.8fr 1.6fr;
+  max-width: 1050px;
+}
 .project-description h2 {
   font-size: 42px;
   margin-top: 16px;

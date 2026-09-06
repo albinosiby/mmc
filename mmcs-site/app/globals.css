@@ -3876,7 +3876,7 @@ select:focus-visible {
   font-size: 11px;
 }
 .reference-activities {
-  padding-block: 22px 15px;
+  padding-block: 38px 30px;
 }
 .reference-activity-grid {
   display: grid;
@@ -3884,7 +3884,7 @@ select:focus-visible {
   gap: 20px;
 }
 .reference-activity-grid .reference-photo {
-  aspect-ratio: 1.9;
+  aspect-ratio: 1.55;
   border-radius: 5px 5px 0 0;
   transition: filter 0.25s;
 }
@@ -3895,7 +3895,7 @@ select:focus-visible {
   display: block;
   text-align: center;
   font-size: 11px;
-  padding: 8px 3px;
+  padding: 10px 4px;
   background: #f7f9f8;
 }
 .reference-imagery-note {

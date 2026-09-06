@@ -63,7 +63,7 @@ export default async function Page({
       />
       {slug === 'about' ? (
         <>
-          <section className="section wrap story-grid">
+          <section className="section wrap story-grid about-story">
             <div className="story-photo">
               <Image
                 src="/images/community.webp"
@@ -101,7 +101,7 @@ export default async function Page({
               </Link>
             </div>
           </section>
-          <section className="section soft-section">
+          <section className="section about-purpose-section">
             <div className="wrap">
               <SectionHeading
                 eyebrow="WHAT GUIDES US"
@@ -110,7 +110,7 @@ export default async function Page({
               <Purpose />
             </div>
           </section>
-          <section className="section wrap">
+          <section className="section wrap about-founders-section">
             <SectionHeading
               eyebrow="THE FOUNDING TEAM"
               title="A beginning built on commitment."
@@ -204,13 +204,51 @@ export default async function Page({
           </section>
         </>
       ) : slug === 'our-work' ? (
-        <section className="section wrap">
-          <Activities />
-        </section>
+        <>
+          <section className="wrap work-page-intro">
+            <div>
+              <span className="eyebrow">FROM NEED TO OPPORTUNITY</span>
+              <h2>Work that stays close to community.</h2>
+            </div>
+            <p>
+              MMCS brings practical support together across farming, processing,
+              skills and market access. Explore each area below.
+            </p>
+          </section>
+          <section className="section wrap work-page-catalogue">
+            <Activities />
+          </section>
+        </>
       ) : slug === 'products' ? (
-        <section className="section wrap">
-          <ProductCatalogue />
-        </section>
+        <>
+          <section className="wrap products-page-intro">
+            <Image
+              src="/images/nokma.webp"
+              alt="Nokma official logo"
+              width={150}
+              height={60}
+            />
+            <div>
+              <span className="eyebrow">DISCOVER THE RANGE</span>
+              <h2>Products with a local story.</h2>
+              <p>
+                The range reflects MMCS’s work to add value closer to where
+                produce is grown and made.
+              </p>
+            </div>
+            <a
+              href="https://nokma.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-link"
+            >
+              Visit Nokma <ArrowUpRight size={18} />
+            </a>
+          </section>
+          <section className="section wrap products-page-catalogue">
+            <ProductCatalogue />
+          </section>
+        </>
       ) : slug === 'projects' ? (
         <section className="wrap projects-list">
           {projects.map((project) => (

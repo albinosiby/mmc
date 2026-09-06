@@ -321,6 +321,28 @@ export default async function Page({
             </div>
           </section>
           <FutureInitiatives />
+          <section className="journey-closing">
+            <div className="wrap">
+              <span className="eyebrow">THE NEXT GENERATION OF OWNERSHIP</span>
+              <div className="journey-closing-grid">
+                <h2>From 20 women to a growing farmer cooperative.</h2>
+                <div>
+                  <p>
+                    What began in 2015 as a village-level effort to protect
+                    farmers has grown into a cooperative movement connecting
+                    farmers, rural women, processing, collective farming and
+                    market access.
+                  </p>
+                  <p>
+                    MMCS looks ahead to farmer-owned enterprises in which
+                    communities can participate not only as producers, but as
+                    owners, processors, entrepreneurs and shareholders across
+                    the value chain.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
         </>
       ) : slug === 'gallery' ? (
         <section className="section wrap">

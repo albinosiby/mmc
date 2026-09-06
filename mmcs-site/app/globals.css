@@ -1935,6 +1935,38 @@ select:focus-visible {
   color: var(--muted);
   margin-top: 10px;
 }
+.journey-closing {
+  background: #e8f1e2;
+  padding: 84px 0;
+}
+.journey-closing .eyebrow {
+  color: #176340;
+}
+.journey-closing-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.85fr;
+  gap: 110px;
+  align-items: start;
+  margin-top: 18px;
+}
+.journey-closing h2 {
+  font-size: clamp(34px, 3.6vw, 56px);
+  line-height: 1.08;
+  letter-spacing: -0.055em;
+}
+.journey-closing p {
+  font-size: 16px;
+  line-height: 1.8;
+}
+@media (max-width: 700px) {
+  .journey-closing {
+    padding: 54px 0;
+  }
+  .journey-closing-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
 .contact-layout {
   display: grid;
   grid-template-columns: 1fr 1.15fr;

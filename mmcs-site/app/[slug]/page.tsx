@@ -61,12 +61,19 @@ export default async function Page({
         title={p.heading}
         description={p.description}
         breadcrumb={p.title}
-        imageSrc={slug === 'our-work' ? '/images/hub-event.webp' : undefined}
+        imageSrc={
+          slug === 'our-work'
+            ? '/images/hub-event.webp'
+            : slug === 'journey'
+              ? '/images/journey-hero.png'
+              : undefined
+        }
         imageAlt={
           slug === 'our-work'
             ? 'Community gathering at the Megh Farm Processing Hub inauguration'
             : undefined
         }
+        variant={slug === 'journey' ? 'journey' : undefined}
       />
       {slug === 'about' ? (
         <>

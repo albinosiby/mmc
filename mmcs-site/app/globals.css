@@ -1588,6 +1588,18 @@ select:focus-visible {
 .page-hero-image .eyebrow {
   color: #d5ecb9;
 }
+.page-hero-journey {
+  min-height: 485px;
+}
+.page-hero-journey .page-hero-background {
+  object-position: center center;
+  filter: saturate(0.88) contrast(0.96);
+}
+.page-hero-journey .page-hero-overlay {
+  background:
+    linear-gradient(90deg, #0b292bea 0%, #103b37c5 46%, #102e3560 100%),
+    linear-gradient(0deg, #0b292955 0%, transparent 62%);
+}
 @media (max-width: 700px) {
   .page-hero-image {
     min-height: 470px;

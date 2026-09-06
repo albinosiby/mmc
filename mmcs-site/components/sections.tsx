@@ -61,6 +61,7 @@ export function PageHero({
   breadcrumb,
   imageSrc,
   imageAlt,
+  variant,
 }: {
   eyebrow: string;
   title: string;
@@ -68,9 +69,14 @@ export function PageHero({
   breadcrumb: string;
   imageSrc?: string;
   imageAlt?: string;
+  variant?: 'journey';
 }) {
   return (
-    <section className={`page-hero ${imageSrc ? 'page-hero-image' : ''}`}>
+    <section
+      className={`page-hero ${imageSrc ? 'page-hero-image' : ''} ${
+        variant ? `page-hero-${variant}` : ''
+      }`}
+    >
       {imageSrc && (
         <>
           <Image

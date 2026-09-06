@@ -2702,14 +2702,21 @@ select:focus-visible {
 .nav-trigger.active {
   color: var(--green);
 }
-.desktop-nav [aria-current]:after {
+.desktop-nav > a,
+.nav-trigger {
+  position: relative;
+}
+.desktop-nav > a[aria-current]:after,
+.nav-trigger.active:after {
   content: '';
   display: block;
-  width: 15px;
+  width: 100%;
   height: 2px;
   background: var(--green);
   position: absolute;
-  bottom: 23px;
+  left: 0;
+  bottom: 5px;
+  border-radius: 999px;
 }
 .nav-dropdown {
   min-width: 220px !important;

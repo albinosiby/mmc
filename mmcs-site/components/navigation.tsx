@@ -28,6 +28,13 @@ const links = [
 ];
 export function Navigation() {
   const path = usePathname();
+  const currentPath = path === '/' ? '/' : path.replace(/\/+$/, '');
+  const isCurrent = (href: string) =>
+    !href.includes('#') &&
+    currentPath === (href === '/' ? '/' : href.replace(/\/+$/, ''));
+  const organisationsActive =
+    currentPath.startsWith('/projects') ||
+    currentPath.startsWith('/organisations');
   const [open, setOpen] = useState(false);
   return (
     <header className="site-header">
@@ -54,7 +61,8 @@ export function Navigation() {
             href === '/projects' ? (
               <DropdownMenu key={href}>
                 <DropdownMenuTrigger
-                  className={`nav-trigger ${path.startsWith('/projects') || path.startsWith('/organisations') ? 'active' : ''}`}
+                  className={`nav-trigger ${organisationsActive ? 'active' : ''}`}
+                  aria-current={organisationsActive ? 'page' : undefined}
                 >
                   Our Organisations <ChevronDown size={13} />
                 </DropdownMenuTrigger>
@@ -76,7 +84,7 @@ export function Navigation() {
               <Link
                 key={href}
                 href={href}
-                aria-current={path === href ? 'page' : undefined}
+                aria-current={isCurrent(href) ? 'page' : undefined}
               >
                 {label}
               </Link>
@@ -105,7 +113,7 @@ export function Navigation() {
                     key={href}
                     href={href}
                     onClick={() => setOpen(false)}
-                    aria-current={path === href ? 'page' : undefined}
+                    aria-current={isCurrent(href) ? 'page' : undefined}
                   >
                     {label}
                     <ArrowUpRight size={17} />

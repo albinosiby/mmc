@@ -125,7 +125,7 @@ export default function Home() {
             empowering women, creating livelihood opportunities and building a
             peaceful, self-sufficient and sustainable tribal society.
           </p>
-          <Link className="button" href="/#about">
+          <Link className="button" href="/journey">
             Read Our Story <ArrowRight size={16} />
           </Link>
         </div>

@@ -31,7 +31,7 @@ import { photos, products, activityGroups, timeline } from '@/lib/content';
 
 const journeyDetails: Record<string, string[]> = {
   '2015': [
-    'MMCS was founded at Aitibi Village under the leadership of Rev. Fr. Benoy Joseph.',
+    'MMCS was founded at Khamari Village under the leadership of Rev. Fr. Benoy Joseph.',
     'Twenty women formed the beginning of the cooperative movement.',
     'Village awareness programmes focused on savings, cooperation, fair marketing and protection from middlemen.',
   ],
@@ -42,7 +42,7 @@ const journeyDetails: Record<string, string[]> = {
   '2017': [
     'Membership reached approximately 550.',
     'The MMCS Grocery Shop opened at Tikrikilla Market on 10 October 2017.',
-    'Candle-making began at Aitibi and home-based rosary production developed.',
+    'Candle-making began at Khamari and home-based rosary production developed.',
     'Five women travelled to Kerala for umbrella-making and detergent-making training.',
   ],
   '2018–2020': [

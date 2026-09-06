@@ -114,7 +114,7 @@ export const timeline = [
   {
     year: '2015',
     title: 'Twenty women. One shared vision.',
-    text: 'MMCS began at Aitibi under the leadership of Rev. Fr. Benoy Joseph. Twenty women came together around farmer protection, savings, collective action and economic self-reliance.',
+    text: 'MMCS began at Khamari under the leadership of Rev. Fr. Benoy Joseph. Twenty women came together around farmer protection, savings, collective action and economic self-reliance.',
     source: 'history:beginning',
   },
   {
@@ -380,7 +380,7 @@ export const pageInfo: Record<
     eyebrow: 'OUR ROOTS. OUR REASON.',
     heading: 'People at the heart\nof every possibility.',
     description:
-      'From a small beginning at Aitibi to a growing cooperative movement across the Garo Hills.',
+      'From a small beginning at Khamari to a growing cooperative movement across the Garo Hills.',
   },
   organisations: {
     title: 'Our Organisations',

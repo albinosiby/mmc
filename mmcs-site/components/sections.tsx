@@ -278,7 +278,7 @@ export function ImpactBand() {
         </div>
         <div className="impact-stats">
           {[
-            ['2015', 'The beginning', 'At Aitibi, Meghalaya'],
+            ['2015', 'The beginning', 'At Khamari, Meghalaya'],
             ['20', 'Founding women', 'At the beginning in 2015'],
             ['≈550', 'Cooperative members', 'Reported by 2017'],
             ['2,000+', 'Cooperative members', 'Reported during 2023–2025'],
@@ -313,7 +313,7 @@ export function JourneyPreview() {
               {
                 {
                   '2015':
-                    'MMCS began at Aitibi with twenty women and a vision of farmer protection.',
+                    'MMCS began at Khamari with twenty women and a vision of farmer protection.',
                   '2017':
                     'Membership reached approximately 550, with new livelihood and training activities.',
                   '2024':
@@ -527,7 +527,7 @@ export function Footer() {
           <p className="footer-address">
             <MapPin size={17} />
             <span>
-              Aitibi Village, Tikrikilla Block
+              Khamari Village, Tikrikilla Block
               <br />
               West Garo Hills
               <br />

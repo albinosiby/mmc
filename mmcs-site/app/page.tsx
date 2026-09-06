@@ -120,7 +120,7 @@ export default function Home() {
           </h2>
           <p>
             Muktidata Multipurpose Cooperative Society (MMCS) began in 2015 in
-            Aitibi Village, Tikrikilla Block, West Garo Hills, Meghalaya. We
+            Khamari Village, Tikrikilla Block, West Garo Hills, Meghalaya. We
             work towards protecting farmers from exploitation by middlemen,
             empowering women, creating livelihood opportunities and building a
             peaceful, self-sufficient and sustainable tribal society.

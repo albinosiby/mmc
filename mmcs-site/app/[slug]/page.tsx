@@ -95,7 +95,7 @@ export default async function Page({
                 for rural families.
               </h2>
               <p className="lead">
-                Our journey began on 14 February 2015 in Aitibi Village,
+                Our journey began on 14 February 2015 in Khamari Village,
                 Tikrikilla, West Garo Hills.
               </p>
               <p>
@@ -344,7 +344,7 @@ export default async function Page({
                     <MapPin size={22} />
                   </span>
                   <span className="eyebrow">VISIT MMCS</span>
-                  <h3>Aitibi Village</h3>
+                  <h3>Khamari Village</h3>
                   <address>
                     Tikrikilla Block, West Garo Hills
                     <br />

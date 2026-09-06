@@ -3564,96 +3564,104 @@ select:focus-visible {
 .landscape-wash {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(245, 249, 248, 0.92),
-    rgba(245, 249, 248, 0.65) 32%,
-    transparent 64%
-  );
+  background:
+    linear-gradient(90deg, #061a1717 0%, transparent 42%, #071f1d8c 67%, #071f1dcf 100%),
+    linear-gradient(0deg, #061a1766 0%, transparent 52%);
 }
 .landscape-content {
   position: relative;
-  min-height: 430px;
+  min-height: 540px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding-block: 35px;
-  gap: 35px;
+  justify-content: flex-end;
+  padding-block: 42px;
 }
 .landscape-copy {
-  max-width: 610px;
+  width: min(590px, 55%);
+  padding: 40px 42px 32px;
+  color: #fff;
+  background: #082722d9;
+  border: 1px solid #ffffff2e;
+  box-shadow: 0 24px 60px #03110f42;
+  backdrop-filter: blur(4px);
 }
-.landscape-copy .eyebrow {
-  color: #142e37;
-  line-height: 1.7;
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #d9ebd0;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
 }
-.eyebrow-line {
-  display: block;
-  width: 30px;
-  height: 2px;
-  background: #187044;
-  margin: 10px 0;
+.hero-kicker > span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #b9dba9;
+  box-shadow: 0 0 0 4px #b9dba91c;
 }
 .landscape-copy h1 {
-  font-size: clamp(38px, 3.85vw, 56px);
-  line-height: 1.03;
-  letter-spacing: -0.05em;
-  font-weight: 800;
-  margin: 0 0 15px;
+  font-size: clamp(38px, 3.5vw, 52px);
+  line-height: 1.04;
+  letter-spacing: -0.055em;
+  font-weight: 600;
+  margin: 18px 0 17px;
+}
+.landscape-copy h1 em {
+  display: inline;
+  color: #cce8ba;
 }
 .landscape-copy p {
-  max-width: 560px;
-  font-size: 14px;
-  line-height: 1.6;
-  margin: 0 0 18px;
+  max-width: 500px;
+  color: #e1ebe6;
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 0 0 22px;
 }
 .landscape-copy .actions {
-  gap: 18px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.landscape-copy .button {
+  background: #d5ecb9;
+  border-color: #d5ecb9;
+  color: #10372e;
 }
 .reference-home .outline {
-  color: #0d2530;
-  border-color: #728487;
-  background: #ffffff65;
+  color: #fff;
+  border-color: #ffffff69;
+  background: transparent;
 }
 .reference-home .outline:hover {
+  color: #10372e;
   background: #fff;
 }
-.landscape-stat {
-  align-self: center;
-  width: 190px;
-  padding: 27px 24px;
-  background: #092530eb;
+.hero-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-top: 27px;
+  padding-top: 20px;
+  border-top: 1px solid #ffffff2e;
+}
+.hero-metrics > div {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  align-items: center;
+}
+.hero-metrics strong {
   color: #fff;
-  flex-shrink: 0;
-  margin-top: 35px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
 }
-.landscape-stat strong {
-  display: block;
-  font-size: 28px;
-  line-height: 1.2;
-  margin-top: 10px;
-}
-.landscape-stat span {
-  display: block;
-  font-size: 13px;
-}
-.landscape-stat small {
-  display: block;
-  font-size: 9px;
-  margin-top: 5px;
-  color: #ccdcdd;
-}
-.landscape-stat hr {
-  border: 0;
-  border-top: 1px solid #7b9999;
-  width: 38px;
-  margin: 19px 0 13px;
-}
-.landscape-stat p {
-  color: #fff;
-  font-size: 12px;
-  line-height: 1.5;
-  margin: 0;
+.hero-metrics span {
+  max-width: 105px;
+  color: #bed0c6;
+  font-size: 8px;
+  line-height: 1.4;
 }
 .reference-focus {
   background: #faf9f6;
@@ -4097,20 +4105,37 @@ select:focus-visible {
   }
   .landscape-content {
     display: block;
-    padding-block: 30px;
+    padding-top: 250px;
+    padding-bottom: 24px;
     min-height: 0;
   }
+  .landscape-copy {
+    width: 100%;
+    padding: 27px 24px 23px;
+    background: #082722eb;
+    backdrop-filter: blur(3px);
+  }
   .landscape-copy h1 {
-    font-size: clamp(32px, 7.7vw, 47px);
+    font-size: clamp(32px, 8.5vw, 43px);
+    margin-top: 15px;
   }
   .landscape-copy p {
     font-size: 13px;
   }
   .landscape-wash {
-    background: linear-gradient(90deg, #f5f9f8ef, #f5f9f8b3 65%, #f5f9f866);
+    background: linear-gradient(0deg, #061d19bd 0%, #061d194d 48%, transparent 78%);
   }
   .landscape-background {
-    object-position: 65% center;
+    object-position: 38% top;
+  }
+  .hero-metrics {
+    gap: 13px;
+  }
+  .hero-metrics > div {
+    gap: 7px;
+  }
+  .hero-metrics strong {
+    font-size: 18px;
   }
   .landscape-stat {
     width: 100%;

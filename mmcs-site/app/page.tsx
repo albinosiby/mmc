@@ -57,46 +57,38 @@ export default function Home() {
         <div className="landscape-wash" />
         <div className="wrap landscape-content">
           <div className="landscape-copy">
-            <span className="eyebrow">
-              PEOPLE TOGETHER
-              <br />
-              FOR A BETTER TOMORROW
+            <span className="hero-kicker">
+              <span /> MMCS · MEGHALAYA · SINCE 2015
             </span>
-            <span className="eyebrow-line" />
             <h1>
-              Sustainable
+              Livelihoods rooted
               <br />
-              Livelihoods for
-              <br />
-              Stronger Communities
+              in people. <em>Built to grow together.</em>
             </h1>
             <p>
-              Muktidata Multipurpose Cooperative Society (MMCS) works for the
-              economic and social upliftment of tribal communities through
-              collective growth, sustainable livelihoods and equal opportunities
-              for all.
+              MMCS works with tribal communities across the Garo Hills to grow
+              livelihoods, strengthen local enterprise and create fairer
+              opportunities for farmers, women and young people.
             </p>
             <div className="actions">
               <Link href="/our-work" className="button">
-                Explore Our Work <ArrowRight size={17} />
+                Explore our work <ArrowRight size={17} />
               </Link>
               <Link href="/journey" className="button outline">
-                <BookOpen size={17} /> Our Story
+                <BookOpen size={17} /> Our journey
               </Link>
             </div>
+            <div className="hero-metrics" aria-label="MMCS at a glance">
+              <div>
+                <strong>2,000+</strong>
+                <span>Members reported during 2023–2025</span>
+              </div>
+              <div>
+                <strong>2015</strong>
+                <span>Working together since</span>
+              </div>
+            </div>
           </div>
-          <aside className="landscape-stat">
-            <Users size={32} fill="currentColor" />
-            <strong>2,000+</strong>
-            <span>Members</span>
-            <small>Reported during 2023–2025</small>
-            <hr />
-            <p>
-              Stronger People
-              <br />
-              Brighter Communities
-            </p>
-          </aside>
         </div>
       </section>
       <section className="reference-focus">

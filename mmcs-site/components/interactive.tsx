@@ -10,10 +10,6 @@ import {
   Copy,
   Expand,
   ImageIcon,
-  IceCreamBowl,
-  GlassWater,
-  Leaf,
-  Package,
   Factory,
   HandHeart,
   ShoppingBasket,
@@ -27,7 +23,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/ui/dialog';
-import { photos, products, activityGroups, timeline } from '@/lib/content';
+import { photos, activityGroups, timeline } from '@/lib/content';
 
 const journeyDetails: Record<string, string[]> = {
   '2015': [
@@ -288,79 +284,187 @@ export function Gallery({ preview = false }: { preview?: boolean }) {
     </>
   );
 }
-const productIcons = {
-  ice: IceCreamBowl,
-  glass: GlassWater,
-  jar: Package,
-  leaf: Leaf,
+type NokmaProduct = { image: string; name: string };
+type NokmaProductCategory = {
+  title: string;
+  description: string;
+  products: NokmaProduct[];
 };
+const nokmaImage = (path: string) => `/images/nokma-products/${path}`;
+const readableName = (file: string) =>
+  file
+    .replace(/\.(png|webp)$/i, '')
+    .replace(/[_-]/g, ' ')
+    .replace(/\biml\b/gi, 'IML')
+    .replace(/\bml\b/gi, 'ml')
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
+const productsFrom = (paths: string[]): NokmaProduct[] =>
+  paths.map((path) => ({
+    image: nokmaImage(path),
+    name: `Nokma ${readableName(path.split('/').at(-1) ?? path)}`,
+  }));
+const nokmaProductCategories: NokmaProductCategory[] = [
+  {
+    title: 'Ice Cream Flavours',
+    description: 'A selection of Nokma ice cream flavours.',
+    products: productsFrom([
+      'ice-cream/flavours/flavour-banana.webp',
+      'ice-cream/flavours/flavour-butterscotch.webp',
+      'ice-cream/flavours/flavour-chocolate.webp',
+      'ice-cream/flavours/flavour-ginger.webp',
+      'ice-cream/flavours/flavour-jackfruit.webp',
+      'ice-cream/flavours/flavour-lemon.webp',
+      'ice-cream/flavours/flavour-lychee.webp',
+      'ice-cream/flavours/flavour-orange.webp',
+      'ice-cream/flavours/flavour-pineapple.webp',
+      'ice-cream/flavours/flavour-pistachio.webp',
+      'ice-cream/flavours/flavour-strawberry.webp',
+      'ice-cream/flavours/flavour-vanilla.webp',
+    ]),
+  },
+  {
+    title: 'Ice Cream Cones',
+    description: 'Nokma cone ice creams in a variety of flavours and sizes.',
+    products: productsFrom([
+      'ice-cream/cones/80 ml choco.png',
+      'ice-cream/cones/ButterScotch 110 ml.png',
+      'ice-cream/cones/ButterScotch 80 ml.png',
+      'ice-cream/cones/Jack 110.png',
+      'ice-cream/cones/Royal Jack.png',
+      'ice-cream/cones/Strawberry 2.png',
+      'ice-cream/cones/Strawberry 45.png',
+      'ice-cream/cones/Vanilla 110 ml.png',
+      'ice-cream/cones/Vanilla 80 ml.png',
+      'ice-cream/cones/Vanilla45 ml.png',
+      'ice-cream/cones/cone-berry-giggles.webp',
+      'ice-cream/cones/cone-choco-thunder.webp',
+      'ice-cream/cones/cone-jack-royale.webp',
+      'ice-cream/cones/cone-scotch.webp',
+      'ice-cream/cones/cone-vanilla-wink.webp',
+    ]),
+  },
+  {
+    title: 'Ice Cream Cups',
+    description: 'Single-serve Nokma ice cream cups.',
+    products: productsFrom([
+      'ice-cream/cups/Untitled design (1).png',
+      'ice-cream/cups/Untitled design.png',
+      'ice-cream/cups/cup (1).png',
+      'ice-cream/cups/cup (2).png',
+      'ice-cream/cups/cup (3).png',
+      'ice-cream/cups/cup (4).png',
+      'ice-cream/cups/cup (5).png',
+      'ice-cream/cups/cup (6).png',
+      'ice-cream/cups/cup-strawberry.webp',
+      'ice-cream/cups/cup-vanilla.webp',
+      'ice-cream/cups/cup.png',
+    ]),
+  },
+  {
+    title: 'Ice Cream Tubs & Cartons',
+    description: 'Nokma family tubs, cartons and IML ice cream packs.',
+    products: productsFrom([
+      'ice-cream/tubs/Butterscotch.png',
+      'ice-cream/tubs/Vanilla.png',
+      'ice-cream/tubs/family-tub-jackfruit.webp',
+      'ice-cream/tubs/family-tub.webp',
+      'ice-cream/tubs/jackfruit.png',
+      'ice-cream/tubs/pistachio.png',
+      'ice-cream/cartons/carton-butterscotch.webp',
+      'ice-cream/cartons/carton-jackfruit.webp',
+      'ice-cream/cartons/carton-vanilla.webp',
+      'ice-cream/cartons/iml-oval-pistachio.webp',
+      'ice-cream/cartons/iml-oval.webp',
+      'ice-cream/cartons/iml-round-butterscotch.webp',
+      'ice-cream/cartons/iml-round.webp',
+      'ice-cream/cartons/oval-butterscotch.webp',
+    ]),
+  },
+  {
+    title: 'Beverages',
+    description: 'Fruit drinks and water from the Nokma range.',
+    products: productsFrom([
+      'beverages/drink-lychee.webp',
+      'beverages/drink-passion.webp',
+      'beverages/drink-pineapple.webp',
+      'beverages/water-bottle.webp',
+      'beverages/water-trio.webp',
+    ]),
+  },
+  {
+    title: 'Chips',
+    description: 'Nokma snack chips.',
+    products: productsFrom([
+      'chips/bananas-green.webp',
+      'chips/chips-crispy.webp',
+      'chips/chips-plain.webp',
+    ]),
+  },
+  {
+    title: 'Spices & Flakes',
+    description: 'Nokma spices and naturally inspired flakes.',
+    products: productsFrom([
+      'spices/flakes-ginger.webp',
+      'spices/flakes-turmeric.webp',
+      'spices/spice-ginger.webp',
+      'spices/spice-green-chilli.png',
+      'spices/spice-turmeric.webp',
+    ]),
+  },
+];
 export function ProductCatalogue({ preview = false }: { preview?: boolean }) {
-  const [category, setCategory] = useState('All');
-  const categories = ['All', ...new Set(products.map((p) => p.category))];
-  const filtered = (preview ? products.slice(0, 4) : products).filter(
-    (p) => category === 'All' || p.category === category,
-  );
+  const displayedCategories = preview
+    ? [
+        {
+          ...nokmaProductCategories[0],
+          products: nokmaProductCategories[0].products.slice(0, 4),
+        },
+      ]
+    : nokmaProductCategories;
   return (
-    <>
-      {!preview && (
-        <div className="filter-row" aria-label="Filter products">
-          {categories.map((c) => (
-            <button
-              className={category === c ? 'filter active' : 'filter'}
-              aria-pressed={category === c}
-              onClick={() => setCategory(c)}
-              key={c}
-            >
-              {c}
-            </button>
-          ))}
-        </div>
-      )}
-      <div className="product-grid">
-        {filtered.map((p, i) => {
-          const Icon = productIcons[p.icon as keyof typeof productIcons];
-          return (
-            <article className="product-card" key={p.id}>
-              <div className={`product-art tone-${i % 4}`}>
-                <Icon size={53} strokeWidth={1} />
-                <span>PRODUCT PHOTOGRAPH TO FOLLOW</span>
+    <div className={`nokma-catalogue ${preview ? 'nokma-catalogue-preview' : ''}`}>
+      {displayedCategories.map((category) => (
+        <section className="nokma-product-category" key={category.title}>
+          {!preview && (
+            <div className="nokma-category-heading">
+              <span className="eyebrow">NOKMA PRODUCTS</span>
+              <div>
+                <h2>{category.title}</h2>
+                <p>{category.description}</p>
               </div>
-              <div className="product-copy">
-                <span className="eyebrow">{p.category}</span>
-                <h3>{p.name}</h3>
-                <p>{p.description}</p>
-                <a
-                  className="text-link"
-                  href={
-                    p.category === 'Community products'
-                      ? '/contact'
-                      : 'https://nokma.in/'
-                  }
-                  {...(p.category === 'Community products'
-                    ? {}
-                    : { target: '_blank', rel: 'noopener noreferrer' })}
-                >
-                  {p.category === 'Community products'
-                    ? 'Enquire with MMCS'
-                    : 'Explore Nokma'}
-                  <ArrowUpRight size={17} />
-                </a>
-              </div>
-            </article>
-          );
-        })}
-      </div>
+            </div>
+          )}
+          <div className="product-grid">
+            {category.products.map((product) => (
+              <article className="product-card" key={product.image}>
+                <div className="product-art">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    sizes="(max-width: 700px) 50vw, (max-width: 980px) 33vw, 25vw"
+                  />
+                </div>
+                <div className="product-copy">
+                  <span className="eyebrow">{category.title}</span>
+                  <h3>{product.name.replace('Nokma ', '')}</h3>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      ))}
       {!preview && (
         <p className="catalogue-note">
-          This is an informational showcase. For current product ranges and
-          availability, visit{' '}
+          Product range and availability can change. For current information,
+          visit{' '}
           <a href="https://nokma.in/" target="_blank" rel="noopener noreferrer">
             Nokma’s website <ArrowUpRight size={14} />
           </a>
-          . The mineral water facility is a proposed initiative.
+          .
         </p>
       )}
-    </>
+    </div>
   );
 }
 const activityIcons = {

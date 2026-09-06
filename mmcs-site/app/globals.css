@@ -1299,6 +1299,69 @@ select:focus-visible {
 .products-page-catalogue .product-art {
   height: 230px;
 }
+.nokma-product-category + .nokma-product-category {
+  margin-top: 76px;
+  padding-top: 70px;
+  border-top: 1px solid var(--line);
+}
+.nokma-category-heading {
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  gap: 36px;
+  align-items: end;
+  margin-bottom: 28px;
+}
+.nokma-category-heading h2 {
+  margin: 0;
+  font-size: clamp(28px, 3vw, 42px);
+  letter-spacing: -0.05em;
+}
+.nokma-category-heading p {
+  max-width: 440px;
+  margin-top: 8px;
+  font-size: 14px;
+}
+.nokma-catalogue .product-grid {
+  gap: 18px;
+}
+.nokma-catalogue .product-card {
+  border-radius: 8px;
+  box-shadow: 0 8px 24px #16392c0b;
+}
+.nokma-catalogue .product-art {
+  position: relative;
+  height: 235px;
+  overflow: hidden;
+  background: linear-gradient(145deg, #f5f8ef, #e7eee2);
+}
+.nokma-catalogue .product-art img {
+  object-fit: contain;
+  padding: 17px;
+  transition: transform 0.28s ease;
+}
+.nokma-catalogue .product-card:hover .product-art img {
+  transform: scale(1.055);
+}
+.nokma-catalogue .product-copy {
+  min-height: 100px;
+  padding: 16px 18px 18px;
+}
+.nokma-catalogue .product-copy .eyebrow {
+  color: #638069;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+}
+.nokma-catalogue .product-copy h3 {
+  margin-top: 8px;
+  font-size: 16px;
+  line-height: 1.35;
+}
+.nokma-catalogue-preview .product-card {
+  box-shadow: none;
+}
+.nokma-catalogue-preview .product-art {
+  height: 195px;
+}
 @media (max-width: 700px) {
   .about-story .story-photo {
     min-height: 330px;
@@ -1320,6 +1383,36 @@ select:focus-visible {
   .work-page-catalogue,
   .products-page-catalogue {
     padding-top: 28px;
+  }
+  .nokma-product-category + .nokma-product-category {
+    margin-top: 52px;
+    padding-top: 48px;
+  }
+  .nokma-category-heading {
+    display: block;
+    margin-bottom: 22px;
+  }
+  .nokma-category-heading .eyebrow {
+    margin-bottom: 10px;
+  }
+  .nokma-category-heading h2 {
+    font-size: 30px;
+  }
+  .nokma-catalogue .product-grid {
+    gap: 12px;
+  }
+  .nokma-catalogue .product-art {
+    height: 170px;
+  }
+  .nokma-catalogue .product-art img {
+    padding: 10px;
+  }
+  .nokma-catalogue .product-copy {
+    min-height: 78px;
+    padding: 12px;
+  }
+  .nokma-catalogue .product-copy h3 {
+    font-size: 13px;
   }
 }
 .catalogue-note {

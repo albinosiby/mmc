@@ -71,10 +71,8 @@ export default async function ProjectPage({
             <SectionHeading
               eyebrow="THE NOKMA PRODUCT FAMILY"
               title="Everyday moments. Local beginnings."
-              href="/products"
-              linkText="Explore all products"
             />
-            <ProductCatalogue preview />
+            <ProductCatalogue />
           </div>
         </section>
       )}

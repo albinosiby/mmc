@@ -17,7 +17,6 @@ import {
   ConnectBanner,
 } from '@/components/sections';
 import {
-  ProductCatalogue,
   JourneyExplorer,
   Gallery,
   ContactForm,
@@ -66,15 +65,11 @@ export default async function Page({
             ? '/images/hub-event.webp'
             : slug === 'journey'
               ? '/images/journey-hero.png'
-              : slug === 'products'
-                ? '/images/nokma-catalogue.jpg'
               : undefined
         }
         imageAlt={
           slug === 'our-work'
             ? 'Community gathering at the Megh Farm Processing Hub inauguration'
-            : slug === 'products'
-              ? 'Nokma ice cream product collection'
             : undefined
         }
         variant={
@@ -82,9 +77,7 @@ export default async function Page({
             ? 'journey'
             : slug === 'contact'
               ? 'contact'
-              : slug === 'products'
-                ? 'products'
-                : undefined
+              : undefined
         }
       />
       {slug === 'about' ? (
@@ -231,46 +224,6 @@ export default async function Page({
         </>
       ) : slug === 'our-work' ? (
         <WorkPage />
-      ) : slug === 'products' ? (
-        <>
-          <section className="products-showcase">
-            <div className="wrap products-showcase-grid">
-              <div className="products-showcase-copy">
-                <span className="eyebrow">THE NOKMA COLLECTION</span>
-                <h2>Made locally. Enjoyed every day.</h2>
-                <p>
-                  From ice cream and fruit drinks to chips and spices, every
-                  product reflects a value chain that begins closer to the
-                  farmers and communities of Meghalaya.
-                </p>
-                <div className="products-showcase-meta">
-                  <span>7 product categories</span>
-                  <span>Food made with a local story</span>
-                </div>
-                <a
-                  href="https://nokma.in/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-link"
-                >
-                  Visit Nokma <ArrowUpRight size={18} />
-                </a>
-              </div>
-              <div className="products-showcase-image">
-                <Image
-                  src="/images/nokma-catalogue.jpg"
-                  alt="Nokma ice cream product range"
-                  fill
-                  sizes="(max-width: 700px) 100vw, 48vw"
-                />
-                <span>FROM MEGHALAYA, WITH PURPOSE</span>
-              </div>
-            </div>
-          </section>
-          <section className="section wrap products-page-catalogue">
-            <ProductCatalogue />
-          </section>
-        </>
       ) : slug === 'projects' ? (
         <section className="wrap projects-list">
           {projects.map((project) => (

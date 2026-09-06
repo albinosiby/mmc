@@ -408,13 +408,6 @@ export const pageInfo: Record<
     description:
       'Practical work across agriculture, production, skills and markets, rooted in the needs of our communities.',
   },
-  products: {
-    title: 'Our Products',
-    eyebrow: 'ROOTED HERE. MADE WITH PURPOSE.',
-    heading: 'Local beginnings.\nEveryday possibilities.',
-    description:
-      'Explore products described in our cooperative journey, from Nokma’s food range to community-made essentials.',
-  },
   projects: {
     title: 'Our Projects',
     eyebrow: 'OUR TWO PROJECTS',

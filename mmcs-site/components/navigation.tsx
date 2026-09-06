@@ -22,7 +22,6 @@ const links = [
   ['About', '/#about'],
   ['Our Organisations', '/projects'],
   ['Our work', '/our-work'],
-  ['Products', '/products'],
   ['Gallery', '/gallery'],
   ['Contact', '/contact'],
 ];

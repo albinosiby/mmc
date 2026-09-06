@@ -69,7 +69,7 @@ export function PageHero({
   breadcrumb: string;
   imageSrc?: string;
   imageAlt?: string;
-  variant?: 'journey' | 'contact' | 'products' | 'megh-farm';
+  variant?: 'journey' | 'contact' | 'megh-farm';
 }) {
   return (
     <section
@@ -525,7 +525,6 @@ export function Footer() {
           <Link href="/organisations">Our organisations</Link>
           <Link href="/organisations/nokma">Nokma</Link>
           <Link href="/organisations/megh-farm">Megh Farm</Link>
-          <Link href="/products">Our products</Link>
           <Link href="/projects">Explore projects</Link>
         </div>
         <div>

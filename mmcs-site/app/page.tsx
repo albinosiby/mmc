@@ -102,7 +102,14 @@ export default function Home() {
         </div>
       </section>
       <section id="about" className="wrap reference-about">
-        <ReferencePhoto region="about" className="about-reference-image" />
+        <div className="about-reference-image">
+          <Image
+            src="/images/about-mmcs-community.jpg"
+            alt="A woman from a rural community in Meghalaya carrying a traditional basket"
+            fill
+            sizes="(max-width: 700px) 100vw, 32vw"
+          />
+        </div>
         <div className="about-reference-copy">
           <span className="eyebrow">ABOUT MMCS</span>
           <h2>

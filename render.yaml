@@ -1,0 +1,7 @@
+services:
+  - type: web
+    runtime: static
+    name: mmcs-public-website
+    rootDir: mmcs-site
+    buildCommand: npm ci && npm run build
+    staticPublishPath: ./out

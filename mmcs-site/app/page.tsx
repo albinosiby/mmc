@@ -48,8 +48,8 @@ export default function Home() {
     <main id="main" className="reference-home">
       <section className="landscape-hero">
         <Image
-          src="/images/landscape-hero.webp"
-          alt="Illustrative green hills and terraced fields"
+          src="/images/home-hero-tea-picker.png"
+          alt="A woman gathering tea leaves in Meghalaya"
           fill
           priority
           className="landscape-background"

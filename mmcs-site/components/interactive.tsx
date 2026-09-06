@@ -27,7 +27,130 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/ui/dialog';
-import { photos, products, activityGroups } from '@/lib/content';
+import { photos, products, activityGroups, timeline } from '@/lib/content';
+
+const journeyDetails: Record<string, string[]> = {
+  '2015': [
+    'MMCS was founded at Aitibi Village under the leadership of Rev. Fr. Benoy Joseph.',
+    'Twenty women formed the beginning of the cooperative movement.',
+    'Village awareness programmes focused on savings, cooperation, fair marketing and protection from middlemen.',
+  ],
+  '2016–2017': [
+    'The Society progressed towards formal registration and institutional development.',
+    'A legal cooperative framework was established to support a growing farmer and women-led membership base.',
+  ],
+  '2017': [
+    'Membership reached approximately 550.',
+    'The MMCS Grocery Shop opened at Tikrikilla Market on 10 October 2017.',
+    'Candle-making began at Aitibi and home-based rosary production developed.',
+    'Five women travelled to Kerala for umbrella-making and detergent-making training.',
+  ],
+  '2018–2020': [
+    'Farmer mobilisation, savings and collective economic activities were strengthened.',
+    'Women-led livelihood programmes and agricultural support expanded.',
+    'Production, aggregation, processing and market linkages began to be treated as connected parts of rural development.',
+  ],
+  '2021–2023': [
+    'Agriculture, horticulture, dairy and value-addition work expanded.',
+    'Farmers were encouraged to explore processing, packaging, branding and direct marketing.',
+    'The Society received the NCDC North East Award in 2023.',
+  ],
+  '2024': [
+    'Megh Farm Processing Hub was established at Khamari and initiated on 10 February 2024.',
+    'The hub was inaugurated by Meghalaya Chief Minister Shri Conrad K. Sangma.',
+    'Fruit and vegetable processing, pineapple processing, juice, jam, squash, fruit pulp, packaging and branding progressed.',
+    'Nokma brand development accelerated.',
+  ],
+  '2025': [
+    'Agriculture, dairy, food processing and women’s livelihood programmes continued to expand.',
+    'Collective farming and horticultural development grew.',
+    'The history records recognition as Best Dairy Cooperative in Meghalaya.',
+  ],
+  '2026': [
+    'Collective Farming Phase IV and high-value fruit sapling distribution were planned or initiated.',
+    'Cold storage, pre-cooling, chilling, blast freezing, ripening and refrigerated logistics remained in development.',
+    'The Nokma mineral water initiative is proposed.',
+    'Administrative, conference and warehouse infrastructure was developed for the processing hub.',
+  ],
+};
+const journeyImages = [
+  '/images/community.webp',
+  '/images/gathering.webp',
+  '/images/hub-event.webp',
+  '/images/inauguration.webp',
+];
+
+export function JourneyExplorer() {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const selected = timeline[selectedIndex];
+  const image =
+    selected.image ?? journeyImages[selectedIndex % journeyImages.length];
+  return (
+    <section className="journey-explorer">
+      <div className="wrap">
+        <div className="journey-explorer-heading">
+          <div>
+            <span className="eyebrow">2015 — 2026</span>
+            <h2>A journey made together.</h2>
+          </div>
+          <p>
+            Swipe through the documented stages, then open a card to explore
+            what was recorded in that period.
+          </p>
+        </div>
+        <div
+          className="journey-card-rail"
+          role="tablist"
+          aria-label="MMCS journey years"
+        >
+          {timeline.map((entry, index) => (
+            <button
+              key={entry.year}
+              id={`year-${entry.year}`}
+              role="tab"
+              aria-selected={selectedIndex === index}
+              className={selectedIndex === index ? 'active' : ''}
+              onClick={() => setSelectedIndex(index)}
+            >
+              <Image
+                src={entry.image ?? journeyImages[index % journeyImages.length]}
+                alt="Illustrative MMCS journey photograph"
+                fill
+                sizes="260px"
+              />
+              <span>{entry.year}</span>
+              <strong>{entry.title}</strong>
+            </button>
+          ))}
+        </div>
+        <article className="journey-detail" aria-live="polite">
+          <div className="journey-detail-image">
+            <Image
+              src={image}
+              alt="MMCS documentation photograph"
+              fill
+              sizes="(max-width: 700px) 100vw, 42vw"
+            />
+          </div>
+          <div className="journey-detail-copy">
+            <span className="eyebrow">{selected.year}</span>
+            <h3>{selected.title}</h3>
+            <p>{selected.text}</p>
+            <ul>
+              {journeyDetails[selected.year].map((detail) => (
+                <li key={detail}>{detail}</li>
+              ))}
+            </ul>
+          </div>
+        </article>
+        <p className="journey-photo-note">
+          Photographs are from supplied MMCS documentation; they illustrate the
+          journey and are not assigned as records of every period.
+        </p>
+      </div>
+    </section>
+  );
+}
 export function Reveal({
   children,
   className = '',

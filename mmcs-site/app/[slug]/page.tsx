@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowUpRight, MapPin, ArrowRight } from 'lucide-react';
-import { pageInfo, projects, timeline, siteUrl } from '@/lib/content';
+import { pageInfo, projects, siteUrl } from '@/lib/content';
 import {
   PageHero,
   SectionHeading,
@@ -18,6 +18,7 @@ import {
 } from '@/components/sections';
 import {
   ProductCatalogue,
+  JourneyExplorer,
   Gallery,
   ContactForm,
   Reveal,
@@ -285,41 +286,7 @@ export default async function Page({
         </>
       ) : slug === 'journey' ? (
         <>
-          <section className="section wrap timeline-layout">
-            <nav className="year-nav" aria-label="Journey years">
-              {timeline.map((t) => (
-                <a href={`#year-${t.year}`} key={t.year}>
-                  {t.year}
-                  <ArrowUpRight size={14} />
-                </a>
-              ))}
-            </nav>
-            <div className="timeline-full">
-              {timeline.map((t) => (
-                <Reveal key={t.year}>
-                  <article id={`year-${t.year}`}>
-                    <span className="timeline-dot" />
-                    <span className="eyebrow">{t.year}</span>
-                    <h2>{t.title}</h2>
-                    <p>{t.text}</p>
-                    {t.image && (
-                      <figure>
-                        <Image
-                          src={t.image}
-                          alt="Megh Farm Processing Hub inauguration gathering"
-                          width={960}
-                          height={540}
-                        />
-                        <figcaption>
-                          Megh Farm Processing Hub inauguration · Khamari · 2024
-                        </figcaption>
-                      </figure>
-                    )}
-                  </article>
-                </Reveal>
-              ))}
-            </div>
-          </section>
+          <JourneyExplorer />
           <FutureInitiatives />
           <section className="journey-closing">
             <div className="wrap">

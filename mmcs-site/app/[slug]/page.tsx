@@ -73,7 +73,9 @@ export default async function Page({
             ? 'Community gathering at the Megh Farm Processing Hub inauguration'
             : undefined
         }
-        variant={slug === 'journey' ? 'journey' : undefined}
+        variant={
+          slug === 'journey' ? 'journey' : slug === 'contact' ? 'contact' : undefined
+        }
       />
       {slug === 'about' ? (
         <>

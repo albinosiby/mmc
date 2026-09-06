@@ -1600,6 +1600,19 @@ select:focus-visible {
     linear-gradient(90deg, #0b292bea 0%, #103b37c5 46%, #102e3560 100%),
     linear-gradient(0deg, #0b292955 0%, transparent 62%);
 }
+.page-hero-contact {
+  padding-bottom: 52px;
+}
+.page-hero-contact .breadcrumb {
+  margin-bottom: 35px;
+}
+.page-hero-contact .page-hero-grid h1 {
+  font-size: clamp(38px, 3.8vw, 55px);
+}
+.page-hero-contact .page-hero-grid p {
+  max-width: 390px;
+  font-size: 15px;
+}
 @media (max-width: 700px) {
   .page-hero-image {
     min-height: 470px;
@@ -2127,7 +2140,7 @@ select:focus-visible {
 }
 .contact-intro {
   background: #edf4ee;
-  padding: 88px 0 0;
+  padding: 70px 0 0;
   overflow: hidden;
 }
 .contact-intro-heading {
@@ -2142,9 +2155,9 @@ select:focus-visible {
   margin-bottom: 16px;
 }
 .contact-intro-heading h2 {
-  font-size: clamp(40px, 5vw, 68px);
-  letter-spacing: -0.065em;
-  line-height: 0.98;
+  font-size: clamp(34px, 4vw, 52px);
+  letter-spacing: -0.055em;
+  line-height: 1.04;
   margin: 0;
 }
 .contact-intro-heading p {
@@ -2157,14 +2170,14 @@ select:focus-visible {
 .contact-route-grid {
   display: grid;
   grid-template-columns: 1.16fr 1fr 1fr;
-  margin-top: 66px;
+  margin-top: 48px;
   border: 1px solid #c9d8ca;
   border-bottom: 0;
 }
 .contact-route {
   position: relative;
-  min-height: 320px;
-  padding: 30px;
+  min-height: 285px;
+  padding: 26px;
   color: var(--navy);
   background: #f8faf6;
   border-right: 1px solid #c9d8ca;
@@ -2185,7 +2198,7 @@ select:focus-visible {
   border-radius: 50%;
   color: var(--green);
   background: #d9e9d7;
-  margin-bottom: 44px;
+  margin-bottom: 32px;
   transition: color 0.2s ease, background 0.2s ease;
 }
 .contact-route-brand:hover .contact-route-icon {
@@ -2199,8 +2212,8 @@ select:focus-visible {
   color: #d8e8cb;
 }
 .contact-route h3 {
-  margin: 11px 0 10px;
-  font-size: 28px;
+  margin: 9px 0 8px;
+  font-size: 24px;
   letter-spacing: -0.045em;
 }
 .contact-route p,
@@ -2216,10 +2229,9 @@ select:focus-visible {
 }
 .contact-route-note,
 .contact-route-link {
-  position: absolute;
-  bottom: 30px;
-  left: 30px;
-  right: 30px;
+  bottom: 26px;
+  left: 26px;
+  right: 26px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -2237,13 +2249,13 @@ select:focus-visible {
   grid-template-columns: 0.9fr 1.1fr;
   gap: 9%;
   align-items: center;
-  padding-top: 100px;
+  padding-top: 78px;
 }
 .contact-conversation-copy h2 {
   max-width: 430px;
   margin: 18px 0;
-  font-size: clamp(36px, 4vw, 54px);
-  line-height: 1.04;
+  font-size: clamp(31px, 3.3vw, 44px);
+  line-height: 1.08;
   letter-spacing: -0.06em;
 }
 .contact-conversation-copy > p {
@@ -2273,7 +2285,7 @@ select:focus-visible {
   line-height: 1.5;
 }
 .contact-form {
-  padding: 42px;
+  padding: 36px;
   background: #113b36;
   color: white;
   border: 1px solid #113b36;
@@ -2281,7 +2293,7 @@ select:focus-visible {
   box-shadow: 22px 22px 0 #dce9da;
 }
 .contact-form h2 {
-  font-size: 38px;
+  font-size: 31px;
   margin: 15px 0;
   letter-spacing: -0.055em;
 }

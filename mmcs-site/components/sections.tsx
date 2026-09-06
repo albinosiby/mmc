@@ -69,7 +69,7 @@ export function PageHero({
   breadcrumb: string;
   imageSrc?: string;
   imageAlt?: string;
-  variant?: 'journey';
+  variant?: 'journey' | 'contact';
 }) {
   return (
     <section

@@ -48,6 +48,12 @@ export default async function ProjectPage({
         title={p.tagline}
         description={p.description}
         breadcrumb={p.name}
+        imageSrc={p.id === 'nokma' ? '/images/nokma-product-team.jpg' : undefined}
+        imageAlt={
+          p.id === 'nokma'
+            ? 'Nokma team member presenting jackfruit products'
+            : undefined
+        }
       />
       <div className="wrap">
         <ProjectFeature project={p} detail />

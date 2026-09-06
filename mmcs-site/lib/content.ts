@@ -75,7 +75,11 @@ export const projects: Project[] = [
     theme: 'green',
     categories: ['Ice cream', 'Beverages', 'Jam & squash', 'Fruit pulp'],
     images: [
-      { alt: '', label: 'Nokma product collection' },
+      {
+        src: '/images/nokma-product-team.jpg',
+        alt: 'Nokma team member presenting jackfruit products',
+        label: 'Nokma products and the team behind them',
+      },
       { alt: '', label: 'A closer look at the products' },
       { alt: '', label: 'The people behind Nokma' },
     ],

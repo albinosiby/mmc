@@ -3496,6 +3496,10 @@ select:focus-visible {
   width: 50%;
   transition: transform 0.5s;
 }
+.reference-brand.nokma .reference-brand-photo {
+  object-fit: cover;
+  object-position: 68% center;
+}
 .brand-photo-wash {
   position: absolute;
   inset: 0;

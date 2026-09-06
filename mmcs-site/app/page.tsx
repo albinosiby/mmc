@@ -179,8 +179,11 @@ export default function Home() {
           <div className="reference-brands">
             <Reveal>
               <article className="reference-brand nokma">
-                <ReferencePhoto
-                  region="nokma"
+                <Image
+                  src="/images/nokma-product-team.jpg"
+                  alt="Nokma team member presenting jackfruit products"
+                  fill
+                  sizes="(max-width: 700px) 100vw, 50vw"
                   className="reference-brand-photo"
                 />
                 <div className="brand-photo-wash" />

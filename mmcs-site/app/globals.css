@@ -1362,6 +1362,159 @@ select:focus-visible {
 .nokma-catalogue-preview .product-art {
   height: 195px;
 }
+.page-hero-products {
+  min-height: 410px;
+}
+.page-hero-products .page-hero-background {
+  object-position: center 47%;
+  filter: saturate(0.88) contrast(0.94);
+}
+.page-hero-products .page-hero-overlay {
+  background: linear-gradient(90deg, #082c2de9 0%, #0b3835bd 48%, #092e315e 100%);
+}
+.products-showcase {
+  padding: 72px 0;
+  background: #f5f7f2;
+}
+.products-showcase-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9%;
+  align-items: center;
+}
+.products-showcase-copy h2 {
+  max-width: 510px;
+  margin: 14px 0 17px;
+  font-size: clamp(34px, 4vw, 52px);
+  letter-spacing: -0.06em;
+  line-height: 1.04;
+}
+.products-showcase-copy > p {
+  max-width: 490px;
+  font-size: 15px;
+  line-height: 1.75;
+}
+.products-showcase-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 24px 0;
+}
+.products-showcase-meta span {
+  padding: 7px 10px;
+  border: 1px solid #cbd9ca;
+  border-radius: 999px;
+  color: #526c59;
+  font-size: 11px;
+  font-weight: 600;
+}
+.products-showcase-image {
+  position: relative;
+  min-height: 360px;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 18px 18px 0 #dce8d8;
+  background: #102725;
+}
+.products-showcase-image img {
+  object-fit: cover;
+}
+.products-showcase-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, #071a1bcc, transparent 48%);
+}
+.products-showcase-image span {
+  position: absolute;
+  z-index: 1;
+  left: 20px;
+  bottom: 17px;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+.products-page-catalogue {
+  padding-top: 62px;
+}
+.nokma-category-nav {
+  position: sticky;
+  z-index: 4;
+  top: 78px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  margin-bottom: 55px;
+  padding: 9px;
+  border: 1px solid #dce6d9;
+  border-radius: 8px;
+  background: #fffdfaf2;
+  box-shadow: 0 8px 24px #1235290b;
+}
+.nokma-category-nav a {
+  flex: 0 0 auto;
+  padding: 8px 11px;
+  border-radius: 5px;
+  color: #476050;
+  font-size: 11px;
+  font-weight: 600;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.nokma-category-nav a:hover {
+  color: #fff;
+  background: var(--green);
+}
+.products-page-catalogue .nokma-product-category {
+  scroll-margin-top: 145px;
+}
+.products-page-catalogue .nokma-product-category + .nokma-product-category {
+  margin-top: 60px;
+  padding-top: 55px;
+}
+.products-page-catalogue .nokma-category-heading {
+  grid-template-columns: 0.55fr 1.45fr;
+  margin-bottom: 22px;
+}
+.products-page-catalogue .nokma-category-heading h2 {
+  font-size: clamp(25px, 2.5vw, 34px);
+}
+.products-page-catalogue .nokma-category-heading p {
+  font-size: 13px;
+}
+.products-page-catalogue .product-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+.products-page-catalogue .product-card {
+  border-radius: 6px;
+  box-shadow: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+.products-page-catalogue .product-card:hover {
+  transform: translateY(-3px);
+  border-color: #b6cdb6;
+  box-shadow: 0 10px 20px #16392c12;
+}
+.products-page-catalogue .product-art {
+  height: 175px;
+  background: #f6f8f2;
+}
+.products-page-catalogue .product-art img {
+  padding: 12px;
+}
+.products-page-catalogue .product-copy {
+  min-height: 75px;
+  padding: 12px 13px 14px;
+}
+.products-page-catalogue .product-copy .eyebrow {
+  font-size: 7px;
+}
+.products-page-catalogue .product-copy h3 {
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 1.35;
+}
 @media (max-width: 700px) {
   .about-story .story-photo {
     min-height: 330px;
@@ -1413,6 +1566,48 @@ select:focus-visible {
   }
   .nokma-catalogue .product-copy h3 {
     font-size: 13px;
+  }
+  .products-showcase {
+    padding: 50px 0;
+  }
+  .products-showcase-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .products-showcase-copy h2 {
+    font-size: 37px;
+  }
+  .products-showcase-image {
+    min-height: 260px;
+    box-shadow: 10px 10px 0 #dce8d8;
+  }
+  .products-page-catalogue {
+    padding-top: 42px;
+  }
+  .nokma-category-nav {
+    top: 70px;
+    margin-bottom: 38px;
+  }
+  .products-page-catalogue .nokma-product-category + .nokma-product-category {
+    margin-top: 42px;
+    padding-top: 42px;
+  }
+  .products-page-catalogue .nokma-category-heading {
+    margin-bottom: 17px;
+  }
+  .products-page-catalogue .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 11px;
+  }
+  .products-page-catalogue .product-art {
+    height: 145px;
+  }
+  .products-page-catalogue .product-copy {
+    min-height: 67px;
+    padding: 10px;
+  }
+  .products-page-catalogue .product-copy h3 {
+    font-size: 12px;
   }
 }
 .catalogue-note {

@@ -66,15 +66,25 @@ export default async function Page({
             ? '/images/hub-event.webp'
             : slug === 'journey'
               ? '/images/journey-hero.png'
+              : slug === 'products'
+                ? '/images/nokma-catalogue.jpg'
               : undefined
         }
         imageAlt={
           slug === 'our-work'
             ? 'Community gathering at the Megh Farm Processing Hub inauguration'
+            : slug === 'products'
+              ? 'Nokma ice cream product collection'
             : undefined
         }
         variant={
-          slug === 'journey' ? 'journey' : slug === 'contact' ? 'contact' : undefined
+          slug === 'journey'
+            ? 'journey'
+            : slug === 'contact'
+              ? 'contact'
+              : slug === 'products'
+                ? 'products'
+                : undefined
         }
       />
       {slug === 'about' ? (
@@ -223,29 +233,39 @@ export default async function Page({
         <WorkPage />
       ) : slug === 'products' ? (
         <>
-          <section className="wrap products-page-intro">
-            <Image
-              src="/images/nokma.webp"
-              alt="Nokma official logo"
-              width={150}
-              height={60}
-            />
-            <div>
-              <span className="eyebrow">DISCOVER THE RANGE</span>
-              <h2>Products with a local story.</h2>
-              <p>
-                The range reflects MMCS’s work to add value closer to where
-                produce is grown and made.
-              </p>
+          <section className="products-showcase">
+            <div className="wrap products-showcase-grid">
+              <div className="products-showcase-copy">
+                <span className="eyebrow">THE NOKMA COLLECTION</span>
+                <h2>Made locally. Enjoyed every day.</h2>
+                <p>
+                  From ice cream and fruit drinks to chips and spices, every
+                  product reflects a value chain that begins closer to the
+                  farmers and communities of Meghalaya.
+                </p>
+                <div className="products-showcase-meta">
+                  <span>7 product categories</span>
+                  <span>Food made with a local story</span>
+                </div>
+                <a
+                  href="https://nokma.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-link"
+                >
+                  Visit Nokma <ArrowUpRight size={18} />
+                </a>
+              </div>
+              <div className="products-showcase-image">
+                <Image
+                  src="/images/nokma-catalogue.jpg"
+                  alt="Nokma ice cream product range"
+                  fill
+                  sizes="(max-width: 700px) 100vw, 48vw"
+                />
+                <span>FROM MEGHALAYA, WITH PURPOSE</span>
+              </div>
             </div>
-            <a
-              href="https://nokma.in/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-link"
-            >
-              Visit Nokma <ArrowUpRight size={18} />
-            </a>
           </section>
           <section className="section wrap products-page-catalogue">
             <ProductCatalogue />

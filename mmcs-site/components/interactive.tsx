@@ -423,8 +423,24 @@ export function ProductCatalogue({ preview = false }: { preview?: boolean }) {
     : nokmaProductCategories;
   return (
     <div className={`nokma-catalogue ${preview ? 'nokma-catalogue-preview' : ''}`}>
+      {!preview && (
+        <nav className="nokma-category-nav" aria-label="Nokma product categories">
+          {nokmaProductCategories.map((category) => (
+            <a
+              href={`#${category.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+              key={category.title}
+            >
+              {category.title}
+            </a>
+          ))}
+        </nav>
+      )}
       {displayedCategories.map((category) => (
-        <section className="nokma-product-category" key={category.title}>
+        <section
+          className="nokma-product-category"
+          id={category.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}
+          key={category.title}
+        >
           {!preview && (
             <div className="nokma-category-heading">
               <span className="eyebrow">NOKMA PRODUCTS</span>

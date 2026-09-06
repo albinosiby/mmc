@@ -60,6 +60,12 @@ export default async function Page({
         title={p.heading}
         description={p.description}
         breadcrumb={p.title}
+        imageSrc={slug === 'our-work' ? '/images/hub-event.webp' : undefined}
+        imageAlt={
+          slug === 'our-work'
+            ? 'Community gathering at the Megh Farm Processing Hub inauguration'
+            : undefined
+        }
       />
       {slug === 'about' ? (
         <>

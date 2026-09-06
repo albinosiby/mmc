@@ -59,14 +59,31 @@ export function PageHero({
   title,
   description,
   breadcrumb,
+  imageSrc,
+  imageAlt,
 }: {
   eyebrow: string;
   title: string;
   description: string;
   breadcrumb: string;
+  imageSrc?: string;
+  imageAlt?: string;
 }) {
   return (
-    <section className="page-hero">
+    <section className={`page-hero ${imageSrc ? 'page-hero-image' : ''}`}>
+      {imageSrc && (
+        <>
+          <Image
+            src={imageSrc}
+            alt={imageAlt ?? ''}
+            fill
+            priority
+            sizes="100vw"
+            className="page-hero-background"
+          />
+          <div className="page-hero-overlay" />
+        </>
+      )}
       <div className="wrap">
         <nav className="breadcrumb" aria-label="Breadcrumb">
           <Link href="/">Home</Link>

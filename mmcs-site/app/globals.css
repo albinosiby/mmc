@@ -1539,6 +1539,63 @@ select:focus-visible {
   padding: 28px 0 70px;
   border-bottom: 1px solid #e9ece5;
 }
+.page-hero-image {
+  position: relative;
+  overflow: hidden;
+  min-height: 410px;
+  display: flex;
+  align-items: center;
+  background: #103b36;
+}
+.page-hero-background {
+  object-fit: cover;
+  object-position: center 42%;
+  z-index: 0;
+}
+.page-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    90deg,
+    #0d302dd9 0%,
+    #10352aaf 48%,
+    #10352a4d 100%
+  );
+}
+.page-hero-image > .wrap {
+  position: relative;
+  z-index: 2;
+  width: min(1280px, calc(100% - 96px));
+}
+.page-hero-image .breadcrumb,
+.page-hero-image .breadcrumb a,
+.page-hero-image .page-hero-grid p {
+  color: #e5efe9;
+}
+.page-hero-image .breadcrumb {
+  border-color: #ffffff40;
+}
+.page-hero-image .page-hero-grid h1 {
+  color: white;
+}
+.page-hero-image .page-hero-grid h1 em {
+  color: #d5ecb9;
+}
+.page-hero-image .eyebrow {
+  color: #d5ecb9;
+}
+@media (max-width: 700px) {
+  .page-hero-image {
+    min-height: 470px;
+  }
+  .page-hero-image > .wrap {
+    width: calc(100% - 48px);
+  }
+  .page-hero-background {
+    object-position: 58% center;
+  }
+}
 .breadcrumb {
   display: flex;
   align-items: center;

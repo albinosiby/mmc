@@ -728,7 +728,9 @@ select:focus-visible {
 }
 .brand-logo {
   background: #fff;
-  border-radius: 8px;
+  border: 1px solid #d9e2d8;
+  border-radius: 18px;
+  box-shadow: 0 1px 2px #102d350d;
   display: grid;
   place-items: center;
   width: 140px;
@@ -1276,9 +1278,10 @@ select:focus-visible {
   height: 62px;
   object-fit: contain;
   padding: 8px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
+  border: 1px solid #d9e2d8;
+  border-radius: 18px;
   background: white;
+  box-shadow: 0 1px 2px #102d350d;
 }
 .products-page-catalogue {
   padding-top: 42px;
@@ -1752,9 +1755,10 @@ select:focus-visible {
   margin-top: 24px;
 }
 .project-logo {
-  border: 1px solid var(--line);
-  border-radius: 10px;
+  border: 1px solid #d9e2d8;
+  border-radius: 18px;
   background: white;
+  box-shadow: 0 1px 2px #102d350d;
   padding: 15px;
   display: grid;
   place-items: center;
@@ -3200,7 +3204,9 @@ select:focus-visible {
   height: 40px;
   min-width: 45px;
   background: #fff;
-  border-radius: 3px;
+  border: 1px solid #d9e2d8;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px #102d350d;
   margin-bottom: 5px;
 }
 .reference-logo img {

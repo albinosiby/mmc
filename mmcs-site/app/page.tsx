@@ -187,15 +187,15 @@ export default function Home() {
                   className="reference-brand-photo"
                 />
                 <div className="brand-photo-wash" />
+                <div className="reference-logo">
+                  <Image
+                    src="/images/nokma.webp"
+                    alt="Nokma official logo"
+                    width={115}
+                    height={45}
+                  />
+                </div>
                 <div className="reference-brand-copy">
-                  <div className="reference-logo">
-                    <Image
-                      src="/images/nokma.webp"
-                      alt="Nokma official logo"
-                      width={115}
-                      height={45}
-                    />
-                  </div>
                   <h3>Nokma</h3>
                   <strong>Local produce. New possibilities.</strong>
                   <p>
@@ -216,15 +216,15 @@ export default function Home() {
                   className="reference-brand-photo"
                 />
                 <div className="brand-photo-wash" />
+                <div className="reference-logo">
+                  <Image
+                    src="/images/megh-farm.webp"
+                    alt="Megh Farm official logo"
+                    width={44}
+                    height={46}
+                  />
+                </div>
                 <div className="reference-brand-copy">
-                  <div className="reference-logo">
-                    <Image
-                      src="/images/megh-farm.webp"
-                      alt="Megh Farm official logo"
-                      width={44}
-                      height={46}
-                    />
-                  </div>
                   <h3>Megh Farm</h3>
                   <strong>From Our Land to a Better Tomorrow.</strong>
                   <p>

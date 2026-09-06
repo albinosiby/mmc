@@ -3585,8 +3585,8 @@ select:focus-visible {
 }
 .reference-brand-photo {
   position: absolute;
-  inset: 0 0 0 auto;
-  width: 50%;
+  inset: 0;
+  width: 100%;
   transition: transform 0.5s;
 }
 .reference-brand.nokma .reference-brand-photo {
@@ -3598,17 +3598,19 @@ select:focus-visible {
   inset: 0;
   background: linear-gradient(
     90deg,
-    #143f33 35%,
-    #143f33e8 48%,
-    transparent 78%
+    #143f33e6 0%,
+    #143f33b5 45%,
+    #143f3354 76%,
+    #143f331f 100%
   );
 }
 .megh .brand-photo-wash {
   background: linear-gradient(
     90deg,
-    #8b4621 33%,
-    #8b4621e8 48%,
-    transparent 78%
+    #8b4621e6 0%,
+    #8b4621b5 45%,
+    #8b462154 76%,
+    #8b46211f 100%
   );
 }
 .reference-brand-copy {
@@ -3617,6 +3619,10 @@ select:focus-visible {
   padding: 22px 25px;
 }
 .reference-logo {
+  position: absolute;
+  z-index: 2;
+  top: 20px;
+  right: 22px;
   display: flex;
   width: max-content;
   align-items: center;
@@ -3628,7 +3634,6 @@ select:focus-visible {
   border: 1px solid #d9e2d8;
   border-radius: 10px;
   box-shadow: 0 1px 2px #102d350d;
-  margin-bottom: 5px;
 }
 .reference-logo img {
   width: auto;

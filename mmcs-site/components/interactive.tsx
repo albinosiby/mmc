@@ -58,40 +58,26 @@ export function Reveal({
   );
 }
 export function Gallery({ preview = false }: { preview?: boolean }) {
-  const [category, setCategory] = useState('All');
   const [index, setIndex] = useState<number | null>(null);
   const trigger = useRef<HTMLButtonElement | null>(null);
-  const filtered = photos.filter(
-    (p) => category === 'All' || p.category === category,
-  );
-  const selected = index === null ? null : filtered[index];
+  const displayedPhotos = preview ? photos.slice(0, 4) : photos;
+  const selected = index === null ? null : displayedPhotos[index];
   const change = (direction: number) =>
     setIndex((current) =>
       current === null
         ? null
-        : (current + direction + filtered.length) % filtered.length,
+        : (current + direction + displayedPhotos.length) %
+          displayedPhotos.length,
     );
   return (
     <>
       <div className="gallery-toolbar">
-        {!preview && (
-          <div className="filter-row" aria-label="Filter photographs">
-            {['All', 'Megh Farm', 'Community'].map((c) => (
-              <button
-                key={c}
-                className={category === c ? 'filter active' : 'filter'}
-                aria-pressed={category === c}
-                onClick={() => setCategory(c)}
-              >
-                {c}
-              </button>
-            ))}
-          </div>
-        )}
-        <span className="muted-note">{filtered.length} photographs · 2024</span>
+        <span className="muted-note">
+          {displayedPhotos.length} photographs · 2024
+        </span>
       </div>
       <div className={`gallery-grid ${preview ? 'gallery-preview' : ''}`}>
-        {filtered.map((photo, i) => (
+        {displayedPhotos.map((photo, i) => (
           <button
             className="gallery-item"
             key={photo.id}
@@ -162,7 +148,7 @@ export function Gallery({ preview = false }: { preview?: boolean }) {
                   <ArrowLeft />
                 </button>
                 <span aria-live="polite">
-                  {(index ?? 0) + 1} / {filtered.length}
+                  {(index ?? 0) + 1} / {displayedPhotos.length}
                 </span>
                 <button
                   className="icon-button"

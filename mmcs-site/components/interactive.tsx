@@ -171,6 +171,44 @@ export function JourneyExplorer() {
           </div>
         ))}
         <p className="journey-photo-note">Photographs from MMCS documentation illustrate our journey; they are not records of every period.</p>
+        <section className="journey-archive" aria-labelledby="journey-archive-title">
+          <div className="journey-archive-intro">
+            <span className="eyebrow">THE FULL PICTURE</span>
+            <h3 id="journey-archive-title">From village action to a farmer-owned value chain.</h3>
+            <p>
+              MMCS began on 14 February 2015 at Aitibi Village, Tikrikilla Block,
+              West Garo Hills. Its work has grown from awareness and savings into
+              farming, women-led production, processing, branding and market access.
+            </p>
+          </div>
+          <div className="journey-archive-facts">
+            <div><strong>20</strong><span>Women at the beginning</span></div>
+            <div><strong>550</strong><span>Members by 2017</span></div>
+            <div><strong>2,000+</strong><span>Members reported by 2023–25</span></div>
+            <div><strong>₹100</strong><span>Inclusive membership fee</span></div>
+          </div>
+          <div className="journey-activity-grid">
+            {[
+              ['Farming & livestock', 'Dairy, poultry, piggery, beekeeping and collective farming.'],
+              ['Women-led enterprise', 'Tailoring, embroidery, traditional attire, candles, soap and home-care products.'],
+              ['Community products', 'Nokma Plates, rosaries, umbrellas, the fair-price grocery shop and Nokma Book Room.'],
+              ['Food & value addition', 'Areca nut, turmeric, fruit and vegetable processing, juices, jam, squash, pulp and ice cream.'],
+              ['Skills & technology', 'Solar technician training, solar dryers and cookers, plus umbrella, detergent and craft training.'],
+              ['Markets & infrastructure', 'Aggregation, packaging, branding, cold-chain, storage, logistics and farmer-market linkages.'],
+            ].map(([title, text]) => (
+              <article key={title}><span className="archive-mark">✦</span><div><h4>{title}</h4><p>{text}</p></div></article>
+            ))}
+          </div>
+          <div className="journey-value-chain" aria-label="MMCS value chain">
+            {['Mobilise', 'Farm', 'Aggregate', 'Process', 'Store', 'Brand', 'Market', 'Own'].map((item, index) => (
+              <span key={item}><b>0{index + 1}</b>{item}</span>
+            ))}
+          </div>
+          <div className="journey-archive-footer">
+            <div><span className="eyebrow">THE PEOPLE WHO STARTED IT</span><p><strong>Rev. Fr. Benoy Joseph</strong> · Founder & Managing Director<br />Wilna Marak · First President &nbsp;|&nbsp; Nelco Sangma · First Secretary<br />Saro Sangma · Kajolish Marak · Rupali Sangma · Rita Marak</p></div>
+            <div><span className="eyebrow">THE VISION AHEAD</span><p>Better farmer incomes, rural employment, tribal women entrepreneurs, reduced post-harvest losses, and locally owned cooperative enterprises across the Garo Hills.</p></div>
+          </div>
+        </section>
       </div>
     </section>
   );

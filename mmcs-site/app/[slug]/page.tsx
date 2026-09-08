@@ -63,14 +63,14 @@ export default async function Page({
           breadcrumb={p.title}
           imageSrc={
             slug === 'our-work'
-              ? '/images/hub-event.webp'
+              ? '/images/our-work-hero.jpg'
               : slug === 'journey'
                 ? '/images/journey-hero.png'
                 : undefined
           }
           imageAlt={
             slug === 'our-work'
-              ? 'Community gathering at the MeghFarm Processing Hub inauguration'
+              ? 'MMCS and community leaders at the MeghFarm Processing Hub inauguration'
               : undefined
           }
           variant={slug === 'journey' ? 'journey' : undefined}

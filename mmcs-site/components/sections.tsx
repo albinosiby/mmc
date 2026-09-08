@@ -125,7 +125,6 @@ export function WorkPage() {
   return (
     <>
       <section className="wrap work-manifesto">
-        <span className="work-mark">01—06</span>
         <div>
           <span className="eyebrow">SIX CONNECTED AREAS</span>
           <h2>
@@ -133,6 +132,9 @@ export function WorkPage() {
             <br />
             Shared progress.
           </h2>
+        </div>
+        <div className="work-meghfarm-logo">
+          <Image src="/images/megh-farm.webp" alt="MeghFarm logo" width={210} height={120} />
         </div>
         <p>
           From the farm and household production to skills, processing and

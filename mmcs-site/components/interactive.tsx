@@ -27,18 +27,23 @@ import { photos, activityGroups, timeline } from '@/lib/content';
 
 const journeyDetails: Record<string, string[]> = {
   '2015': [
-    'MMCS was founded at Khamari Village under the leadership of Rev. Fr. Benoy Joseph.',
-    'Twenty women formed the beginning of the cooperative movement.',
-    'Village awareness programmes focused on savings, cooperation, fair marketing and protection from middlemen.',
+    'Muktidata Multipurpose Cooperative Society was started on 14 February 2015 at Aitibi Village, Tikrikilla Block, West Garo Hills, Meghalaya.',
+    'The initiative was founded under the leadership of Rev. Fr. Benoy Joseph, who served as Founder and Managing Director.',
+    'The Society began with 20 women and a nominal membership contribution so poor and marginal rural women could participate. The fee was later fixed at ₹100 per member.',
+    'Village awareness programmes promoted cooperation, savings, collective farming, fair marketing and protection from middlemen, distress sales and exploitative mortgage practices.',
+    'The founding team included Wilna Marak (First President), Nelco Sangma (First Secretary), and executive members Saro Sangma, Kajolish Marak, Rupali Sangma and Rita Marak.',
   ],
   '2016–2017': [
-    'The Society progressed towards formal registration and institutional development.',
-    'A legal cooperative framework was established to support a growing farmer and women-led membership base.',
+    'MMCS was formally registered during 2016–2017, creating a legal cooperative framework for its growing farmer and women-led membership.',
+    'By 2017, membership had grown to approximately 550, showing increasing confidence in the cooperative model.',
+    'The MMCS Grocery Shop was established at Tikrikilla Market and formally inaugurated on 10 October 2017 by Shri Lemison Sangma, MLA of Raksamgre.',
+    'Candle-making began at Aitibi, while training was conducted in umbrella making, detergent making, rosary making and candle making.',
+    'Five women members were sent to Kerala for specialised umbrella-making and detergent-making training. Women also began home-based rosary production for collection and marketing through MMCS.',
   ],
   '2017': [
     'Membership reached approximately 550.',
     'The MMCS Grocery Shop opened at Tikrikilla Market on 10 October 2017.',
-    'Candle-making began at Khamari and home-based rosary production developed.',
+    'Candle-making began at Aitibi and home-based rosary production developed.',
     'Five women travelled to Kerala for umbrella-making and detergent-making training.',
   ],
   '2018–2020': [
@@ -49,24 +54,25 @@ const journeyDetails: Record<string, string[]> = {
   '2021–2023': [
     'Agriculture, horticulture, dairy and value-addition work expanded.',
     'Farmers were encouraged to explore processing, packaging, branding and direct marketing.',
-    'The Society received the NCDC North East Award in 2023.',
+    'The Society received the NCDC North East Award in 2023 and strengthened its institutional foundation for larger processing and livelihood projects.',
   ],
   '2024': [
     'MeghFarm Processing Hub was established at Khamari and initiated on 10 February 2024.',
     'The hub was inaugurated by Meghalaya Chief Minister Shri Conrad K. Sangma.',
     'Fruit and vegetable processing, pineapple processing, juice, jam, squash, fruit pulp, packaging and branding progressed.',
-    'Nokma brand development accelerated.',
+    'The Nokma brand developed around ice cream, pineapple and passion-fruit juice, jam, squash, fruit pulp and other locally sourced value-added products.',
   ],
   '2025': [
     'Agriculture, dairy, food processing and women’s livelihood programmes continued to expand.',
-    'Collective farming and horticultural development grew.',
-    'The history records recognition as Best Dairy Cooperative in Meghalaya.',
+    'Collective farming and horticultural development grew, with farmers supported through plantation, inputs, market linkages and value addition.',
+    'The history records recognition as Best Dairy Cooperative in Meghalaya in 2025, while membership grew beyond 2,000 during this period.',
   ],
   '2026': [
     'Collective Farming Phase IV and high-value fruit sapling distribution were planned or initiated.',
     'Cold storage, pre-cooling, chilling, blast freezing, ripening and refrigerated logistics remained in development.',
     'The Nokma mineral water initiative is proposed.',
     'Administrative, conference and warehouse infrastructure was developed for the processing hub.',
+    'The Society placed greater emphasis on tribal women becoming entrepreneurs through retail outlets, Nokma product outlets, food and beverage enterprises, digital livelihoods and market-oriented cooperative businesses.',
   ],
 };
 const journeyImages = [
@@ -171,44 +177,6 @@ export function JourneyExplorer() {
           </div>
         ))}
         <p className="journey-photo-note">Photographs from MMCS documentation illustrate our journey; they are not records of every period.</p>
-        <section className="journey-archive" aria-labelledby="journey-archive-title">
-          <div className="journey-archive-intro">
-            <span className="eyebrow">THE FULL PICTURE</span>
-            <h3 id="journey-archive-title">From village action to a farmer-owned value chain.</h3>
-            <p>
-              MMCS began on 14 February 2015 at Aitibi Village, Tikrikilla Block,
-              West Garo Hills. Its work has grown from awareness and savings into
-              farming, women-led production, processing, branding and market access.
-            </p>
-          </div>
-          <div className="journey-archive-facts">
-            <div><strong>20</strong><span>Women at the beginning</span></div>
-            <div><strong>550</strong><span>Members by 2017</span></div>
-            <div><strong>2,000+</strong><span>Members reported by 2023–25</span></div>
-            <div><strong>₹100</strong><span>Inclusive membership fee</span></div>
-          </div>
-          <div className="journey-activity-grid">
-            {[
-              ['Farming & livestock', 'Dairy, poultry, piggery, beekeeping and collective farming.'],
-              ['Women-led enterprise', 'Tailoring, embroidery, traditional attire, candles, soap and home-care products.'],
-              ['Community products', 'Nokma Plates, rosaries, umbrellas, the fair-price grocery shop and Nokma Book Room.'],
-              ['Food & value addition', 'Areca nut, turmeric, fruit and vegetable processing, juices, jam, squash, pulp and ice cream.'],
-              ['Skills & technology', 'Solar technician training, solar dryers and cookers, plus umbrella, detergent and craft training.'],
-              ['Markets & infrastructure', 'Aggregation, packaging, branding, cold-chain, storage, logistics and farmer-market linkages.'],
-            ].map(([title, text]) => (
-              <article key={title}><span className="archive-mark">✦</span><div><h4>{title}</h4><p>{text}</p></div></article>
-            ))}
-          </div>
-          <div className="journey-value-chain" aria-label="MMCS value chain">
-            {['Mobilise', 'Farm', 'Aggregate', 'Process', 'Store', 'Brand', 'Market', 'Own'].map((item, index) => (
-              <span key={item}><b>0{index + 1}</b>{item}</span>
-            ))}
-          </div>
-          <div className="journey-archive-footer">
-            <div><span className="eyebrow">THE PEOPLE WHO STARTED IT</span><p><strong>Rev. Fr. Benoy Joseph</strong> · Founder & Managing Director<br />Wilna Marak · First President &nbsp;|&nbsp; Nelco Sangma · First Secretary<br />Saro Sangma · Kajolish Marak · Rupali Sangma · Rita Marak</p></div>
-            <div><span className="eyebrow">THE VISION AHEAD</span><p>Better farmer incomes, rural employment, tribal women entrepreneurs, reduced post-harvest losses, and locally owned cooperative enterprises across the Garo Hills.</p></div>
-          </div>
-        </section>
       </div>
     </section>
   );

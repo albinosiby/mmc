@@ -3998,3 +3998,89 @@ select:focus-visible {
   .contact-route address {
     font-size: 13px;
   }
+  .contact-route-note,
+  .contact-route-link {
+    position: static;
+    margin-top: 20px;
+  }
+  .contact-conversation {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    padding-block: 58px 70px;
+  }
+  .contact-conversation-copy h2 {
+    font-size: 32px;
+  }
+  .contact-conversation-copy > p {
+    font-size: 14px;
+  }
+  .contact-conversation-mark {
+    margin-top: 28px;
+  }
+  .contact-form {
+    padding: 26px 20px;
+    border-radius: 16px;
+    box-shadow: 9px 9px 0 #dce9da;
+  }
+  .contact-form h2 {
+    font-size: 27px;
+  }
+  .contact-form > p {
+    font-size: 12px;
+  }
+  .contact-form .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 14px;
+  }
+  .reference-activity-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .reference-activity-grid strong {
+    font-size: 10px;
+  }
+  .reference-impact .wrap {
+    grid-template-columns: 1fr 1fr;
+    gap: 23px 0;
+  }
+  .reference-impact .wrap > div:nth-child(2) {
+    border: 0;
+  }
+  .reference-impact strong {
+    font-size: 22px;
+  }
+  .reference-impact span {
+    font-size: 11px;
+  }
+  .connect-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .connect-inner h2 {
+    font-size: 23px;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+  }
+  .footer-brand,
+  .footer-grid > div:last-child {
+    grid-column: 1 / -1;
+  }
+  .footer-bottom {
+    gap: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reference-brand-photo,
+  .reference-focus svg,
+  .reference-activity-grid .reference-photo {
+    transition: none;
+    transform: none !important;
+  }
+}

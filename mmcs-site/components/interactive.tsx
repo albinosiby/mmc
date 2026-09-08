@@ -33,12 +33,9 @@ const journeyDetails: Record<string, string[]> = {
     'Village awareness programmes promoted cooperation, savings, collective farming, fair marketing and protection from middlemen, distress sales and exploitative mortgage practices.',
     'The founding team included Wilna Marak (First President), Nelco Sangma (First Secretary), and executive members Saro Sangma, Kajolish Marak, Rupali Sangma and Rita Marak.',
   ],
-  '2016–2017': [
-    'MMCS was formally registered during 2016–2017, creating a legal cooperative framework for its growing farmer and women-led membership.',
-    'By 2017, membership had grown to approximately 550, showing increasing confidence in the cooperative model.',
-    'The MMCS Grocery Shop was established at Tikrikilla Market and formally inaugurated on 10 October 2017 by Shri Lemison Sangma, MLA of Raksamgre.',
-    'Candle-making began at Aitibi, while training was conducted in umbrella making, detergent making, rosary making and candle making.',
-    'Five women members were sent to Kerala for specialised umbrella-making and detergent-making training. Women also began home-based rosary production for collection and marketing through MMCS.',
+  '2016': [
+    'MMCS progressed towards formal registration and institutional development.',
+    'A legal cooperative framework was established to support a growing farmer and women-led membership base.',
   ],
   '2017': [
     'Membership reached approximately 550.',
@@ -46,15 +43,35 @@ const journeyDetails: Record<string, string[]> = {
     'Candle-making began at Aitibi and home-based rosary production developed.',
     'Five women travelled to Kerala for umbrella-making and detergent-making training.',
   ],
-  '2018–2020': [
-    'Farmer mobilisation, savings and collective economic activities were strengthened.',
-    'Women-led livelihood programmes and agricultural support expanded.',
-    'Production, aggregation, processing and market linkages began to be treated as connected parts of rural development.',
+  '2018': [
+    'MMCS continued mobilising farmers into cooperative groups.',
+    'Savings and collective economic activities were strengthened.',
+    'Agricultural support expanded with a continued focus on reducing farmers’ dependence on middlemen.',
   ],
-  '2021–2023': [
-    'Agriculture, horticulture, dairy and value-addition work expanded.',
-    'Farmers were encouraged to explore processing, packaging, branding and direct marketing.',
-    'The Society received the NCDC North East Award in 2023 and strengthened its institutional foundation for larger processing and livelihood projects.',
+  '2019': [
+    'Women’s participation in income-generating activities continued to expand.',
+    'MMCS strengthened market linkages and opportunities for rural self-employment.',
+    'Women-led livelihood programmes remained central to community-based economic development.',
+  ],
+  '2020': [
+    'Experience from the grocery shop and women-led production activities informed MMCS’s broader development model.',
+    'Production, aggregation, processing and marketing were increasingly treated as connected parts of rural development.',
+    'The Society moved from small-scale livelihood activities towards cooperative enterprise development.',
+  ],
+  '2021': [
+    'Farmer membership and participation continued to increase.',
+    'MMCS expanded its work in agriculture, horticulture, dairy, women’s livelihoods and value addition.',
+    'Farmers were encouraged to explore opportunities beyond selling raw agricultural produce.',
+  ],
+  '2022': [
+    'Processing, packaging, branding and direct marketing became stronger areas of focus.',
+    'The cooperative model helped members work collectively, improve bargaining power and seek better markets.',
+    'MMCS strengthened its institutional capacity for larger processing and livelihood projects.',
+  ],
+  '2023': [
+    'Agriculture, horticulture, dairy and value-addition activities continued to develop.',
+    'The Society received the NCDC North East Award in 2023.',
+    'The recognition strengthened MMCS’s credibility in supporting farmers and developing rural enterprises.',
   ],
   '2024': [
     'MeghFarm Processing Hub was established at Khamari and initiated on 10 February 2024.',

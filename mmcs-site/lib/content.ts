@@ -133,9 +133,9 @@ export const timeline = [
     source: 'history:beginning',
   },
   {
-    year: '2016–2017',
+    year: '2016',
     title: 'A cooperative takes shape.',
-    text: 'The Society moved towards formal registration and institutional development, creating a cooperative framework for a growing membership.',
+    text: 'MMCS progressed towards formal registration and institutional development, building a legal cooperative framework for its growing membership.',
     source: 'history:registration',
   },
   {
@@ -145,15 +145,39 @@ export const timeline = [
     source: 'history:2017',
   },
   {
-    year: '2018–2020',
-    title: 'Building on collective strength.',
-    text: 'Farmer mobilisation, savings, agricultural support and women-led livelihoods developed alongside stronger market connections. Production, aggregation and marketing became increasingly connected.',
+    year: '2018',
+    title: 'Strengthening farmer groups.',
+    text: 'Farmer mobilisation, savings and collective economic activities continued to grow alongside agricultural support and efforts to reduce dependence on middlemen.',
     source: 'history:consolidation',
   },
   {
-    year: '2021–2023',
-    title: 'Creating more value, together.',
-    text: 'MMCS expanded its focus on agriculture, horticulture, dairy and processing. The Society’s history records the NCDC North East Award in 2023.',
+    year: '2019',
+    title: 'Women-led livelihoods grow.',
+    text: 'MMCS expanded women’s participation in income-generating activities, strengthened market linkages and created more opportunities for rural self-employment.',
+    source: 'history:consolidation',
+  },
+  {
+    year: '2020',
+    title: 'Connecting production and markets.',
+    text: 'Experience from retail and women-led production helped MMCS connect production, aggregation, processing and marketing within a broader cooperative enterprise model.',
+    source: 'history:consolidation',
+  },
+  {
+    year: '2021',
+    title: 'A wider agricultural focus.',
+    text: 'MMCS increased its focus on agriculture, horticulture, dairy, women’s livelihoods and value addition as farmer participation continued to grow.',
+    source: 'history:value-addition',
+  },
+  {
+    year: '2022',
+    title: 'From producer to processor.',
+    text: 'Farmers were encouraged to move beyond raw produce through processing, packaging, branding and direct marketing, strengthening bargaining power and market access.',
+    source: 'history:value-addition',
+  },
+  {
+    year: '2023',
+    title: 'Recognition in the North East.',
+    text: 'The Society strengthened its institutional capacity and received the NCDC North East Award in 2023.',
     source: 'history:value-addition',
   },
   {

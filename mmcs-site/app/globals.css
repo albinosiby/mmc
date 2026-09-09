@@ -1879,8 +1879,8 @@ select:focus-visible {
   color: #a35333;
 }
 .future-initiatives {
-  background: linear-gradient(135deg, #dce9d4 0%, #edf3e7 100%);
-  border-block: 1px solid #c5d7bf;
+  background: linear-gradient(135deg, #bfd5b8 0%, #d9e7d1 100%);
+  border-block: 1px solid #a7c3a1;
 }
 .future-initiatives .section {
   padding-block: 76px;

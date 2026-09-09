@@ -706,18 +706,46 @@ select:focus-visible {
   gap: 24px;
 }
 .brand-card {
+  position: relative;
+  overflow: hidden;
   border-radius: 14px;
-  padding: 35px 38px;
   min-height: 380px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   color: white;
   background: #123f33;
   transition: transform 0.2s;
 }
 .brand-card.earth {
   background: #a35333;
+}
+.brand-card-photo {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  object-position: 68% center;
+}
+.brand-card.earth .brand-card-photo {
+  object-position: 45% center;
+}
+.brand-card-wash {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(0deg, #0a2922b8 0%, transparent 58%),
+    linear-gradient(90deg, #143f33c4 0%, #143f3395 48%, #143f3322 100%);
+}
+.brand-card.earth .brand-card-wash {
+  background:
+    linear-gradient(0deg, #6c351bb8 0%, transparent 58%),
+    linear-gradient(90deg, #8b4621c4 0%, #8b462195 48%, #8b462122 100%);
+}
+.brand-card-content {
+  position: relative;
+  z-index: 1;
+  min-height: 380px;
+  padding: 35px 38px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .brand-top {
   display: flex;
@@ -2600,6 +2628,10 @@ select:focus-visible {
     font-size: 12px !important;
   }
   .brand-card {
+    min-height: 360px;
+  }
+  .brand-card-content {
+    min-height: 360px;
     padding: 27px;
   }
   .brand-card h3 {
@@ -2757,6 +2789,9 @@ select:focus-visible {
     gap: 18px;
   }
   .brand-card {
+    min-height: 390px;
+  }
+  .brand-card-content {
     min-height: 390px;
     padding: 26px;
   }

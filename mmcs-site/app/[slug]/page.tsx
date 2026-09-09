@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowUpRight, ArrowRight } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, Handshake, MapPin } from 'lucide-react';
 import { pageInfo, projects, siteUrl } from '@/lib/content';
 import {
   PageHero,
@@ -294,16 +294,45 @@ export default async function Page({
           <Gallery />
         </section>
       ) : slug === 'contact' ? (
-        <section className="section wrap contact-simple">
-          <div className="contact-simple-copy">
-            <span className="eyebrow">CONTACT MMCS</span>
-            <h1>Let’s start a conversation.</h1>
-            <p>
-              Reach out to learn more about MMCS, our work and the communities
-              we support.
-            </p>
+        <section className="contact-page">
+          <div className="wrap contact-simple">
+            <div className="contact-simple-copy">
+              <span className="eyebrow">CONTACT MMCS</span>
+              <h1>Let’s start a conversation.</h1>
+              <p>
+                Reach out to learn more about MMCS, our work and the
+                communities we support.
+              </p>
+              <div className="contact-quickfacts">
+                <div className="contact-quickfact">
+                  <span className="contact-quickfact-icon">
+                    <MapPin size={20} />
+                  </span>
+                  <div>
+                    <span className="eyebrow">OUR BASE</span>
+                    <address>
+                      Khamari Village, Tikrikilla Block<br />
+                      West Garo Hills, Meghalaya
+                    </address>
+                  </div>
+                </div>
+                <div className="contact-quickfact">
+                  <span className="contact-quickfact-icon">
+                    <Handshake size={20} />
+                  </span>
+                  <div>
+                    <span className="eyebrow">LET’S TALK ABOUT</span>
+                    <p>Partnerships, livelihoods and local enterprise.</p>
+                  </div>
+                </div>
+              </div>
+              <p className="contact-simple-note">
+                <span /> Tell us a little about what you have in mind and we’ll
+                prepare your enquiry for you to copy.
+              </p>
+            </div>
+            <ContactForm />
           </div>
-          <ContactForm />
         </section>
       ) : null}
       {slug !== 'contact' && <ConnectBanner />}

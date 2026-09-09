@@ -1878,6 +1878,18 @@ select:focus-visible {
 .earth h2 {
   color: #a35333;
 }
+.future-initiatives {
+  background: linear-gradient(135deg, #eff5e9 0%, #f8faf4 100%);
+  border-block: 1px solid #dfe8d9;
+}
+.future-initiatives .section {
+  padding-block: 76px;
+}
+.future-initiatives .initiative-grid article {
+  background: #fff;
+  border-color: #d6e2d3;
+  box-shadow: 0 12px 28px #17352a08;
+}
 .initiative-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

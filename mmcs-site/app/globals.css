@@ -1078,6 +1078,10 @@ select:focus-visible {
   grid-column: span 5;
   background: #e8f0df;
 }
+.work-programme-card.card-3,
+.work-programme-card.card-4 {
+  grid-column: span 6;
+}
 .work-programme-card.card-5 {
   grid-column: span 5;
   background: #f5eee4;
@@ -1195,6 +1199,8 @@ select:focus-visible {
   .work-programme-card,
   .work-programme-card.card-1,
   .work-programme-card.card-2,
+  .work-programme-card.card-3,
+  .work-programme-card.card-4,
   .work-programme-card.card-5,
   .work-programme-card.card-6 {
     grid-column: auto;

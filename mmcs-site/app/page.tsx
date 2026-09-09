@@ -127,6 +127,29 @@ export default function Home() {
           <Link className="button" href="/journey">
             Read Our Story <ArrowRight size={16} />
           </Link>
+          <div className="about-facts" aria-label="MMCS at a glance">
+            <div>
+              <CalendarDays aria-hidden="true" />
+              <span>
+                <strong>Since 2015</strong>
+                <small>Growing together</small>
+              </span>
+            </div>
+            <div>
+              <MapPin aria-hidden="true" />
+              <span>
+                <strong>West Garo Hills</strong>
+                <small>Meghalaya</small>
+              </span>
+            </div>
+            <div>
+              <Users aria-hidden="true" />
+              <span>
+                <strong>2,000+</strong>
+                <small>Members reported</small>
+              </span>
+            </div>
+          </div>
         </div>
         <div className="purpose-rail">
           <article>

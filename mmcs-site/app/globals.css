@@ -3205,7 +3205,7 @@ select:focus-visible {
   padding-block: 42px;
 }
 .landscape-copy {
-  width: min(520px, 48%);
+  width: min(470px, 44%);
   padding: 32px 0;
   color: #fff;
 }
@@ -3226,7 +3226,7 @@ select:focus-visible {
   box-shadow: 0 0 0 4px #b9dba91c;
 }
 .landscape-copy h1 {
-  font-size: clamp(34px, 3.1vw, 46px);
+  font-size: clamp(32px, 2.8vw, 42px);
   line-height: 1.04;
   letter-spacing: -0.055em;
   font-weight: 600;
@@ -3237,7 +3237,7 @@ select:focus-visible {
   color: #cce8ba;
 }
 .landscape-copy p {
-  max-width: 460px;
+  max-width: 420px;
   color: #e1ebe6;
   font-size: 13px;
   line-height: 1.7;
@@ -3354,6 +3354,41 @@ select:focus-visible {
 }
 .about-reference-copy .button {
   align-self: flex-start;
+}
+.about-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+.about-facts > div {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+}
+.about-facts svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  color: var(--green);
+}
+.about-facts span {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+.about-facts strong {
+  color: var(--navy);
+  font-size: 11px;
+  line-height: 1.25;
+}
+.about-facts small {
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.35;
 }
 .purpose-rail {
   position: relative;
@@ -3737,7 +3772,7 @@ select:focus-visible {
     min-height: 430px;
   }
   .landscape-copy {
-    max-width: 530px;
+    max-width: 470px;
   }
   .landscape-stat {
     width: 160px;
@@ -3928,6 +3963,10 @@ select:focus-visible {
   }
   .about-reference-copy p {
     font-size: 13px;
+  }
+  .about-facts {
+    margin-top: 18px;
+    padding-top: 16px;
   }
   .purpose-rail {
     grid-template-columns: 1fr;

@@ -1019,13 +1019,13 @@ select:focus-visible {
 /* Modern work-page programme system. */
 .work-manifesto {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) 140px minmax(0, 1fr);
   gap: 38px;
   padding: 80px 0 54px;
   align-items: end;
 }
 .work-meghfarm-logo { display: flex; align-items: center; justify-content: center; min-height: 110px; }
-.work-meghfarm-logo img { width: min(140px, 100%); height: auto; object-fit: contain; }
+.work-meghfarm-logo img { width: 140px; max-width: 100%; height: auto; object-fit: contain; }
 .work-mark {
   color: var(--green);
   font-size: 13px;
@@ -1179,13 +1179,30 @@ select:focus-visible {
   color: #12352e;
   border-color: #d7eac9;
 }
+@media (min-width: 801px) and (max-width: 1100px) {
+  .work-manifesto {
+    gap: 24px;
+    padding: 52px 0 40px;
+    align-items: center;
+  }
+  .work-manifesto h2 {
+    font-size: clamp(34px, 4.4vw, 46px);
+  }
+  .work-manifesto p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .work-meghfarm-logo {
+    min-height: 90px;
+  }
+}
 @media (max-width: 800px) {
   .work-manifesto {
     grid-template-columns: 1fr;
     gap: 17px;
     padding: 48px 0 35px;
   }
-  .work-meghfarm-logo { justify-content: flex-start; min-height: 72px; }
+  .work-meghfarm-logo { justify-content: center; min-height: 72px; }
   .work-mark {
     padding: 0;
   }

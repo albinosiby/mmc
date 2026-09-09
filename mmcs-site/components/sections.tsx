@@ -227,38 +227,54 @@ export function BrandCards() {
       {projects.map((p, i) => (
         <Reveal key={p.id}>
           <article className={`brand-card ${p.theme}`}>
-            <div className="brand-top">
-              <span className="eyebrow">
-                0{i + 1} / {p.name.toUpperCase()}
-              </span>
-              <span className="brand-logo">
-                <Image
-                  src={p.logo}
-                  alt={`${p.name} official logo`}
-                  width={p.id === 'nokma' ? 150 : 80}
-                  height={80}
-                />
-              </span>
-            </div>
-            <div>
-              <h3>
-                {p.tagline.split('\n').map((line) => (
-                  <span key={line}>{line}</span>
-                ))}
-              </h3>
-              <p>{p.description}</p>
-            </div>
-            <div className="brand-bottom">
-              <span>
-                {p.id === 'nokma' ? 'PRODUCTS WITH PURPOSE' : 'FARM TO MARKET'}
-              </span>
-              <Link
-                href={`/organisations/${p.id}`}
-                className="round-link"
-                aria-label={`Explore ${p.name}`}
-              >
-                <ArrowUpRight size={24} />
-              </Link>
+            <Image
+              src={
+                p.id === 'nokma'
+                  ? '/images/nokma-product-team.jpg'
+                  : '/images/megh-farm-pineapple-harvest.jpg'
+              }
+              alt=""
+              fill
+              sizes="(max-width: 700px) 100vw, 50vw"
+              className="brand-card-photo"
+            />
+            <div className="brand-card-wash" />
+            <div className="brand-card-content">
+              <div className="brand-top">
+                <span className="eyebrow">
+                  0{i + 1} / {p.name.toUpperCase()}
+                </span>
+                <span className="brand-logo">
+                  <Image
+                    src={p.logo}
+                    alt={`${p.name} official logo`}
+                    width={p.id === 'nokma' ? 150 : 80}
+                    height={80}
+                  />
+                </span>
+              </div>
+              <div>
+                <h3>
+                  {p.tagline.split('\n').map((line) => (
+                    <span key={line}>{line}</span>
+                  ))}
+                </h3>
+                <p>{p.description}</p>
+              </div>
+              <div className="brand-bottom">
+                <span>
+                  {p.id === 'nokma'
+                    ? 'PRODUCTS WITH PURPOSE'
+                    : 'FARM TO MARKET'}
+                </span>
+                <Link
+                  href={`/organisations/${p.id}`}
+                  className="round-link"
+                  aria-label={`Explore ${p.name}`}
+                >
+                  <ArrowUpRight size={24} />
+                </Link>
+              </div>
             </div>
           </article>
         </Reveal>

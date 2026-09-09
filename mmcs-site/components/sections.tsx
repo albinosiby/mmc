@@ -430,20 +430,22 @@ export function ProjectFeature({
 }
 export function FutureInitiatives() {
   return (
-    <section className="section wrap">
-      <SectionHeading
-        eyebrow="THE NEXT CHAPTER"
-        title="Building towards tomorrow."
-        description="The 2025–2026 history outlines these programmes and development priorities. Their stages are shown separately from established activities."
-      />
-      <div className="initiative-grid">
-        {initiatives.map((i) => (
-          <article key={i.name}>
-            <span className="status-label">{i.status}</span>
-            <h3>{i.name}</h3>
-            <p>{i.text}</p>
-          </article>
-        ))}
+    <section className="future-initiatives">
+      <div className="section wrap">
+        <SectionHeading
+          eyebrow="THE NEXT CHAPTER"
+          title="Building towards tomorrow."
+          description="The 2025–2026 history outlines these programmes and development priorities. Their stages are shown separately from established activities."
+        />
+        <div className="initiative-grid">
+          {initiatives.map((i) => (
+            <article key={i.name}>
+              <span className="status-label">{i.status}</span>
+              <h3>{i.name}</h3>
+              <p>{i.text}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

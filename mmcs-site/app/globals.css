@@ -213,7 +213,10 @@ select:focus-visible {
   flex-shrink: 0;
 }
 .identity img {
+  width: auto;
+  height: 55px;
   object-fit: contain;
+  flex-shrink: 0;
 }
 .identity strong {
   display: block;
@@ -1419,17 +1422,18 @@ select:focus-visible {
   letter-spacing: 0.08em;
 }
 .footer-logo {
-  background: #fff;
-  border-radius: 5px;
+  background: transparent;
+  border-radius: 0;
   display: grid;
   place-items: center;
-  width: 59px;
-  height: 68px;
-  padding: 5px;
+  width: 52px;
+  height: 63px;
+  padding: 0;
 }
 .footer-logo img {
   height: 100%;
   width: auto;
+  object-fit: contain;
 }
 .footer-address {
   display: flex;
@@ -3724,8 +3728,8 @@ select:focus-visible {
   line-height: 1.25;
 }
 .footer-logo {
-  width: 43px;
-  height: 52px;
+  width: 52px;
+  height: 63px;
   flex-shrink: 0;
 }
 .footer-bottom {
@@ -3815,8 +3819,8 @@ select:focus-visible {
     font-size: 7px;
   }
   .identity img {
-    width: 35px;
-    height: 43px;
+    width: auto;
+    height: 46px;
   }
   .landscape-content {
     display: block;

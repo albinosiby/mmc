@@ -40,10 +40,10 @@ export function Navigation() {
       <div className="wrap header-inner">
         <Link className="identity" href="/" aria-label="MMCS home">
           <Image
-            src="/images/mmcs.webp"
+            src="/images/mmcs-logo.png"
             alt="MMCS official logo"
-            width={43}
-            height={53}
+            width={45}
+            height={55}
             priority
           />
           <span>

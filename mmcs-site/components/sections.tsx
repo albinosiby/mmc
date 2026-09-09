@@ -492,10 +492,10 @@ export function Footer() {
           <Link href="/" className="footer-identity">
             <span className="footer-logo">
               <Image
-                src="/images/mmcs.webp"
+                src="/images/mmcs-logo.png"
                 alt="MMCS official logo"
-                width={48}
-                height={58}
+                width={52}
+                height={63}
               />
             </span>
             <strong>

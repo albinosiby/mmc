@@ -185,9 +185,9 @@ export default async function Page({
         <>
           <section className="section wrap organisation-intro">
             <Image
-              src="/images/mmcs.webp"
+              src="/images/mmcs-logo.png"
               alt="Muktidata Multipurpose Cooperative Society official logo"
-              width={130}
+              width={132}
               height={160}
             />
             <div>

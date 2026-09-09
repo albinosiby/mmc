@@ -704,9 +704,15 @@ select:focus-visible {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
+  align-items: stretch;
+}
+.brand-grid > .revealed {
+  display: flex;
 }
 .brand-card {
   position: relative;
+  width: 100%;
+  flex: 1;
   overflow: hidden;
   border-radius: 14px;
   min-height: 380px;

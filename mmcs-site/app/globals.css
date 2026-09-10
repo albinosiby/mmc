@@ -2021,14 +2021,16 @@ select:focus-visible {
 .journey-controls button { display: grid; place-items: center; border: 1px solid #cad5cb; border-radius: 50%; width: 44px; height: 44px; background: transparent; color: #174736; transition: background .2s, color .2s; }
 .journey-controls button:hover:not(:disabled) { background: #174736; color: #fff; }
 .journey-controls button:disabled { opacity: .3; cursor: default; }
-.journey-card-rail { display: flex; gap: 18px; overflow-x: auto; padding: 8px 3px 18px; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: #9cb7a3 transparent; }
-.journey-card-rail > button { flex: 0 0 260px; padding: 0; overflow: hidden; border: 1px solid #dce2d7; border-radius: 16px; background: #fff; text-align: left; color: #193d30; scroll-snap-align: start; transition: transform .3s, background .3s, color .3s, box-shadow .3s; }
-.journey-card-rail > button:hover { transform: translateY(-4px); }
-.journey-card-rail > button.active { background: #173e32; color: #fff; box-shadow: 0 8px 20px #173e3218; border-color: #173e32; }
+.coverflow { position: relative; overflow: hidden; isolation: isolate; perspective: 1450px; transform-style: preserve-3d; }
+.coverflow-item { position: absolute; top: 50%; left: 50%; transform-style: preserve-3d; will-change: transform, opacity; }
+.journey-card-rail { --coverflow-near: clamp(138px, 15vw, 205px); --coverflow-far: clamp(258px, 31vw, 390px); height: 306px; margin: 0 -14px; touch-action: pan-y; }
+.journey-card { display: block; width: clamp(218px, 25vw, 270px); padding: 0; overflow: hidden; border: 1px solid #dce2d7; border-radius: 16px; background: #fff; text-align: left; color: #193d30; transform: translate(-50%, -50%); transition: background .3s, color .3s, box-shadow .3s; }
+.journey-card:hover { box-shadow: 0 15px 34px #173e3220; }
+.journey-card.active { background: #173e32; color: #fff; box-shadow: 0 18px 38px #173e3238; border-color: #173e32; }
 .journey-card-photo { position: relative; height: 144px; overflow: hidden; }
 .journey-card-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg,#102d3550,transparent 65%); }
 .journey-card-photo img { object-fit: cover; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
-.journey-card-rail button:hover img { transform: scale(1.07); }
+.journey-card:hover img { transform: scale(1.07); }
 .journey-card-number { position: absolute; z-index: 1; top: 15px; left: 17px; color: #fff; font-size: 9px; font-weight: 600; letter-spacing: .14em; }
 .journey-card-arrow { display: grid; place-items: center; position: absolute; z-index: 1; right: 14px; bottom: 14px; width: 33px; height: 33px; background: #fff; border-radius: 50%; color: #173e32; transition: transform .3s; }
 .active .journey-card-arrow { background: #d7edb8; transform: rotate(45deg); }
@@ -2085,8 +2087,8 @@ select:focus-visible {
   .journey-explorer-heading h2 { font-size: 35px; max-width: 330px; }
   .journey-explorer-intro > p { font-size: 13px; }
   .journey-controls { margin-top: 16px; }
-  .journey-card-rail { gap: 12px; }
-  .journey-card-rail > button { flex-basis: 232px; }
+  .journey-card-rail { --coverflow-near: 142px; --coverflow-far: 246px; height: 277px; margin: 0 -12px; }
+  .journey-card { width: 220px; }
   .journey-card-photo { height: 128px; }
   .journey-progress { margin: 18px 0 25px; }
   .journey-detail { grid-template-columns: 1fr; border-radius: 17px; }

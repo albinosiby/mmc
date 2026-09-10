@@ -1,7 +1,8 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion, useReducedMotion } from 'framer-motion';
 import {
   ArrowLeft,
   ArrowRight,
@@ -99,6 +100,97 @@ const journeyImages = [
   '/images/inauguration.webp',
 ];
 
+type CoverflowProps<T> = {
+  items: readonly T[];
+  activeIndex: number;
+  onActiveChange: (index: number) => void;
+  className?: string;
+  ariaLabel: string;
+  renderItem: (item: T, index: number, isActive: boolean) => ReactNode;
+};
+
+/** Reusable 3D center-focus rail for cards, images, and other repeated content. */
+export function Coverflow<T>({
+  items,
+  activeIndex,
+  onActiveChange,
+  className = '',
+  ariaLabel,
+  renderItem,
+}: CoverflowProps<T>) {
+  const reduceMotion = useReducedMotion();
+  const suppressClick = useRef(false);
+  const spring = reduceMotion
+    ? { duration: 0 }
+    : { type: 'spring' as const, stiffness: 180, damping: 24, mass: 0.8 };
+  const normalize = (index: number) =>
+    ((index % items.length) + items.length) % items.length;
+  const positionFor = (index: number) => {
+    let offset = index - activeIndex;
+    if (offset > items.length / 2) offset -= items.length;
+    if (offset < -items.length / 2) offset += items.length;
+    const distance = Math.abs(offset);
+    const direction = offset < 0 ? -1 : 1;
+    const visibleDistance = Math.min(distance, 3);
+    return {
+      distance,
+      animate: {
+        x:
+          distance === 0
+            ? '0px'
+            : distance === 1
+              ? direction > 0
+                ? 'var(--coverflow-near)'
+                : 'calc(0px - var(--coverflow-near))'
+              : direction > 0
+                ? 'var(--coverflow-far)'
+                : 'calc(0px - var(--coverflow-far))',
+        z: distance === 0 ? 0 : distance === 1 ? -100 : -200,
+        scale: distance === 0 ? 1 : distance === 1 ? 0.88 : 0.74,
+        rotateY: distance === 0 ? 0 : direction * (distance === 1 ? -10 : -18),
+        opacity: distance === 0 ? 1 : distance === 1 ? 0.86 : distance === 2 ? 0.62 : 0,
+      },
+      zIndex: items.length - visibleDistance,
+    };
+  };
+
+  return (
+    <div className={`coverflow ${className}`} role="tablist" aria-label={ariaLabel}>
+      {items.map((item, index) => {
+        const { distance, animate, zIndex } = positionFor(index);
+        return (
+          <motion.div
+            key={index}
+            className="coverflow-item"
+            animate={animate}
+            transition={spring}
+            drag={reduceMotion ? false : 'x'}
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.16}
+            dragMomentum={false}
+            onDragEnd={(_, info) => {
+              const intent = Math.abs(info.offset.x) > 42 || Math.abs(info.velocity.x) > 340;
+              if (!intent) return;
+              suppressClick.current = true;
+              onActiveChange(normalize(activeIndex + (info.offset.x < 0 || info.velocity.x < 0 ? 1 : -1)));
+              window.setTimeout(() => { suppressClick.current = false; }, 0);
+            }}
+            onClickCapture={(event) => {
+              if (suppressClick.current) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+            }}
+            style={{ zIndex, pointerEvents: distance <= 2 ? 'auto' : 'none' }}
+          >
+            {renderItem(item, index, index === activeIndex)}
+          </motion.div>
+        );
+      })}
+    </div>
+  );
+}
+
 export function JourneyExplorer() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -107,15 +199,10 @@ export function JourneyExplorer() {
   const chapter = String(selectedIndex + 1).padStart(2, '0');
 
   function selectChapter(index: number, focus = false) {
-    const next = Math.max(0, Math.min(timeline.length - 1, index));
+    const next = ((index % timeline.length) + timeline.length) % timeline.length;
     setSelectedIndex(next);
     const tab = tabs.current[next];
     if (focus) tab?.focus({ preventScroll: true });
-    tab?.scrollIntoView({
-      behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
-      block: 'nearest',
-      inline: 'nearest',
-    });
   }
 
   return (
@@ -130,23 +217,28 @@ export function JourneyExplorer() {
             <p>Small beginnings. Shared ambition. Explore the moments that have shaped our cooperative since 2015.</p>
             <div className="journey-controls">
               <span>Explore the years <ArrowRight size={16} aria-hidden="true" /></span>
-              <button type="button" aria-label="Previous chapter" disabled={selectedIndex === 0} onClick={() => selectChapter(selectedIndex - 1)}><ArrowLeft size={19} /></button>
-              <button type="button" aria-label="Next chapter" disabled={selectedIndex === timeline.length - 1} onClick={() => selectChapter(selectedIndex + 1)}><ArrowRight size={19} /></button>
+              <button type="button" aria-label="Previous chapter" onClick={() => selectChapter(selectedIndex - 1)}><ArrowLeft size={19} /></button>
+              <button type="button" aria-label="Next chapter" onClick={() => selectChapter(selectedIndex + 1)}><ArrowRight size={19} /></button>
             </div>
           </div>
         </div>
-        <div className="journey-card-rail" role="tablist" aria-label="MMCS journey years">
-          {timeline.map((entry, index) => (
+        <Coverflow
+          items={timeline}
+          activeIndex={selectedIndex}
+          onActiveChange={selectChapter}
+          className="journey-card-rail"
+          ariaLabel="MMCS journey years"
+          renderItem={(entry, index, isActive) => (
             <button
               type="button"
               key={entry.year}
               ref={(node) => { tabs.current[index] = node; }}
               id={`year-${entry.year}`}
               role="tab"
-              aria-selected={selectedIndex === index}
+              aria-selected={isActive}
               aria-controls={`chapter-panel-${index}`}
-              tabIndex={selectedIndex === index ? 0 : -1}
-              className={selectedIndex === index ? 'active' : ''}
+              tabIndex={isActive ? 0 : -1}
+              className={`journey-card ${isActive ? 'active' : ''}`}
               onClick={() => selectChapter(index)}
               onKeyDown={(event) => {
                 const next = event.key === 'ArrowRight' ? (index + 1) % timeline.length
@@ -165,8 +257,8 @@ export function JourneyExplorer() {
                 <strong>{entry.title}</strong>
               </div>
             </button>
-          ))}
-        </div>
+          )}
+        />
         <div className="journey-progress" aria-hidden="true">
           <span>2015</span>
           <div><i style={{ width: `${((selectedIndex + 1) / timeline.length) * 100}%` }} /></div>
@@ -187,7 +279,7 @@ export function JourneyExplorer() {
                   <ul>{journeyDetails[selected.year].map((detail, detailIndex) => (
                     <li key={detail} style={{ animationDelay: `${detailIndex * 65 + 120}ms` }}><span aria-hidden="true">{String(detailIndex + 1).padStart(2, '0')}</span>{detail}</li>
                   ))}</ul>
-                  {selectedIndex < timeline.length - 1 && <button type="button" className="journey-next" onClick={() => selectChapter(selectedIndex + 1)}>Next chapter <span>{timeline[selectedIndex + 1].year} <ArrowRight size={17} /></span></button>}
+                  <button type="button" className="journey-next" onClick={() => selectChapter(selectedIndex + 1)}>Next chapter <span>{timeline[(selectedIndex + 1) % timeline.length].year} <ArrowRight size={17} /></span></button>
                 </div>
               </article>
             )}

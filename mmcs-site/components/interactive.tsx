@@ -41,8 +41,9 @@ function asParagraph(items: string[]) {
   return `${items.map((item) => item.replace(/[.;]$/, '')).join('; ')}.`;
 }
 
-function cardYear(year: string) {
-  return year.split(/[–—-]/, 1)[0].trim();
+function cardYear(entry: { id: string; year: string }) {
+  if (entry.id === 'nokma-2024-2025') return '2025';
+  return entry.year.split(/[–—-]/, 1)[0].trim();
 }
 
 export function JourneyExplorer() {
@@ -107,7 +108,7 @@ export function JourneyExplorer() {
                 <span className="journey-card-arrow"><ArrowUpRight size={20} aria-hidden="true" /></span>
               </div>
               <div className="journey-card-label">
-                <span className="journey-card-year">{cardYear(entry.year)}</span>
+                <span className="journey-card-year">{cardYear(entry)}</span>
                 <strong>{entry.title}</strong>
                 <p>{entry.summary}</p>
               </div>

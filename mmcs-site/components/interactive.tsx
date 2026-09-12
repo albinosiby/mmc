@@ -37,6 +37,10 @@ const journeyImages = [
   '/images/inauguration.webp',
 ];
 
+function asParagraph(items: string[]) {
+  return `${items.map((item) => item.replace(/[.;]$/, '')).join('; ')}.`;
+}
+
 type JourneyEntry = (typeof journeyTimeline)[number];
 
 function entryYears(entry: JourneyEntry) {
@@ -147,14 +151,54 @@ export function JourneyExplorer() {
                   <span className="journey-detail-period">{selected.year}</span>
                   <h3>{selectedEntry.heading}</h3>
                   <p>{selectedEntry.introduction}</p>
-                  <p className="journey-detail-summary">{selectedEntry.summary}</p>
                   {(selectedEntry.date || selectedEntry.location) && (
                     <dl className="journey-facts">
                       {selectedEntry.date && <div><dt>Date</dt><dd>{selectedEntry.date}</dd></div>}
                       {selectedEntry.location && <div><dt>Location</dt><dd>{selectedEntry.location}</dd></div>}
                     </dl>
                   )}
-                  {selected.entries.length > 1 && <p className="journey-detail-note">This year includes {selected.entries.length} connected developments.</p>}
+                  {selectedEntry.leadership && (
+                    <section className="journey-detail-section" aria-labelledby={`leadership-${selectedEntry.id}`}>
+                      <h4 id={`leadership-${selectedEntry.id}`}>Founding leadership</h4>
+                      <dl className="journey-leadership">
+                        {selectedEntry.leadership.founder && <div><dt>Founder</dt><dd>{selectedEntry.leadership.founder}</dd></div>}
+                        {selectedEntry.leadership.president && <div><dt>First President</dt><dd>{selectedEntry.leadership.president}</dd></div>}
+                        {selectedEntry.leadership.secretary && <div><dt>First Secretary</dt><dd>{selectedEntry.leadership.secretary}</dd></div>}
+                        {selectedEntry.leadership.executiveMembers && <div><dt>Founding Executive Members</dt><dd>{selectedEntry.leadership.executiveMembers.join(', ')}</dd></div>}
+                      </dl>
+                    </section>
+                  )}
+                  {selectedEntry.sections.map((section) => (
+                    <section className="journey-detail-section" key={section.heading}>
+                      <h4>{section.heading}</h4>
+                      {section.introduction && <p>{section.introduction}</p>}
+                      {section.callout && <p className="journey-callout">{section.callout}</p>}
+                      {section.items && <p className="journey-section-items">{asParagraph(section.items)}</p>}
+                    </section>
+                  ))}
+                  {selectedEntry.periodNote && <p className="journey-period-note"><strong>Status:</strong> {selectedEntry.periodNote}</p>}
+                  {selected.entries.filter((item) => item.id !== selectedEntry.id).map((item) => (
+                    <section className="journey-additional-entry" key={item.id}>
+                      <span>{item.year}</span>
+                      <h4>{item.heading}</h4>
+                      <p>{item.introduction}</p>
+                      {(item.date || item.location) && (
+                        <dl className="journey-facts">
+                          {item.date && <div><dt>Date</dt><dd>{item.date}</dd></div>}
+                          {item.location && <div><dt>Location</dt><dd>{item.location}</dd></div>}
+                        </dl>
+                      )}
+                      {item.sections.map((section) => (
+                        <div className="journey-additional-section" key={section.heading}>
+                          <h5>{section.heading}</h5>
+                          {section.introduction && <p>{section.introduction}</p>}
+                          {section.callout && <p className="journey-callout">{section.callout}</p>}
+                          {section.items && <p>{asParagraph(section.items)}</p>}
+                        </div>
+                      ))}
+                      {item.periodNote && <p className="journey-period-note"><strong>Status:</strong> {item.periodNote}</p>}
+                    </section>
+                  ))}
                   <button type="button" className="journey-next" onClick={() => selectChapter(selectedIndex + 1)}>Next year <span>{journeyYears[(selectedIndex + 1) % journeyYears.length].year} <ArrowRight size={17} /></span></button>
                 </div>
               </article>

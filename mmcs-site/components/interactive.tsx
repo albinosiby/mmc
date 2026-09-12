@@ -23,12 +23,11 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/ui/dialog';
-import { photos, activityGroups } from '@/lib/content';
+import { photos, activityGroups, initiatives } from '@/lib/content';
 import {
   journeyFutureObjectives,
   journeyOwnershipRoles,
   journeyTimeline,
-  journeyValueChain,
 } from '@/lib/journey-content';
 import { Coverflow } from '@/components/coverflow';
 const journeyImages = [
@@ -175,22 +174,22 @@ export function JourneyExplorer() {
 export function JourneyConclusion() {
   return (
     <>
-      <section className="journey-today" aria-labelledby="journey-today-title">
+      <section className="journey-next-chapter" aria-labelledby="journey-next-chapter-title">
         <div className="wrap">
-          <span className="eyebrow">MMCS TODAY — 2026</span>
-          <div className="journey-conclusion-intro">
-            <h2 id="journey-today-title">MMCS Today</h2>
-            <div>
-              <p>After more than a decade of development, MMCS has grown from a small initiative of 20 women into a broad-based cooperative working with a large network of farmers and rural communities.</p>
-              <p>The Society has progressed from an original focus on protecting farmers from middlemen and exploitative mortgage practices toward participation across the agricultural value chain.</p>
-            </div>
+          <div className="journey-next-chapter-heading">
+            <span className="eyebrow">THE NEXT CHAPTER</span>
+            <h2 id="journey-next-chapter-title">Building towards tomorrow.</h2>
+            <p>The 2025–2026 history outlines these programmes and development priorities. Their stages are shown separately from established activities.</p>
           </div>
-          <h3>Full Value Chain</h3>
-          <ol className="journey-value-chain">
-            {journeyValueChain.map((step, index) => (
-              <li key={step}><small>{String(index + 1).padStart(2, '0')}</small><strong>{step}</strong>{index < journeyValueChain.length - 1 && <ArrowRight aria-hidden="true" size={17} />}</li>
+          <div className="initiative-grid">
+            {initiatives.map((initiative) => (
+              <article key={initiative.name}>
+                <span className="status-label">{initiative.status}</span>
+                <h3>{initiative.name}</h3>
+                <p>{initiative.text}</p>
+              </article>
             ))}
-          </ol>
+          </div>
         </div>
       </section>
       <section className="journey-vision" aria-labelledby="journey-vision-title">

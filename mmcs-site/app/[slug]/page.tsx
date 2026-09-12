@@ -12,12 +12,12 @@ import {
   ImpactBand,
   ProjectFeature,
   WorkPage,
-  FutureInitiatives,
   Achievements,
   ConnectBanner,
 } from '@/components/sections';
 import {
   JourneyExplorer,
+  JourneyConclusion,
   Gallery,
   ContactForm,
   Reveal,
@@ -96,8 +96,8 @@ export default async function Page({
                 for rural families.
               </h2>
               <p className="lead">
-                Our journey began on 14 February 2015 in Khamari Village,
-                Tikrikilla, West Garo Hills.
+                Our journey began on 14 February 2015 in Aitibi Village,
+                Tikrikilla Block, West Garo Hills District, Meghalaya.
               </p>
               <p>
                 Founded under the leadership of Rev. Fr. Benoy Joseph, MMCS
@@ -265,29 +265,7 @@ export default async function Page({
       ) : slug === 'journey' ? (
         <>
           <JourneyExplorer />
-          <FutureInitiatives />
-          <section className="journey-closing">
-            <div className="wrap">
-              <span className="eyebrow">THE NEXT GENERATION OF OWNERSHIP</span>
-              <div className="journey-closing-grid">
-                <h2>From 20 women to a growing farmer cooperative.</h2>
-                <div>
-                  <p>
-                    What began in 2015 as a village-level effort to protect
-                    farmers has grown into a cooperative movement connecting
-                    farmers, rural women, processing, collective farming and
-                    market access.
-                  </p>
-                  <p>
-                    MMCS looks ahead to farmer-owned enterprises in which
-                    communities can participate not only as producers, but as
-                    owners, processors, entrepreneurs and shareholders across
-                    the value chain.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
+          <JourneyConclusion />
         </>
       ) : slug === 'gallery' ? (
         <section className="section wrap">

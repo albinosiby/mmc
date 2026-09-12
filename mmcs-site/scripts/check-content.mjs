@@ -7,12 +7,31 @@ const ts = require('typescript');
 const source = readFileSync(
   new URL('../lib/content.ts', import.meta.url),
   'utf8',
-);
+)
+  .replace("import { journeyTimeline } from './journey-content';", '')
+  .replace(
+    "export { journeyTimeline as timeline } from './journey-content';",
+    '',
+  )
+  .replace(
+    'export const getTimeline = () => journeyTimeline;',
+    'export const getTimeline = () => [];',
+  );
 const js = ts.transpileModule(source, {
   compilerOptions: { module: ts.ModuleKind.ESNext },
 }).outputText;
 const data = await import(
   `data:text/javascript;base64,${Buffer.from(js).toString('base64')}`
+);
+const journeySource = readFileSync(
+  new URL('../lib/journey-content.ts', import.meta.url),
+  'utf8',
+);
+const journeyJs = ts.transpileModule(journeySource, {
+  compilerOptions: { module: ts.ModuleKind.ESNext },
+}).outputText;
+const journeyData = await import(
+  `data:text/javascript;base64,${Buffer.from(journeyJs).toString('base64')}`
 );
 for (const key of ['projects', 'photos', 'activityGroups']) {
   const ids = data[key].map((x) => x.id);
@@ -40,9 +59,31 @@ for (const image of data.photos) {
   assert.ok(image.alt && image.detail);
   assert.ok(existsSync(resolve('public', image.src.slice(1))));
 }
-for (const record of data.timeline) {
-  assert.ok(record.year && record.source);
+assert.equal(journeyData.journeyTimeline.length, 14);
+assert.equal(
+  new Set(journeyData.journeyTimeline.map((record) => record.id)).size,
+  journeyData.journeyTimeline.length,
+  'Journey chapter IDs must be unique',
+);
+for (const record of journeyData.journeyTimeline) {
+  assert.ok(
+    record.id &&
+      record.year &&
+      record.title &&
+      record.summary &&
+      record.heading &&
+      record.sourceKey,
+  );
 }
+assert.equal(journeyData.journeyValueChain.length, 9);
+assert.equal(journeyData.journeyFutureObjectives.length, 10);
+assert.match(journeyData.journeyTimeline[0].location, /Aitibi Village/);
+assert.doesNotMatch(journeyData.journeyTimeline[0].location, /Khamari/);
+assert.match(
+  journeyData.journeyTimeline.find((record) => record.id === 'mineral-water-2026')
+    .periodNote,
+  /Proposed/,
+);
 assert.ok(
   data.initiatives.find((x) => x.name.includes('mineral water')).status ===
     'Proposed',
@@ -103,5 +144,5 @@ if (existsSync('out/index.html')) {
   );
 }
 console.log(
-  'Validated content IDs, 2 projects, image slots, real assets, dated timeline and proposed water status.',
+  'Validated content IDs, 2 projects, real assets, 14 sourced journey chapters and proposed water status.',
 );

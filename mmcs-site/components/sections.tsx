@@ -322,8 +322,8 @@ export function JourneyPreview() {
         linkText="Follow our journey"
       />
       <div className="journey-preview">
-        {[timeline[0], timeline[2], timeline[5], timeline[7]].map((t) => (
-          <Link href={`/journey#year-${t.year}`} key={t.year}>
+        {[timeline[0], timeline[2], timeline[5], timeline[13]].map((t) => (
+          <Link href={`/journey#year-${t.id}`} key={t.id}>
             <span className="journey-year">{t.year}</span>
             <span className="timeline-dot" />
             <h3>{t.title}</h3>
@@ -331,7 +331,7 @@ export function JourneyPreview() {
               {
                 {
                   '2015':
-                    'MMCS began at Khamari with twenty women and a vision of farmer protection.',
+                    'MMCS began at Aitibi Village with twenty women and a vision of farmer protection.',
                   '2017':
                     'Membership reached approximately 550, with new livelihood and training activities.',
                   '2024':

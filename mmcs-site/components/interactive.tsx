@@ -1,8 +1,7 @@
 'use client';
-import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, useReducedMotion } from 'framer-motion';
 import {
   ArrowLeft,
   ArrowRight,
@@ -24,75 +23,14 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/ui/dialog';
-import { photos, activityGroups, timeline } from '@/lib/content';
-
-const journeyDetails: Record<string, string[]> = {
-  '2015': [
-    'Muktidata Multipurpose Cooperative Society was started on 14 February 2015 at Aitibi Village, Tikrikilla Block, West Garo Hills, Meghalaya.',
-    'The initiative was founded under the leadership of Rev. Fr. Benoy Joseph, who served as Founder and Managing Director.',
-    'The Society began with 20 women and a nominal membership contribution so poor and marginal rural women could participate. The fee was later fixed at ₹100 per member.',
-    'Village awareness programmes promoted cooperation, savings, collective farming, fair marketing and protection from middlemen, distress sales and exploitative mortgage practices.',
-    'The founding team included Wilna Marak (First President), Nelco Sangma (First Secretary), and executive members Saro Sangma, Kajolish Marak, Rupali Sangma and Rita Marak.',
-  ],
-  '2016': [
-    'MMCS progressed towards formal registration and institutional development.',
-    'A legal cooperative framework was established to support a growing farmer and women-led membership base.',
-  ],
-  '2017': [
-    'Membership reached approximately 550.',
-    'The MMCS Grocery Shop opened at Tikrikilla Market on 10 October 2017.',
-    'Candle-making began at Aitibi and home-based rosary production developed.',
-    'Five women travelled to Kerala for umbrella-making and detergent-making training.',
-  ],
-  '2018': [
-    'MMCS continued mobilising farmers into cooperative groups.',
-    'Savings and collective economic activities were strengthened.',
-    'Agricultural support expanded with a continued focus on reducing farmers’ dependence on middlemen.',
-  ],
-  '2019': [
-    'Women’s participation in income-generating activities continued to expand.',
-    'MMCS strengthened market linkages and opportunities for rural self-employment.',
-    'Women-led livelihood programmes remained central to community-based economic development.',
-  ],
-  '2020': [
-    'Experience from the grocery shop and women-led production activities informed MMCS’s broader development model.',
-    'Production, aggregation, processing and marketing were increasingly treated as connected parts of rural development.',
-    'The Society moved from small-scale livelihood activities towards cooperative enterprise development.',
-  ],
-  '2021': [
-    'Farmer membership and participation continued to increase.',
-    'MMCS expanded its work in agriculture, horticulture, dairy, women’s livelihoods and value addition.',
-    'Farmers were encouraged to explore opportunities beyond selling raw agricultural produce.',
-  ],
-  '2022': [
-    'Processing, packaging, branding and direct marketing became stronger areas of focus.',
-    'The cooperative model helped members work collectively, improve bargaining power and seek better markets.',
-    'MMCS strengthened its institutional capacity for larger processing and livelihood projects.',
-  ],
-  '2023': [
-    'Agriculture, horticulture, dairy and value-addition activities continued to develop.',
-    'The Society received the NCDC North East Award in 2023.',
-    'The recognition strengthened MMCS’s credibility in supporting farmers and developing rural enterprises.',
-  ],
-  '2024': [
-    'MeghFarm Processing Hub was established at Khamari and initiated on 10 February 2024.',
-    'The hub was inaugurated by Meghalaya Chief Minister Shri Conrad K. Sangma.',
-    'Fruit and vegetable processing, pineapple processing, juice, jam, squash, fruit pulp, packaging and branding progressed.',
-    'The Nokma brand developed around ice cream, pineapple and passion-fruit juice, jam, squash, fruit pulp and other locally sourced value-added products.',
-  ],
-  '2025': [
-    'Agriculture, dairy, food processing and women’s livelihood programmes continued to expand.',
-    'Collective farming and horticultural development grew, with farmers supported through plantation, inputs, market linkages and value addition.',
-    'The history records recognition as Best Dairy Cooperative in Meghalaya in 2025, while membership grew beyond 2,000 during this period.',
-  ],
-  '2026': [
-    'Collective Farming Phase IV and high-value fruit sapling distribution were planned or initiated.',
-    'Cold storage, pre-cooling, chilling, blast freezing, ripening and refrigerated logistics remained in development.',
-    'The Nokma mineral water initiative is proposed.',
-    'Administrative, conference and warehouse infrastructure was developed for the processing hub.',
-    'The Society placed greater emphasis on tribal women becoming entrepreneurs through retail outlets, Nokma product outlets, food and beverage enterprises, digital livelihoods and market-oriented cooperative businesses.',
-  ],
-};
+import { photos, activityGroups } from '@/lib/content';
+import {
+  journeyFutureObjectives,
+  journeyOwnershipRoles,
+  journeyTimeline,
+  journeyValueChain,
+} from '@/lib/journey-content';
+import { Coverflow } from '@/components/coverflow';
 const journeyImages = [
   '/images/community.webp',
   '/images/gathering.webp',
@@ -100,106 +38,19 @@ const journeyImages = [
   '/images/inauguration.webp',
 ];
 
-type CoverflowProps<T> = {
-  items: readonly T[];
-  activeIndex: number;
-  onActiveChange: (index: number) => void;
-  className?: string;
-  ariaLabel: string;
-  renderItem: (item: T, index: number, isActive: boolean) => ReactNode;
-};
-
-/** Reusable 3D center-focus rail for cards, images, and other repeated content. */
-export function Coverflow<T>({
-  items,
-  activeIndex,
-  onActiveChange,
-  className = '',
-  ariaLabel,
-  renderItem,
-}: CoverflowProps<T>) {
-  const reduceMotion = useReducedMotion();
-  const suppressClick = useRef(false);
-  const spring = reduceMotion
-    ? { duration: 0 }
-    : { type: 'spring' as const, stiffness: 180, damping: 24, mass: 0.8 };
-  const normalize = (index: number) =>
-    ((index % items.length) + items.length) % items.length;
-  const positionFor = (index: number) => {
-    let offset = index - activeIndex;
-    if (offset > items.length / 2) offset -= items.length;
-    if (offset < -items.length / 2) offset += items.length;
-    const distance = Math.abs(offset);
-    const direction = offset < 0 ? -1 : 1;
-    const visibleDistance = Math.min(distance, 3);
-    return {
-      distance,
-      animate: {
-        x:
-          distance === 0
-            ? '0px'
-            : distance === 1
-              ? direction > 0
-                ? 'var(--coverflow-near)'
-                : 'calc(0px - var(--coverflow-near))'
-              : direction > 0
-                ? 'var(--coverflow-far)'
-                : 'calc(0px - var(--coverflow-far))',
-        z: distance === 0 ? 0 : distance === 1 ? -100 : -200,
-        scale: distance === 0 ? 1 : distance === 1 ? 0.88 : 0.74,
-        rotateY: distance === 0 ? 0 : direction * (distance === 1 ? -10 : -18),
-        opacity: distance === 0 ? 1 : distance === 1 ? 0.86 : distance === 2 ? 0.62 : 0,
-      },
-      zIndex: items.length - visibleDistance,
-    };
-  };
-
-  return (
-    <div className={`coverflow ${className}`} role="tablist" aria-label={ariaLabel}>
-      {items.map((item, index) => {
-        const { distance, animate, zIndex } = positionFor(index);
-        return (
-          <motion.div
-            key={index}
-            className="coverflow-item"
-            animate={animate}
-            transition={spring}
-            drag={reduceMotion ? false : 'x'}
-            dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={0.16}
-            dragMomentum={false}
-            onDragEnd={(_, info) => {
-              const intent = Math.abs(info.offset.x) > 42 || Math.abs(info.velocity.x) > 340;
-              if (!intent) return;
-              suppressClick.current = true;
-              onActiveChange(normalize(activeIndex + (info.offset.x < 0 || info.velocity.x < 0 ? 1 : -1)));
-              window.setTimeout(() => { suppressClick.current = false; }, 0);
-            }}
-            onClickCapture={(event) => {
-              if (suppressClick.current) {
-                event.preventDefault();
-                event.stopPropagation();
-              }
-            }}
-            style={{ zIndex, pointerEvents: distance <= 2 ? 'auto' : 'none' }}
-          >
-            {renderItem(item, index, index === activeIndex)}
-          </motion.div>
-        );
-      })}
-    </div>
-  );
+function asParagraph(items: string[]) {
+  return `${items.map((item) => item.replace(/[.;]$/, '')).join('; ')}.`;
 }
 
 export function JourneyExplorer() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
-  const selected = timeline[selectedIndex];
+  const selected = journeyTimeline[selectedIndex];
   const image = selected.image ?? journeyImages[selectedIndex % journeyImages.length];
   const chapter = String(selectedIndex + 1).padStart(2, '0');
 
   function selectChapter(index: number, focus = false) {
-    const next = ((index % timeline.length) + timeline.length) % timeline.length;
+    const next = (index + journeyTimeline.length) % journeyTimeline.length;
     setSelectedIndex(next);
     const tab = tabs.current[next];
     if (focus) tab?.focus({ preventScroll: true });
@@ -222,28 +73,28 @@ export function JourneyExplorer() {
             </div>
           </div>
         </div>
-        <Coverflow
-          items={timeline}
-          activeIndex={selectedIndex}
-          onActiveChange={selectChapter}
-          className="journey-card-rail"
-          ariaLabel="MMCS journey years"
-          renderItem={(entry, index, isActive) => (
+        <div className="journey-card-stage">
+          <Coverflow
+            items={journeyTimeline}
+            activeIndex={selectedIndex}
+            getKey={(entry) => entry.id}
+            onChange={selectChapter}
+            ariaLabel="MMCS journey years"
+            renderItem={(entry, index) => (
             <button
               type="button"
-              key={entry.year}
               ref={(node) => { tabs.current[index] = node; }}
-              id={`year-${entry.year}`}
+              id={`year-${entry.id}`}
               role="tab"
-              aria-selected={isActive}
+              aria-selected={selectedIndex === index}
               aria-controls={`chapter-panel-${index}`}
-              tabIndex={isActive ? 0 : -1}
-              className={`journey-card ${isActive ? 'active' : ''}`}
+              tabIndex={selectedIndex === index ? 0 : -1}
+              className={selectedIndex === index ? 'active' : ''}
               onClick={() => selectChapter(index)}
               onKeyDown={(event) => {
-                const next = event.key === 'ArrowRight' ? (index + 1) % timeline.length
-                  : event.key === 'ArrowLeft' ? (index - 1 + timeline.length) % timeline.length
-                  : event.key === 'Home' ? 0 : event.key === 'End' ? timeline.length - 1 : null;
+                const next = event.key === 'ArrowRight' ? (index + 1) % journeyTimeline.length
+                  : event.key === 'ArrowLeft' ? (index - 1 + journeyTimeline.length) % journeyTimeline.length
+                  : event.key === 'Home' ? 0 : event.key === 'End' ? journeyTimeline.length - 1 : null;
                 if (next !== null) { event.preventDefault(); selectChapter(next, true); }
               }}
             >
@@ -255,17 +106,19 @@ export function JourneyExplorer() {
               <div className="journey-card-label">
                 <span className="journey-card-year">{entry.year}</span>
                 <strong>{entry.title}</strong>
+                <p>{entry.summary}</p>
               </div>
             </button>
-          )}
-        />
+            )}
+          />
+        </div>
         <div className="journey-progress" aria-hidden="true">
           <span>2015</span>
-          <div><i style={{ width: `${((selectedIndex + 1) / timeline.length) * 100}%` }} /></div>
+          <div><i style={{ width: `${((selectedIndex + 1) / journeyTimeline.length) * 100}%` }} /></div>
           <span>2026</span>
         </div>
-        {timeline.map((entry, index) => (
-          <div key={entry.year} id={`chapter-panel-${index}`} role="tabpanel" aria-labelledby={`year-${entry.year}`} hidden={selectedIndex !== index} tabIndex={0}>
+        {journeyTimeline.map((entry, index) => (
+          <div key={entry.id} id={`chapter-panel-${index}`} role="tabpanel" aria-labelledby={`year-${entry.id}`} hidden={selectedIndex !== index} tabIndex={0}>
             {selectedIndex === index && (
               <article className="journey-detail">
                 <div className="journey-detail-image">
@@ -273,13 +126,37 @@ export function JourneyExplorer() {
                   <div className="journey-image-caption"><span>ROOTED IN COMMUNITY</span><strong>{selected.year}</strong></div>
                 </div>
                 <div className="journey-detail-copy">
-                  <div className="journey-chapter-meta"><span>CHAPTER {chapter}</span><span>{chapter} / {String(timeline.length).padStart(2, '0')}</span></div>
-                  <h3>{selected.title}</h3>
-                  <p>{selected.text}</p>
-                  <ul>{journeyDetails[selected.year].map((detail, detailIndex) => (
-                    <li key={detail} style={{ animationDelay: `${detailIndex * 65 + 120}ms` }}><span aria-hidden="true">{String(detailIndex + 1).padStart(2, '0')}</span>{detail}</li>
-                  ))}</ul>
-                  <button type="button" className="journey-next" onClick={() => selectChapter(selectedIndex + 1)}>Next chapter <span>{timeline[(selectedIndex + 1) % timeline.length].year} <ArrowRight size={17} /></span></button>
+                  <div className="journey-chapter-meta"><span>CHAPTER {chapter}</span><span>{chapter} / {String(journeyTimeline.length).padStart(2, '0')}</span></div>
+                  <span className="journey-detail-period">{selected.year}</span>
+                  <h3>{selected.heading}</h3>
+                  <p>{selected.introduction}</p>
+                  {(selected.date || selected.location) && (
+                    <dl className="journey-facts">
+                      {selected.date && <div><dt>Date</dt><dd>{selected.date}</dd></div>}
+                      {selected.location && <div><dt>Location</dt><dd>{selected.location}</dd></div>}
+                    </dl>
+                  )}
+                  {selected.leadership && (
+                    <section className="journey-detail-section" aria-labelledby={`leadership-${selected.id}`}>
+                      <h4 id={`leadership-${selected.id}`}>Founding leadership</h4>
+                      <dl className="journey-leadership">
+                        {selected.leadership.founder && <div><dt>Founder</dt><dd>{selected.leadership.founder}</dd></div>}
+                        {selected.leadership.president && <div><dt>First President</dt><dd>{selected.leadership.president}</dd></div>}
+                        {selected.leadership.secretary && <div><dt>First Secretary</dt><dd>{selected.leadership.secretary}</dd></div>}
+                        {selected.leadership.executiveMembers && <div><dt>Founding Executive Members</dt><dd>{selected.leadership.executiveMembers.join(', ')}</dd></div>}
+                      </dl>
+                    </section>
+                  )}
+                  {selected.sections.map((section) => (
+                    <section className="journey-detail-section" key={section.heading}>
+                      <h4>{section.heading}</h4>
+                      {section.introduction && <p>{section.introduction}</p>}
+                      {section.callout && <p className="journey-callout">{section.callout}</p>}
+                      {section.items && <p className="journey-section-items">{asParagraph(section.items)}</p>}
+                    </section>
+                  ))}
+                  {selected.periodNote && <p className="journey-period-note"><strong>Status:</strong> {selected.periodNote}</p>}
+                  <button type="button" className="journey-next" onClick={() => selectChapter(selectedIndex + 1)}>Next chapter <span>{journeyTimeline[(selectedIndex + 1) % journeyTimeline.length].year} <ArrowRight size={17} /></span></button>
                 </div>
               </article>
             )}
@@ -288,6 +165,58 @@ export function JourneyExplorer() {
         <p className="journey-photo-note">Photographs from MMCS documentation illustrate our journey; they are not records of every period.</p>
       </div>
     </section>
+  );
+}
+
+export function JourneyConclusion() {
+  return (
+    <>
+      <section className="journey-today" aria-labelledby="journey-today-title">
+        <div className="wrap">
+          <span className="eyebrow">MMCS TODAY · 2026</span>
+          <div className="journey-conclusion-intro">
+            <h2 id="journey-today-title">MMCS Today</h2>
+            <div>
+              <p>After more than a decade of development, MMCS has grown from a small initiative of 20 women into a broad-based cooperative working with a large network of farmers and rural communities.</p>
+              <p>The Society has progressed from an original focus on protecting farmers from middlemen and exploitative mortgage practices toward participation across the agricultural value chain.</p>
+            </div>
+          </div>
+          <h3>Full Value Chain</h3>
+          <ol className="journey-value-chain">
+            {journeyValueChain.map((step, index) => (
+              <li key={step}><small>{String(index + 1).padStart(2, '0')}</small><strong>{step}</strong>{index < journeyValueChain.length - 1 && <ArrowRight aria-hidden="true" size={17} />}</li>
+            ))}
+          </ol>
+        </div>
+      </section>
+      <section className="journey-vision" aria-labelledby="journey-vision-title">
+        <div className="wrap journey-vision-grid">
+          <div>
+            <span className="eyebrow">THE FUTURE VISION OF MMCS</span>
+            <h2 id="journey-vision-title">A farmer-owned and women-inclusive cooperative economy.</h2>
+            <p>Particularly in Meghalaya and the Garo Hills, MMCS aims to build an integrated ecosystem where farmers can produce, aggregate, process, store, brand and market their own products.</p>
+          </div>
+          <div>
+            <h3>Future Objectives</h3>
+            <ul>{journeyFutureObjectives.map((objective) => <li key={objective}><span aria-hidden="true">•</span>{objective}</li>)}</ul>
+          </div>
+        </div>
+      </section>
+      <section className="journey-closing">
+        <div className="wrap">
+          <span className="eyebrow">THE NEXT GENERATION OF OWNERSHIP</span>
+          <div className="journey-closing-grid">
+            <h2>From 20 Women to a Growing Farmer Cooperative</h2>
+            <div>
+              <p>MMCS’s story is one of collective action and gradual transformation. What began in 2015 with 20 women and the objective of protecting farmers has grown into a cooperative movement involving farmers and rural families.</p>
+              <p>Through the Megh Farm Processing Hub, Nokma products, collective farming, cold-chain development and cooperative enterprises, farmers can participate in more of the value they create.</p>
+              <p>Farmers should increasingly become:</p>
+              <ul className="journey-ownership-roles">{journeyOwnershipRoles.map((role) => <li key={role}>{role}</li>)}</ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
 export function Reveal({

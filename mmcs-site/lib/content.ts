@@ -1,4 +1,7 @@
 /** Approved public content. Source keys refer to docs/CONTENT-SOURCES.md. */
+import { journeyTimeline } from './journey-content';
+
+export { journeyTimeline as timeline } from './journey-content';
 export const siteUrl = 'https://mmcs-community.tatos.chatgpt.site';
 export const statements = {
   vision:
@@ -123,81 +126,6 @@ export const projects: Project[] = [
       },
     ],
     source: 'history:hub',
-  },
-];
-export const timeline = [
-  {
-    year: '2015',
-    title: 'Twenty women. One shared vision.',
-    text: 'MMCS began at Khamari under the leadership of Rev. Fr. Benoy Joseph. Twenty women came together around farmer protection, savings, collective action and economic self-reliance.',
-    source: 'history:beginning',
-  },
-  {
-    year: '2016',
-    title: 'A cooperative takes shape.',
-    text: 'MMCS progressed towards formal registration and institutional development, building a legal cooperative framework for its growing membership.',
-    source: 'history:registration',
-  },
-  {
-    year: '2017',
-    title: 'Skills, livelihoods and a place in the market.',
-    text: 'Membership reached approximately 550. The MMCS grocery shop opened at Tikrikilla Market on 10 October 2017. Candle-making and home-based rosary production grew, while five women travelled to Kerala for umbrella and detergent training.',
-    source: 'history:2017',
-  },
-  {
-    year: '2018',
-    title: 'Strengthening farmer groups.',
-    text: 'Farmer mobilisation, savings and collective economic activities continued to grow alongside agricultural support and efforts to reduce dependence on middlemen.',
-    source: 'history:consolidation',
-  },
-  {
-    year: '2019',
-    title: 'Women-led livelihoods grow.',
-    text: 'MMCS expanded women’s participation in income-generating activities, strengthened market linkages and created more opportunities for rural self-employment.',
-    source: 'history:consolidation',
-  },
-  {
-    year: '2020',
-    title: 'Connecting production and markets.',
-    text: 'Experience from retail and women-led production helped MMCS connect production, aggregation, processing and marketing within a broader cooperative enterprise model.',
-    source: 'history:consolidation',
-  },
-  {
-    year: '2021',
-    title: 'A wider agricultural focus.',
-    text: 'MMCS increased its focus on agriculture, horticulture, dairy, women’s livelihoods and value addition as farmer participation continued to grow.',
-    source: 'history:value-addition',
-  },
-  {
-    year: '2022',
-    title: 'From producer to processor.',
-    text: 'Farmers were encouraged to move beyond raw produce through processing, packaging, branding and direct marketing, strengthening bargaining power and market access.',
-    source: 'history:value-addition',
-  },
-  {
-    year: '2023',
-    title: 'Recognition in the North East.',
-    text: 'The Society strengthened its institutional capacity and received the NCDC North East Award in 2023.',
-    source: 'history:value-addition',
-  },
-  {
-    year: '2024',
-    title: 'A new chapter at MeghFarm.',
-    text: 'MeghFarm Processing Hub was established at Khamari and inaugurated by Meghalaya Chief Minister Shri Conrad K. Sangma. Processing, packaging and the development of the Nokma brand opened new possibilities.',
-    image: '/images/inauguration.webp',
-    source: 'history:hub',
-  },
-  {
-    year: '2025',
-    title: 'Growing livelihoods. Earning recognition.',
-    text: 'The cooperative continued its agriculture, dairy, food processing and women’s livelihood programmes. Its history records recognition as a Best Dairy Cooperative in Meghalaya in 2025.',
-    source: 'history:recognition',
-  },
-  {
-    year: '2026',
-    title: 'Looking towards an integrated future.',
-    text: 'The history describes further collective farming, developing cold-chain infrastructure, a proposed Nokma mineral water facility and new administrative and warehouse space. The long-term direction is greater farmer ownership across the value chain.',
-    source: 'history:future',
   },
 ];
 export const activityGroups = [
@@ -353,7 +281,7 @@ export const pageInfo: Record<
     eyebrow: 'OUR ROOTS. OUR REASON.',
     heading: 'People at the heart\nof every possibility.',
     description:
-      'From a small beginning at Khamari to a growing cooperative movement across the Garo Hills.',
+      'From a small beginning at Aitibi Village to a growing cooperative movement across the Garo Hills.',
   },
   organisations: {
     title: 'Our Organisations',
@@ -407,4 +335,4 @@ export const pageInfo: Record<
 };
 export const getProjects = () => projects;
 export const getActivities = () => activityGroups;
-export const getTimeline = () => timeline;
+export const getTimeline = () => journeyTimeline;

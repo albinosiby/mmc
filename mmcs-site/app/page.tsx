@@ -43,6 +43,17 @@ const activities = [
   { image: 'household', name: 'Household Products', href: '/our-work#women' },
   { image: 'attire', name: 'Traditional Attire', href: '/our-work#women' },
 ] as const;
+
+const executives = [
+  { name: 'Mrs Lipika A Sangma', role: 'President', image: 'https://drive.google.com/thumbnail?id=1kSw7bO3zqVf2CjLjhBIRqXOZiy6RC5zA&sz=w1000' },
+  { name: 'Fr Benoy Joseph', role: 'Managing Director & Secretary', image: 'https://drive.google.com/thumbnail?id=11SEsXY5NoTBdraKAQDvswvl2jI__5HTK&sz=w1000' },
+  { name: 'Sandesh Bakshaka', role: 'Vice President', image: 'https://drive.google.com/thumbnail?id=1CjBeLUK6sNmqV35GmDNhOTYCfXOJtUN0&sz=w1000' },
+  { name: 'Batnang Momin', role: 'Joint Secretary', image: 'https://drive.google.com/thumbnail?id=1UAFes99-bjYSHkM9t96Ujqv7HOFGvDk4&sz=w1000' },
+  { name: 'Jema M Sangma', role: 'Member', image: 'https://drive.google.com/thumbnail?id=127lnRQZ7Canu5Kp_FTtBJa5rnHS1z62o&sz=w1000' },
+  { name: 'Rupali T Sangma', role: 'Member', image: 'https://drive.google.com/thumbnail?id=1NgU0LiXG8d_pY1X-khfBj4RQVM2mmqWB&sz=w1000' },
+  { name: 'Silseng Marak', role: 'Member', image: 'https://drive.google.com/thumbnail?id=1Ipr84Lyb8O6TlMTaboc-XHM91dbFRKlu&sz=w1000' },
+  { name: 'Sipswari Rabha', role: 'Member', image: 'https://drive.google.com/thumbnail?id=1EmJTBXhdsepq6ffTTAYVuAf3kp-JJFIx&sz=w1000' },
+] as const;
 export default function Home() {
   return (
     <main id="main" className="reference-home">
@@ -185,6 +196,33 @@ export default function Home() {
               </Link>
             </div>
           </article>
+        </div>
+      </section>
+      <section className="executive-team" aria-labelledby="executive-team-heading">
+        <div className="wrap">
+          <div className="executive-team-heading">
+            <div>
+              <span className="eyebrow">THE PEOPLE WHO LEAD MMCS</span>
+              <h2 id="executive-team-heading">Guiding a shared purpose.</h2>
+            </div>
+            <p>
+              The executive team brings experience, accountability and a shared
+              commitment to stronger rural communities.
+            </p>
+          </div>
+          <div className="executive-grid">
+            {executives.map((executive) => (
+              <article className="executive-card" key={executive.name}>
+                <div className="executive-photo">
+                  <img src={executive.image} alt={executive.name} />
+                </div>
+                <div className="executive-card-copy">
+                  <span>{executive.role}</span>
+                  <h3>{executive.name}</h3>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
       <section className="reference-projects">

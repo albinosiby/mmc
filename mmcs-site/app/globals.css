@@ -1996,7 +1996,7 @@ select:focus-visible {
 }
 .journey-explorer {
   padding: 90px 0;
-  background: #f7f6f0;
+  background: transparent;
 }
 .journey-explorer-heading {
   display: grid;

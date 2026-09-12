@@ -177,7 +177,7 @@ export function JourneyConclusion() {
     <>
       <section className="journey-today" aria-labelledby="journey-today-title">
         <div className="wrap">
-          <span className="eyebrow">MMCS TODAY · 2026</span>
+          <span className="eyebrow">MMCS TODAY — 2026</span>
           <div className="journey-conclusion-intro">
             <h2 id="journey-today-title">MMCS Today</h2>
             <div>

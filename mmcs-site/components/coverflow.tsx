@@ -63,12 +63,12 @@ export function Coverflow<T>({
         const direction = Math.sign(offset);
         const visibleDistance = Math.min(distance, 2.45);
         const transform = distance === 0
-          ? { x: 0, z: 0, scale: 1, rotateY: 0, opacity: 1 }
+          ? { x: 0, z: 0, scale: 1, rotateY: 0, opacity: 1, boxShadow: '0 30px 64px rgba(20, 62, 48, 0.3)' }
           : distance === 1
-            ? { x: `calc(var(--coverflow-step) * ${direction})`, z: -100, scale: 0.88, rotateY: -10 * direction, opacity: 0.86 }
+            ? { x: `calc(var(--coverflow-step) * ${direction})`, z: -100, scale: 0.88, rotateY: -10 * direction, opacity: 0.86, boxShadow: '0 20px 42px rgba(20, 62, 48, 0.2)' }
             : distance === 2
-              ? { x: `calc(var(--coverflow-step) * ${2 * direction})`, z: -200, scale: 0.75, rotateY: -18 * direction, opacity: 0.62 }
-              : { x: `calc(var(--coverflow-step) * ${visibleDistance * direction})`, z: -260, scale: 0.68, rotateY: -20 * direction, opacity: 0 };
+              ? { x: `calc(var(--coverflow-step) * ${2 * direction})`, z: -200, scale: 0.75, rotateY: -18 * direction, opacity: 0.62, boxShadow: '0 13px 28px rgba(20, 62, 48, 0.13)' }
+              : { x: `calc(var(--coverflow-step) * ${visibleDistance * direction})`, z: -260, scale: 0.68, rotateY: -20 * direction, opacity: 0, boxShadow: '0 8px 18px rgba(20, 62, 48, 0)' };
 
         return (
           <motion.div

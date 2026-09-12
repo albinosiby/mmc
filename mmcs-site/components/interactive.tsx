@@ -41,20 +41,37 @@ function asParagraph(items: string[]) {
   return `${items.map((item) => item.replace(/[.;]$/, '')).join('; ')}.`;
 }
 
-function cardYear(entry: { id: string; year: string }) {
-  if (entry.id === 'nokma-2024-2025') return '2025';
-  return entry.year.split(/[–—-]/, 1)[0].trim();
+type JourneyEntry = (typeof journeyTimeline)[number];
+
+function entryYears(entry: JourneyEntry) {
+  const years = entry.year.match(/\d{4}/g)?.map(Number) ?? [];
+  return { start: years[0] ?? 0, end: years.at(-1) ?? years[0] ?? 0 };
 }
+
+const journeyYears = Array.from({ length: 12 }, (_, index) => 2015 + index).map((year) => {
+  const entries = journeyTimeline.filter((entry) => {
+    const range = entryYears(entry);
+    return year >= range.start && year <= range.end;
+  });
+  const primary = entries.find((entry) => entry.year === String(year))
+    ?? entries.find((entry) => entryYears(entry).start === year)
+    ?? entries[0];
+
+  if (!primary) throw new Error(`Missing Journey content for ${year}`);
+
+  return { year: String(year), entries, primary };
+});
 
 export function JourneyExplorer() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
-  const selected = journeyTimeline[selectedIndex];
-  const image = selected.image ?? journeyImages[selectedIndex % journeyImages.length];
+  const selected = journeyYears[selectedIndex];
+  const selectedEntry = selected.primary;
+  const image = selectedEntry.image ?? journeyImages[selectedIndex % journeyImages.length];
   const chapter = String(selectedIndex + 1).padStart(2, '0');
 
   function selectChapter(index: number, focus = false) {
-    const next = (index + journeyTimeline.length) % journeyTimeline.length;
+    const next = (index + journeyYears.length) % journeyYears.length;
     setSelectedIndex(next);
     const tab = tabs.current[next];
     if (focus) tab?.focus({ preventScroll: true });
@@ -72,23 +89,23 @@ export function JourneyExplorer() {
             <p>Small beginnings. Shared ambition. Explore the moments that have shaped our cooperative since 2015.</p>
             <div className="journey-controls">
               <span>Explore the years <ArrowRight size={16} aria-hidden="true" /></span>
-              <button type="button" aria-label="Previous chapter" onClick={() => selectChapter(selectedIndex - 1)}><ArrowLeft size={19} /></button>
-              <button type="button" aria-label="Next chapter" onClick={() => selectChapter(selectedIndex + 1)}><ArrowRight size={19} /></button>
+              <button type="button" aria-label="Previous year" onClick={() => selectChapter(selectedIndex - 1)}><ArrowLeft size={19} /></button>
+              <button type="button" aria-label="Next year" onClick={() => selectChapter(selectedIndex + 1)}><ArrowRight size={19} /></button>
             </div>
           </div>
         </div>
         <div className="journey-card-stage">
           <Coverflow
-            items={journeyTimeline}
+            items={journeyYears}
             activeIndex={selectedIndex}
-            getKey={(entry) => entry.id}
+            getKey={(entry) => entry.year}
             onChange={selectChapter}
             ariaLabel="MMCS journey years"
             renderItem={(entry, index) => (
             <button
               type="button"
               ref={(node) => { tabs.current[index] = node; }}
-              id={`year-${entry.id}`}
+              id={`year-${entry.year}`}
               role="tab"
               aria-selected={selectedIndex === index}
               aria-controls={`chapter-panel-${index}`}
@@ -96,21 +113,21 @@ export function JourneyExplorer() {
               className={selectedIndex === index ? 'active' : ''}
               onClick={() => selectChapter(index)}
               onKeyDown={(event) => {
-                const next = event.key === 'ArrowRight' ? (index + 1) % journeyTimeline.length
-                  : event.key === 'ArrowLeft' ? (index - 1 + journeyTimeline.length) % journeyTimeline.length
-                  : event.key === 'Home' ? 0 : event.key === 'End' ? journeyTimeline.length - 1 : null;
+                const next = event.key === 'ArrowRight' ? (index + 1) % journeyYears.length
+                  : event.key === 'ArrowLeft' ? (index - 1 + journeyYears.length) % journeyYears.length
+                  : event.key === 'Home' ? 0 : event.key === 'End' ? journeyYears.length - 1 : null;
                 if (next !== null) { event.preventDefault(); selectChapter(next, true); }
               }}
             >
               <div className="journey-card-photo">
-                <Image src={entry.image ?? journeyImages[index % journeyImages.length]} alt="" fill sizes="280px" />
-                <span className="journey-card-number">CHAPTER {String(index + 1).padStart(2, '0')}</span>
+                <Image src={entry.primary.image ?? journeyImages[index % journeyImages.length]} alt="" fill sizes="280px" />
+                <span className="journey-card-number">YEAR {String(index + 1).padStart(2, '0')}</span>
                 <span className="journey-card-arrow"><ArrowUpRight size={20} aria-hidden="true" /></span>
               </div>
               <div className="journey-card-label">
-                <span className="journey-card-year">{cardYear(entry)}</span>
-                <strong>{entry.title}</strong>
-                <p>{entry.summary}</p>
+                <span className="journey-card-year">{entry.year}</span>
+                <strong>{entry.primary.title}</strong>
+                <p>{entry.primary.summary}</p>
               </div>
             </button>
             )}
@@ -118,11 +135,11 @@ export function JourneyExplorer() {
         </div>
         <div className="journey-progress" aria-hidden="true">
           <span>2015</span>
-          <div><i style={{ width: `${((selectedIndex + 1) / journeyTimeline.length) * 100}%` }} /></div>
+          <div><i style={{ width: `${((selectedIndex + 1) / journeyYears.length) * 100}%` }} /></div>
           <span>2026</span>
         </div>
-        {journeyTimeline.map((entry, index) => (
-          <div key={entry.id} id={`chapter-panel-${index}`} role="tabpanel" aria-labelledby={`year-${entry.id}`} hidden={selectedIndex !== index} tabIndex={0}>
+        {journeyYears.map((entry, index) => (
+          <div key={entry.year} id={`chapter-panel-${index}`} role="tabpanel" aria-labelledby={`year-${entry.year}`} hidden={selectedIndex !== index} tabIndex={0}>
             {selectedIndex === index && (
               <article className="journey-detail">
                 <div className="journey-detail-image">
@@ -130,28 +147,28 @@ export function JourneyExplorer() {
                   <div className="journey-image-caption"><span>ROOTED IN COMMUNITY</span><strong>{selected.year}</strong></div>
                 </div>
                 <div className="journey-detail-copy">
-                  <div className="journey-chapter-meta"><span>CHAPTER {chapter}</span><span>{chapter} / {String(journeyTimeline.length).padStart(2, '0')}</span></div>
+                  <div className="journey-chapter-meta"><span>YEAR {chapter}</span><span>{chapter} / {String(journeyYears.length).padStart(2, '0')}</span></div>
                   <span className="journey-detail-period">{selected.year}</span>
-                  <h3>{selected.heading}</h3>
-                  <p>{selected.introduction}</p>
-                  {(selected.date || selected.location) && (
+                  <h3>{selectedEntry.heading}</h3>
+                  <p>{selectedEntry.introduction}</p>
+                  {(selectedEntry.date || selectedEntry.location) && (
                     <dl className="journey-facts">
-                      {selected.date && <div><dt>Date</dt><dd>{selected.date}</dd></div>}
-                      {selected.location && <div><dt>Location</dt><dd>{selected.location}</dd></div>}
+                      {selectedEntry.date && <div><dt>Date</dt><dd>{selectedEntry.date}</dd></div>}
+                      {selectedEntry.location && <div><dt>Location</dt><dd>{selectedEntry.location}</dd></div>}
                     </dl>
                   )}
-                  {selected.leadership && (
-                    <section className="journey-detail-section" aria-labelledby={`leadership-${selected.id}`}>
-                      <h4 id={`leadership-${selected.id}`}>Founding leadership</h4>
+                  {selectedEntry.leadership && (
+                    <section className="journey-detail-section" aria-labelledby={`leadership-${selectedEntry.id}`}>
+                      <h4 id={`leadership-${selectedEntry.id}`}>Founding leadership</h4>
                       <dl className="journey-leadership">
-                        {selected.leadership.founder && <div><dt>Founder</dt><dd>{selected.leadership.founder}</dd></div>}
-                        {selected.leadership.president && <div><dt>First President</dt><dd>{selected.leadership.president}</dd></div>}
-                        {selected.leadership.secretary && <div><dt>First Secretary</dt><dd>{selected.leadership.secretary}</dd></div>}
-                        {selected.leadership.executiveMembers && <div><dt>Founding Executive Members</dt><dd>{selected.leadership.executiveMembers.join(', ')}</dd></div>}
+                        {selectedEntry.leadership.founder && <div><dt>Founder</dt><dd>{selectedEntry.leadership.founder}</dd></div>}
+                        {selectedEntry.leadership.president && <div><dt>First President</dt><dd>{selectedEntry.leadership.president}</dd></div>}
+                        {selectedEntry.leadership.secretary && <div><dt>First Secretary</dt><dd>{selectedEntry.leadership.secretary}</dd></div>}
+                        {selectedEntry.leadership.executiveMembers && <div><dt>Founding Executive Members</dt><dd>{selectedEntry.leadership.executiveMembers.join(', ')}</dd></div>}
                       </dl>
                     </section>
                   )}
-                  {selected.sections.map((section) => (
+                  {selectedEntry.sections.map((section) => (
                     <section className="journey-detail-section" key={section.heading}>
                       <h4>{section.heading}</h4>
                       {section.introduction && <p>{section.introduction}</p>}
@@ -159,8 +176,30 @@ export function JourneyExplorer() {
                       {section.items && <p className="journey-section-items">{asParagraph(section.items)}</p>}
                     </section>
                   ))}
-                  {selected.periodNote && <p className="journey-period-note"><strong>Status:</strong> {selected.periodNote}</p>}
-                  <button type="button" className="journey-next" onClick={() => selectChapter(selectedIndex + 1)}>Next chapter <span>{journeyTimeline[(selectedIndex + 1) % journeyTimeline.length].year} <ArrowRight size={17} /></span></button>
+                  {selectedEntry.periodNote && <p className="journey-period-note"><strong>Status:</strong> {selectedEntry.periodNote}</p>}
+                  {selected.entries.filter((item) => item.id !== selectedEntry.id).map((item) => (
+                    <section className="journey-additional-entry" key={item.id}>
+                      <span>{item.year}</span>
+                      <h4>{item.heading}</h4>
+                      <p>{item.introduction}</p>
+                      {(item.date || item.location) && (
+                        <dl className="journey-facts">
+                          {item.date && <div><dt>Date</dt><dd>{item.date}</dd></div>}
+                          {item.location && <div><dt>Location</dt><dd>{item.location}</dd></div>}
+                        </dl>
+                      )}
+                      {item.sections.map((section) => (
+                        <div className="journey-additional-section" key={section.heading}>
+                          <h5>{section.heading}</h5>
+                          {section.introduction && <p>{section.introduction}</p>}
+                          {section.callout && <p className="journey-callout">{section.callout}</p>}
+                          {section.items && <p>{asParagraph(section.items)}</p>}
+                        </div>
+                      ))}
+                      {item.periodNote && <p className="journey-period-note"><strong>Status:</strong> {item.periodNote}</p>}
+                    </section>
+                  ))}
+                  <button type="button" className="journey-next" onClick={() => selectChapter(selectedIndex + 1)}>Next year <span>{journeyYears[(selectedIndex + 1) % journeyYears.length].year} <ArrowRight size={17} /></span></button>
                 </div>
               </article>
             )}

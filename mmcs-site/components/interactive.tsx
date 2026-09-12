@@ -42,6 +42,10 @@ function asParagraph(items: string[]) {
   return `${items.map((item) => item.replace(/[.;]$/, '')).join('; ')}.`;
 }
 
+function cardYear(year: string) {
+  return year.split(/[–—-]/, 1)[0].trim();
+}
+
 export function JourneyExplorer() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -104,7 +108,7 @@ export function JourneyExplorer() {
                 <span className="journey-card-arrow"><ArrowUpRight size={20} aria-hidden="true" /></span>
               </div>
               <div className="journey-card-label">
-                <span className="journey-card-year">{entry.year}</span>
+                <span className="journey-card-year">{cardYear(entry.year)}</span>
                 <strong>{entry.title}</strong>
                 <p>{entry.summary}</p>
               </div>

@@ -4048,6 +4048,7 @@ select:focus-visible {
   }
   .landscape-copy {
     width: 100%;
+    max-width: none;
     padding: 30px 24px 26px;
     color: var(--navy);
     background: #f7f9f4;

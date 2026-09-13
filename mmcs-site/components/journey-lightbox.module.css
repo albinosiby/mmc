@@ -1,0 +1,46 @@
+.item {
+  display: block;
+  width: 100%;
+  min-height: 130px;
+  padding: 0;
+  overflow: hidden;
+  cursor: zoom-in;
+  border: 0;
+  border-radius: 0.8rem;
+  background: #e8eee4;
+  position: relative;
+}
+
+.item:focus-visible {
+  outline: 3px solid var(--green, #21744f);
+  outline-offset: 3px;
+}
+
+.item :global(img) {
+  object-fit: cover;
+  transition: transform 280ms ease;
+}
+
+.item:hover :global(img) {
+  transform: scale(1.045);
+}
+
+.expand {
+  position: absolute;
+  right: 0.65rem;
+  bottom: 0.65rem;
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border-radius: 50%;
+  color: #173e32;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 4px 14px rgba(14, 45, 43, 0.2);
+}
+
+@media (max-width: 700px) {
+  .item {
+    min-height: 118px;
+  }
+}

@@ -37,6 +37,26 @@ const journeyImages = [
   '/images/inauguration.webp',
 ];
 
+// Selected from the MMCS documentation archive, one representative image per year.
+const journeyImagesByYear: Record<string, string> = {
+  '2015': 'https://drive.google.com/thumbnail?id=1E1S8hg50csm1VwrqxlIBqUATbejqdDAi&sz=w1200',
+  '2016': 'https://drive.google.com/thumbnail?id=1DS5eb1KiDwzEwPx_fnXIqh_mzqr_neIB&sz=w1200',
+  '2017': 'https://drive.google.com/thumbnail?id=1bFKfF9LWxD0Y8rzsMACEB1tUucS9DMCW&sz=w1200',
+  '2018': 'https://drive.google.com/thumbnail?id=14BVzHaUTvHlhLO5cl098PyRmxR7oleDn&sz=w1200',
+  '2019': 'https://drive.google.com/thumbnail?id=10h39NQ-7GndhH6lea1OQwgF34_IpgBF3&sz=w1200',
+  '2020': 'https://drive.google.com/thumbnail?id=1jNhsclZImA8wjRE3h8NmFN4Uf3zD8rEK&sz=w1200',
+  '2021': 'https://drive.google.com/thumbnail?id=1BFPU5j-0ibdIvjEENV2PBItjd7XTebws&sz=w1200',
+  '2022': 'https://drive.google.com/thumbnail?id=1sx24NXaggfqwRFnEZC1qYKV_AFoZfb8M&sz=w1200',
+  '2023': 'https://drive.google.com/thumbnail?id=1eWgJtkko5lTQ_PMU_SlRPZSM2z1eSrqm&sz=w1200',
+  '2024': 'https://drive.google.com/thumbnail?id=1V6R-MJ4271b8QvUuV_SRIG0BPR7-0N3T&sz=w1200',
+  '2025': 'https://drive.google.com/thumbnail?id=1pd1-hkEVFPzAD8d-7DNxJUUzASNKTKyX&sz=w1200',
+  '2026': 'https://drive.google.com/thumbnail?id=1gWNJkscAabb4ueuG38DtzCIi-MqjPAuC&sz=w1200',
+};
+
+function journeyImageFor(year: string, entry: JourneyEntry, index: number) {
+  return journeyImagesByYear[year] ?? entry.image ?? journeyImages[index % journeyImages.length];
+}
+
 function asParagraph(items: string[]) {
   return `${items.map((item) => item.replace(/[.;]$/, '')).join('; ')}.`;
 }
@@ -67,7 +87,7 @@ export function JourneyExplorer() {
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
   const selected = journeyYears[selectedIndex];
   const selectedEntry = selected.primary;
-  const image = selectedEntry.image ?? journeyImages[selectedIndex % journeyImages.length];
+  const image = journeyImageFor(selected.year, selectedEntry, selectedIndex);
   const chapter = String(selectedIndex + 1).padStart(2, '0');
 
   function selectChapter(index: number, focus = false) {
@@ -120,7 +140,7 @@ export function JourneyExplorer() {
               }}
             >
               <div className="journey-card-photo">
-                <Image src={entry.primary.image ?? journeyImages[index % journeyImages.length]} alt="" fill sizes="280px" />
+                <Image src={journeyImageFor(entry.year, entry.primary, index)} alt="" fill sizes="280px" />
                 <span className="journey-card-number">YEAR {String(index + 1).padStart(2, '0')}</span>
                 <span className="journey-card-arrow"><ArrowUpRight size={20} aria-hidden="true" /></span>
               </div>

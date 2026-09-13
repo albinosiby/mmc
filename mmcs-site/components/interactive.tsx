@@ -147,6 +147,12 @@ export function JourneyExplorer() {
     if (focus) tab?.focus({ preventScroll: true });
   }
 
+  function changeSelectedImage(direction: number) {
+    setSelectedImageIndex((current) =>
+      current === null ? null : (current + direction + selectedYearImages.length) % selectedYearImages.length,
+    );
+  }
+
   return (
     <section className="journey-explorer" aria-labelledby="journey-explorer-title">
       <div className="wrap">
@@ -296,7 +302,20 @@ export function JourneyExplorer() {
           </div>
         ))}
         <Dialog open={selectedImage !== null} onOpenChange={(open) => { if (!open) setSelectedImageIndex(null); }}>
-          <DialogContent className="lightbox journey-image-lightbox" finalFocus={imageTrigger}>
+          <DialogContent
+            className="lightbox journey-image-lightbox"
+            finalFocus={imageTrigger}
+            onKeyDown={(event) => {
+              if (event.key === 'ArrowRight') {
+                event.preventDefault();
+                changeSelectedImage(1);
+              }
+              if (event.key === 'ArrowLeft') {
+                event.preventDefault();
+                changeSelectedImage(-1);
+              }
+            }}
+          >
             {selectedImage && (
               <>
                 <DialogTitle className="lightbox-title">{selected.year} archive</DialogTitle>

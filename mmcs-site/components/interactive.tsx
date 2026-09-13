@@ -327,7 +327,6 @@ export function JourneyExplorer() {
             )}
           </DialogContent>
         </Dialog>
-        <p className="journey-photo-note">Photographs from MMCS documentation illustrate our journey; they are not records of every period.</p>
       </div>
     </section>
   );

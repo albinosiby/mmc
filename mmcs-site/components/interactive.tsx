@@ -129,14 +129,18 @@ const journeyYears: JourneyChapter[] = journeyChapterDefinitions.map((chapter) =
 
 export function JourneyExplorer() {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
+  const imageTrigger = useRef<HTMLButtonElement | null>(null);
   const selected = journeyYears[selectedIndex];
   const selectedEntry = selected.primary;
   const selectedYearImages = journeyImagesFor(selected.years, selectedEntry, selectedIndex);
+  const selectedImage = selectedImageIndex === null ? null : selectedYearImages[selectedImageIndex];
   const chapter = String(selectedIndex + 1).padStart(2, '0');
 
   function selectChapter(index: number, focus = false) {
     const next = (index + journeyYears.length) % journeyYears.length;
+    setSelectedImageIndex(null);
     setSelectedIndex(next);
     const tab = tabs.current[next];
     if (focus) tab?.focus({ preventScroll: true });
@@ -246,9 +250,19 @@ export function JourneyExplorer() {
                     </div>
                     <div className="journey-year-gallery-grid">
                       {selectedYearImages.map((src, imageIndex) => (
-                        <div className="journey-year-gallery-item" key={src}>
+                        <button
+                          type="button"
+                          className="journey-year-gallery-item"
+                          key={src}
+                          onClick={(event) => {
+                            imageTrigger.current = event.currentTarget;
+                            setSelectedImageIndex(imageIndex);
+                          }}
+                          aria-label={`Open photograph ${imageIndex + 1} from ${selected.year}`}
+                        >
                           <Image src={src} alt={`MMCS documentation from ${selected.year}, photograph ${imageIndex + 1}`} fill sizes="(max-width: 700px) 48vw, 200px" />
-                        </div>
+                          <span className="journey-year-gallery-expand" aria-hidden="true"><Expand size={18} /></span>
+                        </button>
                       ))}
                     </div>
                   </section>
@@ -280,6 +294,19 @@ export function JourneyExplorer() {
             )}
           </div>
         ))}
+        <Dialog open={selectedImage !== null} onOpenChange={(open) => { if (!open) setSelectedImageIndex(null); }}>
+          <DialogContent className="lightbox journey-image-lightbox" finalFocus={imageTrigger}>
+            {selectedImage && (
+              <>
+                <DialogTitle className="lightbox-title">{selected.year} archive</DialogTitle>
+                <DialogDescription>MMCS documentation photograph</DialogDescription>
+                <div className="lightbox-image">
+                  <Image src={selectedImage} alt={`MMCS documentation from ${selected.year}`} fill sizes="95vw" />
+                </div>
+              </>
+            )}
+          </DialogContent>
+        </Dialog>
         <p className="journey-photo-note">Photographs from MMCS documentation illustrate our journey; they are not records of every period.</p>
       </div>
     </section>

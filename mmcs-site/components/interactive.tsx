@@ -206,7 +206,7 @@ export function JourneyExplorer() {
         {journeyYears.map((entry, index) => (
           <div key={entry.year} id={`chapter-panel-${index}`} role="tabpanel" aria-labelledby={`year-${entry.year}`} hidden={selectedIndex !== index} tabIndex={0}>
             {selectedIndex === index && (
-              <article className="journey-detail">
+              <article className="journey-detail" style={{ gridTemplateColumns: 'minmax(0, 1fr)' }}>
                 <div className="journey-detail-copy">
                   <div className="journey-chapter-meta"><span>YEAR {chapter}</span><span>{chapter} / {String(journeyYears.length).padStart(2, '0')}</span></div>
                   <span className="journey-detail-period">{selected.year}</span>

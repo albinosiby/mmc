@@ -117,7 +117,7 @@ export function JourneyExplorer() {
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
   const selected = journeyYears[selectedIndex];
   const selectedEntry = selected.primary;
-  const selectedYearImages = journeyImagesFor(selected.year, selectedEntry, selectedIndex);\n  const image = selectedYearImages[0];
+  const selectedYearImages = journeyImagesFor(selected.year, selectedEntry, selectedIndex);
   const chapter = String(selectedIndex + 1).padStart(2, '0');
 
   function selectChapter(index: number, focus = false) {

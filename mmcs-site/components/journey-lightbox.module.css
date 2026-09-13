@@ -56,3 +56,15 @@
     margin-left: -150px !important;
   }
 }
+
+
+@media (min-width: 1001px) {
+  .wideCoverflow {
+    --coverflow-step: 290px !important;
+  }
+
+  .wideCoverflow :global(.coverflow-item) {
+    width: 400px !important;
+    margin-left: -200px !important;
+  }
+}

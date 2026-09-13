@@ -10,6 +10,7 @@ type CoverflowProps<T> = {
   onChange: (index: number) => void;
   renderItem: (item: T, index: number) => ReactNode;
   ariaLabel: string;
+  className?: string;
 };
 
 function circularOffset(index: number, activeIndex: number, length: number) {
@@ -26,6 +27,7 @@ export function Coverflow<T>({
   onChange,
   renderItem,
   ariaLabel,
+  className,
 }: CoverflowProps<T>) {
   const reduceMotion = useReducedMotion();
   const lastWheelAt = useRef(0);
@@ -37,7 +39,7 @@ export function Coverflow<T>({
 
   return (
     <motion.div
-      className="coverflow"
+      className={`coverflow ${className ?? ''} `}
       role="tablist"
       aria-label={ariaLabel}
       drag={reduceMotion ? false : 'x'}

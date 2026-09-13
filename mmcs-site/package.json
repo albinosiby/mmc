@@ -12,7 +12,9 @@
     "lint": "oxlint",
     "format": "oxfmt",
     "typecheck": "tsc --noEmit",
-    "test:content": "node scripts/check-content.mjs"
+    "test:content": "node scripts/check-content.mjs",
+    "build:cloudflare": "npm run build",
+    "deploy:cloudflare": "npx wrangler pages deploy out --project-name mmcs-public-website"
   },
   "dependencies": {
     "@base-ui/react": "1.7.0",

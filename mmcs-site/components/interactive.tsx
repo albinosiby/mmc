@@ -80,14 +80,14 @@ const journeyImagesByYear: Record<string, string[]> = {
   ],
 };
 
-function journeyImagesFor(years: string[], entry: JourneyEntry, index: number) {
+function journeyImagesFor(years: readonly string[], entry: JourneyEntry, index: number) {
   const images = [...new Set(years.flatMap((year) => journeyImagesByYear[year] ?? []))];
   return images.length > 0
     ? images
     : [entry.image ?? journeyImages[index % journeyImages.length]];
 }
 
-function journeyImageFor(years: string[], entry: JourneyEntry, index: number) {
+function journeyImageFor(years: readonly string[], entry: JourneyEntry, index: number) {
   return journeyImagesFor(years, entry, index)[0];
 }
 
@@ -100,7 +100,7 @@ type JourneyEntry = (typeof journeyTimeline)[number];
 type JourneyChapter = {
   id: string;
   year: string;
-  years: string[];
+  years: readonly string[];
   entries: JourneyEntry[];
   primary: JourneyEntry;
 };

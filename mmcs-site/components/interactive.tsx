@@ -37,24 +37,54 @@ const journeyImages = [
   '/images/inauguration.webp',
 ];
 
-// Selected from the MMCS documentation archive, one representative image per year.
-const journeyImagesByYear: Record<string, string> = {
-  '2015': 'https://drive.google.com/thumbnail?id=1E1S8hg50csm1VwrqxlIBqUATbejqdDAi&sz=w1200',
-  '2016': 'https://drive.google.com/thumbnail?id=1DS5eb1KiDwzEwPx_fnXIqh_mzqr_neIB&sz=w1200',
-  '2017': 'https://drive.google.com/thumbnail?id=1bFKfF9LWxD0Y8rzsMACEB1tUucS9DMCW&sz=w1200',
-  '2018': 'https://drive.google.com/thumbnail?id=14BVzHaUTvHlhLO5cl098PyRmxR7oleDn&sz=w1200',
-  '2019': 'https://drive.google.com/thumbnail?id=10h39NQ-7GndhH6lea1OQwgF34_IpgBF3&sz=w1200',
-  '2020': 'https://drive.google.com/thumbnail?id=1jNhsclZImA8wjRE3h8NmFN4Uf3zD8rEK&sz=w1200',
-  '2021': 'https://drive.google.com/thumbnail?id=1BFPU5j-0ibdIvjEENV2PBItjd7XTebws&sz=w1200',
-  '2022': 'https://drive.google.com/thumbnail?id=1sx24NXaggfqwRFnEZC1qYKV_AFoZfb8M&sz=w1200',
-  '2023': 'https://drive.google.com/thumbnail?id=1eWgJtkko5lTQ_PMU_SlRPZSM2z1eSrqm&sz=w1200',
-  '2024': 'https://drive.google.com/thumbnail?id=1V6R-MJ4271b8QvUuV_SRIG0BPR7-0N3T&sz=w1200',
-  '2025': 'https://drive.google.com/thumbnail?id=1pd1-hkEVFPzAD8d-7DNxJUUzASNKTKyX&sz=w1200',
-  '2026': 'https://drive.google.com/thumbnail?id=1gWNJkscAabb4ueuG38DtzCIi-MqjPAuC&sz=w1200',
+// MMCS documentation archive, grouped by the year shown in the Journey.
+const driveImage = (id: string) => `https://drive.google.com/thumbnail?id=${id}&sz=w1200`;
+
+const journeyImagesByYear: Record<string, string[]> = {
+  '2015': [driveImage('1E1S8hg50csm1VwrqxlIBqUATbejqdDAi'), driveImage('1DS5eb1KiDwzEwPx_fnXIqh_mzqr_neIB')],
+  '2016': [driveImage('1DS5eb1KiDwzEwPx_fnXIqh_mzqr_neIB'), driveImage('1E1S8hg50csm1VwrqxlIBqUATbejqdDAi')],
+  '2017': [
+    driveImage('1bFKfF9LWxD0Y8rzsMACEB1tUucS9DMCW'), driveImage('1HLV6qv_cdDKLGYHxZcnS7Y5OHrTpA7Aj'),
+    driveImage('1SNACVHQaISlWYzGdOaUkNlEXpmp0q-G8'), driveImage('1dE8Qy6xF5HfhPf5P_HgOrSiIHENgQ0WL'),
+    driveImage('1yNwTEZpCL9Y--NA6gitz5Q9X5AhXohOF'), driveImage('1JFj0dCw0n57XUIEqI9t1IYiZo9WMPkpj'),
+    driveImage('1jApsVyORYpI3Fulu5n_Zm2r1x-2-re80'), driveImage('1dtShoQdGJq2kyjdnSnJ2jV_h1uNW_occ'),
+    driveImage('1_rjDW070pvoYENBRyoBMGGZb0jdJDDVt'), driveImage('1risQoiGKkknuqUfp9pKYofDTye0DxOEN'),
+    driveImage('1-_zHbCYpq7ya3BD1BQMXWw1BvS4jXfUl'), driveImage('1AC4PNb0-pGVRt5B20nIG8XYn2_kD10cN'),
+  ],
+  '2018': [driveImage('14BVzHaUTvHlhLO5cl098PyRmxR7oleDn'), driveImage('10h39NQ-7GndhH6lea1OQwgF34_IpgBF3')],
+  '2019': [driveImage('1jNhsclZImA8wjRE3h8NmFN4Uf3zD8rEK'), driveImage('1v3RTP3mgyOE6bsXFUlOO_P1j-3Pp-b00')],
+  '2020': [driveImage('1Idq9Yj8Vy8i1oJr4FO3UhyH3_AhIUO08'), driveImage('1gT3VRFWM2haUNC9YJ4cdKGkdapXE6Yej'), driveImage('1SwUacbfM6SqhQzJzG93vQsVgxF8Sh7Lq')],
+  '2021': [driveImage('1BFPU5j-0ibdIvjEENV2PBItjd7XTebws'), driveImage('1sx24NXaggfqwRFnEZC1qYKV_AFoZfb8M')],
+  '2022': [driveImage('127JJSDfRVaCk3qcq2X3_6XhTiPbnNDe3'), driveImage('1mWqkQBMo_WQA8xGrqc5xCCMxamoT806z')],
+  '2023': [driveImage('19fOveshwj5k2buWJ2WwQlOIrwmw4suDx'), driveImage('1F9fhpNbAUnDwd7iDpsk1kRH4a5hWN__S'), driveImage('1p-rwhKEqlN7QTBZVhlogxNm9kO4wKtJ6')],
+  '2024': [
+    driveImage('1V6R-MJ4271b8QvUuV_SRIG0BPR7-0N3T'), driveImage('1oauHSYAf_QROPLX229_Jq0toBBk27l8s'),
+    driveImage('1UwvzbHU7TzB6v_aypZk_x1QeLPt2J__T'), driveImage('1P-walzhKZTX-011k20ptT9eyQKQ3OhbC'),
+    driveImage('1l_ZfNUyiO-lte7DgeQQ1eS1OHqR2gmiH'), driveImage('1xu-cZ4BnSPXLfEEtxxvAOxy0L2B3pb0c'),
+    driveImage('1stkF60n8-njfV2d8peRufMQhGzt8Su_Q'), driveImage('1xEar5MavN66DTPwr8ysSonW-Cz9P7wYY'),
+    driveImage('13ht9GIUB_HZfqgeFGER7GIxlvoeM0Lcd'), driveImage('1B8ZTR5MP7KUbtTiMf36mJOpV3EYS60rh'),
+  ],
+  '2025': [
+    driveImage('17HjQVQEj_Bpxw-lRUea8OLIHpCXMp3Lt'), driveImage('13U8SitTVpNMQiQl5maCuzzf2ocBSz0ay'),
+    driveImage('1Z1To0NDFAAYEtiG4pBHjJJndeyP_WUam'), driveImage('1Y8HyVoYMKCuvuqAHB6CnK-IvQxjc1orG'),
+    driveImage('1pd1-hkEVFPzAD8d-7DNxJUUzASNKTKyX'), driveImage('1WPhBN6fwZZcX6UhqEd5aTOH4k5kT-6JA'),
+    driveImage('13P7TZNSKbHT_baORiDiQSLGbvmaYQeeX'),
+  ],
+  '2026': [
+    driveImage('1gWNJkscAabb4ueuG38DtzCIi-MqjPAuC'), driveImage('1tRKHNtMR59daQQvRuu3zJY4vQdmPSlFq'),
+    driveImage('1N9z9hzjcedHCxjn5yLnNSztLtyXMNHwa'), driveImage('1ZEVUSkufN4FdjT4PLfR0p7rhknDhjEYq'),
+    driveImage('14qED-11iGgXobTKzazYfB_GKhdnnmptx'), driveImage('1a6QJ7az4OseHc-kHR2GUnLAIRaU0T8Lo'),
+    driveImage('13clDFULETkB-nPoG7ovsQkpqqHdk_klS'), driveImage('1zZPpFk6q8HLeWToycXf81ZJ3EainxxLz'),
+    driveImage('1yZkEkpgnCtGgsvh5Mz_z5WP9W31X-RAM'), driveImage('1g7HQksLv9DRVpxM3bC97R9Ik8RXYGGq1'),
+  ],
 };
 
+function journeyImagesFor(year: string, entry: JourneyEntry, index: number) {
+  return journeyImagesByYear[year] ?? [entry.image ?? journeyImages[index % journeyImages.length]];
+}
+
 function journeyImageFor(year: string, entry: JourneyEntry, index: number) {
-  return journeyImagesByYear[year] ?? entry.image ?? journeyImages[index % journeyImages.length];
+  return journeyImagesFor(year, entry, index)[0];
 }
 
 function asParagraph(items: string[]) {
@@ -87,7 +117,7 @@ export function JourneyExplorer() {
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
   const selected = journeyYears[selectedIndex];
   const selectedEntry = selected.primary;
-  const image = journeyImageFor(selected.year, selectedEntry, selectedIndex);
+  const selectedYearImages = journeyImagesFor(selected.year, selectedEntry, selectedIndex);\n  const image = selectedYearImages[0];
   const chapter = String(selectedIndex + 1).padStart(2, '0');
 
   function selectChapter(index: number, focus = false) {
@@ -197,6 +227,20 @@ export function JourneyExplorer() {
                     </section>
                   ))}
                   {selectedEntry.periodNote && <p className="journey-period-note"><strong>Status:</strong> {selectedEntry.periodNote}</p>}
+                  <section className="journey-year-gallery" aria-labelledby={`year-gallery-${selected.year}`}>
+                    <div className="journey-year-gallery-heading">
+                      <span className="eyebrow">YEAR IN PHOTOGRAPHS</span>
+                      <h4 id={`year-gallery-${selected.year}`}>{selected.year} archive</h4>
+                      <p>{selectedYearImages.length} photographs from MMCS documentation.</p>
+                    </div>
+                    <div className="journey-year-gallery-grid">
+                      {selectedYearImages.map((src, imageIndex) => (
+                        <div className="journey-year-gallery-item" key={src}>
+                          <Image src={src} alt={`MMCS documentation from ${selected.year}, photograph ${imageIndex + 1}`} fill sizes="(max-width: 700px) 48vw, 200px" />
+                        </div>
+                      ))}
+                    </div>
+                  </section>
                   {selected.entries.filter((item) => item.id !== selectedEntry.id).map((item) => (
                     <section className="journey-additional-entry" key={item.id}>
                       <span>{item.year}</span>

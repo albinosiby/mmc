@@ -177,6 +177,7 @@ export function JourneyExplorer() {
             getKey={(entry) => entry.year}
             onChange={selectChapter}
             ariaLabel="MMCS journey years"
+            className={journeyLightbox.wideCoverflow}
             renderItem={(entry, index) => (
             <button
               type="button"

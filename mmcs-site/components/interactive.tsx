@@ -192,10 +192,6 @@ export function JourneyExplorer() {
           <div key={entry.year} id={`chapter-panel-${index}`} role="tabpanel" aria-labelledby={`year-${entry.year}`} hidden={selectedIndex !== index} tabIndex={0}>
             {selectedIndex === index && (
               <article className="journey-detail">
-                <div className="journey-detail-image">
-                  <Image src={image} alt="Illustrative photograph from MMCS documentation" fill sizes="(max-width: 700px) 100vw, 42vw" />
-                  <div className="journey-image-caption"><span>ROOTED IN COMMUNITY</span><strong>{selected.year}</strong></div>
-                </div>
                 <div className="journey-detail-copy">
                   <div className="journey-chapter-meta"><span>YEAR {chapter}</span><span>{chapter} / {String(journeyYears.length).padStart(2, '0')}</span></div>
                   <span className="journey-detail-period">{selected.year}</span>

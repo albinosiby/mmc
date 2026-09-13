@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import journeyLightbox from './journey-lightbox.module.css';
 import {
   ArrowLeft,
   ArrowRight,
@@ -252,7 +253,7 @@ export function JourneyExplorer() {
                       {selectedYearImages.map((src, imageIndex) => (
                         <button
                           type="button"
-                          className="journey-year-gallery-item"
+                          className={journeyLightbox.item}
                           key={src}
                           onClick={(event) => {
                             imageTrigger.current = event.currentTarget;
@@ -261,7 +262,7 @@ export function JourneyExplorer() {
                           aria-label={`Open photograph ${imageIndex + 1} from ${selected.year}`}
                         >
                           <Image src={src} alt={`MMCS documentation from ${selected.year}, photograph ${imageIndex + 1}`} fill sizes="(max-width: 700px) 48vw, 200px" />
-                          <span className="journey-year-gallery-expand" aria-hidden="true"><Expand size={18} /></span>
+                          <span className={journeyLightbox.expand} aria-hidden="true"><Expand size={18} /></span>
                         </button>
                       ))}
                     </div>

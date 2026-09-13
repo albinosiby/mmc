@@ -199,7 +199,6 @@ export function JourneyExplorer() {
               <div className="journey-card-photo">
                 <Image src={journeyImageFor(entry.years, entry.primary, index)} alt="" fill sizes="280px" />
                 <span className="journey-card-number">YEAR {String(index + 1).padStart(2, '0')}</span>
-                <span className="journey-card-arrow"><ArrowUpRight size={20} aria-hidden="true" /></span>
               </div>
               <div className="journey-card-label">
                 <span className="journey-card-year">{entry.year}</span>

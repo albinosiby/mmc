@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   // All dynamic routes provide generateStaticParams.
   output: 'export',
   trailingSlash: true,
-  images: { unoptimized: true },
+  images: {\n    unoptimized: true,\n    remotePatterns: [{ protocol: 'https', hostname: 'drive.google.com' }],\n  },
   poweredByHeader: false,
 };
 

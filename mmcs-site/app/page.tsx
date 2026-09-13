@@ -44,6 +44,25 @@ const activities = [
   { image: 'attire', name: 'Traditional Attire', href: '/our-work#women' },
 ] as const;
 
+const activityPhotoOverrides = {
+  farming: {
+    src: 'https://drive.google.com/thumbnail?id=1wAxIvFFDhPlB2RG-XLxo2qRmoyERgIIn&sz=w1000',
+    alt: 'MMCS dairy farm supporting farming and livestock livelihoods',
+  },
+  processing: {
+    src: 'https://drive.google.com/thumbnail?id=1Uj7-VzJeXPUJ8sLgJ0DrzKdN78BjthsY&sz=w1000',
+    alt: 'MMCS food processing activity',
+  },
+  women: {
+    src: 'https://drive.google.com/thumbnail?id=1BTM9EO65crXGgPg82CzJ_tJ9thHbGLrs&sz=w1000',
+    alt: 'Women participating in an MMCS community programme',
+  },
+  training: {
+    src: 'https://drive.google.com/thumbnail?id=1SHDIPK8Wii4XEEbBmhLBodD5H4IBQrzg&sz=w1000',
+    alt: 'Skill development through local value-added production',
+  },
+} as const;
+
 const executives = [
   { name: 'Miss Lipika A Sangma', role: 'President', image: 'https://drive.google.com/thumbnail?id=1kSw7bO3zqVf2CjLjhBIRqXOZiy6RC5zA&sz=w1000' },
   { name: 'Fr Benoy Joseph', role: 'Managing Director & Secretary', image: 'https://drive.google.com/thumbnail?id=11SEsXY5NoTBdraKAQDvswvl2jI__5HTK&sz=w1000' },
@@ -318,12 +337,27 @@ export default function Home() {
           </Link>
         </div>
         <div className="reference-activity-grid">
-          {activities.map((a) => (
-            <Link key={a.image} href={a.href}>
-              <ReferencePhoto region={a.image} />
+          {activities.map((a) => {
+            const photo = activityPhotoOverrides[a.image as keyof typeof activityPhotoOverrides];
+            return (
+              <Link key={a.image} href={a.href}>
+                {photo ? (
+                <div className="reference-photo">
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    sizes="(max-width: 700px) 45vw, 220px"
+                    style={{ objectFit: 'cover' }}
+                  />
+                </div>
+              ) : (
+                <ReferencePhoto region={a.image} />
+              )}
               <strong>{a.name}</strong>
-            </Link>
-          ))}
+              </Link>
+            );
+          })}
         </div>
         <p className="reference-imagery-note">
           Illustrative imagery from the supplied design reference. Actual

@@ -79,12 +79,15 @@ const journeyImagesByYear: Record<string, string[]> = {
   ],
 };
 
-function journeyImagesFor(year: string, entry: JourneyEntry, index: number) {
-  return journeyImagesByYear[year] ?? [entry.image ?? journeyImages[index % journeyImages.length]];
+function journeyImagesFor(years: string[], entry: JourneyEntry, index: number) {
+  const images = [...new Set(years.flatMap((year) => journeyImagesByYear[year] ?? []))];
+  return images.length > 0
+    ? images
+    : [entry.image ?? journeyImages[index % journeyImages.length]];
 }
 
-function journeyImageFor(year: string, entry: JourneyEntry, index: number) {
-  return journeyImagesFor(year, entry, index)[0];
+function journeyImageFor(years: string[], entry: JourneyEntry, index: number) {
+  return journeyImagesFor(years, entry, index)[0];
 }
 
 function asParagraph(items: string[]) {
@@ -93,23 +96,35 @@ function asParagraph(items: string[]) {
 
 type JourneyEntry = (typeof journeyTimeline)[number];
 
-function entryYears(entry: JourneyEntry) {
-  const years = entry.year.match(/\d{4}/g)?.map(Number) ?? [];
-  return { start: years[0] ?? 0, end: years.at(-1) ?? years[0] ?? 0 };
-}
+type JourneyChapter = {
+  id: string;
+  year: string;
+  years: string[];
+  entries: JourneyEntry[];
+  primary: JourneyEntry;
+};
 
-const journeyYears = Array.from({ length: 12 }, (_, index) => 2015 + index).map((year) => {
-  const entries = journeyTimeline.filter((entry) => {
-    const range = entryYears(entry);
-    return year >= range.start && year <= range.end;
-  });
-  const primary = entries.find((entry) => entry.year === String(year))
-    ?? entries.find((entry) => entryYears(entry).start === year)
-    ?? entries[0];
+const journeyChapterDefinitions = [
+  { id: '2015', year: '2015', years: ['2015'], entryIds: ['2015'] },
+  { id: '2016-2017', year: '2016–2017', years: ['2016', '2017'], entryIds: ['registration-2016-2017', 'livelihoods-2017'] },
+  { id: '2018-2020', year: '2018–2020', years: ['2018', '2019', '2020'], entryIds: ['consolidation-2018-2020'] },
+  { id: '2021-2023', year: '2021–2023', years: ['2021', '2022', '2023'], entryIds: ['expansion-2021-2023'] },
+  { id: '2024', year: '2024', years: ['2024'], entryIds: ['2024', 'nokma-2024-2025'] },
+  { id: '2025', year: '2025', years: ['2025'], entryIds: ['livelihoods-2025', 'collective-farming-2025-2026', 'cold-chain-2025-2026', 'recognition-2023-2025'] },
+  { id: '2026', year: '2026', years: ['2026'], entryIds: ['mineral-water-2026', 'infrastructure-2026', 'women-entrepreneurship-2026'] },
+] as const;
 
-  if (!primary) throw new Error(`Missing Journey content for ${year}`);
+const journeyYears: JourneyChapter[] = journeyChapterDefinitions.map((chapter) => {
+  const entries = chapter.entryIds.map((id) => journeyTimeline.find((entry) => entry.id === id));
+  if (entries.some((entry) => !entry)) {
+    throw new Error(`Missing Journey content for ${chapter.year}`);
+  }
 
-  return { year: String(year), entries, primary };
+  return {
+    ...chapter,
+    entries: entries as JourneyEntry[],
+    primary: entries[0] as JourneyEntry,
+  };
 });
 
 export function JourneyExplorer() {
@@ -117,7 +132,7 @@ export function JourneyExplorer() {
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
   const selected = journeyYears[selectedIndex];
   const selectedEntry = selected.primary;
-  const selectedYearImages = journeyImagesFor(selected.year, selectedEntry, selectedIndex);
+  const selectedYearImages = journeyImagesFor(selected.years, selectedEntry, selectedIndex);
   const chapter = String(selectedIndex + 1).padStart(2, '0');
 
   function selectChapter(index: number, focus = false) {
@@ -170,7 +185,7 @@ export function JourneyExplorer() {
               }}
             >
               <div className="journey-card-photo">
-                <Image src={journeyImageFor(entry.year, entry.primary, index)} alt="" fill sizes="280px" />
+                <Image src={journeyImageFor(entry.years, entry.primary, index)} alt="" fill sizes="280px" />
                 <span className="journey-card-number">YEAR {String(index + 1).padStart(2, '0')}</span>
                 <span className="journey-card-arrow"><ArrowUpRight size={20} aria-hidden="true" /></span>
               </div>

@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import pageHeroStyles from './page-hero.module.css';
 import {
   ArrowRight,
   ArrowUpRight,
@@ -69,13 +70,13 @@ export function PageHero({
   breadcrumb: string;
   imageSrc?: string;
   imageAlt?: string;
-  variant?: 'journey' | 'contact' | 'megh-farm' | 'nokma';
+  variant?: 'journey' | 'contact' | 'megh-farm' | 'nokma' | 'our-work';
 }) {
   return (
     <section
       className={`page-hero ${imageSrc ? 'page-hero-image' : ''} ${
         variant ? `page-hero-${variant}` : ''
-      }`}
+      } ${variant === 'our-work' ? pageHeroStyles.ourWork : ''}`}
     >
       {imageSrc && (
         <>

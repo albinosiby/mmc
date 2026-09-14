@@ -66,6 +66,10 @@ const activityPhotoOverrides = {
     src: '/images/traditional-attire.jpg',
     alt: 'Traditional handwoven attire from Meghalaya',
   },
+  household: {
+    src: 'https://drive.google.com/thumbnail?id=1dE8Qy6xF5HfhPf5P_HgOrSiIHENgQ0WL&sz=w1000',
+    alt: 'Handcrafted household products made by the MMCS community',
+  },
 } as const;
 
 const executives = [

@@ -99,7 +99,7 @@ const executives = [
   {
     name: 'Mr. Jema M Sangma',
     role: 'Member',
-    image: mmcsArchiveImage('EXECUTIVE MEMBERS/5.Jema M Sangma ,Member/DSC02974.jpg'),
+    image: mmcsArchiveImage('EXECUTIVE MEMBERS/5.Jema M Sangma ,Member/DSC02981.jpg'),
   },
   {
     name: 'Mrs. Rupali T Sangma',

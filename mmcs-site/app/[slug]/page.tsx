@@ -67,7 +67,7 @@ export default async function Page({
               : slug === 'organisations'
                 ? '/images/organisations-hero.jpg'
                 : slug === 'journey'
-                  ? '/images/journey-hero.png'
+                  ? '/images/gallery/g11_1.2.1.jpg'
                   : undefined
           }
           imageAlt={

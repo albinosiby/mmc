@@ -55,7 +55,7 @@ export default async function Page({
   if (!p) notFound();
   return (
     <main id="main">
-      {slug !== 'contact' && slug !== 'gallery' && slug !== 'organisations' && (
+      {slug !== 'contact' && slug !== 'gallery' && slug !== 'organisations' && slug !== 'achievements' && (
         <PageHero
           eyebrow={p.eyebrow}
           title={p.heading}

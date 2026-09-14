@@ -2036,7 +2036,7 @@ select:focus-visible {
 .coverflow-item > button { display: flex; flex-direction: column; width: 100%; height: 450px; padding: 0; overflow: hidden; border: 1px solid #dce2d7; border-radius: 16px; background: #fff; text-align: left; color: #193d30; transition: background .3s, color .3s, box-shadow .3s, border-color .3s; }
 .coverflow-item > button:hover { box-shadow: 0 15px 34px #173e3224; }
 .coverflow-item > button.active { background: #173e32; color: #fff; box-shadow: 0 24px 50px #173e3240; border-color: #173e32; }
-.journey-card-photo { position: relative; flex: 0 0 65%; height: 65%; overflow: hidden; }
+.journey-card-photo { position: relative; flex: 0 0 60%; height: 60%; overflow: hidden; }
 .journey-card-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg,#102d3550,transparent 65%); }
 .journey-card-photo img { object-fit: cover; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
 .coverflow-item button:hover img { transform: scale(1.07); }
@@ -2045,7 +2045,9 @@ select:focus-visible {
 .active .journey-card-arrow { background: #d7edb8; transform: rotate(45deg); }
 .journey-card-label { flex: 1; padding: 20px; }
 .journey-card-year { display: block; font-family: 'Plus Jakarta Sans',sans-serif; font-size: 26px; line-height: 1.2; letter-spacing: -.04em; margin-bottom: 10px; }
-.journey-card-label strong { display: block; font-size: 14px; font-weight: 500; line-height: 1.5; opacity: .9; }
+.journey-card-label strong { display: block; font-size: 14px; font-weight: 500; line-height: 1.45; opacity: .9; }
+.journey-card-label p { display: -webkit-box; margin: 8px 0 0; overflow: hidden; font-size: 11px; line-height: 1.45; opacity: .72; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.coverflow-item > button.active .journey-card-label p { color: #dbe8e1; }
 .journey-card-label p { display: -webkit-box; min-height: 68px; margin: 10px 0 0; overflow: hidden; font-size: 11px; line-height: 1.55; opacity: .7; -webkit-box-orient: vertical; -webkit-line-clamp: 4; }
 .coverflow-item > button.active .journey-card-label p { color: #dbe8e1; }
 .journey-progress { display: flex; align-items: center; gap: 16px; margin: 22px 0 34px; color: #426153; font-size: 11px; font-weight: 600; }

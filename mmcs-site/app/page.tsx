@@ -77,7 +77,7 @@ const mmcsArchiveImage = (path: string) =>
 
 const executives = [
   {
-    name: 'Miss Lipika A Sangma',
+    name: 'Mrs. Lipika A Sangma',
     role: 'President',
     image: mmcsArchiveImage('EXECUTIVE MEMBERS/1.Mrs Lipika A Sangma , President/DSC03056.jpg'),
   },
@@ -87,32 +87,32 @@ const executives = [
     image: mmcsArchiveImage('EXECUTIVE MEMBERS/2. Fr Benoy Joeph , Managing Director & Secretary/DSC00252..png'),
   },
   {
-    name: 'Mr Sandesh Bakshaka',
+    name: 'Mr. Sandesh Bakshaka',
     role: 'Vice President',
     image: mmcsArchiveImage('EXECUTIVE MEMBERS/3.Sandesh Bakshaka , Vice President/DSC02996.jpg'),
   },
   {
-    name: 'Mr Batnang Momin',
+    name: 'Mr. Batnang Momin',
     role: 'Joint Secretary',
     image: mmcsArchiveImage('EXECUTIVE MEMBERS/4.Batnang Momin , Joint Secretary/DSC02988.jpg'),
   },
   {
-    name: 'Miss Jema M Sangma',
+    name: 'Mrs. Jema M Sangma',
     role: 'Member',
     image: mmcsArchiveImage('EXECUTIVE MEMBERS/5.Jema M Sangma ,Member/DSC02974.jpg'),
   },
   {
-    name: 'Miss Rupali T Sangma',
+    name: 'Mrs. Rupali T Sangma',
     role: 'Member',
     image: mmcsArchiveImage('EXECUTIVE MEMBERS/6.Rupali .T Sangma ,Member/DSC03020.jpg'),
   },
   {
-    name: 'Mr Silseng Marak',
+    name: 'Mr. Silseng Marak',
     role: 'Member',
     image: mmcsArchiveImage('EXECUTIVE MEMBERS/7.Silseng Marak , Member/SILSENG MARAK.jpeg'),
   },
   {
-    name: 'Miss Sipswari Rabha',
+    name: 'Mrs. Sipswari Rabha',
     role: 'Member',
     image: mmcsArchiveImage('EXECUTIVE MEMBERS/8.Sipswari Rabha , Member/DSC03104.jpg'),
   },

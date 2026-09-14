@@ -296,7 +296,6 @@ export function JourneyExplorer() {
             {selectedImage && (
               <>
                 <DialogTitle className="lightbox-title">{selected.year} archive</DialogTitle>
-                <DialogDescription>MMCS documentation photograph</DialogDescription>
                 <div className="lightbox-image">
                   <Image src={selectedImage} alt={`MMCS documentation from ${selected.year}`} fill sizes="95vw" />
                 </div>

@@ -140,7 +140,6 @@ export function JourneyExplorer() {
           <div className="journey-explorer-intro">
             <p>Small beginnings. Shared ambition. Explore the moments that have shaped our cooperative since 2015.</p>
             <div className="journey-controls">
-              <span>Explore the years <ArrowRight size={16} aria-hidden="true" /></span>
               <button type="button" aria-label="Previous year" onClick={() => selectChapter(selectedIndex - 1)}><ArrowLeft size={19} /></button>
               <button type="button" aria-label="Next year" onClick={() => selectChapter(selectedIndex + 1)}><ArrowRight size={19} /></button>
             </div>

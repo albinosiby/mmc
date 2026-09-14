@@ -254,9 +254,6 @@ export default function Home() {
                 Empower women, support farmers, develop youth and build stronger
                 communities.
               </p>
-              <Link href="/#about" className="rail-link">
-                Read our full goals <ArrowRight size={12} />
-              </Link>
             </div>
           </article>
         </div>

@@ -1889,6 +1889,19 @@ select:focus-visible {
   margin: 0;
   min-width: 0;
 }
+.project-photo-trigger {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  cursor: zoom-in;
+}
+.project-photo-trigger:focus-visible {
+  outline: 3px solid #d7edb8;
+  outline-offset: 4px;
+}
 .project-real-image {
   position: relative;
   height: 280px;

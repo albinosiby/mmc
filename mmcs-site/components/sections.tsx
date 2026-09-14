@@ -25,7 +25,7 @@ import {
   initiatives,
   type Project,
 } from '@/lib/content';
-import { PhotoPlaceholder, Reveal } from '@/components/interactive';
+import { ProjectImageGallery, Reveal } from '@/components/interactive';
 export function SectionHeading({
   eyebrow,
   title,
@@ -424,27 +424,7 @@ export function ProjectFeature({
           </div>
         </div>
       </div>
-      <div className="project-photos">
-        {p.images.map((photo, i) => (
-          <figure key={photo.label} className={i === 0 ? 'featured-photo' : ''}>
-            {photo.src ? (
-              <>
-                <div className="project-real-image">
-                  <Image
-                    src={photo.src}
-                    alt={photo.alt}
-                    fill
-                    sizes="(max-width: 700px) 100vw, 50vw"
-                  />
-                </div>
-                {p.id !== 'megh-farm' && p.id !== 'nokma' && <figcaption>{photo.label}</figcaption>}
-              </>
-            ) : (
-              <PhotoPlaceholder label={photo.label} />
-            )}
-          </figure>
-        ))}
-      </div>
+      <ProjectImageGallery images={p.images} />
     </article>
   );
 }

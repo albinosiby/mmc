@@ -17,6 +17,8 @@ export const statements = {
 };
 const galleryImage = (name: string) =>
   `/images/gallery/${encodeURIComponent(name)}`;
+const mmcsImage = (path: string) =>
+  `/images/MMCS/${path.split('/').map(encodeURIComponent).join('/')}`;
 
 const normalGalleryImages = [
   "A1_1.12.1.jpg",
@@ -167,6 +169,31 @@ export const projects: Project[] = [
         src: galleryImage('vgdfgds_1.49.1.jpg'),
         alt: 'MeghFarm community activity',
         label: 'MeghFarm community activity',
+      },
+      {
+        src: mmcsImage('2024/MEGHFARM PROCCCESING HUB ESTABLISHMENT/A22_1.2.2.jpg'),
+        alt: 'MeghFarm Processing Hub establishment',
+        label: 'MeghFarm Processing Hub establishment',
+      },
+      {
+        src: mmcsImage('2024/MEGHFARM PROCCCESING HUB ESTABLISHMENT/A24_1.3.1.jpg'),
+        alt: 'MeghFarm Processing Hub establishment',
+        label: 'MeghFarm Processing Hub establishment',
+      },
+      {
+        src: mmcsImage('2024/MEGHFARM PROCCCESING HUB ESTABLISHMENT/A28_1.3.1.jpg'),
+        alt: 'MeghFarm Processing Hub establishment',
+        label: 'MeghFarm Processing Hub establishment',
+      },
+      {
+        src: mmcsImage('2024/MEGHFARM PROCCCESING HUB ESTABLISHMENT/D1_1.2.3.jpg'),
+        alt: 'MeghFarm Processing Hub establishment',
+        label: 'MeghFarm Processing Hub establishment',
+      },
+      {
+        src: mmcsImage('2024/MEGHFARM PROCCCESING HUB ESTABLISHMENT/G4_1.4.1.jpg'),
+        alt: 'MeghFarm Processing Hub establishment',
+        label: 'MeghFarm Processing Hub establishment',
       },
     ],
     source: 'history:hub',

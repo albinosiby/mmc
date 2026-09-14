@@ -114,6 +114,46 @@ export const projects: Project[] = [
         alt: 'Nokma ice cream cups arranged in a product display',
         label: 'A closer look at the ice cream range',
       },
+      {
+        src: mmcsImage('2024/nokma BRAND devoloped accelerated/A DSC01259.jpg'),
+        alt: 'Nokma product development activity',
+        label: 'Nokma product development activity',
+      },
+      {
+        src: mmcsImage('2024/nokma BRAND devoloped accelerated/DSC03304.JPG'),
+        alt: 'Nokma product development activity',
+        label: 'Nokma product development activity',
+      },
+      {
+        src: mmcsImage('2024/nokma BRAND devoloped accelerated/WhatsApp Image 2026-09-07 at 4.34.37 PM.jpeg'),
+        alt: 'Nokma product development activity',
+        label: 'Nokma product development activity',
+      },
+      {
+        src: mmcsImage('2024/nokma BRAND devoloped accelerated/WhatsApp Image 2026-09-07 at 4.38.31 PM.jpeg'),
+        alt: 'Nokma product development activity',
+        label: 'Nokma product development activity',
+      },
+      {
+        src: mmcsImage('2024/nokma BRAND devoloped accelerated/WhatsApp Image 2026-09-07 at 4.50.35 PM (1).jpeg'),
+        alt: 'Nokma product development activity',
+        label: 'Nokma product development activity',
+      },
+      {
+        src: mmcsImage('2024/nokma BRAND devoloped accelerated/WhatsApp Image 2026-09-07 at 4.50.35 PM.jpeg'),
+        alt: 'Nokma product development activity',
+        label: 'Nokma product development activity',
+      },
+      {
+        src: mmcsImage('2024/nokma BRAND devoloped accelerated/fdrtr_2.1.1.jpg'),
+        alt: 'Nokma product development activity',
+        label: 'Nokma product development activity',
+      },
+      {
+        src: mmcsImage('2024/nokma BRAND devoloped accelerated/rtyry_3.1.2.jpg'),
+        alt: 'Nokma product development activity',
+        label: 'Nokma product development activity',
+      },
     ],
     source: 'history:nokma; nokma.in:2026-09-05',
   },

@@ -1115,7 +1115,7 @@ select:focus-visible {
 }
 .work-programme-card > :not(.work-card-background):not(.work-card-overlay) {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 .work-programme-card .work-card-top,
 .work-programme-card.card-1 .work-card-top,

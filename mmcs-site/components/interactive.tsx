@@ -488,6 +488,112 @@ export function Gallery({ preview = false }: { preview?: boolean }) {
     </>
   );
 }
+type ProjectGalleryImage = {
+  src?: string;
+  alt: string;
+  label: string;
+};
+
+export function ProjectImageGallery({
+  images,
+}: {
+  images: ProjectGalleryImage[];
+}) {
+  const displayable = images.filter(
+    (photo): photo is ProjectGalleryImage & { src: string } => Boolean(photo.src),
+  );
+  const [index, setIndex] = useState<number | null>(null);
+  const trigger = useRef<HTMLButtonElement | null>(null);
+  const selected = index === null ? null : displayable[index];
+  const change = (direction: number) =>
+    setIndex((current) =>
+      current === null
+        ? null
+        : (current + direction + displayable.length) % displayable.length,
+    );
+
+  return (
+    <>
+      <div className="project-photos">
+        {displayable.map((photo, i) => (
+          <figure key={`${photo.src}-${i}`} className={i === 0 ? 'featured-photo' : ''}>
+            <button
+              type="button"
+              className="project-photo-trigger"
+              aria-label={`Open photograph ${i + 1} of ${displayable.length}`}
+              onClick={(event) => {
+                trigger.current = event.currentTarget;
+                setIndex(i);
+              }}
+            >
+              <div className="project-real-image">
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  sizes="(max-width: 700px) 100vw, 50vw"
+                />
+              </div>
+            </button>
+          </figure>
+        ))}
+      </div>
+      <Dialog
+        open={selected !== null}
+        onOpenChange={(open) => {
+          if (!open) setIndex(null);
+        }}
+      >
+        <DialogContent
+          className="lightbox"
+          finalFocus={trigger}
+          onKeyDown={(event) => {
+            if (event.key === 'ArrowRight') {
+              event.preventDefault();
+              change(1);
+            }
+            if (event.key === 'ArrowLeft') {
+              event.preventDefault();
+              change(-1);
+            }
+          }}
+        >
+          {selected && (
+            <>
+              <DialogTitle className="sr-only">Project photograph</DialogTitle>
+              <DialogDescription className="sr-only">
+                Use the previous and next buttons to browse project photos.
+              </DialogDescription>
+              <div className="lightbox-image" key={selected.src}>
+                <Image src={selected.src} alt={selected.alt} fill sizes="95vw" />
+              </div>
+              <div className="lightbox-controls">
+                <button
+                  className="icon-button"
+                  aria-label="Previous photograph"
+                  onClick={() => change(-1)}
+                >
+                  <ArrowLeft />
+                </button>
+                <span aria-live="polite">
+                  {(index ?? 0) + 1} / {displayable.length}
+                </span>
+                <button
+                  className="icon-button"
+                  aria-label="Next photograph"
+                  onClick={() => change(1)}
+                >
+                  <ArrowRight />
+                </button>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
+    </>
+  );
+}
+
 const activityIcons = {
   sprout: Sprout,
   factory: Factory,

@@ -72,15 +72,50 @@ const activityPhotoOverrides = {
   },
 } as const;
 
+const mmcsArchiveImage = (path: string) =>
+  `/images/MMCS/${path.split('/').map(encodeURIComponent).join('/')}`;
+
 const executives = [
-  { name: 'Miss Lipika A Sangma', role: 'President', image: 'https://drive.google.com/thumbnail?id=1kSw7bO3zqVf2CjLjhBIRqXOZiy6RC5zA&sz=w1000' },
-  { name: 'Fr Benoy Joseph', role: 'Managing Director & Secretary', image: 'https://drive.google.com/thumbnail?id=11SEsXY5NoTBdraKAQDvswvl2jI__5HTK&sz=w1000' },
-  { name: 'Mr Sandesh Bakshaka', role: 'Vice President', image: 'https://drive.google.com/thumbnail?id=1CjBeLUK6sNmqV35GmDNhOTYCfXOJtUN0&sz=w1000' },
-  { name: 'Mr Batnang Momin', role: 'Joint Secretary', image: 'https://drive.google.com/thumbnail?id=1UAFes99-bjYSHkM9t96Ujqv7HOFGvDk4&sz=w1000' },
-  { name: 'Miss Jema M Sangma', role: 'Member', image: 'https://drive.google.com/thumbnail?id=127lnRQZ7Canu5Kp_FTtBJa5rnHS1z62o&sz=w1000' },
-  { name: 'Miss Rupali T Sangma', role: 'Member', image: 'https://drive.google.com/thumbnail?id=1NgU0LiXG8d_pY1X-khfBj4RQVM2mmqWB&sz=w1000' },
-  { name: 'Mr Silseng Marak', role: 'Member', image: 'https://drive.google.com/thumbnail?id=1Ipr84Lyb8O6TlMTaboc-XHM91dbFRKlu&sz=w1000' },
-  { name: 'Miss Sipswari Rabha', role: 'Member', image: 'https://drive.google.com/thumbnail?id=1EmJTBXhdsepq6ffTTAYVuAf3kp-JJFIx&sz=w1000' },
+  {
+    name: 'Miss Lipika A Sangma',
+    role: 'President',
+    image: mmcsArchiveImage('EXECUTIVE MEMBERS/1.Mrs Lipika A Sangma , President/DSC03056.jpg'),
+  },
+  {
+    name: 'Fr Benoy Joseph',
+    role: 'Managing Director & Secretary',
+    image: mmcsArchiveImage('EXECUTIVE MEMBERS/2. Fr Benoy Joeph , Managing Director & Secretary/DSC00252..png'),
+  },
+  {
+    name: 'Mr Sandesh Bakshaka',
+    role: 'Vice President',
+    image: mmcsArchiveImage('EXECUTIVE MEMBERS/3.Sandesh Bakshaka , Vice President/DSC02996.jpg'),
+  },
+  {
+    name: 'Mr Batnang Momin',
+    role: 'Joint Secretary',
+    image: mmcsArchiveImage('EXECUTIVE MEMBERS/4.Batnang Momin , Joint Secretary/DSC02988.jpg'),
+  },
+  {
+    name: 'Miss Jema M Sangma',
+    role: 'Member',
+    image: mmcsArchiveImage('EXECUTIVE MEMBERS/5.Jema M Sangma ,Member/DSC02974.jpg'),
+  },
+  {
+    name: 'Miss Rupali T Sangma',
+    role: 'Member',
+    image: mmcsArchiveImage('EXECUTIVE MEMBERS/6.Rupali .T Sangma ,Member/DSC03020.jpg'),
+  },
+  {
+    name: 'Mr Silseng Marak',
+    role: 'Member',
+    image: mmcsArchiveImage('EXECUTIVE MEMBERS/7.Silseng Marak , Member/SILSENG MARAK.jpeg'),
+  },
+  {
+    name: 'Miss Sipswari Rabha',
+    role: 'Member',
+    image: mmcsArchiveImage('EXECUTIVE MEMBERS/8.Sipswari Rabha , Member/DSC03104.jpg'),
+  },
 ] as const;
 export default function Home() {
   return (

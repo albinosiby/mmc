@@ -19,6 +19,7 @@ import { ReferencePhoto } from '@/components/reference-photo';
 import { Reveal } from '@/components/interactive';
 import { ConnectBanner } from '@/components/sections';
 import { statements } from '@/lib/content';
+import styles from './homepage.module.css';
 export const metadata: Metadata = { alternates: { canonical: '/' } };
 const focus = [
   { Icon: Users, title: 'Women Empowerment', href: '/our-work#women' },
@@ -217,7 +218,7 @@ export default function Home() {
           </article>
         </div>
       </section>
-      <section className="executive-team" aria-labelledby="executive-team-heading">
+      <section className={`executive-team ${styles.executiveTeam}`} aria-labelledby="executive-team-heading">
         <div className="wrap">
           <div className="executive-team-heading">
             <div>

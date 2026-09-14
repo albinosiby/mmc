@@ -293,8 +293,12 @@ export default async function Page({
                   <div>
                     <span className="eyebrow">OUR BASE</span>
                     <address>
-                      Khamari Village, Tikrikilla Block<br />
-                      West Garo Hills, Meghalaya
+                      Village-Khamari<br />
+                      P.O. - Hollaidanga<br />
+                      Tikrikilla C&amp;RD Block<br />
+                      Dist. - West Garo Hills<br />
+                      Meghalaya<br />
+                      Pin - 794109
                     </address>
                   </div>
                 </div>

@@ -178,7 +178,12 @@ export function JourneyExplorer() {
                   alt=""
                   fill
                   sizes="280px"
-                  style={{ objectPosition: entry.year === '2021–2023' ? 'center top' : 'center' }}
+                  style={{
+                    objectPosition:
+                      entry.year === '2016–2017' || entry.year === '2021–2023'
+                        ? 'center top'
+                        : 'center',
+                  }}
                 />
                 <span className="journey-card-number">YEAR {String(index + 1).padStart(2, '0')}</span>
               </div>

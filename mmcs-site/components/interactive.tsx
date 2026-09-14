@@ -185,7 +185,6 @@ export function JourneyExplorer() {
               <div className="journey-card-label">
                 <span className="journey-card-year">{entry.year}</span>
                 <strong>{entry.primary.title}</strong>
-                <p>{entry.primary.summary}</p>
               </div>
             </button>
             )}

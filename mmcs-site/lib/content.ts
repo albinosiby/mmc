@@ -176,11 +176,6 @@ export const projects: Project[] = [
     ],
     images: [
       {
-        src: '/images/inauguration.webp',
-        alt: photos[0].alt,
-        label: 'Processing hub inauguration · 2024',
-      },
-      {
         src: '/images/megh-farm-team.png',
         alt: 'MeghFarm team gathered in front of the Meghalaya hills',
         label: 'The people behind a greener tomorrow',

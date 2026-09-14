@@ -149,11 +149,6 @@ export const projects: Project[] = [
         alt: 'Nokma product development activity',
         label: 'Nokma product development activity',
       },
-      {
-        src: mmcsImage('2024/nokma BRAND devoloped accelerated/rtyry_3.1.2.jpg'),
-        alt: 'Nokma product development activity',
-        label: 'Nokma product development activity',
-      },
     ],
     source: 'history:nokma; nokma.in:2026-09-05',
   },

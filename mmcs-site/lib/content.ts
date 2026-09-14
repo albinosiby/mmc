@@ -15,40 +15,62 @@ export const statements = {
     'To make Youth aware that every person is unique individual with strength, abilities and values.',
   ],
 };
-export const photos = [
-  {
-    id: 'inauguration',
-    src: '/images/inauguration.webp',
-    alt: 'Attendees gathered beside the MeghFarm Processing Hub and Tikrikilla PRIME Hub inauguration plaque',
-    caption: 'A new chapter for MeghFarm',
-    detail: 'Processing hub inauguration · Khamari · 2024',
-    category: 'MeghFarm',
-  },
-  {
-    id: 'community',
-    src: '/images/community.webp',
-    alt: 'Group photograph outside the hub during the inauguration gathering',
-    caption: 'Coming together for a shared future',
-    detail: 'Hub inauguration gathering · 2024',
-    category: 'Community',
-  },
-  {
-    id: 'hub-event',
-    src: '/images/hub-event.webp',
-    alt: 'Attendees outside the decorated processing hub entrance at the inauguration',
-    caption: 'Marking a cooperative milestone',
-    detail: 'MeghFarm Processing Hub · 2024',
-    category: 'MeghFarm',
-  },
-  {
-    id: 'gathering',
-    src: '/images/gathering.webp',
-    alt: 'Inauguration attendees gathered at the decorated building entrance',
-    caption: 'A moment in our journey',
-    detail: 'Hub inauguration gathering · 2024',
-    category: 'Community',
-  },
-];
+const mmcsArchiveImage = (path: string) =>
+  `/images/MMCS/${path.split('/').map(encodeURIComponent).join('/')}`;
+
+const normalGalleryPaths = [
+  "Normal pics/A1_1.12.1.jpg",
+  "Normal pics/AW44DSC01857.jpg",
+  "Normal pics/DSC03470.JPG",
+  "Normal pics/DSC03536.JPG",
+  "Normal pics/DSC03588.JPG",
+  "Normal pics/DSC03615.JPG",
+  "Normal pics/DSC03657.JPG",
+  "Normal pics/DSC03658.JPG",
+  "Normal pics/DSC03697.JPG",
+  "Normal pics/DSC03699.JPG",
+  "Normal pics/DSC03710.JPG",
+  "Normal pics/DSC03849.JPG",
+  "Normal pics/DSC03881.JPG",
+  "Normal pics/DSC03887.JPG",
+  "Normal pics/DSC03901.JPG",
+  "Normal pics/DSC03907.JPG",
+  "Normal pics/DSC03915.JPG",
+  "Normal pics/DSC03921.JPG",
+  "Normal pics/DSC05208.JPG",
+  "Normal pics/GDFSGDS_1.30.2.jpg",
+  "Normal pics/WhatsApp Image 2026-09-07 at 4.41.37 PM.jpeg",
+  "Normal pics/WhatsApp Image 2026-09-07 at 4.41.51 PM.jpeg",
+  "Normal pics/WhatsApp Image 2026-09-12 at 10.59.29 AM.jpeg",
+  "Normal pics/WhatsApp Image 2026-09-12 at 11.00.26 AM.jpeg",
+  "Normal pics/WhatsApp Image 2026-09-12 at 11.01.35 AM.jpeg",
+  "Normal pics/WhatsApp Image 2026-09-12 at 11.02.04 AM.jpeg",
+  "Normal pics/WhatsApp Image 2026-09-12 at 11.02.44 AM.jpeg",
+  "Normal pics/g10_1.3.1.jpg",
+  "Normal pics/g11_1.2.1.jpg",
+  "Normal pics/g12_1.1.1.jpg",
+  "Normal pics/g1_1.11.1.jpg",
+  "Normal pics/g2_1.10.1.jpg",
+  "Normal pics/g3_1.9.1.jpg",
+  "Normal pics/g6_1.7.1.jpg",
+  "Normal pics/g7_1.6.1.jpg",
+  "Normal pics/g8_1.5.1.jpg",
+  "Normal pics/g9_1.4.1.jpg",
+  "Normal pics/logo mmcs/MMCS LOGO.png",
+  "Normal pics/logo mmcs/Mutidata LOGO NAVA.png",
+  "Normal pics/logo mmcs/Mutidata LOGO final1.png",
+  "Normal pics/rtyry_3.1.2.jpg",
+  "Normal pics/vgdfgds_1.49.1.jpg",
+] as const;
+
+export const photos = normalGalleryPaths.map((path, index) => ({
+  id: `mmcs-gallery-${index + 1}`,
+  src: mmcsArchiveImage(path),
+  alt: `MMCS community documentation photograph ${index + 1}`,
+  caption: `MMCS community photograph ${String(index + 1).padStart(2, '0')}`,
+  detail: 'MMCS documentation archive',
+  category: 'MMCS',
+}));
 export type ProjectImage = { src?: string; alt: string; label: string };
 export type Project = {
   id: string;

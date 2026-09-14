@@ -173,7 +173,13 @@ export function JourneyExplorer() {
               }}
             >
               <div className="journey-card-photo">
-                <Image src={journeyImageFor(entry.years, entry.primary, index)} alt="" fill sizes="280px" />
+                <Image
+                  src={journeyImageFor(entry.years, entry.primary, index)}
+                  alt=""
+                  fill
+                  sizes="280px"
+                  style={{ objectPosition: entry.year === '2021–2023' ? 'center top' : 'center' }}
+                />
                 <span className="journey-card-number">YEAR {String(index + 1).padStart(2, '0')}</span>
               </div>
               <div className="journey-card-label">

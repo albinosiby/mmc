@@ -406,11 +406,6 @@ export function Gallery({ preview = false }: { preview?: boolean }) {
     );
   return (
     <>
-      <div className="gallery-toolbar">
-        <span className="muted-note">
-          {displayedPhotos.length} photographs · 2024
-        </span>
-      </div>
       <div className={`gallery-grid ${preview ? 'gallery-preview' : ''}`}>
         {displayedPhotos.map((photo, i) => (
           <button
@@ -432,10 +427,6 @@ export function Gallery({ preview = false }: { preview?: boolean }) {
               <span className="expand-icon">
                 <Expand size={18} />
               </span>
-            </span>
-            <span className="gallery-caption">
-              <strong>{photo.caption}</strong>
-              <small>{photo.detail}</small>
             </span>
           </button>
         ))}
@@ -462,10 +453,8 @@ export function Gallery({ preview = false }: { preview?: boolean }) {
         >
           {selected && (
             <>
-              <DialogTitle className="lightbox-title">
-                {selected.caption}
-              </DialogTitle>
-              <DialogDescription>{selected.detail}</DialogDescription>
+              <DialogTitle className="sr-only">{selected.caption}</DialogTitle>
+              <DialogDescription className="sr-only">{selected.detail}</DialogDescription>
               <div className="lightbox-image" key={selected.id}>
                 <Image
                   src={selected.src}

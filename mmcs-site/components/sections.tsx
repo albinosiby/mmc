@@ -105,8 +105,11 @@ export function PageHero({
                 <span key={line}>{i === 0 ? line : <em>{line}</em>}</span>
               ))}
             </h1>
+            {variant === 'journey' && (
+              <p className="page-hero-journey-description">{description}</p>
+            )}
           </div>
-          <p>{description}</p>
+          {variant !== 'journey' && <p>{description}</p>}
         </div>
       </div>
     </section>

@@ -67,7 +67,7 @@ export default async function Page({
               : slug === 'organisations'
                 ? '/images/organisations-hero.jpg'
                 : slug === 'journey'
-                  ? '/images/gallery/g11_1.2.1.jpg'
+                  ? '/images/MMCS/2024/INAGRATION%20OF%20MRGHFARM/WhatsApp%20Image%202026-09-07%20at%204.41.48%20PM.jpeg'
                   : undefined
           }
           imageAlt={

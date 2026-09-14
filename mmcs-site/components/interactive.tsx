@@ -250,11 +250,6 @@ export function JourneyExplorer() {
                   ))}
                   {selectedEntry.periodNote && <p className="journey-period-note"><strong>Status:</strong> {selectedEntry.periodNote}</p>}
                   <section className="journey-year-gallery" aria-labelledby={`year-gallery-${selected.year}`}>
-                    <div className="journey-year-gallery-heading">
-                      <span className="eyebrow">YEAR IN PHOTOGRAPHS</span>
-                      <h4 id={`year-gallery-${selected.year}`}>{selected.year} archive</h4>
-                      <p>{selectedYearImages.length} photographs from MMCS documentation.</p>
-                    </div>
                     <div className="journey-year-gallery-grid">
                       {selectedYearImages.map((src, imageIndex) => (
                         <button

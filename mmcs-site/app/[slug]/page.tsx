@@ -77,7 +77,7 @@ export default async function Page({
                 ? 'MMCS community members cultivating fields in the Garo Hills'
                 : undefined
           }
-          variant={slug === 'journey' ? 'journey' : undefined}
+          variant={slug === 'our-work' ? 'our-work' : slug === 'journey' ? 'journey' : undefined}
         />
       )}
       {slug === 'about' ? (

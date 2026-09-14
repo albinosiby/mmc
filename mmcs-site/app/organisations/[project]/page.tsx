@@ -4,7 +4,6 @@ import { projects, siteUrl } from '@/lib/content';
 import {
   PageHero,
   ProjectFeature,
-  FutureInitiatives,
   ConnectBanner,
 } from '@/components/sections';
 export function generateStaticParams() {
@@ -61,7 +60,6 @@ export default async function ProjectPage({
       <div className="wrap">
         <ProjectFeature project={p} detail />
       </div>
-      {p.id === 'megh-farm' && <FutureInitiatives />}
       <ConnectBanner />
     </main>
   );

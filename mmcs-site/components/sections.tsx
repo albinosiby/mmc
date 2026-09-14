@@ -437,7 +437,7 @@ export function ProjectFeature({
                     sizes="(max-width: 700px) 100vw, 50vw"
                   />
                 </div>
-                <figcaption>{photo.label}</figcaption>
+                {p.id !== 'megh-farm' && <figcaption>{photo.label}</figcaption>}
               </>
             ) : (
               <PhotoPlaceholder label={photo.label} />

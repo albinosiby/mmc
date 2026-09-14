@@ -366,9 +366,9 @@ export function ProjectFeature({
         }`}
       >
         <div>
-          <span className="eyebrow">{p.kicker}</span>
+          {p.id !== 'megh-farm' && <span className="eyebrow">{p.kicker}</span>}
           {p.id === 'nokma' || p.id === 'megh-farm' ? (
-            <div className="project-title-logo">
+            <div className={`project-title-logo ${p.id === 'megh-farm' ? 'megh-farm-logo' : ''}`}>
               <Image
                 src={p.logo}
                 alt={`${p.name} official logo`}

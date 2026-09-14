@@ -4562,3 +4562,11 @@ select:focus-visible {
     min-height: 118px;
   }
 }
+
+@media (max-width: 700px) {
+  .journey-card-stage { height: 440px; }
+  .coverflow-item > button { height: 380px; }
+  .journey-card-label { padding: 16px 18px; }
+  .journey-card-year { font-size: 23px; margin-bottom: 6px; }
+  .journey-card-label p { margin-top: 6px; }
+}

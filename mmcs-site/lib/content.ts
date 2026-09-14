@@ -225,11 +225,6 @@ export const projects: Project[] = [
         alt: 'MeghFarm Processing Hub establishment',
         label: 'MeghFarm Processing Hub establishment',
       },
-      {
-        src: mmcsImage('2024/MEGHFARM PROCCCESING HUB ESTABLISHMENT/G4_1.4.1.jpg'),
-        alt: 'MeghFarm Processing Hub establishment',
-        label: 'MeghFarm Processing Hub establishment',
-      },
     ],
     source: 'history:hub',
   },

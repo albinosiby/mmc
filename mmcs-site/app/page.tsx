@@ -400,10 +400,6 @@ export default function Home() {
             );
           })}
         </div>
-        <p className="reference-imagery-note">
-          Illustrative imagery from the supplied design reference. Actual
-          project photographs will be updated.
-        </p>
       </section>
       <section className="reference-impact">
         <Image

@@ -2027,25 +2027,25 @@ select:focus-visible {
 .journey-controls button { display: grid; place-items: center; border: 1px solid #8eb68d; border-radius: 50%; width: 44px; height: 44px; background: #ffffff8c; color: #174736; transition: background .2s, color .2s; }
 .journey-controls button:hover:not(:disabled) { background: #174736; color: #fff; }
 .journey-controls button:disabled { opacity: .3; cursor: default; }
-.journey-card-stage { position: relative; isolation: isolate; height: 430px; overflow: hidden; touch-action: pan-y; }
+.journey-card-stage { position: relative; isolation: isolate; height: 520px; overflow: hidden; touch-action: pan-y; }
 .journey-card-stage::before { content: ''; position: absolute; z-index: 0; top: 38%; left: 50%; width: min(760px,72vw); height: 230px; border-radius: 50%; background: radial-gradient(ellipse at center,#9bd58a5e 0%,#8fc4972f 42%,transparent 72%); filter: blur(18px); transform: translate(-50%,-50%); pointer-events: none; }
 .journey-card-stage::after { content: ''; position: absolute; z-index: 0; bottom: 20px; left: 50%; width: min(560px,56vw); height: 72px; border-radius: 50%; background: #031b1780; filter: blur(24px); transform: translateX(-50%); pointer-events: none; }
 .coverflow { --coverflow-step: 205px; position: relative; z-index: 1; width: 100%; height: 100%; cursor: grab; perspective: 1400px; transform-style: preserve-3d; user-select: none; }
 .coverflow:active { cursor: grabbing; }
 .coverflow-item { position: absolute; top: 8px; left: 50%; width: 300px; margin-left: -150px; border-radius: 16px; cursor: grab; transform-style: preserve-3d; will-change: transform, opacity, box-shadow; }
-.coverflow-item > button { width: 100%; padding: 0; overflow: hidden; border: 1px solid #dce2d7; border-radius: 16px; background: #fff; text-align: left; color: #193d30; transition: background .3s, color .3s, box-shadow .3s, border-color .3s; }
+.coverflow-item > button { display: flex; flex-direction: column; width: 100%; height: 450px; padding: 0; overflow: hidden; border: 1px solid #dce2d7; border-radius: 16px; background: #fff; text-align: left; color: #193d30; transition: background .3s, color .3s, box-shadow .3s, border-color .3s; }
 .coverflow-item > button:hover { box-shadow: 0 15px 34px #173e3224; }
 .coverflow-item > button.active { background: #173e32; color: #fff; box-shadow: 0 24px 50px #173e3240; border-color: #173e32; }
-.journey-card-photo { position: relative; height: 144px; overflow: hidden; }
+.journey-card-photo { position: relative; flex: 0 0 65%; height: 65%; overflow: hidden; }
 .journey-card-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg,#102d3550,transparent 65%); }
 .journey-card-photo img { object-fit: cover; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
 .coverflow-item button:hover img { transform: scale(1.07); }
 .journey-card-number { position: absolute; z-index: 1; top: 15px; left: 17px; color: #fff; font-size: 9px; font-weight: 600; letter-spacing: .14em; }
 .journey-card-arrow { display: grid; place-items: center; position: absolute; z-index: 1; right: 14px; bottom: 14px; width: 33px; height: 33px; background: #fff; border-radius: 50%; color: #173e32; transition: transform .3s; }
 .active .journey-card-arrow { background: #d7edb8; transform: rotate(45deg); }
-.journey-card-label { padding: 20px; }
+.journey-card-label { flex: 1; padding: 20px; }
 .journey-card-year { display: block; font-family: 'Plus Jakarta Sans',sans-serif; font-size: 26px; line-height: 1.2; letter-spacing: -.04em; margin-bottom: 10px; }
-.journey-card-label strong { display: block; min-height: 42px; font-size: 13px; font-weight: 500; line-height: 1.6; opacity: .85; }
+.journey-card-label strong { display: block; font-size: 14px; font-weight: 500; line-height: 1.5; opacity: .9; }
 .journey-card-label p { display: -webkit-box; min-height: 68px; margin: 10px 0 0; overflow: hidden; font-size: 11px; line-height: 1.55; opacity: .7; -webkit-box-orient: vertical; -webkit-line-clamp: 4; }
 .coverflow-item > button.active .journey-card-label p { color: #dbe8e1; }
 .journey-progress { display: flex; align-items: center; gap: 16px; margin: 22px 0 34px; color: #426153; font-size: 11px; font-weight: 600; }

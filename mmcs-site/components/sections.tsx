@@ -125,6 +125,15 @@ const workIcons = {
   truck: Truck,
 };
 
+const workCardImages = [
+  '/images/gallery/g1_1.11.1.jpg',
+  '/images/gallery/g7_1.6.1.jpg',
+  '/images/gallery/g10_1.3.1.jpg',
+  '/images/gallery/g11_1.2.1.jpg',
+  '/images/gallery/g12_1.1.1.jpg',
+  '/images/gallery/g8_1.5.1.jpg',
+] as const;
+
 export function WorkPage() {
   return (
     <>
@@ -154,6 +163,14 @@ export function WorkPage() {
               id={area.id}
               key={area.id}
             >
+              <Image
+                src={workCardImages[index]}
+                alt=""
+                fill
+                sizes="(max-width: 800px) 100vw, 58vw"
+                className="work-card-background"
+              />
+              <div className="work-card-overlay" aria-hidden="true" />
               <div className="work-card-top">
                 <span>0{index + 1}</span>
                 <Icon size={30} strokeWidth={1.6} />

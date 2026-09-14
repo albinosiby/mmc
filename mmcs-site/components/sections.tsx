@@ -127,7 +127,7 @@ const workIcons = {
 
 const workCardImages = [
   '/images/gallery/g1_1.11.1.jpg',
-  '/images/gallery/g7_1.6.1.jpg',
+  '/images/gallery/WhatsApp%20Image%202026-09-07%20at%204.41.37%20PM.jpeg',
   '/images/gallery/g10_1.3.1.jpg',
   '/images/gallery/g11_1.2.1.jpg',
   '/images/gallery/g12_1.1.1.jpg',

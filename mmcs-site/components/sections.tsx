@@ -556,11 +556,17 @@ export function Footer() {
           <p className="footer-address">
             <MapPin size={17} />
             <span>
-              Khamari Village, Tikrikilla Block
+              Village-Khamari
               <br />
-              West Garo Hills
+              P.O. - Hollaidanga
               <br />
-              Meghalaya, India
+              Tikrikilla C&amp;RD Block
+              <br />
+              Dist. - West Garo Hills
+              <br />
+              Meghalaya
+              <br />
+              Pin - 794109
             </span>
           </p>
           <Link href="/contact" className="footer-contact">

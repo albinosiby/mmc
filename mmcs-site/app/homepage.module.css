@@ -1,0 +1,9 @@
+.executiveTeam {
+  padding-top: 38px;
+}
+
+@media (max-width: 700px) {
+  .executiveTeam {
+    padding-top: 32px;
+  }
+}

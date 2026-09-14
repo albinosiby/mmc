@@ -38,46 +38,22 @@ const journeyImages = [
   '/images/inauguration.webp',
 ];
 
-// MMCS documentation archive, grouped by the year shown in the Journey.
-const driveImage = (id: string) => `https://drive.google.com/thumbnail?id=${id}&sz=w1200`;
+// Local MMCS archive, organised by Journey period in public/images/MMCS.
+const mmcsImage = (path: string) => `/images/MMCS/${path.split('/').map(encodeURIComponent).join('/')}`;
 
 const journeyImagesByYear: Record<string, string[]> = {
-  '2015': [driveImage('1E1S8hg50csm1VwrqxlIBqUATbejqdDAi'), driveImage('1DS5eb1KiDwzEwPx_fnXIqh_mzqr_neIB')],
-  '2016': [driveImage('1DS5eb1KiDwzEwPx_fnXIqh_mzqr_neIB'), driveImage('1E1S8hg50csm1VwrqxlIBqUATbejqdDAi')],
-  '2017': [
-    driveImage('1bFKfF9LWxD0Y8rzsMACEB1tUucS9DMCW'), driveImage('1HLV6qv_cdDKLGYHxZcnS7Y5OHrTpA7Aj'),
-    driveImage('1SNACVHQaISlWYzGdOaUkNlEXpmp0q-G8'), driveImage('1dE8Qy6xF5HfhPf5P_HgOrSiIHENgQ0WL'),
-    driveImage('1yNwTEZpCL9Y--NA6gitz5Q9X5AhXohOF'), driveImage('1JFj0dCw0n57XUIEqI9t1IYiZo9WMPkpj'),
-    driveImage('1jApsVyORYpI3Fulu5n_Zm2r1x-2-re80'), driveImage('1dtShoQdGJq2kyjdnSnJ2jV_h1uNW_occ'),
-    driveImage('1_rjDW070pvoYENBRyoBMGGZb0jdJDDVt'), driveImage('1risQoiGKkknuqUfp9pKYofDTye0DxOEN'),
-    driveImage('1-_zHbCYpq7ya3BD1BQMXWw1BvS4jXfUl'), driveImage('1AC4PNb0-pGVRt5B20nIG8XYn2_kD10cN'),
-  ],
-  '2018': [driveImage('14BVzHaUTvHlhLO5cl098PyRmxR7oleDn'), driveImage('10h39NQ-7GndhH6lea1OQwgF34_IpgBF3')],
-  '2019': [driveImage('1jNhsclZImA8wjRE3h8NmFN4Uf3zD8rEK'), driveImage('1v3RTP3mgyOE6bsXFUlOO_P1j-3Pp-b00')],
-  '2020': [driveImage('1Idq9Yj8Vy8i1oJr4FO3UhyH3_AhIUO08'), driveImage('1gT3VRFWM2haUNC9YJ4cdKGkdapXE6Yej'), driveImage('1SwUacbfM6SqhQzJzG93vQsVgxF8Sh7Lq')],
-  '2021': [driveImage('1BFPU5j-0ibdIvjEENV2PBItjd7XTebws'), driveImage('1sx24NXaggfqwRFnEZC1qYKV_AFoZfb8M')],
-  '2022': [driveImage('127JJSDfRVaCk3qcq2X3_6XhTiPbnNDe3'), driveImage('1mWqkQBMo_WQA8xGrqc5xCCMxamoT806z')],
-  '2023': [driveImage('19fOveshwj5k2buWJ2WwQlOIrwmw4suDx'), driveImage('1F9fhpNbAUnDwd7iDpsk1kRH4a5hWN__S'), driveImage('1p-rwhKEqlN7QTBZVhlogxNm9kO4wKtJ6')],
-  '2024': [
-    driveImage('1V6R-MJ4271b8QvUuV_SRIG0BPR7-0N3T'), driveImage('1oauHSYAf_QROPLX229_Jq0toBBk27l8s'),
-    driveImage('1UwvzbHU7TzB6v_aypZk_x1QeLPt2J__T'), driveImage('1P-walzhKZTX-011k20ptT9eyQKQ3OhbC'),
-    driveImage('1l_ZfNUyiO-lte7DgeQQ1eS1OHqR2gmiH'), driveImage('1xu-cZ4BnSPXLfEEtxxvAOxy0L2B3pb0c'),
-    driveImage('1stkF60n8-njfV2d8peRufMQhGzt8Su_Q'), driveImage('1xEar5MavN66DTPwr8ysSonW-Cz9P7wYY'),
-    driveImage('13ht9GIUB_HZfqgeFGER7GIxlvoeM0Lcd'), driveImage('1B8ZTR5MP7KUbtTiMf36mJOpV3EYS60rh'),
-  ],
-  '2025': [
-    driveImage('17HjQVQEj_Bpxw-lRUea8OLIHpCXMp3Lt'), driveImage('13U8SitTVpNMQiQl5maCuzzf2ocBSz0ay'),
-    driveImage('1Z1To0NDFAAYEtiG4pBHjJJndeyP_WUam'), driveImage('1Y8HyVoYMKCuvuqAHB6CnK-IvQxjc1orG'),
-    driveImage('1pd1-hkEVFPzAD8d-7DNxJUUzASNKTKyX'), driveImage('1WPhBN6fwZZcX6UhqEd5aTOH4k5kT-6JA'),
-    driveImage('13P7TZNSKbHT_baORiDiQSLGbvmaYQeeX'),
-  ],
-  '2026': [
-    driveImage('1gWNJkscAabb4ueuG38DtzCIi-MqjPAuC'), driveImage('1tRKHNtMR59daQQvRuu3zJY4vQdmPSlFq'),
-    driveImage('1N9z9hzjcedHCxjn5yLnNSztLtyXMNHwa'), driveImage('1ZEVUSkufN4FdjT4PLfR0p7rhknDhjEYq'),
-    driveImage('14qED-11iGgXobTKzazYfB_GKhdnnmptx'), driveImage('1a6QJ7az4OseHc-kHR2GUnLAIRaU0T8Lo'),
-    driveImage('13clDFULETkB-nPoG7ovsQkpqqHdk_klS'), driveImage('1zZPpFk6q8HLeWToycXf81ZJ3EainxxLz'),
-    driveImage('1yZkEkpgnCtGgsvh5Mz_z5WP9W31X-RAM'), driveImage('1g7HQksLv9DRVpxM3bC97R9Ik8RXYGGq1'),
-  ],
+  '2015': [mmcsImage("2015/begininng of mmcs 3.JPG"), mmcsImage("2015/beginning of mmcs 2.JPG")],
+  '2016': [mmcsImage("2016-2017/ARCA PLATE MAKING/WhatsApp Image 2026-09-07 at 4.34.06 PM.jpeg"), mmcsImage("2016-2017/CANDLE MAKING/WhatsApp Image 2026-09-13 at 11.54.08 AM.jpeg"), mmcsImage("2016-2017/CANDLE MAKING/WhatsApp Image 2026-09-13 at 11.54.09 AM (1).jpeg"), mmcsImage("2016-2017/CANDLE MAKING/WhatsApp Image 2026-09-13 at 11.54.09 AM.jpeg"), mmcsImage("2016-2017/CANDLE MAKING/WhatsApp Image 2026-09-13 at 11.54.10 AM (1).jpeg"), mmcsImage("2016-2017/CANDLE MAKING/WhatsApp Image 2026-09-13 at 11.54.10 AM.jpeg"), mmcsImage("2016-2017/DETERGENT MAKING/WhatsApp Image 2026-09-13 at 11.54.12 AM (1).jpeg"), mmcsImage("2016-2017/DETERGENT MAKING/WhatsApp Image 2026-09-13 at 11.54.12 AM.jpeg"), mmcsImage("2016-2017/DETERGENT MAKING/WhatsApp Image 2026-09-13 at 11.54.13 AM.jpeg"), mmcsImage("2016-2017/DETERGENT MAKING/WhatsApp Image 2026-09-13 at 11.54.14 AM (1).jpeg"), mmcsImage("2016-2017/MMCS Grocery Shop Established at Tikrikilla Market/DSC_0031.JPG"), mmcsImage("2016-2017/MMCS Grocery Shop Established at Tikrikilla Market/DSC_0032.JPG")],
+  '2017': [],
+  '2018': [mmcsImage("2018-20/WhatsApp Image 2026-09-07 at 4.34.07 PM.jpeg"), mmcsImage("2018-20/WhatsApp Image 2026-09-07 at 4.38.28 PM.jpeg"), mmcsImage("2018-20/WhatsApp Image 2026-09-13 at 11.54.10 AM (2).jpeg"), mmcsImage("2018-20/WhatsApp Image 2026-09-13 at 11.54.11 AM (1).jpeg"), mmcsImage("2018-20/WhatsApp Image 2026-09-13 at 11.54.11 AM.jpeg"), mmcsImage("2018-20/WhatsApp Image 2026-09-13 at 11.54.13 AM (1).jpeg"), mmcsImage("2018-20/WhatsApp Image 2026-09-13 at 11.54.14 AM.jpeg")],
+  '2019': [],
+  '2020': [],
+  '2021': [mmcsImage("2021-23/AW44DSC01857.jpg"), mmcsImage("2021-23/DSC03901.JPG"), mmcsImage("2021-23/WhatsApp Image 2026-09-07 at 4.39.19 PM.jpeg"), mmcsImage("2021-23/WhatsApp Image 2026-09-07 at 4.39.25 PM (1).jpeg"), mmcsImage("2021-23/WhatsApp Image 2026-09-07 at 4.39.25 PM.jpeg"), mmcsImage("2021-23/WhatsApp Image 2026-09-12 at 11.01.50 AM.jpeg"), mmcsImage("2021-23/g8_1.5.1.jpg"), mmcsImage("2021-23/ghjhjj_1.22.1.jpg"), mmcsImage("2021-23/gstret_1.46.2.jpg"), mmcsImage("2021-23/xbxcb_1.168.4.jpg"), mmcsImage("2021-23/xczvxcv_1.15.2.jpg")],
+  '2022': [],
+  '2023': [],
+  '2024': [mmcsImage("2024/BEST COOPERATIVE MEMBER AWARD -2024/MATHEW AWARD.jpeg"), mmcsImage("2024/INAGRATION OF MRGHFARM/WhatsApp Image 2026-09-07 at 4.41.44 PM.jpeg"), mmcsImage("2024/INAGRATION OF MRGHFARM/WhatsApp Image 2026-09-07 at 4.41.48 PM.jpeg"), mmcsImage("2024/MEGHFARM PROCCCESING HUB ESTABLISHMENT/A22_1.2.2.jpg"), mmcsImage("2024/MEGHFARM PROCCCESING HUB ESTABLISHMENT/A24_1.3.1.jpg"), mmcsImage("2024/MEGHFARM PROCCCESING HUB ESTABLISHMENT/A28_1.3.1.jpg"), mmcsImage("2024/MEGHFARM PROCCCESING HUB ESTABLISHMENT/D1_1.2.3.jpg"), mmcsImage("2024/MEGHFARM PROCCCESING HUB ESTABLISHMENT/G4_1.4.1.jpg"), mmcsImage("2024/nokma BRAND devoloped accelerated/A DSC01259.jpg"), mmcsImage("2024/nokma BRAND devoloped accelerated/DSC03304.JPG"), mmcsImage("2024/nokma BRAND devoloped accelerated/WhatsApp Image 2026-09-07 at 4.34.37 PM.jpeg"), mmcsImage("2024/nokma BRAND devoloped accelerated/WhatsApp Image 2026-09-07 at 4.38.31 PM.jpeg"), mmcsImage("2024/nokma BRAND devoloped accelerated/WhatsApp Image 2026-09-07 at 4.50.35 PM (1).jpeg"), mmcsImage("2024/nokma BRAND devoloped accelerated/WhatsApp Image 2026-09-07 at 4.50.35 PM.jpeg"), mmcsImage("2024/nokma BRAND devoloped accelerated/fdrtr_2.1.1.jpg"), mmcsImage("2024/nokma BRAND devoloped accelerated/rtyry_3.1.2.jpg")],
+  '2025': [mmcsImage("2025/Expansionof collective farming & Holticulture devolopment/IMG_20250503_145841158.jpg"), mmcsImage("2025/PA.Togen Nengminza Award for best social worker.   HIGHEST CIVILIAN AWARD OF GOVT. OF MEGHALAYA/Fr Benoy Photo 4_1.4.4.jpg"), mmcsImage("2025/expansion of agri,dairy,food,women/DSC02359.JPG"), mmcsImage("2025/expansion of agri,dairy,food,women/DSC02502.JPG"), mmcsImage("2025/expansion of agri,dairy,food,women/IMG_20250531_141100016.jpg"), mmcsImage("2025/free medical camp @ MEGHFARM/DSC04698.JPG"), mmcsImage("2025/free medical camp @ MEGHFARM/DSC04747.JPG"), mmcsImage("2025/free medical camp @ MEGHFARM/DSC04808.JPG")],
+  '2026': [mmcsImage("2026/Financial & Digital Financial Literacy Camp/DSC06682.JPG"), mmcsImage("2026/Financial & Digital Financial Literacy Camp/DSC07066.JPG"), mmcsImage("2026/Financial & Digital Financial Literacy Camp/DSC07112.JPG"), mmcsImage("2026/NITI AYOG VISITING/NITI AYOG visiting at meghfarm.jpeg"), mmcsImage("2026/NITI AYOG VISITING/WhatsApp Image 2026-09-07 at 4.51.57 PM (1).jpeg"), mmcsImage("2026/NITI AYOG VISITING/WhatsApp Image 2026-09-07 at 4.51.57 PM.jpeg"), mmcsImage("2026/NITI AYOG VISITING/WhatsApp Image 2026-09-07 at 4.51.59 PM.jpeg"), mmcsImage("2026/meghfarm Football club devoloped/MFC1_1.1.1.png"), mmcsImage("2026/meghfarm Football club devoloped/MFC4_1.6.1.png"), mmcsImage("2026/meghfarm Football club devoloped/jhklhjlhui_1.6.2.png")],
 };
 
 function journeyImagesFor(years: readonly string[], entry: JourneyEntry, index: number) {

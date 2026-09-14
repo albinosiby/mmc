@@ -1,0 +1,15 @@
+.ourWork :global(.page-hero-grid) {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+}
+
+.ourWork :global(.page-hero-grid > p) {
+  max-width: 34rem;
+  margin: 0;
+}
+
+@media (min-width: 701px) {
+  .ourWork :global(.page-hero-grid) {
+    padding-right: 42%;
+  }
+}

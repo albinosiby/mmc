@@ -62,6 +62,10 @@ const activityPhotoOverrides = {
     src: 'https://drive.google.com/thumbnail?id=1SHDIPK8Wii4XEEbBmhLBodD5H4IBQrzg&sz=w1000',
     alt: 'Skill development through local value-added production',
   },
+  attire: {
+    src: '/images/traditional-attire.jpg',
+    alt: 'Traditional handwoven attire from Meghalaya',
+  },
 } as const;
 
 const executives = [

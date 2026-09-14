@@ -97,7 +97,7 @@ const executives = [
     image: mmcsArchiveImage('EXECUTIVE MEMBERS/4.Batnang Momin , Joint Secretary/DSC02988.jpg'),
   },
   {
-    name: 'Mrs. Jema M Sangma',
+    name: 'Mr. Jema M Sangma',
     role: 'Member',
     image: mmcsArchiveImage('EXECUTIVE MEMBERS/5.Jema M Sangma ,Member/DSC02974.jpg'),
   },

@@ -1779,6 +1779,14 @@ select:focus-visible {
   height: auto;
   object-fit: contain;
 }
+.project-title-logo.megh-farm-logo {
+  transform: translateX(24px);
+}
+@media (max-width: 700px) {
+  .project-title-logo.megh-farm-logo {
+    transform: none;
+  }
+}
 .project-description .eyebrow {
   font-size: 10px;
 }

@@ -403,7 +403,7 @@ export default function Home() {
       </section>
       <section className="reference-impact">
         <Image
-          src="/images/gallery/g7_1.6.1.jpg"
+          src="/images/gallery/g3_1.9.1.jpg"
           alt=""
           fill
           className="impact-reference-image"

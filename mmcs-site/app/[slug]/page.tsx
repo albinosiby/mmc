@@ -64,14 +64,18 @@ export default async function Page({
           imageSrc={
             slug === 'our-work'
               ? '/images/our-work-hero.jpg'
-              : slug === 'journey'
-                ? '/images/journey-hero.png'
-                : undefined
+              : slug === 'organisations'
+                ? '/images/organisations-hero.jpg'
+                : slug === 'journey'
+                  ? '/images/journey-hero.png'
+                  : undefined
           }
           imageAlt={
             slug === 'our-work'
               ? 'MMCS and community leaders at the MeghFarm Processing Hub inauguration'
-              : undefined
+              : slug === 'organisations'
+                ? 'MMCS community members cultivating fields in the Garo Hills'
+                : undefined
           }
           variant={slug === 'journey' ? 'journey' : undefined}
         />

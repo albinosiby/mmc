@@ -130,7 +130,7 @@ const workCardImages = [
   '/images/gallery/WhatsApp%20Image%202026-09-07%20at%204.41.37%20PM.jpeg',
   '/images/gallery/g10_1.3.1.jpg',
   '/images/MMCS/2016-2017/CANDLE%20MAKING/WhatsApp%20Image%202026-09-13%20at%2011.54.10%20AM%20(1).jpeg',
-  '/images/gallery/g12_1.1.1.jpg',
+  '/images/MMCS/2018-20/WhatsApp%20Image%202026-09-07%20at%204.38.28%20PM.jpeg',
   '/images/gallery/g8_1.5.1.jpg',
 ] as const;
 

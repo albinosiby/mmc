@@ -1104,12 +1104,12 @@ select:focus-visible {
   color: #fff;
 }
 .work-card-background {
-  z-index: -2;
+  z-index: 0;
   object-fit: cover;
 }
 .work-card-overlay {
   position: absolute;
-  z-index: -1;
+  z-index: 1;
   inset: 0;
   background: linear-gradient(135deg, #092d28e8 0%, #123d35be 55%, #102b2599 100%);
 }

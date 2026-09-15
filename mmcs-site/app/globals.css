@@ -2143,6 +2143,9 @@ select:focus-visible {
 .journey-detail-section h4 { margin: 0 0 10px; color: #204b39; font-family: 'Plus Jakarta Sans',sans-serif; font-size: 15px; font-weight: 650; letter-spacing: -.01em; }
 .journey-detail-section > p { margin: 0; color: #60716a; font-size: 13px; line-height: 1.8; }
 .journey-detail-section > .journey-section-items { margin-top: 8px; color: #3c574a; }
+.journey-section-bullets { margin: 10px 0 0; padding-left: 20px; color: #3c574a; font-size: 13px; line-height: 1.7; }
+.journey-section-bullets li + li { margin-top: 5px; }
+.journey-section-bullets li::marker { color: #317654; }
 .journey-leadership { display: grid; gap: 10px; margin: 0; }
 .journey-leadership div { padding: 9px 0; border-top: 1px solid #e6eae1; }
 .journey-detail-copy ul { list-style: none; padding: 0; margin: 24px 0 0; }

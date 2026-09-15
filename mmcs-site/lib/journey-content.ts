@@ -348,6 +348,23 @@ export const journeyTimeline: JourneyEntry[] = [
     sourceKey: 'history:recognition',
   },
   {
+    id: 'best-dairy-cooperative-2025',
+    year: '2025',
+    title: 'Recognised for dairy excellence.',
+    summary:
+      'MMCS received recognition as the Best Dairy Cooperative in Meghalaya, marking the impact of its cooperative dairy-development work.',
+    heading: 'Recognition as Best Dairy Cooperative in Meghalaya',
+    introduction:
+      'In 2025, MMCS was recognised as the Best Dairy Cooperative in Meghalaya.',
+    sections: [
+      {
+        heading: 'A cooperative achievement',
+        callout: 'RECOGNITION AS BEST DAIRY COOPERATIVE IN MEGHALAYA',
+      },
+    ],
+    sourceKey: 'user:2025-best-dairy-cooperative',
+  },
+  {
     id: 'livelihoods-2025',
     year: '2025',
     title: 'Growing livelihoods. Earning recognition.',

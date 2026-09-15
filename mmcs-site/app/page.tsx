@@ -155,7 +155,7 @@ export default function Home() {
             <div className="hero-metrics" aria-label="MMCS at a glance">
               <div>
                 <strong>2,000+</strong>
-                <span>Members reported during 2023–2026</span>
+                <span>Members reported during 2015–2026</span>
               </div>
               <div>
                 <strong>2015</strong>

@@ -323,8 +323,8 @@ export const journeyTimeline: JourneyEntry[] = [
     sourceKey: 'history:nokma',
   },
   {
-    id: 'recognition-2023-2025',
-    year: '2023–2025',
+    id: 'recognition-2023',
+    year: '2023',
     title: 'Recognition and institutional growth.',
     summary:
       'Major cooperative and dairy recognitions strengthened MMCS’s credibility as membership passed an important historical milestone during this period.',
@@ -369,7 +369,7 @@ export const journeyTimeline: JourneyEntry[] = [
     year: '2025',
     title: 'Growing livelihoods. Earning recognition.',
     summary:
-      'MMCS expanded agriculture, dairy, food processing, women’s livelihoods, collective farming and market development while receiving recognition as a Best Dairy Cooperative in Meghalaya.',
+      'MMCS expanded agriculture, dairy, food processing, women’s livelihoods, collective farming and market development.',
     heading: 'Expansion of Farmer and Women’s Livelihood Programmes',
     introduction:
       'By 2025 MMCS had developed into a substantially larger cooperative working with a growing network of farmers and rural women.',

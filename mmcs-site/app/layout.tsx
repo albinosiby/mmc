@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Navigation } from '@/components/navigation';
 import { Footer } from '@/components/sections';
+import { CacheRegistration } from '@/components/cache-registration';
 import '@fontsource/manrope/latin-400.css';
 import '@fontsource/manrope/latin-500.css';
 import '@fontsource/manrope/latin-600.css';
@@ -34,6 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <CacheRegistration />
         <a className="skip-link" href="#main">
           Skip to content
         </a>

@@ -1056,7 +1056,7 @@ select:focus-visible {
   padding: 80px 0 54px;
   align-items: end;
 }
-.work-meghfarm-logo { display: flex; align-items: center; justify-content: center; min-height: 110px; }
+.work-meghfarm-logo { display: flex; align-items: center; justify-content: center; min-height: 110px; transform: translateX(-52px); }
 .work-meghfarm-logo img { width: 140px; max-width: 100%; height: auto; object-fit: contain; }
 .work-mark {
   color: var(--green);
@@ -1272,7 +1272,7 @@ select:focus-visible {
     gap: 17px;
     padding: 48px 0 35px;
   }
-  .work-meghfarm-logo { justify-content: center; min-height: 72px; }
+  .work-meghfarm-logo { justify-content: center; min-height: 72px; transform: none; }
   .work-mark {
     padding: 0;
   }

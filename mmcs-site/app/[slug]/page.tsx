@@ -79,7 +79,7 @@ export default async function Page({
                   ? 'MMCS community and project partners gathered at MeghFarm'
                   : undefined
           }
-          variant={slug === 'our-work' ? 'our-work' : slug === 'journey' ? 'journey' : undefined}
+          variant={slug === 'our-work' ? 'our-work' : slug === 'journey' ? 'journey' : slug === 'projects' ? 'projects' : undefined}
         />
       )}
       {slug === 'about' ? (

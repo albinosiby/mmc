@@ -563,6 +563,8 @@ export function Footer() {
               Meghalaya
               <br />
               Pin - 794109
+              <br />
+              GSTIN - 17AAFTM7281A1ZM
             </span>
           </p>
           <Link href="/contact" className="footer-contact">

@@ -9,7 +9,6 @@ import {
   ArrowUpRight,
   Check,
   Copy,
-  Expand,
   ImageIcon,
   Factory,
   HandHeart,
@@ -422,9 +421,6 @@ export function Gallery({ preview = false }: { preview?: boolean }) {
                 fill
                 sizes="(max-width: 700px) 100vw, 45vw"
               />
-              <span className="expand-icon">
-                <Expand size={18} />
-              </span>
             </span>
           </button>
         ))}

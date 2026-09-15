@@ -2,6 +2,7 @@ export type JourneySection = {
   heading: string;
   introduction?: string;
   items?: string[];
+  bulletItems?: boolean;
   callout?: string;
 };
 
@@ -178,6 +179,7 @@ export const journeyTimeline: JourneyEntry[] = [
     sections: [
       {
         heading: 'Focus areas',
+        bulletItems: true,
         items: [
           'Mobilising farmers into cooperative groups',
           'Encouraging savings and collective economic activities',

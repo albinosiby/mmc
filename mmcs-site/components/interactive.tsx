@@ -230,7 +230,13 @@ export function JourneyExplorer() {
                       <h4>{section.heading}</h4>
                       {section.introduction && <p>{section.introduction}</p>}
                       {section.callout && <p className="journey-callout">{section.callout}</p>}
-                      {section.items && <p className="journey-section-items">{asParagraph(section.items)}</p>}
+                      {section.items && (section.bulletItems ? (
+                        <ul className="journey-section-bullets">
+                          {section.items.map((item) => <li key={item}>{item}</li>)}
+                        </ul>
+                      ) : (
+                        <p className="journey-section-items">{asParagraph(section.items)}</p>
+                      ))}
                     </section>
                   ))}
                   {selectedEntry.periodNote && <p className="journey-period-note"><strong>Status:</strong> {selectedEntry.periodNote}</p>}

@@ -181,12 +181,9 @@ export function WorkPage() {
                 <p>{area.description}</p>
               </div>
               <ul>
-                {area.items.slice(0, 4).map((item) => (
+                {area.items.slice(0, 6).map((item) => (
                   <li key={item}>{item}</li>
                 ))}
-                {area.items.length > 4 && (
-                  <li>+ {area.items.length - 4} more activities</li>
-                )}
               </ul>
             </article>
           );

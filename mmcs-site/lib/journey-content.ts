@@ -467,6 +467,74 @@ export const journeyTimeline: JourneyEntry[] = [
     sourceKey: 'history:cold-chain',
   },
   {
+    id: 'niti-aayog-visit-2026',
+    year: '2026',
+    title: 'Planning for sustainable growth.',
+    summary:
+      'NITI Aayog representatives visited MeghFarm to assess infrastructure, Ease of Doing Business and strategic opportunities for sustainable development.',
+    heading: 'NITI Aayog Visit',
+    introduction:
+      'A visit by NITI Aayog representatives focused on evaluating the Ease of Doing Business, assessing existing infrastructure and discussing strategic opportunities for sustainable growth and development.',
+    sections: [
+      {
+        heading: 'Development discussion',
+        introduction:
+          'The discussions were aligned with the vision of Viksit Bharat 2047, emphasizing inclusive development, economic progress, infrastructure enhancement and long-term growth.',
+      },
+    ],
+    sourceKey: 'user:2026-niti-aayog-visit',
+  },
+  {
+    id: 'meghfarm-sports-club-2026',
+    year: '2026',
+    title: 'Sport, teamwork and community.',
+    summary:
+      'MeghFarm launched its Sports Club with football as the first event, creating opportunities for youth participation, fitness and teamwork.',
+    heading: 'Launch of MeghFarm Sports Club',
+    introduction:
+      'MeghFarm proudly initiated the MeghFarm Sports Club as part of its commitment to promoting sports, fitness, teamwork and community engagement.',
+    date: '2 August 2026',
+    sections: [
+      {
+        heading: 'MeghFarm Football Club',
+        introduction:
+          'The club commenced its journey with its first sporting event, Football, officially establishing the MeghFarm Football Club on 2 August.',
+      },
+      {
+        heading: 'Purpose',
+        items: [
+          'Encourage sporting talent',
+          'Foster team spirit',
+          'Create greater opportunities for youth and community participation in sports',
+        ],
+      },
+    ],
+    sourceKey: 'user:2026-meghfarm-sports-club',
+  },
+  {
+    id: 'financial-literacy-camp-2026',
+    year: '2026',
+    title: 'Building financial confidence.',
+    summary:
+      'MeghFarm held a Financial and Digital Financial Literacy Camp to strengthen financial awareness, secure digital practices and inclusion.',
+    heading: 'Financial & Digital Financial Literacy Camp',
+    introduction:
+      'MeghFarm organized a Financial and Digital Financial Literacy Camp to promote greater awareness and understanding of modern financial services among the community.',
+    sections: [
+      {
+        heading: 'Learning focus',
+        items: [
+          'Financial planning and savings',
+          'Digital banking and secure digital transactions',
+          'Responsible financial practices',
+          'Effective use of digital financial services',
+          'Greater financial confidence and inclusion',
+        ],
+      },
+    ],
+    sourceKey: 'user:2026-financial-literacy-camp',
+  },
+  {
     id: 'mineral-water-2026',
     year: '2026',
     title: 'Nokma enters a new phase.',

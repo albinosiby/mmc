@@ -70,7 +70,7 @@ export function PageHero({
   breadcrumb: string;
   imageSrc?: string;
   imageAlt?: string;
-  variant?: 'journey' | 'contact' | 'megh-farm' | 'nokma' | 'our-work';
+  variant?: 'journey' | 'projects' | 'contact' | 'megh-farm' | 'nokma' | 'our-work';
 }) {
   return (
     <section
@@ -105,11 +105,11 @@ export function PageHero({
                 <span key={line}>{i === 0 ? line : <em>{line}</em>}</span>
               ))}
             </h1>
-            {variant === 'journey' && (
+            {(variant === 'journey' || variant === 'projects') && (
               <p className="page-hero-journey-description">{description}</p>
             )}
           </div>
-          {variant !== 'journey' && <p>{description}</p>}
+          {variant !== 'journey' && variant !== 'projects' && <p>{description}</p>}
         </div>
       </div>
     </section>

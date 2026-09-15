@@ -230,7 +230,7 @@ export const activityGroups = [
     name: 'Agriculture & livestock',
     short: 'Better opportunities begin at the farm.',
     description:
-      'Supporting agricultural production, collective farming and diverse rural livelihoods.',
+      'Supporting farmers through dairy, poultry, piggery and collective farming, while helping diversify crops and build more reliable rural livelihoods.',
     icon: 'sprout',
     items: [
       'Dairy farming',
@@ -249,7 +249,7 @@ export const activityGroups = [
     name: 'Food processing',
     short: 'More value from every harvest.',
     description:
-      'Connecting local produce with processing, packaging and new markets.',
+      'Turning locally grown fruit, vegetables and spices into value-added products through processing, packaging, branding and stronger market connections.',
     icon: 'factory',
     items: [
       'Fruit and vegetable processing',
@@ -267,7 +267,7 @@ export const activityGroups = [
     name: 'Women-led production',
     short: 'Skills that grow into independence.',
     description:
-      'Supporting practical skills and opportunities for women to earn through production.',
+      'Helping women turn practical production skills into independent income opportunities, from tailoring and traditional attire to household and personal-care products.',
     icon: 'heart',
     items: [
       'Tailoring and embroidery',
@@ -286,7 +286,7 @@ export const activityGroups = [
     name: 'Community products',
     short: 'Everyday needs. Collective enterprise.',
     description:
-      'Local production and retail activities that connect members with their communities.',
+      'Creating everyday products and community retail activities that meet local needs, keep value within the community and strengthen member-led enterprise.',
     icon: 'basket',
     items: [
       'Areca leaf plates (Nokma Plate)',
@@ -301,7 +301,7 @@ export const activityGroups = [
     name: 'Skills & training',
     short: 'Learning today. Creating tomorrow.',
     description:
-      'From home-based crafts to technical skills, practical learning supports self-reliance.',
+      'Providing practical training in home-based crafts, production methods and technical skills so members can build confidence, earn independently and create local opportunities.',
     icon: 'sun',
     items: [
       'Umbrella and detergent training',
@@ -316,7 +316,7 @@ export const activityGroups = [
     name: 'Infrastructure & markets',
     short: 'Connecting farmers to possibilities.',
     description:
-      'A longer-term farm-to-market approach, with further cold-chain infrastructure in development.',
+      'Building a farm-to-market system through aggregation, packaging, branding and buyer linkages, supported by future cold-chain and logistics infrastructure.',
     icon: 'truck',
     items: [
       'Agricultural aggregation',

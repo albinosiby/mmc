@@ -303,6 +303,8 @@ export default async function Page({
                       Dist. - West Garo Hills<br />
                       Meghalaya<br />
                       Pin - 794109
+                      <br />
+                      GSTIN - 17AAFTM7281A1ZM
                     </address>
                   </div>
                 </div>

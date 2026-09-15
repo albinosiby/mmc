@@ -17,7 +17,6 @@ import {
 } from '@/components/sections';
 import {
   JourneyExplorer,
-  JourneyConclusion,
   Gallery,
   ContactForm,
   Reveal,
@@ -271,10 +270,7 @@ export default async function Page({
           </section>
         </>
       ) : slug === 'journey' ? (
-        <>
-          <JourneyExplorer />
-          <JourneyConclusion />
-        </>
+        <JourneyExplorer />
       ) : slug === 'gallery' ? (
         <section className="section wrap">
           <Gallery />

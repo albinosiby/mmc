@@ -1635,11 +1635,13 @@ select:focus-visible {
 .page-hero-journey .page-hero-grid h1 em {
   font-family: 'Plus Jakarta Sans', 'DM Sans', 'Manrope', Arial, sans-serif;
 }
-.page-hero-journey .page-hero-grid {
+.page-hero-journey .page-hero-grid,
+.page-hero-projects .page-hero-grid {
   grid-template-columns: 1fr;
   gap: 0;
 }
-.page-hero-journey .page-hero-journey-description {
+.page-hero-journey .page-hero-journey-description,
+.page-hero-projects .page-hero-journey-description {
   max-width: 500px;
   margin: 22px 0 0;
   padding-bottom: 0;

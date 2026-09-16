@@ -223,7 +223,7 @@ export const activityGroups = [
     name: 'Agriculture & livestock',
     short: 'Better opportunities begin at the farm.',
     description:
-      'Supporting farmers through dairy, poultry, piggery and collective farming, while helping diversify crops and build more reliable rural livelihoods.',
+      'Supporting farmers through dairy, poultry, piggery and collective farming, while helping diversify crops and build more reliable rural livelihoods. These activities strengthen household income, reduce dependence on middlemen and prepare farmers for better market access.',
     icon: 'sprout',
     items: [
       'Dairy farming',
@@ -242,7 +242,7 @@ export const activityGroups = [
     name: 'Food processing',
     short: 'More value from every harvest.',
     description:
-      'Turning locally grown fruit, vegetables and spices into value-added products through processing, packaging, branding and stronger market connections.',
+      'Turning locally grown fruit, vegetables and spices into value-added products through processing, packaging, branding and stronger market connections. The work helps farmers move beyond raw produce and create products that can reach wider local and regional markets.',
     icon: 'factory',
     items: [
       'Fruit and vegetable processing',
@@ -260,7 +260,7 @@ export const activityGroups = [
     name: 'Women-led production',
     short: 'Skills that grow into independence.',
     description:
-      'Helping women turn practical production skills into independent income opportunities, from tailoring and traditional attire to household and personal-care products.',
+      'Helping women turn practical production skills into independent income opportunities, from tailoring and traditional attire to household and personal-care products. Training, production support and group-based work create confidence, income and leadership within families and communities.',
     icon: 'heart',
     items: [
       'Tailoring and embroidery',
@@ -279,7 +279,7 @@ export const activityGroups = [
     name: 'Community products',
     short: 'Everyday needs. Collective enterprise.',
     description:
-      'Creating everyday products and community retail activities that meet local needs, keep value within the community and strengthen member-led enterprise.',
+      'Creating everyday products and community retail activities that meet local needs, keep value within the community and strengthen member-led enterprise. These initiatives connect traditional skills, small production units and local demand into practical cooperative business opportunities.',
     icon: 'basket',
     items: [
       'Areca leaf plates (Nokma Plate)',
@@ -294,7 +294,7 @@ export const activityGroups = [
     name: 'Skills & training',
     short: 'Learning today. Creating tomorrow.',
     description:
-      'Providing practical training in home-based crafts, production methods and technical skills so members can build confidence, earn independently and create local opportunities.',
+      'Providing practical training in home-based crafts, production methods and technical skills so members can build confidence, earn independently and create local opportunities. Each training effort is designed to turn learning into usable work, stronger participation and long-term self-reliance.',
     icon: 'sun',
     items: [
       'Umbrella and detergent training',
@@ -309,7 +309,7 @@ export const activityGroups = [
     name: 'Infrastructure & markets',
     short: 'Connecting farmers to possibilities.',
     description:
-      'Building a farm-to-market system through aggregation, packaging, branding and buyer linkages, supported by future cold-chain and logistics infrastructure.',
+      'Building a farm-to-market system through aggregation, packaging, branding and buyer linkages, supported by future cold-chain and logistics infrastructure. This area focuses on moving produce efficiently, improving value addition and connecting rural production with dependable buyers.',
     icon: 'truck',
     items: [
       'Agricultural aggregation',

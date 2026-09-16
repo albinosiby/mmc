@@ -84,9 +84,9 @@ const journeyChapterDefinitions = [
   { id: '2015', year: '2015', years: ['2015'], entryIds: ['2015'] },
   { id: '2016-2017', year: '2016–2017', years: ['2016', '2017'], entryIds: ['registration-2016-2017', 'livelihoods-2017'] },
   { id: '2018-2020', year: '2018–2020', years: ['2018', '2019', '2020'], entryIds: ['consolidation-2018-2020'] },
-  { id: '2021-2023', year: '2021–2023', years: ['2021', '2022', '2023'], entryIds: ['expansion-2021-2023'] },
+  { id: '2021-2023', year: '2021–2023', years: ['2021', '2022', '2023'], entryIds: ['expansion-2021-2023', 'recognition-2023'] },
   { id: '2024', year: '2024', years: ['2024'], entryIds: ['2024', 'nokma-2024-2025'] },
-  { id: '2025', year: '2025', years: ['2025'], entryIds: ['livelihoods-2025', 'collective-farming-2025-2026', 'cold-chain-2025-2026', 'recognition-2023-2025'] },
+  { id: '2025', year: '2025', years: ['2025'], entryIds: ['livelihoods-2025', 'collective-farming-2025-2026', 'cold-chain-2025-2026'] },
   { id: '2026', year: '2026', years: ['2026'], entryIds: ['mineral-water-2026', 'infrastructure-2026', 'women-entrepreneurship-2026'] },
 ] as const;
 

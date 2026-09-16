@@ -7,8 +7,6 @@ import {
   ArrowLeft,
   ArrowRight,
   ArrowUpRight,
-  Check,
-  Copy,
   ImageIcon,
   Factory,
   HandHeart,
@@ -663,29 +661,52 @@ export function Activities({ preview = false }: { preview?: boolean }) {
   );
 }
 export function ContactForm() {
-  const [message, setMessage] = useState('');
   const [status, setStatus] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const formspreeEndpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = event.currentTarget;
+
+    if (!formspreeEndpoint) {
+      setStatus('Formspree is not configured yet. Add NEXT_PUBLIC_FORMSPREE_ENDPOINT.');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setStatus('Sending your enquiry...');
+
+    try {
+      const response = await fetch(formspreeEndpoint, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Formspree request failed');
+      }
+
+      form.reset();
+      setStatus('Thank you. Your enquiry has been sent.');
+    } catch {
+      setStatus('Could not send the enquiry right now. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
   return (
-    <form
-      className="contact-form"
-      onSubmit={(e) => {
-        e.preventDefault();
-        const d = new FormData(e.currentTarget);
-        const text = (key: string) => {
-          const value = d.get(key);
-          return typeof value === 'string' ? value : '';
-        };
-        setMessage(
-          `Name: ${text('name')}\nEmail: ${text('email')}\nPhone: ${text('phone') || 'Not provided'}\nSubject: ${text('subject')}\n\n${text('message')}`,
-        );
-        setStatus('Your enquiry is prepared below. It has not been sent.');
-      }}
-    >
-      <span className="eyebrow">PREPARE AN ENQUIRY</span>
+    <form className="contact-form" onSubmit={handleSubmit}>
+      <input type="hidden" name="_subject" value="New MMCS website enquiry" />
+      <span className="eyebrow">SEND AN ENQUIRY</span>
       <h2>Write to MMCS.</h2>
       <p id="form-note">
-        Online message delivery is not connected yet. Prepare and copy your
-        enquiry here; nothing is sent or stored.
+        This form sends your enquiry through Formspree. MMCS will receive your
+        message with your contact details.
       </p>
       <div className="form-row">
         <label>
@@ -717,37 +738,10 @@ export function ContactForm() {
         Your message
         <textarea name="message" rows={5} required maxLength={5000} />
       </label>
-      <button className="button" type="submit" aria-describedby="form-note">
-        Prepare enquiry <ArrowRight size={18} />
+      <button className="button" type="submit" aria-describedby="form-note" disabled={isSubmitting}>
+        {isSubmitting ? 'Sending...' : 'Send enquiry'} <ArrowRight size={18} />
       </button>
-      <output className="form-status">{status}</output>
-      {message && (
-        <div className="enquiry-draft">
-          <h3>Your enquiry draft</h3>
-          <pre>{message}</pre>
-          <button
-            className="text-link"
-            type="button"
-            onClick={async () => {
-              try {
-                await navigator.clipboard.writeText(message);
-                setStatus('Copied. Your enquiry has not been sent.');
-              } catch {
-                setStatus(
-                  'Copy is unavailable. Select and copy the draft text below.',
-                );
-              }
-            }}
-          >
-            {status.startsWith('Copied') ? (
-              <Check size={18} />
-            ) : (
-              <Copy size={18} />
-            )}
-            Copy enquiry
-          </button>
-        </div>
-      )}
+      <output className="form-status" aria-live="polite">{status}</output>
     </form>
   );
 }

@@ -1360,18 +1360,7 @@ select:focus-visible {
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-auto-flow: dense;
   gap: 14px;
-}
-.gallery-grid:not(.gallery-preview) .gallery-item:nth-child(7n + 1) {
-  grid-column: span 2;
-  grid-row: span 2;
-}
-.gallery-grid:not(.gallery-preview) .gallery-item:nth-child(9n + 4) {
-  grid-column: span 2;
-}
-.gallery-grid:not(.gallery-preview) .gallery-item:nth-child(11n + 6) {
-  grid-row: span 2;
 }
 .gallery-grid:not(.gallery-preview) .gallery-item {
   animation: entrance 0.5s both;
@@ -1411,18 +1400,10 @@ select:focus-visible {
 .gallery-image {
   position: relative;
   display: block;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   border-radius: 10px;
   background: #edf4ea;
-}
-.gallery-grid:not(.gallery-preview) .gallery-item:nth-child(7n + 1) .gallery-image,
-.gallery-grid:not(.gallery-preview) .gallery-item:nth-child(11n + 6) .gallery-image {
-  height: 100%;
-  min-height: 290px;
-}
-.gallery-grid:not(.gallery-preview) .gallery-item:nth-child(9n + 4) .gallery-image {
-  aspect-ratio: 2 / 1;
 }
 .gallery-image img {
   object-fit: cover;
@@ -3099,12 +3080,6 @@ select:focus-visible {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
   }
-  .gallery-grid:not(.gallery-preview) .gallery-item:nth-child(7n + 1),
-  .gallery-grid:not(.gallery-preview) .gallery-item:nth-child(9n + 4),
-  .gallery-grid:not(.gallery-preview) .gallery-item:nth-child(11n + 6) {
-    grid-column: auto;
-    grid-row: auto;
-  }
   .gallery-preview .gallery-item:first-child {
     grid-row: auto;
     grid-column: 1 / -1;
@@ -3120,13 +3095,6 @@ select:focus-visible {
     aspect-ratio: 16 / 9;
   }
   .gallery-image {
-    aspect-ratio: 1;
-  }
-  .gallery-grid:not(.gallery-preview) .gallery-item:nth-child(7n + 1) .gallery-image,
-  .gallery-grid:not(.gallery-preview) .gallery-item:nth-child(9n + 4) .gallery-image,
-  .gallery-grid:not(.gallery-preview) .gallery-item:nth-child(11n + 6) .gallery-image {
-    height: auto;
-    min-height: 0;
     aspect-ratio: 1;
   }
   .gallery-caption strong {

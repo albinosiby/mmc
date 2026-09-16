@@ -87,7 +87,7 @@ const journeyChapterDefinitions = [
   { id: '2021-2023', year: '2021–2023', years: ['2021', '2022', '2023'], entryIds: ['expansion-2021-2023', 'recognition-2023'] },
   { id: '2024', year: '2024', years: ['2024'], entryIds: ['2024', 'nokma-2024-2025'] },
   { id: '2025', year: '2025', years: ['2025'], entryIds: ['livelihoods-2025', 'collective-farming-2025-2026', 'cold-chain-2025-2026'] },
-  { id: '2026', year: '2026', years: ['2026'], entryIds: ['mineral-water-2026', 'infrastructure-2026', 'women-entrepreneurship-2026'] },
+  { id: '2026', year: '2026', years: ['2026'], entryIds: ['niti-aayog-visit-2026', 'meghfarm-sports-club-2026', 'financial-literacy-camp-2026', 'mineral-water-2026', 'infrastructure-2026', 'women-entrepreneurship-2026'] },
 ] as const;
 
 const journeyYears: JourneyChapter[] = journeyChapterDefinitions.map((chapter) => {

@@ -41,7 +41,6 @@ const normalGalleryImages = [
   "WhatsApp Image 2026-09-12 at 11.02.04 AM.jpeg",
   "WhatsApp Image 2026-09-12 at 11.02.44 AM.jpeg",
   "g10_1.3.1.jpg",
-  "g11_1.2.1.jpg",
   "g12_1.1.1.jpg",
   "g1_1.11.1.jpg",
   "g3_1.9.1.jpg",

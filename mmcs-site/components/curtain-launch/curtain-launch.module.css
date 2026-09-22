@@ -11,8 +11,7 @@
   overflow: hidden;
   z-index: 9999;
   perspective: 1200px;
-  background:
-    radial-gradient(ellipse at center, rgba(91, 12, 9, 0.52) 0%, rgba(31, 2, 3, 0.94) 62%, #030101 100%);
+  background: transparent;
   pointer-events: auto;
   isolation: isolate;
 }
@@ -31,6 +30,7 @@
 .stageLight {
   z-index: 3;
   background:
+    radial-gradient(ellipse at center, rgba(91, 12, 9, 0.52) 0%, rgba(31, 2, 3, 0.94) 62%, #030101 100%),
     radial-gradient(ellipse at 50% 36%, rgba(242, 217, 157, 0.18), transparent 28%),
     radial-gradient(ellipse at center, transparent 20%, rgba(0, 0, 0, 0.15) 55%, rgba(0, 0, 0, 0.7) 100%);
   mix-blend-mode: screen;

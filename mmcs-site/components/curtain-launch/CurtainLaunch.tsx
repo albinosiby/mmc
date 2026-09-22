@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion, useReducedMotion, type Transition } from 'framer-motion';
 import styles from './curtain-launch.module.css';
 import { CurtainPanel } from './CurtainPanel';
 import { CurtainControls } from './CurtainControls';
@@ -26,10 +26,13 @@ export function CurtainLaunch({ children }: { children: ReactNode }) {
     };
   }, [state]);
 
-  const transition = useMemo(() => {
-    const ease = reduceMotion ? 'easeOut' : ([0.76, 0, 0.24, 1] as const);
-    return { duration, ease };
-  }, [duration, reduceMotion]);
+  const transition = useMemo<Transition>(
+    () => ({
+      duration,
+      ease: reduceMotion ? 'easeOut' : [0.76, 0, 0.24, 1],
+    }),
+    [duration, reduceMotion],
+  );
 
   function openCurtain() {
     if (state !== 'closed') return;

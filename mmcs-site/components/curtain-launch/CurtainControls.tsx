@@ -20,12 +20,20 @@ export function CurtainControls({ state, onEnter, onClose }: CurtainControlsProp
     <>
       <motion.div
         className={styles.branding}
-        initial={{ opacity: 0, y: 14 }}
-        animate={{ opacity: showBranding ? 1 : 0, y: showBranding ? 0 : -8 }}
-        transition={{ duration: 0.45, delay: state === 'closed' ? 0.35 : 0 }}
+        initial={{ opacity: 0, y: 18, scale: 0.96 }}
+        animate={{
+          opacity: showBranding ? 1 : 0,
+          y: showBranding ? 0 : -14,
+          scale: showBranding ? 1 : 0.985,
+        }}
+        transition={{ duration: 0.58, delay: state === 'closed' ? 0.32 : 0, ease: 'easeOut' }}
         aria-hidden={!showBranding}
       >
-        <div className={styles.logoMark}>
+        <motion.div
+          className={styles.logoMark}
+          animate={{ opacity: showBranding ? 1 : 0, scale: showBranding ? 1 : 0.94 }}
+          transition={{ duration: 0.5, delay: state === 'closed' ? 0.18 : 0, ease: 'easeOut' }}
+        >
           <Image
             src="/images/mmcs-logo.png"
             alt="Muktidata Multipurpose Cooperative Society logo"
@@ -33,21 +41,23 @@ export function CurtainControls({ state, onEnter, onClose }: CurtainControlsProp
             height={132}
             priority
           />
-        </div>
+        </motion.div>
         <p className={styles.brandName}>Muktidata Multipurpose Cooperative Society</p>
         <h1 className={styles.brandTitle}>
           <span>People · Livelihoods</span>
           <strong>Stronger Communities</strong>
         </h1>
-        <button
+        <motion.button
           className={styles.enterButton}
           type="button"
           onClick={onEnter}
           disabled={state !== 'closed'}
           aria-label="Enter the MMCS website"
+          whileHover={{ y: -1 }}
+          whileTap={{ scale: 0.985 }}
         >
           Enter
-        </button>
+        </motion.button>
       </motion.div>
 
       <motion.button
@@ -59,6 +69,7 @@ export function CurtainControls({ state, onEnter, onClose }: CurtainControlsProp
         transition={{ duration: 0.24 }}
         disabled={!showClose}
         aria-label="Close curtain"
+        whileTap={{ scale: 0.985 }}
       >
         Close Curtain
       </motion.button>

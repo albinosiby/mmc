@@ -26,13 +26,10 @@ export function CurtainLaunch({ children }: { children: ReactNode }) {
     };
   }, [state]);
 
-  const transition = useMemo(
-    () => ({
-      duration,
-      ease: reduceMotion ? 'easeOut' : [0.76, 0, 0.24, 1],
-    }),
-    [duration, reduceMotion],
-  );
+  const transition = useMemo(() => {
+    const ease = reduceMotion ? 'easeOut' : ([0.76, 0, 0.24, 1] as const);
+    return { duration, ease };
+  }, [duration, reduceMotion]);
 
   function openCurtain() {
     if (state !== 'closed') return;

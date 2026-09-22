@@ -155,9 +155,10 @@
   position: absolute;
   z-index: 7;
   top: 32%;
-  left: 50%;
+  left: 0;
+  right: 0;
   width: min(520px, calc(100vw - 38px));
-  transform: translateX(-50%);
+  margin-inline: auto;
   display: grid;
   justify-items: center;
   text-align: center;
@@ -288,6 +289,12 @@
 
   .branding {
     top: 28%;
+    width: min(320px, calc(100vw - 32px));
+  }
+
+  .logoMark {
+    width: clamp(76px, 24vw, 96px);
+    margin-bottom: 14px;
   }
 
   .brandName {
@@ -296,13 +303,15 @@
   }
 
   .brandTitle {
-    letter-spacing: 0.13em;
+    font-size: clamp(1rem, 5.2vw, 1.38rem);
+    letter-spacing: 0.1em;
   }
 
   .closeButton {
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
+    left: 0;
+    right: 0;
+    width: max-content;
+    margin-inline: auto;
   }
 }
 

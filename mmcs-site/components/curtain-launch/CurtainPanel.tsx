@@ -23,9 +23,12 @@ export function CurtainPanel({
       className={`${styles.curtainPanel} ${isLeft ? styles.leftCurtain : styles.rightCurtain}`}
       initial={false}
       animate={{
-        x: isOpen ? (isLeft ? '-84%' : '84%') : '0%',
-        scaleX: isOpen ? 0.78 : 1,
-        rotateY: isOpen ? (isLeft ? 5 : -5) : 0,
+        x: isOpen ? (isLeft ? '-86%' : '86%') : '0%',
+        scaleX: isOpen ? 0.72 : 1,
+        scaleY: isOpen ? 1.015 : 1,
+        rotateY: isOpen ? (isLeft ? 7 : -7) : 0,
+        skewY: isOpen ? (isLeft ? -1.1 : 1.1) : 0,
+        filter: isOpen ? 'brightness(0.88) saturate(1.1)' : 'brightness(1) saturate(1)',
       }}
       transition={transition}
       onAnimationComplete={onAnimationComplete}

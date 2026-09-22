@@ -62,10 +62,7 @@ export function CurtainLaunch({ children }: { children: ReactNode }) {
         {children}
       </motion.div>
 
-      <div
-        className={`${styles.stage} ${isOpen ? styles.stageOpen : ''}`}
-        aria-hidden={state === 'open'}
-      >
+      <div className={`${styles.stage} ${isOpen ? styles.stageOpen : ''}`}>
         <motion.div
           className={styles.stageLight}
           initial={{ opacity: 0 }}

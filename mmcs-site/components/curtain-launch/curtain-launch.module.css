@@ -74,7 +74,7 @@
   position: absolute;
   top: -4dvh;
   bottom: -5dvh;
-  width: 52vw;
+  width: 62vw;
   z-index: 5;
   overflow: hidden;
   transform-style: preserve-3d;
@@ -112,7 +112,7 @@
 
 .leftCurtain {
   left: 0;
-  transform-origin: left center;
+  transform-origin: left top;
   box-shadow:
     inset -30px 0 44px rgba(0, 0, 0, 0.66),
     inset 54px 0 100px rgba(0, 0, 0, 0.28),
@@ -121,7 +121,7 @@
 
 .rightCurtain {
   right: 0;
-  transform-origin: right center;
+  transform-origin: right top;
   box-shadow:
     inset 30px 0 44px rgba(0, 0, 0, 0.66),
     inset -54px 0 100px rgba(0, 0, 0, 0.28),
@@ -226,7 +226,7 @@
     radial-gradient(ellipse at 44% 105%, rgba(0, 0, 0, 0.56), transparent 30%),
     radial-gradient(ellipse at 78% 102%, rgba(0, 0, 0, 0.7), transparent 32%),
     linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.46));
-  clip-path: polygon(0 14%, 10% 8%, 22% 15%, 34% 6%, 48% 13%, 62% 5%, 76% 15%, 88% 8%, 100% 14%, 100% 100%, 0 100%);
+  clip-path: polygon(0 12%, 9% 6%, 20% 14%, 32% 5%, 47% 14%, 61% 4%, 76% 16%, 88% 7%, 100% 13%, 100% 100%, 0 100%);
 }
 
 .branding {
@@ -380,7 +380,7 @@
 
 @media (max-width: 700px) {
   .curtainPanel {
-    width: 53.5vw;
+    width: 68vw;
   }
 
   .branding {

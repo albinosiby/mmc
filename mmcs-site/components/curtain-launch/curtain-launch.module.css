@@ -78,7 +78,9 @@
   z-index: 5;
   overflow: hidden;
   transform-style: preserve-3d;
-  will-change: transform, filter;
+  backface-visibility: hidden;
+  contain: layout paint;
+  will-change: transform, opacity, clip-path;
   background-color: #430405;
 }
 

@@ -67,17 +67,16 @@ export function CurtainLaunch({ children }: { children: ReactNode }) {
           <motion.div
             className={styles.stageLight}
             initial={{ opacity: 0 }}
-            animate={{ opacity: state === 'closed' ? 1 : 0.36 }}
+            animate={{ opacity: state === 'closed' ? 1 : 0.34 }}
             transition={{ duration: reduceMotion ? 0.1 : 0.72, ease: 'easeOut' }}
           />
           <motion.div
             className={styles.revealLight}
             animate={{
-              opacity: isOpening ? [0, 1, 0.62, 0] : 0,
-              scaleX: isOpening ? [0.08, 0.22, 2.9, 4.4] : 0.08,
-              filter: isOpening ? ['blur(3px)', 'blur(6px)', 'blur(18px)', 'blur(24px)'] : 'blur(3px)',
+              opacity: isOpening ? [0, 0.82, 0] : 0,
+              scaleX: isOpening ? [0.08, 2.4, 4.1] : 0.08,
             }}
-            transition={{ duration: reduceMotion ? 0.1 : 1.22, ease: 'easeOut', times: isOpening ? [0, 0.14, 0.68, 1] : undefined }}
+            transition={{ duration: reduceMotion ? 0.1 : 1.08, ease: 'easeOut', times: isOpening ? [0, 0.52, 1] : undefined }}
           />
 
           <CurtainPanel side="left" isOpen={isOpening} transition={transition} />

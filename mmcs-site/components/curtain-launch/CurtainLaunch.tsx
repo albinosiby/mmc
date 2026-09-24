@@ -8,9 +8,9 @@ import { CurtainControls } from './CurtainControls';
 
 type CurtainState = 'closed' | 'opening' | 'open';
 
-const fullDuration = 2.08;
+const fullDuration = 2.36;
 const reducedDuration = 0.18;
-const curtainEase = [0.78, 0, 0.18, 1] as [number, number, number, number];
+const curtainEase = [0.72, 0, 0.16, 1] as [number, number, number, number];
 
 export function CurtainLaunch({ children }: { children: ReactNode }) {
   const [state, setState] = useState<CurtainState>('closed');
@@ -57,7 +57,7 @@ export function CurtainLaunch({ children }: { children: ReactNode }) {
               ? 'brightness(1) blur(0px)'
               : 'brightness(0.58) blur(2.5px)',
         }}
-        transition={{ duration: reduceMotion ? 0.18 : 1.58, ease: 'easeOut', times: isOpening ? [0, 0.34, 1] : undefined }}
+        transition={{ duration: reduceMotion ? 0.18 : 1.74, ease: 'easeOut', times: isOpening ? [0, 0.34, 1] : undefined }}
       >
         {children}
       </motion.div>
@@ -77,7 +77,7 @@ export function CurtainLaunch({ children }: { children: ReactNode }) {
               scaleX: isOpening ? [0.08, 0.22, 2.9, 4.4] : 0.08,
               filter: isOpening ? ['blur(3px)', 'blur(6px)', 'blur(18px)', 'blur(24px)'] : 'blur(3px)',
             }}
-            transition={{ duration: reduceMotion ? 0.1 : 1.34, ease: 'easeOut', times: isOpening ? [0, 0.12, 0.64, 1] : undefined }}
+            transition={{ duration: reduceMotion ? 0.1 : 1.46, ease: 'easeOut', times: isOpening ? [0, 0.12, 0.64, 1] : undefined }}
           />
 
           <CurtainPanel side="left" isOpen={isOpening} transition={transition} />

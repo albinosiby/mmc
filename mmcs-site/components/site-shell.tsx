@@ -1,11 +1,17 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { Navigation } from '@/components/navigation';
-import { Footer } from '@/components/sections';
 import { CurtainLaunch } from '@/components/curtain-launch/CurtainLaunch';
 
-export function SiteShell({ children }: { children: React.ReactNode }) {
+export function SiteShell({
+  children,
+  navigation,
+  footer,
+}: {
+  children: React.ReactNode;
+  navigation: React.ReactNode;
+  footer: React.ReactNode;
+}) {
   const pathname = usePathname();
   const isAdmin = pathname?.startsWith('/admin');
 
@@ -15,9 +21,9 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
 
   return (
     <CurtainLaunch>
-      <Navigation />
+      {navigation}
       {children}
-      <Footer />
+      {footer}
     </CurtainLaunch>
   );
 }

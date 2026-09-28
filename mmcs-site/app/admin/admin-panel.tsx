@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import Image from 'next/image';
 import styles from './admin.module.css';
 
 type AdminImageArea = 'gallery' | 'journey';
@@ -36,7 +37,7 @@ export function AdminPanel({
   );
   const [busyId, setBusyId] = useState<string | null>(null);
 
-  function login(event: React.FormEvent<HTMLFormElement>) {
+  function login(event: { preventDefault: () => void }) {
     event.preventDefault();
     const expectedPassword = process.env.NEXT_PUBLIC_ADMIN_PREVIEW_PASSWORD;
 
@@ -80,7 +81,7 @@ export function AdminPanel({
     }, 250);
   }
 
-  const activeImages = images[activeArea] ?? [];
+  const activeImages = useMemo(() => images[activeArea] ?? [], [activeArea, images]);
   const filteredImages = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
     if (!normalizedQuery) return activeImages;
@@ -126,9 +127,7 @@ export function AdminPanel({
               Enter admin
             </button>
           </form>
-          <p className={styles.status} role="status">
-            {status}
-          </p>
+          <output className={styles.status}>{status}</output>
         </div>
       </section>
     );
@@ -180,9 +179,7 @@ export function AdminPanel({
         </label>
       </div>
 
-      <p className={styles.status} role="status">
-        {status}
-      </p>
+      <output className={styles.status}>{status}</output>
 
       {filteredImages.length === 0 ? (
         <div className={styles.emptyState}>No images match this search.</div>
@@ -198,7 +195,13 @@ export function AdminPanel({
                 {items.map((item) => (
                   <article key={item.id} className={styles.card}>
                     <div className={styles.imageWrap}>
-                      <img src={item.src} alt={item.alt} loading="lazy" />
+                      <Image
+                        src={item.src}
+                        alt={item.alt}
+                        width={640}
+                        height={480}
+                        sizes="(max-width: 700px) 100vw, 280px"
+                      />
                     </div>
                     <div className={styles.cardBody}>
                       <h3>{item.title}</h3>

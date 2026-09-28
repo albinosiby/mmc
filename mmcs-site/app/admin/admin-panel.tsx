@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import styles from './admin.module.css';
 
 type AdminImageArea = 'gallery' | 'journey';
@@ -16,154 +16,71 @@ type AdminImageItem = {
   storagePath?: string;
 };
 
-type ImageResponse = {
-  ok: boolean;
-  message?: string;
-  firebase?: {
-    configured: boolean;
-    hasBucket: boolean;
-    hasCredentials: boolean;
-  };
-  images?: Record<AdminImageArea, AdminImageItem[]>;
-  totals?: Record<AdminImageArea, number>;
-};
+type ImageRegistry = Record<AdminImageArea, AdminImageItem[]>;
 
 export function AdminPanel({
-  initialAuthed,
-  adminConfigured,
+  images,
+  previewPasswordConfigured,
 }: {
-  initialAuthed: boolean;
-  adminConfigured: boolean;
+  images: ImageRegistry;
+  previewPasswordConfigured: boolean;
 }) {
   const [password, setPassword] = useState('');
-  const [authed, setAuthed] = useState(initialAuthed);
+  const [authed, setAuthed] = useState(false);
   const [activeArea, setActiveArea] = useState<AdminImageArea>('gallery');
-  const [data, setData] = useState<ImageResponse | null>(null);
   const [query, setQuery] = useState('');
-  const [status, setStatus] = useState(adminConfigured ? '' : 'Admin login is waiting for ADMIN_PASSWORD and ADMIN_SESSION_SECRET.');
-  const [isLoading, setIsLoading] = useState(false);
+  const [status, setStatus] = useState(
+    previewPasswordConfigured
+      ? 'Enter the preview admin password to continue.'
+      : 'Set NEXT_PUBLIC_ADMIN_PREVIEW_PASSWORD to enable this static preview panel.',
+  );
   const [busyId, setBusyId] = useState<string | null>(null);
 
-  async function loadImages() {
-    setIsLoading(true);
-    setStatus('Loading image registry...');
-
-    try {
-      const response = await fetch('/api/admin/images', { cache: 'no-store' });
-      const result = (await response.json()) as ImageResponse;
-
-      if (!response.ok) {
-        throw new Error(result.message ?? 'Could not load images.');
-      }
-
-      setData(result);
-      setStatus(result.firebase?.configured ? 'Firebase is connected.' : 'Preview mode: Firebase Storage is not connected yet.');
-    } catch (error) {
-      setStatus(error instanceof Error ? error.message : 'Could not load images.');
-    } finally {
-      setIsLoading(false);
-    }
-  }
-
-  useEffect(() => {
-    if (authed) void loadImages();
-  }, [authed]);
-
-  async function login(event: React.FormEvent<HTMLFormElement>) {
+  function login(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setIsLoading(true);
-    setStatus('Checking password...');
+    const expectedPassword = process.env.NEXT_PUBLIC_ADMIN_PREVIEW_PASSWORD;
 
-    try {
-      const response = await fetch('/api/admin/auth', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password }),
-      });
-      const result = (await response.json()) as { ok: boolean; message?: string };
-
-      if (!response.ok) {
-        throw new Error(result.message ?? 'Could not sign in.');
-      }
-
-      setPassword('');
-      setAuthed(true);
-      setStatus('Signed in.');
-    } catch (error) {
-      setStatus(error instanceof Error ? error.message : 'Could not sign in.');
-    } finally {
-      setIsLoading(false);
+    if (!expectedPassword) {
+      setStatus('Admin preview password is not configured yet.');
+      return;
     }
+
+    if (password !== expectedPassword) {
+      setStatus('Incorrect admin password.');
+      return;
+    }
+
+    setPassword('');
+    setAuthed(true);
+    setStatus('Preview mode: Firebase Storage is not connected yet.');
   }
 
-  async function logout() {
-    await fetch('/api/admin/auth', { method: 'DELETE' });
+  function logout() {
     setAuthed(false);
-    setData(null);
     setStatus('Signed out.');
   }
 
-  async function replaceImage(item: AdminImageItem, file: File | null) {
+  function replaceImage(item: AdminImageItem, file: File | null) {
     if (!file) return;
 
-    const formData = new FormData();
-    formData.append('id', item.id);
-    formData.append('area', item.area);
-    formData.append('storagePath', item.storagePath ?? item.id);
-    formData.append('image', file);
-
     setBusyId(item.id);
-    setStatus(`Preparing to replace ${item.title}...`);
-
-    try {
-      const response = await fetch('/api/admin/images', {
-        method: 'POST',
-        body: formData,
-      });
-      const result = (await response.json()) as ImageResponse;
-
-      if (!response.ok) {
-        throw new Error(result.message ?? 'Could not replace image.');
-      }
-
-      setStatus('Image replaced.');
-      await loadImages();
-    } catch (error) {
-      setStatus(error instanceof Error ? error.message : 'Could not replace image.');
-    } finally {
+    window.setTimeout(() => {
       setBusyId(null);
-    }
+      setStatus(
+        `Selected ${file.name} for ${item.title}. Firebase upload will be enabled in the backend step.`,
+      );
+    }, 250);
   }
 
-  async function deleteImage(item: AdminImageItem) {
-    const confirmed = window.confirm(`Delete ${item.title}?`);
-    if (!confirmed) return;
-
+  function deleteImage(item: AdminImageItem) {
     setBusyId(item.id);
-    setStatus(`Preparing to delete ${item.title}...`);
-
-    try {
-      const response = await fetch('/api/admin/images', {
-        method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: item.id, area: item.area, storagePath: item.storagePath }),
-      });
-      const result = (await response.json()) as ImageResponse;
-
-      if (!response.ok) {
-        throw new Error(result.message ?? 'Could not delete image.');
-      }
-
-      setStatus('Image deleted.');
-      await loadImages();
-    } catch (error) {
-      setStatus(error instanceof Error ? error.message : 'Could not delete image.');
-    } finally {
+    window.setTimeout(() => {
       setBusyId(null);
-    }
+      setStatus(`Delete is prepared for ${item.title}. Firebase deletion will be enabled in the backend step.`);
+    }, 250);
   }
 
-  const activeImages = data?.images?.[activeArea] ?? [];
+  const activeImages = images[activeArea] ?? [];
   const filteredImages = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
     if (!normalizedQuery) return activeImages;
@@ -202,15 +119,15 @@ export function AdminPanel({
                 onChange={(event) => setPassword(event.target.value)}
                 required
                 autoComplete="current-password"
-                disabled={!adminConfigured || isLoading}
+                disabled={!previewPasswordConfigured}
               />
             </label>
-            <button type="submit" disabled={!adminConfigured || isLoading}>
-              {isLoading ? 'Checking...' : 'Enter admin'}
+            <button type="submit" disabled={!previewPasswordConfigured}>
+              Enter admin
             </button>
           </form>
           <p className={styles.status} role="status">
-            {status || 'Use the configured ADMIN_PASSWORD to continue.'}
+            {status}
           </p>
         </div>
       </section>
@@ -230,12 +147,10 @@ export function AdminPanel({
         </button>
       </header>
 
-      <div className={styles.notice} data-ready={data?.firebase?.configured ? 'true' : 'false'}>
-        <strong>{data?.firebase?.configured ? 'Firebase connected' : 'Firebase not connected yet'}</strong>
+      <div className={styles.notice} data-ready="false">
+        <strong>Firebase not connected yet</strong>
         <span>
-          {data?.firebase?.configured
-            ? 'Upload and delete actions can write to Firebase Storage.'
-            : 'The panel can preview all current images now. Upload/delete will activate after Firebase credentials are added.'}
+          This is a static preview panel so the current build stays safe. Upload/delete will activate after the Firebase backend is enabled.
         </span>
       </div>
 
@@ -251,7 +166,7 @@ export function AdminPanel({
               onClick={() => setActiveArea(area)}
             >
               {area === 'gallery' ? 'Gallery' : 'Our Journey'}
-              <span>{data?.totals?.[area] ?? 0}</span>
+              <span>{images[area]?.length ?? 0}</span>
             </button>
           ))}
         </div>
@@ -269,9 +184,7 @@ export function AdminPanel({
         {status}
       </p>
 
-      {isLoading ? (
-        <div className={styles.emptyState}>Loading images...</div>
-      ) : filteredImages.length === 0 ? (
+      {filteredImages.length === 0 ? (
         <div className={styles.emptyState}>No images match this search.</div>
       ) : (
         <div className={styles.groups}>
@@ -290,7 +203,7 @@ export function AdminPanel({
                     <div className={styles.cardBody}>
                       <h3>{item.title}</h3>
                       <p>{item.src}</p>
-                      <span className={styles.sourceBadge}>{item.source === 'static-site' ? 'Current static image' : 'Firebase Storage'}</span>
+                      <span className={styles.sourceBadge}>Current static image</span>
                     </div>
                     <div className={styles.actions}>
                       <label className={styles.fileButton} aria-disabled={busyId === item.id}>
@@ -300,7 +213,7 @@ export function AdminPanel({
                           accept="image/*"
                           disabled={busyId === item.id}
                           onChange={(event) => {
-                            void replaceImage(item, event.target.files?.[0] ?? null);
+                            replaceImage(item, event.target.files?.[0] ?? null);
                             event.currentTarget.value = '';
                           }}
                         />
@@ -309,7 +222,7 @@ export function AdminPanel({
                         className={styles.dangerButton}
                         type="button"
                         disabled={busyId === item.id}
-                        onClick={() => void deleteImage(item)}
+                        onClick={() => deleteImage(item)}
                       >
                         Delete
                       </button>

@@ -9,7 +9,7 @@ import { CurtainControls } from './CurtainControls';
 
 type CurtainState = 'closed' | 'opening' | 'open';
 
-const launchSeenKey = 'mmcs-launch-gratitude-poster-seen-v1';
+const launchSeenKey = 'mmcs-launch-gratitude-poster-seen-v2';
 const fullDuration = 2.18;
 const reducedDuration = 0.18;
 const curtainEase = [0.4, 0, 0.2, 1] as [number, number, number, number];

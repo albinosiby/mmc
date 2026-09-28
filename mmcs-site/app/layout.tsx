@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import { Navigation } from '@/components/navigation';
+import { Footer } from '@/components/sections';
 import { SiteShell } from '@/components/site-shell';
 import { CacheRegistration } from '@/components/cache-registration';
 import '@fontsource/manrope/latin-400.css';
@@ -38,7 +40,9 @@ export default function RootLayout({
         <a className="skip-link" href="#main">
           Skip to content
         </a>
-        <SiteShell>{children}</SiteShell>
+        <SiteShell navigation={<Navigation />} footer={<Footer />}>
+          {children}
+        </SiteShell>
       </body>
     </html>
   );

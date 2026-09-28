@@ -1,7 +1,5 @@
 import type { Metadata } from 'next';
-import { Navigation } from '@/components/navigation';
-import { Footer } from '@/components/sections';
-import { CurtainLaunch } from '@/components/curtain-launch/CurtainLaunch';
+import { SiteShell } from '@/components/site-shell';
 import { CacheRegistration } from '@/components/cache-registration';
 import '@fontsource/manrope/latin-400.css';
 import '@fontsource/manrope/latin-500.css';
@@ -40,11 +38,7 @@ export default function RootLayout({
         <a className="skip-link" href="#main">
           Skip to content
         </a>
-        <CurtainLaunch>
-          <Navigation />
-          {children}
-          <Footer />
-        </CurtainLaunch>
+        <SiteShell>{children}</SiteShell>
       </body>
     </html>
   );

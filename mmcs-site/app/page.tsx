@@ -63,7 +63,7 @@ const activityPhotoOverrides = {
     alt: 'Skill development through local value-added production',
   },
   attire: {
-    src: '/images/traditional-attire.jpg',
+    src: '/images/traditional-attire-activity.jpg',
     alt: 'Traditional handwoven attire from Meghalaya',
   },
   household: {

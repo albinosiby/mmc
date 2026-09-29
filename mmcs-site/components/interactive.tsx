@@ -238,24 +238,6 @@ export function JourneyExplorer() {
                     </section>
                   ))}
                   {selectedEntry.periodNote && <p className="journey-period-note"><strong>Status:</strong> {selectedEntry.periodNote}</p>}
-                  <section className="journey-year-gallery" aria-labelledby={`year-gallery-${selected.year}`}>
-                    <div className="journey-year-gallery-grid">
-                      {selectedYearImages.map((src, imageIndex) => (
-                        <button
-                          type="button"
-                          className={journeyLightbox.item}
-                          key={src}
-                          onClick={(event) => {
-                            imageTrigger.current = event.currentTarget;
-                            setSelectedImageIndex(imageIndex);
-                          }}
-                          aria-label={`Open photograph ${imageIndex + 1} from ${selected.year}`}
-                        >
-                          <Image src={src} alt={`MMCS documentation from ${selected.year}, photograph ${imageIndex + 1}`} fill sizes="(max-width: 700px) 48vw, 200px" />
-                        </button>
-                      ))}
-                    </div>
-                  </section>
                   {selected.entries.filter((item) => item.id !== selectedEntry.id).map((item) => (
                     <section className="journey-additional-entry" key={item.id}>
                       <span>{item.year}</span>
@@ -278,6 +260,24 @@ export function JourneyExplorer() {
                       {item.periodNote && <p className="journey-period-note"><strong>Status:</strong> {item.periodNote}</p>}
                     </section>
                   ))}
+                  <section className="journey-year-gallery" aria-labelledby={`year-gallery-${selected.year}`}>
+                    <div className="journey-year-gallery-grid">
+                      {selectedYearImages.map((src, imageIndex) => (
+                        <button
+                          type="button"
+                          className={journeyLightbox.item}
+                          key={src}
+                          onClick={(event) => {
+                            imageTrigger.current = event.currentTarget;
+                            setSelectedImageIndex(imageIndex);
+                          }}
+                          aria-label={`Open photograph ${imageIndex + 1} from ${selected.year}`}
+                        >
+                          <Image src={src} alt={`MMCS documentation from ${selected.year}, photograph ${imageIndex + 1}`} fill sizes="(max-width: 700px) 48vw, 200px" />
+                        </button>
+                      ))}
+                    </div>
+                  </section>
                   <button type="button" className="journey-next" onClick={() => selectChapter(selectedIndex + 1)}>Next year <span>{journeyYears[(selectedIndex + 1) % journeyYears.length].year} <ArrowRight size={17} /></span></button>
                 </div>
               </article>

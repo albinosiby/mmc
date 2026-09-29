@@ -2,7 +2,7 @@
 import { journeyTimeline } from './journey-content';
 
 export { journeyTimeline as timeline } from './journey-content';
-export const siteUrl = 'https://mmcs-community.tatos.chatgpt.site';
+export const siteUrl = 'https://www.muktidatamultipurposecooperativesociety.in';
 export const statements = {
   vision:
     'Every Tribal Person is entitled to live with dignity and equality in a safe and secure environment.',

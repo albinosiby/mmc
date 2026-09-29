@@ -18,13 +18,15 @@ export function CurtainLaunch({ children }: { children: ReactNode }) {
   const [introComplete, setIntroComplete] = useState(false);
   const reduceMotion = useReducedMotion();
   const isOpening = state === 'opening';
-  const showPoster = state === 'open' && !introComplete;
+  const showPoster = !introComplete;
+  const posterReady = state === 'open';
   const showStage = state !== 'open';
   const duration = reduceMotion ? reducedDuration : fullDuration;
 
   const dismissPoster = useCallback(() => {
+    if (state !== 'open') return;
     setIntroComplete(true);
-  }, []);
+  }, [state]);
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
@@ -36,7 +38,7 @@ export function CurtainLaunch({ children }: { children: ReactNode }) {
   }, [showPoster, state]);
 
   useEffect(() => {
-    if (!showPoster) return;
+    if (!showPoster || state !== 'open') return;
 
     function dismissOnKey() {
       dismissPoster();
@@ -46,7 +48,7 @@ export function CurtainLaunch({ children }: { children: ReactNode }) {
     return () => {
       window.removeEventListener('keydown', dismissOnKey);
     };
-  }, [dismissPoster, showPoster]);
+  }, [dismissPoster, showPoster, state]);
 
   const transition = useMemo<Transition>(
     () => ({
@@ -114,8 +116,9 @@ export function CurtainLaunch({ children }: { children: ReactNode }) {
         {showPoster ? (
           <motion.button
             type="button"
-            className={styles.posterOverlay}
+            className={`${styles.posterOverlay} ${posterReady ? '' : styles.posterWaiting}`}
             onClick={dismissPoster}
+            disabled={!posterReady}
             aria-label="Close launch gratitude poster and enter website"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -145,7 +148,7 @@ export function CurtainLaunch({ children }: { children: ReactNode }) {
                 className={styles.posterImage}
               />
             </motion.span>
-            <span className={styles.posterHint}>Tap or press any key to continue</span>
+            {posterReady ? <span className={styles.posterHint}>Tap or press any key to continue</span> : null}
           </motion.button>
         ) : null}
       </AnimatePresence>

@@ -386,7 +386,7 @@
 .posterOverlay {
   position: fixed;
   inset: 0;
-  z-index: 10000;
+  z-index: 9998;
   display: grid;
   place-items: center;
   width: 100vw;
@@ -418,6 +418,10 @@
   opacity: 0.26;
   background-image: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.14) 0 1px, transparent 1px 7px);
   mix-blend-mode: overlay;
+}
+
+.posterWaiting {
+  pointer-events: none;
 }
 
 .posterFrame {

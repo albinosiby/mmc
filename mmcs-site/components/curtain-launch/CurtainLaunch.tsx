@@ -140,7 +140,7 @@ export function CurtainLaunch({ children }: { children: ReactNode }) {
               transition={{ duration: reduceMotion ? 0.14 : 0.62, ease: [0.22, 1, 0.36, 1] }}
             >
               <Image
-                src="/images/launch-gratitude-brochure.png"
+                src="/images/launch-gratitude-phone-poster.jpg"
                 alt="With heartfelt gratitude launch poster from Muktidata Multipurpose Cooperative Society"
                 fill
                 priority

@@ -388,7 +388,7 @@
   place-items: center;
   width: 100vw;
   height: 100dvh;
-  padding: clamp(10px, 2.5vw, 28px);
+  padding: 0;
   border: 0;
   background:
     radial-gradient(ellipse at 50% 40%, rgba(248, 239, 201, 0.22), transparent 44%),
@@ -418,7 +418,8 @@
 }
 
 .posterFrame {
-  position: relative;
+  position: absolute;
+  inset: 0;
   z-index: 1;
   display: block;
   width: 100vw;
@@ -432,7 +433,7 @@
 }
 
 .posterImage {
-  object-fit: cover;
+  object-fit: fill;
 }
 
 .posterHint {
@@ -490,9 +491,6 @@
     margin-inline: auto;
   }
 
-  .posterOverlay {
-    padding: 0;
-  }
 
   .posterHint {
     bottom: clamp(12px, 5vw, 22px);

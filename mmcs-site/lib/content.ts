@@ -160,11 +160,6 @@ export const projects: Project[] = [
     ],
     images: [
       {
-        src: '/images/megh-farm-team.png',
-        alt: 'MeghFarm team gathered in front of the Meghalaya hills',
-        label: 'The people behind a greener tomorrow',
-      },
-      {
         src: galleryImage('AW44DSC01857.jpg'),
         alt: 'MeghFarm community activity',
         label: 'MeghFarm community activity',

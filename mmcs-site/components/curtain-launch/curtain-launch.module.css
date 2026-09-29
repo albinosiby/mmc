@@ -1,6 +1,8 @@
 .websiteShell {
   min-height: 100dvh;
   transform-origin: center top;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
 }
 
 .stage {
@@ -80,7 +82,8 @@
   transform-style: preserve-3d;
   backface-visibility: hidden;
   contain: layout paint;
-  will-change: transform, opacity, clip-path;
+  will-change: transform, opacity;
+  transform: translateZ(0);
   background-color: #430405;
 }
 

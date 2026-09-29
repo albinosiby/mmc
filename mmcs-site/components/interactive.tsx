@@ -260,6 +260,7 @@ export function JourneyExplorer() {
                       {item.periodNote && <p className="journey-period-note"><strong>Status:</strong> {item.periodNote}</p>}
                     </section>
                   ))}
+                  <button type="button" className="journey-next" onClick={() => selectChapter(selectedIndex + 1)}>Next year <span>{journeyYears[(selectedIndex + 1) % journeyYears.length].year} <ArrowRight size={17} /></span></button>
                   <section className="journey-year-gallery" aria-labelledby={`year-gallery-${selected.year}`}>
                     <div className="journey-year-gallery-grid">
                       {selectedYearImages.map((src, imageIndex) => (
@@ -278,7 +279,6 @@ export function JourneyExplorer() {
                       ))}
                     </div>
                   </section>
-                  <button type="button" className="journey-next" onClick={() => selectChapter(selectedIndex + 1)}>Next year <span>{journeyYears[(selectedIndex + 1) % journeyYears.length].year} <ArrowRight size={17} /></span></button>
                 </div>
               </article>
             )}

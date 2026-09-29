@@ -70,14 +70,10 @@ export function CurtainLaunch({ children }: { children: ReactNode }) {
       <motion.div
         className={styles.websiteShell}
         animate={{
-          scale: isOpening ? [0.965, 0.972, 1] : state === 'open' ? 1 : 0.965,
-          filter: isOpening
-            ? ['brightness(0.58) blur(2.5px)', 'brightness(0.76) blur(1.3px)', 'brightness(1) blur(0px)']
-            : state === 'open'
-              ? 'brightness(1) blur(0px)'
-              : 'brightness(0.58) blur(2.5px)',
+          scale: isOpening ? [0.985, 0.992, 1] : state === 'open' ? 1 : 0.985,
+          opacity: state === 'closed' ? 0.96 : 1,
         }}
-        transition={{ duration: reduceMotion ? 0.18 : 1.56, ease: 'easeOut', times: isOpening ? [0, 0.34, 1] : undefined }}
+        transition={{ duration: reduceMotion ? 0.18 : 1.16, ease: 'easeOut', times: isOpening ? [0, 0.45, 1] : undefined }}
       >
         {children}
       </motion.div>

@@ -1,7 +1,6 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
-import Image from 'next/image';
 import { AnimatePresence, motion, useReducedMotion, type Transition } from 'framer-motion';
 import styles from './curtain-launch.module.css';
 import { CurtainPanel } from './CurtainPanel';
@@ -139,14 +138,17 @@ export function CurtainLaunch({ children }: { children: ReactNode }) {
               }}
               transition={{ duration: reduceMotion ? 0.14 : 0.62, ease: [0.22, 1, 0.36, 1] }}
             >
-              <Image
-                src="/images/launch-gratitude-phone-poster.jpg"
-                alt="With heartfelt gratitude launch poster from Muktidata Multipurpose Cooperative Society"
-                fill
-                priority
-                sizes="100vw"
-                className={styles.posterImage}
-              />
+              <picture className={styles.posterPicture}>
+                <source
+                  media="(min-width: 701px)"
+                  srcSet="/images/launch-gratitude-desktop-poster.jpg"
+                />
+                <img
+                  src="/images/launch-gratitude-phone-poster.jpg"
+                  alt="With heartfelt gratitude launch poster from Muktidata Multipurpose Cooperative Society"
+                  className={styles.posterImage}
+                />
+              </picture>
             </motion.span>
             {posterReady ? <span className={styles.posterHint}>Tap or press any key to continue</span> : null}
           </motion.button>

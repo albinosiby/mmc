@@ -160,14 +160,14 @@ export const projects: Project[] = [
     ],
     images: [
       {
-        src: galleryImage('AW44DSC01857.jpg'),
-        alt: 'MeghFarm community activity',
-        label: 'MeghFarm community activity',
-      },
-      {
         src: galleryImage('WhatsApp Image 2026-09-12 at 11.02.44 AM.jpeg'),
         alt: 'MeghFarm programme photograph',
         label: 'MeghFarm programme photograph',
+      },
+      {
+        src: galleryImage('AW44DSC01857.jpg'),
+        alt: 'MeghFarm community activity',
+        label: 'MeghFarm community activity',
       },
       {
         src: galleryImage('WhatsApp Image 2026-09-12 at 11.00.26 AM.jpeg'),

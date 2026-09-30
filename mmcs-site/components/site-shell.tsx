@@ -1,7 +1,6 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { CurtainLaunch } from '@/components/curtain-launch/CurtainLaunch';
 
 export function SiteShell({
   children,
@@ -20,10 +19,10 @@ export function SiteShell({
   }
 
   return (
-    <CurtainLaunch>
+    <>
       {navigation}
       {children}
       {footer}
-    </CurtainLaunch>
+    </>
   );
 }

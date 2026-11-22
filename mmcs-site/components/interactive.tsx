@@ -28,6 +28,8 @@ import {
   journeyTimeline,
 } from '@/lib/journey-content';
 import { Coverflow } from '@/components/coverflow';
+import { JourneyEntryPhotos } from '@/components/journey-entry-photos';
+import { getJourneyEntryImages, getJourneyImageDetails, journey2026Images } from '@/lib/journey-images';
 const journeyImages = [
   '/images/community.webp',
   '/images/gathering.webp',
@@ -50,7 +52,7 @@ const journeyImagesByYear: Record<string, string[]> = {
   '2023': [],
   '2024': [mmcsImage("2024/MEGHFARM PROCCCESING HUB ESTABLISHMENT/A24_1.3.1.jpg"), mmcsImage("2024/BEST COOPERATIVE MEMBER AWARD -2024/MATHEW AWARD.jpeg"), mmcsImage("2024/INAGRATION OF MRGHFARM/WhatsApp Image 2026-09-07 at 4.41.44 PM.jpeg"), mmcsImage("2024/INAGRATION OF MRGHFARM/WhatsApp Image 2026-09-07 at 4.41.48 PM.jpeg"), mmcsImage("2024/MEGHFARM PROCCCESING HUB ESTABLISHMENT/A22_1.2.2.jpg"), mmcsImage("2024/MEGHFARM PROCCCESING HUB ESTABLISHMENT/A28_1.3.1.jpg"), mmcsImage("2024/MEGHFARM PROCCCESING HUB ESTABLISHMENT/D1_1.2.3.jpg"), mmcsImage("2024/MEGHFARM PROCCCESING HUB ESTABLISHMENT/G4_1.4.1.jpg"), mmcsImage("2024/nokma BRAND devoloped accelerated/A DSC01259.jpg"), mmcsImage("2024/nokma BRAND devoloped accelerated/DSC03304.JPG"), mmcsImage("2024/nokma BRAND devoloped accelerated/WhatsApp Image 2026-09-07 at 4.34.37 PM.jpeg"), mmcsImage("2024/nokma BRAND devoloped accelerated/WhatsApp Image 2026-09-07 at 4.38.31 PM.jpeg"), mmcsImage("2024/nokma BRAND devoloped accelerated/WhatsApp Image 2026-09-07 at 4.50.35 PM (1).jpeg"), mmcsImage("2024/nokma BRAND devoloped accelerated/WhatsApp Image 2026-09-07 at 4.50.35 PM.jpeg"), mmcsImage("2024/nokma BRAND devoloped accelerated/fdrtr_2.1.1.jpg"), mmcsImage("2024/nokma BRAND devoloped accelerated/rtyry_3.1.2.jpg")],
   '2025': [mmcsImage("2025/Expansionof collective farming & Holticulture devolopment/IMG_20250503_145841158.jpg"), mmcsImage("2025/PA.Togen Nengminza Award for best social worker.   HIGHEST CIVILIAN AWARD OF GOVT. OF MEGHALAYA/Fr Benoy Photo 4_1.4.4.jpg"), mmcsImage("2025/expansion of agri,dairy,food,women/DSC02359.JPG"), mmcsImage("2025/expansion of agri,dairy,food,women/DSC02502.JPG"), mmcsImage("2025/expansion of agri,dairy,food,women/IMG_20250531_141100016.jpg"), mmcsImage("2025/free medical camp @ MEGHFARM/DSC04698.JPG"), mmcsImage("2025/free medical camp @ MEGHFARM/DSC04747.JPG"), mmcsImage("2025/free medical camp @ MEGHFARM/DSC04808.JPG")],
-  '2026': [mmcsImage("2026/Financial & Digital Financial Literacy Camp/DSC06682.JPG"), mmcsImage("2026/Financial & Digital Financial Literacy Camp/DSC07066.JPG"), mmcsImage("2026/Financial & Digital Financial Literacy Camp/DSC07112.JPG"), mmcsImage("2026/NITI AYOG VISITING/NITI AYOG visiting at meghfarm.jpeg"), mmcsImage("2026/NITI AYOG VISITING/WhatsApp Image 2026-09-07 at 4.51.59 PM.jpeg"), mmcsImage("2026/meghfarm Football club devoloped/MFC1_1.1.1.png"), mmcsImage("2026/meghfarm Football club devoloped/MFC4_1.6.1.png"), mmcsImage("2026/meghfarm Football club devoloped/jhklhjlhui_1.6.2.png")],
+  '2026': [...journey2026Images],
 };
 
 function journeyImagesFor(years: readonly string[], entry: JourneyEntry, index: number) {
@@ -85,7 +87,7 @@ const journeyChapterDefinitions = [
   { id: '2021-2023', year: '2021–2023', years: ['2021', '2022', '2023'], entryIds: ['expansion-2021-2023', 'recognition-2023'] },
   { id: '2024', year: '2024', years: ['2024'], entryIds: ['2024', 'nokma-2024-2025'] },
   { id: '2025', year: '2025', years: ['2025'], entryIds: ['livelihoods-2025', 'collective-farming-2025-2026', 'cold-chain-2025-2026'] },
-  { id: '2026', year: '2026', years: ['2026'], entryIds: ['niti-aayog-visit-2026', 'meghfarm-sports-club-2026', 'financial-literacy-camp-2026', 'mineral-water-2026', 'infrastructure-2026', 'women-entrepreneurship-2026'] },
+  { id: '2026', year: '2026', years: ['2026'], entryIds: ['niti-aayog-visit-2026', 'meghfarm-sports-club-2026', 'financial-literacy-camp-2026', 'mineral-water-2026', 'infrastructure-2026', 'women-entrepreneurship-2026', 'rosary-making-training-2026', 'sm-fashion-designer-training-2026-2027', 'slm-project-officers-visit-2026', 'cold-storage-vehicles-2026'] },
 ] as const;
 
 const journeyYears: JourneyChapter[] = journeyChapterDefinitions.map((chapter) => {
@@ -103,26 +105,33 @@ const journeyYears: JourneyChapter[] = journeyChapterDefinitions.map((chapter) =
 
 export function JourneyExplorer() {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [photoViewer, setPhotoViewer] = useState<{
+    images: readonly string[];
+    index: number;
+    label: string;
+  } | null>(null);
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
   const imageTrigger = useRef<HTMLButtonElement | null>(null);
   const selected = journeyYears[selectedIndex];
   const selectedEntry = selected.primary;
   const selectedYearImages = journeyImagesFor(selected.years, selectedEntry, selectedIndex);
-  const selectedImage = selectedImageIndex === null ? null : selectedYearImages[selectedImageIndex];
+  const selectedImage = photoViewer?.images[photoViewer.index] ?? null;
   const chapter = String(selectedIndex + 1).padStart(2, '0');
 
   function selectChapter(index: number, focus = false) {
     const next = (index + journeyYears.length) % journeyYears.length;
-    setSelectedImageIndex(null);
+    setPhotoViewer(null);
     setSelectedIndex(next);
     const tab = tabs.current[next];
     if (focus) tab?.focus({ preventScroll: true });
   }
 
   function changeSelectedImage(direction: number) {
-    setSelectedImageIndex((current) =>
-      current === null ? null : (current + direction + selectedYearImages.length) % selectedYearImages.length,
+    setPhotoViewer((current) =>
+      current === null ? null : {
+        ...current,
+        index: (current.index + direction + current.images.length) % current.images.length,
+      },
     );
   }
 
@@ -258,10 +267,19 @@ export function JourneyExplorer() {
                         </div>
                       ))}
                       {item.periodNote && <p className="journey-period-note"><strong>Status:</strong> {item.periodNote}</p>}
+                      <JourneyEntryPhotos
+                        images={getJourneyEntryImages(item.id)}
+                        heading={item.heading}
+                        lightboxOpen={photoViewer !== null}
+                        onOpen={(event, imageIndex) => {
+                          imageTrigger.current = event.currentTarget;
+                          setPhotoViewer({ images: getJourneyEntryImages(item.id), index: imageIndex, label: item.heading });
+                        }}
+                      />
                     </section>
                   ))}
                   <button type="button" className="journey-next" onClick={() => selectChapter(selectedIndex + 1)}>Next year <span>{journeyYears[(selectedIndex + 1) % journeyYears.length].year} <ArrowRight size={17} /></span></button>
-                  <section className="journey-year-gallery" aria-labelledby={`year-gallery-${selected.year}`}>
+                  {selected.year !== '2026' && <section className="journey-year-gallery" aria-label={`${selected.year} photographs`}>
                     <div className="journey-year-gallery-grid">
                       {selectedYearImages.map((src, imageIndex) => (
                         <button
@@ -270,7 +288,7 @@ export function JourneyExplorer() {
                           key={src}
                           onClick={(event) => {
                             imageTrigger.current = event.currentTarget;
-                            setSelectedImageIndex(imageIndex);
+                            setPhotoViewer({ images: selectedYearImages, index: imageIndex, label: `MMCS ${selected.year}` });
                           }}
                           aria-label={`Open photograph ${imageIndex + 1} from ${selected.year}`}
                         >
@@ -278,13 +296,13 @@ export function JourneyExplorer() {
                         </button>
                       ))}
                     </div>
-                  </section>
+                  </section>}
                 </div>
               </article>
             )}
           </div>
         ))}
-        <Dialog open={selectedImage !== null} onOpenChange={(open) => { if (!open) setSelectedImageIndex(null); }}>
+        <Dialog open={selectedImage !== null} onOpenChange={(open) => { if (!open) setPhotoViewer(null); }}>
           <DialogContent
             className="lightbox journey-image-lightbox"
             finalFocus={imageTrigger}
@@ -301,9 +319,20 @@ export function JourneyExplorer() {
           >
             {selectedImage && (
               <>
+                <DialogTitle className="sr-only">{photoViewer?.label}</DialogTitle>
+                <DialogDescription className="sr-only">
+                  Photograph {(photoViewer?.index ?? 0) + 1} of {photoViewer?.images.length}. Use the previous and next controls to browse this activity’s photographs.
+                </DialogDescription>
                 <div className="lightbox-image">
-                  <Image src={selectedImage} alt={`MMCS documentation from ${selected.year}`} fill sizes="95vw" />
+                  <Image src={selectedImage} alt={getJourneyImageDetails(selectedImage)?.alt ?? `${photoViewer?.label}, photograph ${(photoViewer?.index ?? 0) + 1}`} fill sizes="95vw" />
                 </div>
+                {photoViewer && photoViewer.images.length > 1 && (
+                  <div className="lightbox-controls">
+                    <button type="button" onClick={() => changeSelectedImage(-1)}>Previous photo</button>
+                    <span>{photoViewer.index + 1} / {photoViewer.images.length}</span>
+                    <button type="button" onClick={() => changeSelectedImage(1)}>Next photo</button>
+                  </div>
+                )}
               </>
             )}
           </DialogContent>

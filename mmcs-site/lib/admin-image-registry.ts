@@ -1,5 +1,6 @@
 import { photos } from './content';
 import { journeyTimeline } from './journey-content';
+import { journey2026Images } from './journey-images';
 
 export type AdminImageArea = 'gallery' | 'journey';
 
@@ -108,16 +109,7 @@ export const journeyImageGroups = [
   {
     id: '2026',
     label: '2026',
-    images: [
-      mmcsImage('2026/Financial & Digital Financial Literacy Camp/DSC06682.JPG'),
-      mmcsImage('2026/Financial & Digital Financial Literacy Camp/DSC07066.JPG'),
-      mmcsImage('2026/Financial & Digital Financial Literacy Camp/DSC07112.JPG'),
-      mmcsImage('2026/NITI AYOG VISITING/NITI AYOG visiting at meghfarm.jpeg'),
-      mmcsImage('2026/NITI AYOG VISITING/WhatsApp Image 2026-09-07 at 4.51.59 PM.jpeg'),
-      mmcsImage('2026/meghfarm Football club devoloped/MFC1_1.1.1.png'),
-      mmcsImage('2026/meghfarm Football club devoloped/MFC4_1.6.1.png'),
-      mmcsImage('2026/meghfarm Football club devoloped/jhklhjlhui_1.6.2.png'),
-    ],
+    images: journey2026Images,
   },
 ] as const;
 

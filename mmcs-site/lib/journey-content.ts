@@ -651,6 +651,127 @@ export const journeyTimeline: JourneyEntry[] = [
     periodNote: 'These areas are emerging or proposed directions.',
     sourceKey: 'history:women-entrepreneurship',
   },
+  {
+    id: 'rosary-making-training-2026',
+    year: '2026',
+    title: 'Training on rosary making.',
+    summary:
+      'MMCS organised the Rosary Making Training Program – 2026 to support women’s empowerment, practical skills and opportunities for self-employment.',
+    heading: 'Rosary Making Training Program – 2026',
+    introduction:
+      'Muktidata Multipurpose Cooperative Society organised the Rosary Making Training Program – 2026 as part of its ongoing efforts to promote women’s empowerment, skill development, and economic self-reliance within the community.',
+    sections: [
+      {
+        heading: 'Practical skills and self-employment',
+        introduction:
+          'The programme aims to provide women with practical skills and knowledge in rosary making, encouraging them to explore new opportunities for self-employment and income generation. Through hands-on training and guidance, participants are given the opportunity to develop their creativity, improve their craftsmanship, and gain confidence in producing quality handmade products.',
+      },
+      {
+        heading: 'Sustainable livelihood opportunities',
+        introduction:
+          'This initiative reflects the cooperative society’s commitment to creating sustainable livelihood opportunities, encouraging women’s participation in economic activities, and strengthening rural communities through skill-based development.',
+      },
+      {
+        heading: 'An inclusive and self-reliant community',
+        introduction:
+          'By providing such training opportunities, Muktidata Multipurpose Cooperative Society continues to work towards building a more inclusive and self-reliant community where women can develop their talents, become financially independent, and contribute to their families and society.',
+        callout:
+          'Empowering Women Through Skills, Creating Opportunities for a Better Tomorrow.',
+      },
+    ],
+    sourceKey: 'user:2026-rosary-making-training',
+  },
+  {
+    id: 'sm-fashion-designer-training-2026-2027',
+    year: '2026–27',
+    title: 'Training in fashion design and garment making.',
+    summary:
+      'MMCS organised the SM Fashion Designer Training Program – 2026–27 to promote women’s empowerment, vocational education and opportunities for self-employment.',
+    heading: 'SM Fashion Designer Training Program – 2026–27',
+    introduction:
+      'Muktidata Multipurpose Cooperative Society organised the SM Fashion Designer Training Program – 2026–27 as part of its continued commitment to promoting women’s empowerment, vocational education, and skill development within the community.',
+    sections: [
+      {
+        heading: 'Professional skills and creative design',
+        introduction:
+          'The programme aims to equip women with practical knowledge and professional skills in fashion designing, tailoring, garment making, and creative clothing design. Through hands-on training and expert guidance, participants get the opportunity to develop their creativity, improve their technical abilities, and gain confidence in the field of fashion and garment production.',
+      },
+      {
+        heading: 'Self-employment and entrepreneurship',
+        introduction:
+          'This initiative is designed to create opportunities for self-employment, entrepreneurship, and sustainable income generation, enabling women to turn their skills and creativity into potential livelihood opportunities.',
+      },
+      {
+        heading: 'Financial independence and community development',
+        introduction:
+          'Through such initiatives, Muktidata Multipurpose Cooperative Society strives to encourage financial independence among women, strengthen local entrepreneurship, preserve creativity, and contribute to the overall socio-economic development of the community.',
+        callout:
+          'Empowering Women Through Fashion, Building Skills for a Self-Reliant Future.',
+      },
+    ],
+    sourceKey: 'user:2026-2027-sm-fashion-designer-training',
+  },
+  {
+    id: 'slm-project-officers-visit-2026',
+    year: '2026',
+    title: 'Collaboration for sustainable agriculture.',
+    summary:
+      'MMCS and Megh Farm Processing Hub welcomed SLM Project Officers from Germany and Shillong for collaboration, knowledge sharing and sustainable agricultural development.',
+    heading: 'SLM Project Officers from Germany & Shillong',
+    introduction:
+      'Muktidata Multipurpose Cooperative Society and Megh Farm Processing Hub were pleased to welcome the Sustainable Land Management (SLM) Project Officers from Germany and Shillong as part of an initiative to strengthen collaboration, knowledge sharing, and sustainable agricultural development.',
+    sections: [
+      {
+        heading: 'Sharing farmer-focused initiatives',
+        introduction:
+          'The visit provided an opportunity to showcase the cooperative society’s activities, farmer-focused initiatives, agricultural practices, and value-added products developed through Megh Farm Processing Hub. The visiting officers also had the opportunity to learn about the efforts being undertaken to support local farmers, promote agricultural entrepreneurship, and create sustainable livelihood opportunities in the region.',
+      },
+      {
+        heading: 'Sustainable land management and rural development',
+        introduction:
+          'The interaction highlighted the importance of sustainable land management, farmer empowerment, community participation, and innovative approaches to rural development.',
+      },
+      {
+        heading: 'Collaboration for sustainable development',
+        introduction:
+          'We sincerely appreciate the visit and valuable interaction, which further encourage our commitment to supporting farmers, strengthening local communities, and promoting sustainable development in Meghalaya.',
+        callout:
+          'Together Towards Sustainable Agriculture, Stronger Communities, and Empowered Farmers.',
+      },
+    ],
+    sourceKey: 'user:2026-slm-project-officers-visit',
+  },
+  {
+    id: 'cold-storage-vehicles-2026',
+    year: '2026',
+    title: 'Cold storage vehicles to support farmers.',
+    summary:
+      'On 12 November 2026, MMCS and Megh Farm Processing Hub received cold storage vehicles from the Government of Meghalaya to support agricultural transport and reduce post-harvest losses.',
+    heading: 'Receiving Cold Storage Vehicles from the Government of Meghalaya',
+    date: '12 November 2026',
+    introduction:
+      'Muktidata Multipurpose Cooperative Society and Megh Farm Processing Hub are proud and grateful to receive the cold storage vehicles launched by the Government of Meghalaya under the leadership of Hon’ble Chief Minister Conrad K Sangma.',
+    sections: [
+      {
+        heading: 'Strengthening agricultural infrastructure',
+        introduction:
+          'This initiative marks an important step towards strengthening agricultural infrastructure and supporting our farmers by reducing post-harvest losses and preserving the freshness and quality of fruits and vegetables for longer periods.',
+      },
+      {
+        heading: 'Better transport and market opportunities',
+        introduction:
+          'The cold storage vehicle will help improve the transportation and storage of agricultural produce, create better market opportunities, and support farmers in protecting the value of their hard work.',
+      },
+      {
+        heading: 'Appreciation and continued support',
+        introduction:
+          'We sincerely thank the Government of Meghalaya and Hon’ble Chief Minister Shri Conrad K. Sangma for this valuable support and continued commitment towards the welfare of farmers.',
+        callout:
+          'Supporting Farmers, Reducing Post-Harvest Losses, and Building a Stronger Agricultural Future.',
+      },
+    ],
+    sourceKey: 'user:2026-cold-storage-vehicles',
+  },
 ];
 
 export const journeyValueChain = [

@@ -1,0 +1,66 @@
+.photos {
+  min-width: 0;
+  margin-top: clamp(1.25rem, 3vw, 2rem);
+}
+
+.track {
+  --photo-gap: clamp(0.65rem, 1.5vw, 1.1rem);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--photo-gap);
+  max-width: 66rem;
+  padding: 0.25rem;
+}
+
+.photo {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  border-radius: 0.85rem;
+  background: #e8eee4;
+  cursor: zoom-in;
+}
+
+.photo img {
+  object-fit: cover;
+  transition: transform 280ms ease;
+}
+
+@media (hover: hover) {
+  .photo:hover img {
+    transform: scale(1.035);
+  }
+}
+
+.photo:focus-visible {
+  outline: 3px solid #21744f;
+  outline-offset: 2px;
+}
+
+@media (max-width: 700px) {
+  .track {
+    display: flex;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: #a3b7a5 transparent;
+    padding-bottom: 0.65rem;
+  }
+
+  .photo {
+    flex: 0 0 calc((100% - var(--photo-gap)) / 2);
+    scroll-snap-align: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo img {
+    transition: none;
+  }
+}

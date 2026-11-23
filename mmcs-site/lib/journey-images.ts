@@ -2,14 +2,21 @@ const archiveImage = (path: string) =>
   `/images/MMCS/${path.split('/').map(encodeURIComponent).join('/')}`;
 
 const womenEntrepreneurshipImages = [
-  archiveImage('2026/Financial & Digital Financial Literacy Camp/DSC06682.JPG'),
-  archiveImage('2026/Financial & Digital Financial Literacy Camp/DSC07066.JPG'),
+  archiveImage('2026/Vision for Tribal Women and Rural Entrepreneurship/tribal-women-rural-enterprise-01.jpg'),
+  archiveImage('2026/Vision for Tribal Women and Rural Entrepreneurship/tribal-women-rural-enterprise-02.jpg'),
+  archiveImage('2026/Vision for Tribal Women and Rural Entrepreneurship/tribal-women-rural-enterprise-03.jpg'),
 ] as const;
 
 const financialLiteracyImages = [
-  archiveImage('2026/Financial & Digital Financial Literacy Camp/DSC07112.JPG'),
   archiveImage('2026/NITI AYOG VISITING/NITI AYOG visiting at meghfarm.jpeg'),
   archiveImage('2026/NITI AYOG VISITING/WhatsApp Image 2026-09-07 at 4.51.59 PM.jpeg'),
+] as const;
+
+const cooperativeInfrastructureImages = [
+  archiveImage('2026/Infrastructure for a Growing Cooperative/cooperative-infrastructure-01.jpg'),
+  archiveImage('2026/Infrastructure for a Growing Cooperative/cooperative-infrastructure-02.jpg'),
+  archiveImage('2026/Infrastructure for a Growing Cooperative/cooperative-infrastructure-03.jpg'),
+  archiveImage('2026/Infrastructure for a Growing Cooperative/cooperative-infrastructure-04.jpg'),
 ] as const;
 
 const sportsClubImages = [
@@ -48,6 +55,7 @@ const fashionTrainingImages = [
 export const journey2026Images = [
   ...womenEntrepreneurshipImages,
   ...financialLiteracyImages,
+  ...cooperativeInfrastructureImages,
   ...sportsClubImages,
   ...rosaryTrainingImages,
   ...slmVisitImages,
@@ -59,6 +67,7 @@ export const journey2026Images = [
 const entryImages: Readonly<Record<string, readonly string[]>> = {
   'women-entrepreneurship-2026': womenEntrepreneurshipImages,
   'financial-literacy-camp-2026': financialLiteracyImages,
+  'infrastructure-2026': cooperativeInfrastructureImages,
   'meghfarm-sports-club-2026': sportsClubImages,
   'rosary-making-training-2026': rosaryTrainingImages,
   'slm-project-officers-visit-2026': slmVisitImages,
@@ -69,6 +78,27 @@ const entryImages: Readonly<Record<string, readonly string[]>> = {
 type JourneyImageDetails = { alt: string; objectPosition?: string };
 
 const imageDetails: Readonly<Record<string, JourneyImageDetails>> = {
+  [cooperativeInfrastructureImages[0]]: {
+    alt: 'Construction progressing on a multi-storey cooperative processing hub building',
+  },
+  [cooperativeInfrastructureImages[1]]: {
+    alt: 'Overhead view of the cooperative building under construction',
+  },
+  [cooperativeInfrastructureImages[2]]: {
+    alt: 'New covered processing facility with a steel roof and finished floor',
+  },
+  [cooperativeInfrastructureImages[3]]: {
+    alt: 'Exterior view of the cooperative facility during construction',
+  },
+  [womenEntrepreneurshipImages[0]]: {
+    alt: 'Tribal women carrying gathered firewood through a green rural landscape',
+  },
+  [womenEntrepreneurshipImages[1]]: {
+    alt: 'Tribal women carrying firewood along a wooded village path',
+  },
+  [womenEntrepreneurshipImages[2]]: {
+    alt: 'Two tribal women carrying firewood across a rural field',
+  },
   [rosaryTrainingImages[0]]: {
     alt: 'Women practising rosary making together with beads and thread during the 2026 training programme',
   },

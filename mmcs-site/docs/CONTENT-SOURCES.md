@@ -54,13 +54,17 @@ All membership recruitment buttons, navigation links and the contact membership 
 
 The client requested photographs directly after their activity details, replacing the combined bottom gallery for 2026. Activity assignments follow the client's original gallery positions, rather than the archive folder names:
 
-- Photos 1–2: Vision for Tribal Women and Rural Entrepreneurship.
-- Photos 3–5: Financial & Digital Financial Literacy Camp.
+- The latest three user-supplied photos: Vision for Tribal Women and Rural Entrepreneurship.
+- The remaining two photos (after removing the first): Financial & Digital Financial Literacy Camp.
 - Photos 6–8: Launch of MeghFarm Sports Club.
 
 `lib/journey-images.ts` is the shared 2026 asset list for the public page and admin preview, with assignments keyed by Journey entry ID. Preserve these explicit assignments when editing; the source folder labels differ. No original assets or historical text were changed.
 
 `components/journey-entry-photos.tsx` renders responsive images beneath each assigned activity. Desktop rows fit the content width. Mobile rows with three or more images support horizontal scrolling and automatically advance while visible; one or two images fit without autoplay. Autoplay pauses during interaction, while an enlarged photograph is open, and when the page is hidden. At the client's request there is no visible pause/resume button; reduced-motion settings disable autoplay. Enlarged-photo navigation stays within the selected activity's images. Other Journey years retain their existing bottom galleries.
+
+On 23 November 2026, the client replaced the Vision for Tribal Women and Rural Entrepreneurship gallery with three newly supplied photos and asked to remove the first photo from the Financial & Digital Financial Literacy Camp gallery. The new Vision images are JPEG derivatives in `public/images/MMCS/2026/Vision for Tribal Women and Rural Entrepreneurship/`; assignments and alt text are maintained in `lib/journey-images.ts`.
+
+The client supplied four photos for Infrastructure for a Growing Cooperative on 23 November 2026. JPEG derivatives are stored in `public/images/MMCS/2026/Infrastructure for a Growing Cooperative/` and assigned to `infrastructure-2026` in `lib/journey-images.ts`, using the shared 2026 thumbnail layout and enlarged viewer.
 
 After client review, all activity sections use the same photo dimensions: a shared three-column desktop grid capped at 66rem and two equally sized visible thumbnails on phones. A two-photo activity uses two cells of the same grid. Longer mobile rows scroll automatically and loop back after the last image becomes visible. Clicking a thumbnail still opens the full photograph.
 

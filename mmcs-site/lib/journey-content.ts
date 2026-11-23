@@ -559,7 +559,7 @@ export const journeyTimeline: JourneyEntry[] = [
     title: 'Nokma enters a new phase.',
     summary:
       'MMCS expanded its enterprise plans through the proposed Nokma Mineral Water facility and explored cooperative investment models involving farmers and tribal business communities.',
-    heading: 'Nokma Mineral Water Initiative',
+    heading: 'Nokma Drinking Water',
     introduction:
       'The client history describes development of the Nokma Mineral Water Plant at Khamari as a proposed modern automated mineral-water processing and packaging unit.',
     location: 'Khamari',

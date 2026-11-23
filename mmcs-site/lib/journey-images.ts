@@ -8,6 +8,12 @@ const womenEntrepreneurshipImages = [
 ] as const;
 
 const financialLiteracyImages = [
+  archiveImage('2026/Financial & Digital Financial Literacy Camp/DSC06682.JPG'),
+  archiveImage('2026/Financial & Digital Financial Literacy Camp/DSC07066.JPG'),
+  archiveImage('2026/Financial & Digital Financial Literacy Camp/DSC07112.JPG'),
+] as const;
+
+const nitiAayogVisitImages = [
   archiveImage('2026/NITI AYOG VISITING/NITI AYOG visiting at meghfarm.jpeg'),
   archiveImage('2026/NITI AYOG VISITING/WhatsApp Image 2026-09-07 at 4.51.59 PM.jpeg'),
 ] as const;
@@ -55,6 +61,7 @@ const fashionTrainingImages = [
 export const journey2026Images = [
   ...womenEntrepreneurshipImages,
   ...financialLiteracyImages,
+  ...nitiAayogVisitImages,
   ...cooperativeInfrastructureImages,
   ...sportsClubImages,
   ...rosaryTrainingImages,
@@ -67,6 +74,7 @@ export const journey2026Images = [
 const entryImages: Readonly<Record<string, readonly string[]>> = {
   'women-entrepreneurship-2026': womenEntrepreneurshipImages,
   'financial-literacy-camp-2026': financialLiteracyImages,
+  'niti-aayog-visit-2026': nitiAayogVisitImages,
   'infrastructure-2026': cooperativeInfrastructureImages,
   'meghfarm-sports-club-2026': sportsClubImages,
   'rosary-making-training-2026': rosaryTrainingImages,
@@ -78,6 +86,21 @@ const entryImages: Readonly<Record<string, readonly string[]>> = {
 type JourneyImageDetails = { alt: string; objectPosition?: string };
 
 const imageDetails: Readonly<Record<string, JourneyImageDetails>> = {
+  [financialLiteracyImages[0]]: {
+    alt: 'Community members gathered for the Financial and Digital Financial Literacy Camp',
+  },
+  [financialLiteracyImages[1]]: {
+    alt: 'A speaker addressing a large audience during the financial literacy camp',
+  },
+  [financialLiteracyImages[2]]: {
+    alt: 'Participants listening during the Financial and Digital Financial Literacy Camp',
+  },
+  [nitiAayogVisitImages[0]]: {
+    alt: 'NITI Aayog representatives visiting MeghFarm Processing Hub',
+  },
+  [nitiAayogVisitImages[1]]: {
+    alt: 'NITI Aayog representatives discussing development opportunities at MeghFarm',
+  },
   [cooperativeInfrastructureImages[0]]: {
     alt: 'Construction progressing on a multi-storey cooperative processing hub building',
   },

@@ -55,7 +55,8 @@ All membership recruitment buttons, navigation links and the contact membership 
 The client requested photographs directly after their activity details, replacing the combined bottom gallery for 2026. Activity assignments follow the client's original gallery positions, rather than the archive folder names:
 
 - The latest three user-supplied photos: Vision for Tribal Women and Rural Entrepreneurship.
-- The remaining two photos (after removing the first): Financial & Digital Financial Literacy Camp.
+- Photos `DSC06682.JPG`, `DSC07066.JPG` and `DSC07112.JPG`: Financial & Digital Financial Literacy Camp.
+- The two photos from `2026/NITI AYOG VISITING/`: NITI Aayog Visit.
 - Photos 6–8: Launch of MeghFarm Sports Club.
 
 `lib/journey-images.ts` is the shared 2026 asset list for the public page and admin preview, with assignments keyed by Journey entry ID. Preserve these explicit assignments when editing; the source folder labels differ. No original assets or historical text were changed.
@@ -65,6 +66,10 @@ The client requested photographs directly after their activity details, replacin
 On 23 November 2026, the client replaced the Vision for Tribal Women and Rural Entrepreneurship gallery with three newly supplied photos and asked to remove the first photo from the Financial & Digital Financial Literacy Camp gallery. The new Vision images are JPEG derivatives in `public/images/MMCS/2026/Vision for Tribal Women and Rural Entrepreneurship/`; assignments and alt text are maintained in `lib/journey-images.ts`.
 
 The client supplied four photos for Infrastructure for a Growing Cooperative on 23 November 2026. JPEG derivatives are stored in `public/images/MMCS/2026/Infrastructure for a Growing Cooperative/` and assigned to `infrastructure-2026` in `lib/journey-images.ts`, using the shared 2026 thumbnail layout and enlarged viewer.
+
+The client clarified on 23 November 2026 that the two photos previously assigned to Financial & Digital Financial Literacy Camp belong to NITI Aayog Visit. They are now assigned to `niti-aayog-visit-2026`; the camp has no assigned photos.
+
+The client supplied the correct three Financial & Digital Financial Literacy Camp photos on 23 November 2026. The existing archive photos `DSC06682.JPG`, `DSC07066.JPG` and `DSC07112.JPG` are assigned to `financial-literacy-camp-2026` in the supplied order.
 
 After client review, all activity sections use the same photo dimensions: a shared three-column desktop grid capped at 66rem and two equally sized visible thumbnails on phones. A two-photo activity uses two cells of the same grid. Longer mobile rows scroll automatically and loop back after the last image becomes visible. Clicking a thumbnail still opens the full photograph.
 

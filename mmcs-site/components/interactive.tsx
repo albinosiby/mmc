@@ -247,6 +247,15 @@ export function JourneyExplorer() {
                     </section>
                   ))}
                   {selectedEntry.periodNote && <p className="journey-period-note"><strong>Status:</strong> {selectedEntry.periodNote}</p>}
+                  <JourneyEntryPhotos
+                    images={getJourneyEntryImages(selectedEntry.id)}
+                    heading={selectedEntry.heading}
+                    lightboxOpen={photoViewer !== null}
+                    onOpen={(event, imageIndex) => {
+                      imageTrigger.current = event.currentTarget;
+                      setPhotoViewer({ images: getJourneyEntryImages(selectedEntry.id), index: imageIndex, label: selectedEntry.heading });
+                    }}
+                  />
                   {selected.entries.filter((item) => item.id !== selectedEntry.id).map((item) => (
                     <section className="journey-additional-entry" key={item.id}>
                       <span>{item.year}</span>
